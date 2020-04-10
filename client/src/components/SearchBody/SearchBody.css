@@ -1,0 +1,53 @@
+.content-body{
+    width: 100%;
+    padding:20px;
+}
+
+
+.search-group{
+    width:75%;  
+    display: inline-block; 
+}
+
+.paging-group{
+    width:25%;  
+    display: inline-block;
+}
+
+#search-input-div{
+    margin:0 10px 10px 0;
+}
+
+#filter-div{
+    width:55%;
+    margin:0 10px 10px 0;
+}
+
+ #sort-div{
+    width:55%;
+    margin:0 10px 10px 0;
+}
+
+.filter-sort{
+    cursor: pointer;
+}
+
+#filter-logo {
+    width:35px;
+    height:35px;
+    background: url('../../assets/images/filter.png') center center no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+#sort-logo {
+    width:35px;
+    height:35px;
+    background: url('../../assets/images/sort.png') center center no-repeat;
+    background-size: contain;
+    display: inline-block;
+}
+
+.form-search-additional{
+    display: inline-block;
+}

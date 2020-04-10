@@ -1,0 +1,24 @@
+.table-result-data{
+    top: 10px;
+    position: relative;
+}
+.table-result-data table{
+   position: relative;
+   font-size: 13px !important;
+}
+.table-result-data table th{
+    white-space: break-spaces !important;
+ }
+.table-result-data tbody td{
+    border: 1px solid sandybrown;
+}
+
+.table-result-data tbody .td-details{
+    cursor: pointer
+}
+
+.no-record{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+}
