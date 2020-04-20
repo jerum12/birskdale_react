@@ -1,11 +1,13 @@
-import React,{useState,useEffect} from 'react'
+import React,{useContext} from 'react'
 import PropTypes from 'prop-types';
 import './TableResult.css';
 import { Table, Button, Icon } from 'semantic-ui-react'
-
 import TableCell from './TableCell'
+import {GenericContext} from '../../context/GenericContext'
 
 function  TableResult(props)  {
+
+  const genericContext = useContext(GenericContext);
   
   const sortTypes = {
 
@@ -91,6 +93,12 @@ function  TableResult(props)  {
             sorted={props.column === 'total_size_run' ? props.direction : null}
             onClick={props.handleTableSort('total_size_run')}
             >Total Size Run</Table.HeaderCell>
+
+            {
+            genericContext.stateName.login ?
+              <Table.HeaderCell>Action</Table.HeaderCell>
+            : null  
+            }
           </Table.Row>
         </Table.Header>
 
@@ -104,13 +112,24 @@ function  TableResult(props)  {
             
         <Table.Footer fullWidth>
           <Table.Row>
-            <Table.HeaderCell colSpan='15'>
-            {props.stocks.length != 0 ?
-                <p>Record Count : {props.stocks.length}</p>
-               :
-               <p className='no-record'>No Records Retrieve</p>
-            }
+             {
+            genericContext.stateName.login ?
+              <Table.HeaderCell colSpan='16'>
+              {props.stocks.length != 0 ?
+                  <p>Record Count : {props.stocks.length}</p>
+                :
+                <p className='no-record'>No Records Retrieve</p>
+              }
             </Table.HeaderCell>
+            : <Table.HeaderCell colSpan='15'>
+              {props.stocks.length != 0 ?
+                  <p>Record Count : {props.stocks.length}</p>
+                :
+                <p className='no-record'>No Records Retrieve</p>
+              }
+              </Table.HeaderCell>
+            }
+            
             <Table.HeaderCell style={cellStyle}>
               {props.stocks.length != 0 ?
               <span>Page {props.page} of {props.totalPages}</span> : ''  

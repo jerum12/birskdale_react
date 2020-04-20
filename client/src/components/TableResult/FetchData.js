@@ -1,11 +1,15 @@
-import React, { Component }  from 'react'
+import React, { Component, useContext }  from 'react'
 import axios from 'axios';
-import { Icon, Pagination,Loader } from 'semantic-ui-react'
+import { Button, Icon, Pagination,Loader } from 'semantic-ui-react'
 import TableResult from './TableResult'
 import SearchBody from './../SearchBody/SearchBody'
 import _ from 'lodash'
+import {GenericContext} from '../../context/GenericContext'
+import ModalAddStocks from '../Modals/ModalAddStocks'
 
 class FetchData extends Component {
+
+    static contextType = GenericContext;  
 
     constructor(props) {
         super(props);
@@ -32,10 +36,16 @@ class FetchData extends Component {
 
      //get Stocks from api
      getStocks = () => {
-        axios
-            .get("http://localhost:5000/api/stocks/getAllData")
-            .then(data => {
-                this.setState({ stocks: data.data.data.docs, loading : false })
+        axios({
+              method: 'GET',
+              url: 'http://localhost:5000/api/stocks/data',
+              headers: {
+                  'Content-Type': 'application/json'
+                }
+          })
+            .then(response => {
+                console.log(response.data.data)
+                this.setState({ stocks: response.data.data, loading : false })
             })
             .catch(err => {
                 console.log(err);
@@ -99,10 +109,11 @@ class FetchData extends Component {
     
     render(){
         
-        
+    console.log("fetch data======================")
     const { page,itemsPerPage,filter,dataFilter,column,direction,stocks,loading } = this.state;
 
     
+    // console.log(this.context.stateName.login)
 
     // FOR PAGING 
     const totalPages = stocks.length / itemsPerPage;
@@ -134,21 +145,28 @@ class FetchData extends Component {
 
 
 
-        if (loading) {
-            return (
-                    <h1>
-                        <Loader size='huge' active inline='centered' style={loaderStyle}>Loading Data</Loader>
-                    </h1>
-             )
-          }
+      if (loading) {
+          return (
+                  <h1>
+                      <Loader size='huge' active inline='centered' style={loaderStyle}>Loading Data</Loader>
+                  </h1>
+            )
+        }
     
         return (
             <div className="content-body">
 
                 <div className="search-group">
                     <SearchBody filter={filter} handleChangeSearch={this.handleChangeSearch} sendDataFilter={this.getDataFilter}  handleChangeSort={this.handleChangeSort} currentSort={this.currentSort}/>
+                    
+                    {(this.context.stateName.login) ? 
+                      <ModalAddStocks/>
+                      : ''
+                     }
+                    
                 </div>
 
+      
                 { sliceStocks.length != 0 && 
                     <div className="paging-group">
         

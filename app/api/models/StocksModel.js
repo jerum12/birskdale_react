@@ -6,8 +6,8 @@ var Schema = mongoose.Schema;
 const stocksSchema = new Schema({
     stock_no : {type: String, required: true},
     transaction_date : {type: Date, default: Date.now},
-    stock_details : {type: String, trim:true, default:''},
-    leather_type : {type: String, trim:true, default:''},
+    stock_details : {type: String, default:''},
+    leather_type :  { type: Schema.Types.ObjectId, required: true, ref: 'LeatherTypeModel' },
     gender : {type: String, trim:true, default:''},
     color : {type: String, trim:true, default:''},
     classification_1 : {type: String, trim:true}, default:'',
@@ -35,4 +35,4 @@ const stocksSchema = new Schema({
 
   stocksSchema.plugin(mongoosePaginate)
 
-  module.exports = mongoose.model('Stocks', stocksSchema);
+  module.exports = mongoose.model('StocksModel', stocksSchema);

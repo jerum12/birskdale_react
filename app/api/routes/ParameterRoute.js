@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const stocksController = require('../controllers/StocksController');
+const parameterController = require('../controllers/ParameterController');
 const validator = require('../validators/Validation');
+var auth = require('../authorization/Authorization');
 
 // router.post('/register', validator.validateRegistrationBody, userController.create);
 // router.post('/authenticate', validator.validateLoginBody, userController.authenticate);
 
 
-router.get('/getAllData',  stocksController.getAll);
+router.get('/data',  auth.authClientToken, parameterController.getAllParameter);
+
 
 module.exports = router;

@@ -1,3 +1,21 @@
 .testStyle {
-    background : #252729;
+    background : white;
 }
+
+.testStyle2 {
+    background : red;
+}
+
+.testStyle4:hover{
+    background-color: rosybrown;
+}
+
+.testStyle4:active{
+    background-color: rosybrown;
+}
+
+.nav-icon{
+    color : red;
+}
+
+

@@ -12,10 +12,12 @@ const PORT = process.env.PORT || 5000;
 InitiateMongoServer();
 
 //For Route
-const stocksRoute2 = require('./app/api/routes/StocksRoute')
-const stocksRoute = require('./app/api/routes/Stocks')
+const stocksRoute2 = require('./app/api/routes/StocksRoute2')
+const stocksRoute = require('./app/api/routes/StocksRoute')
 const moviesRoute = require('./app/api/routes/Movies') ;
 const usersRoute = require('./app/api/routes/Users');
+const paramRoute = require('./app/api/routes/ParameterRoute')
+
 //FOR MODELS
 // const Stocks = require('./models/Stocks')
 // const Users = require('./models/Users')
@@ -28,7 +30,7 @@ app.use(cors())
 
 
 app.use(logger('dev'));
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
@@ -40,7 +42,7 @@ app.use('/api/users', usersRoute);
 
 // private route
 app.use('/api/movies', moviesRoute);
-
+app.use('/api/parameter', paramRoute)
 
 // function validateUser(req, res, next) {
 //   jwt.verify(req.headers['x-access-token'], req.app.get('secretKey'), function(err, decoded) {

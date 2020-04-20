@@ -46,11 +46,11 @@ module.exports = {
 
 
             var _details = await User.findOne({user_name: user.user_name})
-            .then(function(user){
-                return user
-            }).catch(function(error){
-                throw Error("Invalid username or password")
-            })
+                            .then(function(user){
+                                return user
+                            }).catch(function(error){
+                                throw Error("Invalid username or password")
+                            })
 
             let isPasswordValid = await bcrypt.compare(user.password, _details.password);
            
@@ -63,7 +63,7 @@ module.exports = {
             // var _details = await User.findOne({ email: user.email });
             // var passwordIsValid = bcrypt.compareSync(user.password, _details.password);
             // if (!passwordIsValid) throw Error("Invalid username/password")
-            let token = jwt.sign({ id: _details._id, user_name : _details.user_name }, config.SECRET_KEY, { expiresIn: 86400 });
+            let token = jwt.sign({ id: _details._id, details : _details }, config.SECRET_KEY, { expiresIn: '3600s' });
 
            
             return token;

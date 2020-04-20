@@ -1,10 +1,8 @@
 import React,{ useState,useContext } from "react";
-import { useInput } from './../../hooks/UseInput';
 import './Modal.css';
 import { Button, Popup, Modal, Icon, Form, Message, Segment,Label } from 'semantic-ui-react'
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import qs from 'qs';
 import { Redirect } from 'react-router-dom'
 import {GenericContext} from '../../context/GenericContext'
 
@@ -46,24 +44,33 @@ function ModalLogin(props){
         //setToDashboard(true)
          
         //props.history.push("/home");
+
+        
+        const userObject = {
+            user_name: data.user_name,
+            password: data.password
+        };
+
         axios({
             method: 'POST',
             url: 'http://localhost:5000/api/users/login',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
               },
-            data: qs.stringify(data)
+            data: userObject
             })
             .then(function (response) {
                 //handle success
                 
                 if(response.status == '201'){
                     if(response.data.code == '00'){
-                        localStorage.setItem('jwtTokenKey',  response.data.data.token)
-                        genContext.dispatchName({type: 'LOGIN_SUCCESS', payload: response.data.data.token})
+                        localStorage.setItem('jwtTokenKey',  'Bearer ' + response.data.data.token)
+                        localStorage.setItem('login',  true)
+                        genContext.dispatchName({type: 'LOGIN_SUCCESS', payload: response.data.data.token, login : true})
                         setToDashboard(true)
                     }
                 }else{
+                    genContext.dispatchName({type: 'LOGIN_FAILED', payload: '', login : false})
                     setToDashboard(false)
                     setErrorMessage(response.data.data.message)
                     console.log(response);
@@ -72,9 +79,11 @@ function ModalLogin(props){
             })
             .catch(function (error) {
                 //handle error
+                genContext.dispatchName({type: 'LOGIN_FAILED', payload: '', login : false})
                 setToDashboard(false)
-                setErrorMessage( Object.assign({}, error).response.data.message)
-                console.log('error', Object.assign({}, error).response.data.message);
+                //setErrorMessage( Object.assign({}, error).response.data.message)
+                //console.log('error', Object.assign({}, error).response.data.message);
+                console.log(Object.assign({}, error).response.data.message[0].msg)
 
             });
     };
@@ -99,7 +108,7 @@ function ModalLogin(props){
 
     if (toDashboard) 
        // props.history.push('/about')
-        return <Redirect to='/dashboard' />
+        return <Redirect to='/dashboard/stocks/inquire' />
     else{
         return (
             <div>

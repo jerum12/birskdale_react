@@ -27,6 +27,7 @@ function Dashboard() {
         genContext.dispatchName({type: 'LOGOUT_SUCCESS', payload: ''})
     }
 
+ 
 
     if (isLoggedOut) 
         // return  <Redirect to="/monitorStocks" />
@@ -59,9 +60,9 @@ function Dashboard() {
                                 >
                                     <SideNav.Toggle className='testStyle2'/>
                                     <SideNav.Nav defaultSelected="dashboard" className='testStyle3'>
-                                        <NavItem eventKey="dashboard/stocks/inquire">
+                                        <NavItem eventKey="dashboard/stocks/inquire" className='testStyle4'>
                                             <NavIcon>
-                                                    <Icon name='chart line' style={{ fontSize: '1.75em' }}/>
+                                                    <Icon name='chart line' className="nav-icon" style={{ fontSize: '1.75em' }}/>
                                                 {/* <i className="chart line" style={{ fontSize: '1.75em' }} /> */}
                                             </NavIcon>
                                             <NavText>
@@ -81,7 +82,7 @@ function Dashboard() {
                                         </NavItem>
                                         <NavItem eventKey="dashboard/contact">
                                             <NavIcon>
-                                            <Icon name='user' style={{ fontSize: '1.75em' }}/>
+                                            <Icon name='user' className="nav-icon" style={{ fontSize: '1.75em',  }}/>
                                             </NavIcon>
                                             <NavText>
                                                 Devices

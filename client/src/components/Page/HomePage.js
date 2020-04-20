@@ -1,12 +1,13 @@
 import React, {Component} from "react";
-import Header from './../Header/Header'
-import FetchData from './../TableResult/FetchData'
+import Header from '../Header/Header'
+import FetchData from '../TableResult/FetchData'
+import './Homepage.css';
 
-class HomePage extends Component {
+class Homepage extends Component {
 
   render() {
     return (
-        <div>
+        <div className="app-body">
           <Header about={this.props.about}/>
           <FetchData/>
 
@@ -14,4 +15,4 @@ class HomePage extends Component {
     )
   }
 }
-export default HomePage;
+export default Homepage;
