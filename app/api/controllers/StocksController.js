@@ -21,12 +21,16 @@ module.exports = {
         try {
             var Stocks = await StocksService.getStocks({}, page, parseInt(limit), sort)
             // Return the Users list with the appropriate HTTP password Code and Message.
-            return res.status(200).json({status: 200, data: Stocks, message: "Succesfully Stocks Recieved"});
+            return res.status(200).json({code: "00", status: "success", data: Stocks, message: "Stocks successfully recieved!"});
         } catch (e) {
             //Return an Error Response Message with Code and the Error Message.
-            return res.status(400).json({
-                    status: "failed", code: "99", message: e.message , data: null
-                });
+            // return res.status(400).json({
+            //         status: "failed", code: "99", message: e.message , data: null
+            //     });
+            return res.json({
+                status: "failed", code: "99", message: e.message , data: null
+                }
+            )
             
         }
     },
@@ -38,11 +42,11 @@ module.exports = {
         try {
             var Stocks = await StocksService.getStocksById(id)
             // Return the Users list with the appropriate HTTP password Code and Message.
-            return res.status(200).json({status: 200, data: Stocks, message: "Stocks successfully retrieved"});
+            return res.status(200).json({status: "success", code : "00", data: Stocks, message: "Stocks successfully retrieved"});
         } catch (e) {
             console.log(e)
             //Return an Error Response Message with Code and the Error Message.
-            return res.status(400).json({
+            return res.json({
                     status: "failed", code: "99", message: e.message , data: null
                 });
             
@@ -81,24 +85,48 @@ module.exports = {
     //             size_run_14 : req.body.size_run_14,
     //             total_size_run : req.body.total_size_run
     //          }
-        
+            console.log(req.body)
             var result = await StocksService.saveStocks(req.body)
-
-
-            console.log(result + '-ressssssssssss')
-             return res.status(200).json({status: 200 , message: "Stocks successfully saved"});
+             return res.status(200).json({code: "00" , message: "Stocks successfully saved"});
           
 
         } catch (e) {
             console.log(e)
             //Return an Error Response Message with Code and the Error Message.
-            return res.status(400).json({
-                    status: "failed", code: "99", message: e.message , data: null
-                });
+            // return res.status(400).json({
+            //         status: "failed", code: "99", message: e.message , data: null
+            //     });
+            return res.json({
+                status: "failed", code: "99", message: e.message , data: null
+                }
+            )
             
         }
         
-    }
+    },
+
+    updateById: async function(req, res, next) {
+
+		//movieModel.findByIdAndUpdate(req.params.movieId,{name:req.body.name}, function(err, movieInfo){
+
+        try {
+            var result = await StocksService.updateStocks(req.params,req.body)
+            return res.status(200).json({code: "00" , message: "Stocks successfully updated"});
+        } catch (e) {
+
+            return res.json({
+                status: "failed", code: "99", message: e.message , data: null
+                }
+            )
+        }
+       
+			// if(err)
+			// 	next(err);
+			// else {
+			// 	res.json({status:"success", message: "Movie updated successfully!!!", data:null});
+			// }
+	
+	},
 
 
 

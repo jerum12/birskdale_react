@@ -24,7 +24,7 @@ class TableCell extends Component {
             url: `http://localhost:5000/api/stocks/data/${idClick}`,
             headers: {
                 'Content-Type': 'application/json',
-                'authorization' : localStorage.getItem('jwtTokenKey')
+                'authorization' : sessionStorage.getItem('jwtTokenKey')
               }
             })
             .then(res => {
@@ -54,7 +54,7 @@ class TableCell extends Component {
         return (
                 <Fragment>
                     <Table.Row>
-                    <Table.Cell>{stock_no}</Table.Cell>
+                    <Table.Cell>{stock_no.description}</Table.Cell>
                     <Table.Cell>{Moment(transaction_date).format('MM-DD-YYYY')}</Table.Cell>
                     <Popup
                         trigger={<Table.Cell className='td-details'>

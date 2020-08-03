@@ -13,10 +13,10 @@ module.exports = {
     StockDetails: require("./StockDetails"),
     StocksModel: require("./StocksModel"),
     SubLogoModel: require("./SubLogoModel"),
-
+    StocksHistoryModel: require('./StocksHistoryModel'),
 
 
     Movies: require("./Movies"),
-    Users: require('./Users')
+    UsersModel: require('./UsersModel')
 
   };

@@ -2,16 +2,16 @@ import jwt from 'jsonwebtoken'
 import moment from 'moment'
 
 export const login = (token) => {
-    localStorage.setItem("", token);
+    sessionStorage.setItem("", token);
 }
 
 export const logout = () => {
-    localStorage.removeItem("");
+    sessionStorage.removeItem("");
 }
 
 export const checkLogIn = () => {
     var isExpired = false;
-    let token = localStorage.getItem('jwtTokenKey');
+    let token = sessionStorage.getItem('jwtTokenKey');
     token = token.replace('Bearer ', '');
     var decodedToken = jwt.decode(token);
 

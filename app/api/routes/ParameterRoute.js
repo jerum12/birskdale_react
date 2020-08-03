@@ -9,6 +9,9 @@ var auth = require('../authorization/Authorization');
 
 
 router.get('/data',  auth.authClientToken, parameterController.getAllParameter);
+router.get('/data2',  auth.authClientToken, parameterController.getAllParameter2);
+router.post('/data',  auth.authClientToken, parameterController.saveParameter);
+router.put('/data/:id',  auth.authClientToken, parameterController.updateParameter);
 
 
 module.exports = router;

@@ -38,7 +38,7 @@ class FetchData extends Component {
      getStocks = () => {
         axios({
               method: 'GET',
-              url: 'http://localhost:5000/api/stocks/data',
+              url: 'http://192.168.0.15:5000/api/stocks/dataall',
               headers: {
                   'Content-Type': 'application/json'
                 }
@@ -124,26 +124,39 @@ class FetchData extends Component {
 
     // FOR SEARCH
     const lowercasedFilter = filter.toLowerCase();
-    sliceStocks = sliceStocks.filter(item => {
-    let forId = ['_id']
-      if(dataFilter.length > 0){
-          return Object.keys(dataFilter).some(i =>
-              Object.keys(item).some(key =>
-              item[dataFilter[i]].toString().toLowerCase().includes(lowercasedFilter)
-            )
-        );
-      }else{
-          
-          return Object.keys(dataFilterOrig).some(i =>
-              Object.keys(item).some(key =>
-              item[dataFilterOrig[i]].toString().toLowerCase().includes(lowercasedFilter)
-            )
-        );
-      }
 
-    });
-
-
+   // if(lowercasedFilter.length > 0){
+      sliceStocks = sliceStocks.filter(item => {
+        if(dataFilter.length > 0){
+            return Object.keys(dataFilter).some(i =>
+                Object.keys(item).some(key =>
+                item[dataFilter[i]].toString().toLowerCase().includes(lowercasedFilter)
+              )
+          );
+        }else{
+        
+            return Object.keys(dataFilterOrig).some(i =>
+                Object.keys(item).some(key => {
+                  
+                  if(item[dataFilterOrig[i]].description != undefined){
+                    return item[dataFilterOrig[i]].description.toString().toLowerCase().includes(lowercasedFilter)
+                  }
+                  else{
+                    return item[dataFilterOrig[i]].toString().toLowerCase().includes(lowercasedFilter)
+                  }
+                }
+                //item[dataFilterOrig[i].description].toString().toLowerCase().includes(lowercasedFilter
+              
+                //console.log(item)
+              )
+          );
+        }
+  
+      });
+  
+    //}
+   
+    console.log(sliceStocks)
 
       if (loading) {
           return (

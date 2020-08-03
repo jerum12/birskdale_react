@@ -33,11 +33,6 @@ function ModalLogin(props){
     const onSubmit = data => {
 
         //validateField('user_name',data.user_name)
-
-        var bodyFormData = new FormData();
-        bodyFormData.set('user_name', data.user_name)
-        bodyFormData.set('password', data.password)
-
         //console.log(data)
 
         //genContext.dispatchName({type: 'LOGIN_SUCCESS', payload: 'token here 123'})
@@ -45,7 +40,7 @@ function ModalLogin(props){
          
         //props.history.push("/home");
 
-        
+        console.log(data.password)
         const userObject = {
             user_name: data.user_name,
             password: data.password
@@ -53,7 +48,7 @@ function ModalLogin(props){
 
         axios({
             method: 'POST',
-            url: 'http://localhost:5000/api/users/login',
+            url: 'http://192.168.0.15:5000/api/users/login',
             headers: {
                 'Content-Type': 'application/json'
               },
@@ -64,16 +59,15 @@ function ModalLogin(props){
                 
                 if(response.status == '201'){
                     if(response.data.code == '00'){
-                        localStorage.setItem('jwtTokenKey',  'Bearer ' + response.data.data.token)
-                        localStorage.setItem('login',  true)
+                        sessionStorage.setItem('jwtTokenKey',  'Bearer ' + response.data.data.token)
+                        sessionStorage.setItem('login',  true)
                         genContext.dispatchName({type: 'LOGIN_SUCCESS', payload: response.data.data.token, login : true})
                         setToDashboard(true)
                     }
                 }else{
                     genContext.dispatchName({type: 'LOGIN_FAILED', payload: '', login : false})
                     setToDashboard(false)
-                    setErrorMessage(response.data.data.message)
-                    console.log(response);
+                    setErrorMessage(response.data.message)
                 }
                 
             })
@@ -81,9 +75,8 @@ function ModalLogin(props){
                 //handle error
                 genContext.dispatchName({type: 'LOGIN_FAILED', payload: '', login : false})
                 setToDashboard(false)
-                //setErrorMessage( Object.assign({}, error).response.data.message)
+                setErrorMessage( Object.assign({}, error).response.data.message)
                 //console.log('error', Object.assign({}, error).response.data.message);
-                console.log(Object.assign({}, error).response.data.message[0].msg)
 
             });
     };

@@ -9,14 +9,14 @@ import util from '../util/Utils'
 
 const ProtectedRoute = ({component:Component, ...rest}) => {
     return <Route {...rest} render={(props)=>{
-        return localStorage.getItem('jwtTokenKey') ? 
+        return sessionStorage.getItem('jwtTokenKey') ? 
         <Component {...props} /> : <Redirect to="/monitorStocks" />
     }} />
 }
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) => (
-        localStorage.getItem('jwtTokenKey')
+        sessionStorage.getItem('jwtTokenKey')
         ? <Component {...props} />
         : <Redirect to='/monitorStocks' />
     )} />

@@ -31,7 +31,6 @@
 //  },}
 
 
-const User = require('../models/Users');
 const bcrypt = require('bcrypt');	
 const jwt = require('jsonwebtoken');			
 var UserService = require('../services/UsersService');	
@@ -39,6 +38,38 @@ const config = require('../../config/Config')
 const { validationResult } = require('express-validator');
 
 module.exports = {
+
+   getAll:  async function(req, res, next) {
+
+      // Check the existence of the query parameters, If doesn't exists assign a default value
+      let sort_by = req.query.sort_by
+      let sort_type = req.query.sort_type
+      
+      console.log("get All Users ------------")
+      let sortOptions = {
+          [sort_by] : sort_type
+      }
+
+      var page = req.query.page ? req.query.page : 1
+      var limit = req.query.limit ? req.query.limit : 10;
+      var sort = sortOptions
+
+      try {
+          var Users = await UserService.getUsers({}, page, parseInt(limit), sort)
+          // Return the Users list with the appropriate HTTP password Code and Message.
+          return res.status(200).json({code: "00", status: "success", data: Users, message: "User successfully retrieved!"});
+      } catch (e) {
+          //Return an Error Response Message with Code and the Error Message.
+          // return res.status(400).json({
+          //         status: "failed", code: "99", message: e.message , data: null
+          //     });
+          return res.json({
+              status: "failed", code: "99", message: e.message , data: null
+              }
+          )
+          
+      }
+  },
 	create: function(req, res, next) {
 		
 		User.create({ name: req.body.name, email: req.body.email, password: req.body.password }, function (err, result) {
@@ -53,20 +84,9 @@ module.exports = {
    createUser : async function (req, res, next){
 
       const errors = validationResult(req);
-
-
+      
          if(!errors.isEmpty()){
             return res.status(422).json({ errors: errors.array() });
-         }
-
-         let { user_name } = req.body;
-
-         let isUserNameExists = await User.findOne({"user_name" : user_name});
-
-         if(isUserNameExists){
-            return res.status(409).json({
-               status: "failed", code: "99", message: "Username already exist" , data: null
-            })
          }
 
          try{
@@ -81,13 +101,13 @@ module.exports = {
             // Calling the Service function with the new object from the Request Body
              var createdUser = await UserService.createUser(user);
 
-             return res.status(201).json({
-                status: "success", code: "00", message: "User added successfully!!!",  message: "Succesfully Created User", data: null 
+             return res.status(200).json({
+                status: "success", code: "00", message: "User added successfully!!!", data: null 
                })
             
         }catch(error){
             console.log(error);
-            return res.status(500).json(
+            return res.json(
                 { 
                   status: "failed", code: "99", message: "There was a problem registering user", data: null
                 }
@@ -120,7 +140,7 @@ module.exports = {
    
         if(!errors.isEmpty()){
             console.log(errors.array())
-            return res.status(422).json(
+            return res.json(
                { 
                   status: "failed", code: "99", message: errors.array() , data: null
                }
@@ -131,8 +151,10 @@ module.exports = {
 
          try {
 
+            
 
             let User = {
+               full_name : req.body.full_name,
                user_name: req.body.user_name,
                password: req.body.password
             }
@@ -140,7 +162,7 @@ module.exports = {
             // Calling the Service function with the new object from the Request Body
             var token = await UserService.loginUser(User);
 
-            return res.status(201).json(
+            return res.status(200).json(
                  {
                   status: "success", code: "00", message: "Succesfully login", data: {
                      user_name : req.body.user_name,
@@ -150,8 +172,7 @@ module.exports = {
             )
 
          } catch (e) {
-               //console.log(e)
-               return res.status(400).json({
+               return res.json({
                   status: "failed", code: "99", message: "Invalid username or password" , data: null
                   }
                )
@@ -164,7 +185,7 @@ module.exports = {
 						next(err);
 					} else {
 
-						if(userInfo != null && bcrypt.compareSync(req.body.password, userInfo.password)) {
+						if(userInfo !== null && bcrypt.compareSync(req.body.password, userInfo.password)) {
 
 						 const token = jwt.sign({id: userInfo._id}, config.SECRET_KEY, { expiresIn: '1h' }); 
 
@@ -172,11 +193,32 @@ module.exports = {
 
 						}else{
 
-							res.json({status:"error", message: "Invalid email/password!!!", data:null});
+							res.json({status:"error", code: "99", message: "Invalid email/password!!!", data:null});
 
 						}
 					}
 				});
+   },
+   
+   updateUser: async function(req, res, next) {
+
+        try {
+            var result = await UserService.updateUser(req.params,req.body)
+            return res.status(200).json({code: "00" , message: "User successfully updated"});
+        } catch (e) {
+
+            return res.json({
+                status: "failed", code: "99", message: e.message , data: null
+                }
+            )
+        }
+       
+			// if(err)
+			// 	next(err);
+			// else {
+			// 	res.json({status:"success", message: "Movie updated successfully!!!", data:null});
+			// }
+	
 	},
 
 }					

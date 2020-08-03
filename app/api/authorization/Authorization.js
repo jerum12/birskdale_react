@@ -6,9 +6,9 @@ var config = require('../../config/Config');
 const authClientToken = async (req,res,next) => {
 
     let token = req.headers['authorization'];
-    let msg = {auth: false, message: 'No token provided.'};
+    let msg = {code: '99', auth: false, message: 'No token provided.'};
 
-   
+   //console.log(token + 'here')
     if (!token){
         return  res.send(msg);
     } 
@@ -18,18 +18,25 @@ const authClientToken = async (req,res,next) => {
     
     jwt.verify(token, config.SECRET_KEY , (err,decoded) => {
 
-        var msg = {code: "99", auth: false, message: 'Failed to authenticate token.'};
-        var msg = {code: "99", auth: false, message: 'Token is already expired.'};
+        // var msg = {code: "99", auth: false, message: 'Failed to authenticate token.'};
+        // var msg = {code: "99", auth: false, message: 'Token is already expired.'};
       
         if(err){
             console.log(err)
+            return res.json({
+                status: "failed", code: "99", message: err.message
+            });
 
-            if(err.message === 'jwt expired'){
-                return res.send(msg);
-            }else
-                return res.send(err.message);
+            // if(err.message === 'jwt expired'){
+            //     return res.send(msg);
+            // }else{
+            //     return res.status(400).json({
+            //         status: "failed", code: "99", message: err.message
+            //     });
+            // }
+                //return res.send(err.message);
         }
-        req.body.userId = decoded.id;
+        //req.body.user_name = decoded.id;
         return next();
     });
 }

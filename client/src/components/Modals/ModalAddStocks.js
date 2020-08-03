@@ -42,7 +42,7 @@ function ModalAddStocks(props){
             url: 'http://localhost:5000/api/parameter/data',
             headers: {
                 'Content-Type': 'application/json',
-                'authorization' : localStorage.getItem('jwtTokenKey')
+                'authorization' : sessionStorage.getItem('jwtTokenKey')
               }
             })
             .then(response => {
@@ -166,10 +166,19 @@ function ModalAddStocks(props){
                                                 <Grid.Column>
                                                     <label>Stock Number</label>
                                                     <Controller
-                                                    as={<ReactSelect/>}
+                                                    as={<ReactSelect isClearable/>}
+                                                    placeholder='Select Stock'
+                                                    theme={theme => ({
+                                                        ...theme,
+                                                        borderRadius: 0,
+                                                        colors: {
+                                                          ...theme.colors,
+                                                          primary25: 'gray',
+                                                          primary: 'black',
+                                                        },
+                                                      })}
                                                     options={stockArray}
                                                     name="stock_no"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
                                                     />
@@ -178,10 +187,19 @@ function ModalAddStocks(props){
                                                 <Grid.Column>
                                                     <label>Gender</label>
                                                     <Controller
-                                                    as={<ReactSelect/>}
+                                                     as={<ReactSelect isClearable/>}
+                                                     placeholder='Select Gender'
+                                                     theme={theme => ({
+                                                         ...theme,
+                                                         borderRadius: 0,
+                                                         colors: {
+                                                           ...theme.colors,
+                                                           primary25: 'gray',
+                                                           primary: 'black',
+                                                         },
+                                                       })}
                                                     options={genderArray}
                                                     name="gender"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
                                                     />
@@ -191,10 +209,19 @@ function ModalAddStocks(props){
                                                 <Grid.Column>
                                                     <label>Color</label>
                                                     <Controller
-                                                    as={<ReactSelect/>}
+                                                     as={<ReactSelect isClearable/>}
+                                                     placeholder='Select Color'
+                                                     theme={theme => ({
+                                                         ...theme,
+                                                         borderRadius: 0,
+                                                         colors: {
+                                                           ...theme.colors,
+                                                           primary25: 'gray',
+                                                           primary: 'black',
+                                                         },
+                                                       })}
                                                     options={colorArray}
                                                     name="color"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
                                                     />
@@ -204,10 +231,19 @@ function ModalAddStocks(props){
                                                 <Grid.Column>
                                                     <label>Leather Type</label>
                                                     <Controller
-                                                    as={<ReactSelect/>}
+                                                     as={<ReactSelect isClearable/>}
+                                                     placeholder='Select Leather Type'
+                                                     theme={theme => ({
+                                                         ...theme,
+                                                         borderRadius: 0,
+                                                         colors: {
+                                                           ...theme.colors,
+                                                           primary25: 'gray',
+                                                           primary: 'black',
+                                                         },
+                                                       })}
                                                     options={leatherArray}
                                                     name="leather_type"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
                                                     />
@@ -219,10 +255,19 @@ function ModalAddStocks(props){
                                                 <Grid.Column>
                                                     <label>Classification 1</label>
                                                     <Controller
-                                                    as={<ReactSelect/>}
+                                                     as={<ReactSelect isClearable/>}
+                                                     placeholder='Select Classification 1'
+                                                     theme={theme => ({
+                                                         ...theme,
+                                                         borderRadius: 0,
+                                                         colors: {
+                                                           ...theme.colors,
+                                                           primary25: 'gray',
+                                                           primary: 'black',
+                                                         },
+                                                       })}
                                                     options={class1Array}
                                                     name="classficcation_1"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
                                                     />
@@ -231,10 +276,19 @@ function ModalAddStocks(props){
                                                 <Grid.Column>
                                                     <label>Classification 2</label>
                                                     <Controller
-                                                    as={<ReactSelect/>}
+                                                     as={<ReactSelect isClearable/>}
+                                                     placeholder='Select Classification 2'
+                                                     theme={theme => ({
+                                                         ...theme,
+                                                         borderRadius: 0,
+                                                         colors: {
+                                                           ...theme.colors,
+                                                           primary25: 'gray',
+                                                           primary: 'black',
+                                                         },
+                                                       })}
                                                     options={class2Array}
                                                     name="classficcation_2"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
                                                     />
@@ -244,10 +298,19 @@ function ModalAddStocks(props){
                                                 <Grid.Column>
                                                     <label>Lining</label>
                                                     <Controller
-                                                    as={<ReactSelect/>}
+                                                     as={<ReactSelect isClearable/>}
+                                                     placeholder='Select Lining'
+                                                     theme={theme => ({
+                                                         ...theme,
+                                                         borderRadius: 0,
+                                                         colors: {
+                                                           ...theme.colors,
+                                                           primary25: 'gray',
+                                                           primary: 'black',
+                                                         },
+                                                       })}
                                                     options={liningArray}
                                                     name="lining"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
                                                     />
@@ -260,10 +323,19 @@ function ModalAddStocks(props){
                                                 <Grid.Column>
                                                     <label>Stitch</label>
                                                     <Controller
-                                                    as={<ReactSelect/>}
+                                                     as={<ReactSelect isClearable/>}
+                                                     placeholder='Select Stitch'
+                                                     theme={theme => ({
+                                                         ...theme,
+                                                         borderRadius: 0,
+                                                         colors: {
+                                                           ...theme.colors,
+                                                           primary25: 'gray',
+                                                           primary: 'black',
+                                                         },
+                                                       })}
                                                     options={stitchArray}
                                                     name="stitch"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
                                                     />
@@ -272,10 +344,19 @@ function ModalAddStocks(props){
                                                 <Grid.Column>
                                                     <label>Logo</label>
                                                     <Controller
-                                                    as={<ReactSelect/>}
+                                                     as={<ReactSelect isClearable/>}
+                                                     placeholder='Select Logo'
+                                                     theme={theme => ({
+                                                         ...theme,
+                                                         borderRadius: 0,
+                                                         colors: {
+                                                           ...theme.colors,
+                                                           primary25: 'gray',
+                                                           primary: 'black',
+                                                         },
+                                                       })}
                                                     options={logoArray}
                                                     name="logo"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
                                                     />
@@ -285,12 +366,22 @@ function ModalAddStocks(props){
                                                 <Grid.Column>
                                                     <label>Sub Logo</label>
                                                     <Controller
-                                                    as={<ReactSelect/>}
+                                                     as={<ReactSelect isClearable/>}
+                                                     placeholder='Select Sub Logo'
+                                                     theme={theme => ({
+                                                         ...theme,
+                                                         borderRadius: 0,
+                                                         colors: {
+                                                           ...theme.colors,
+                                                           primary25: 'gray',
+                                                           primary: 'black',
+                                                         },
+                                                       })}
                                                     options={subLogoArray}
                                                     name="sub_logo"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
+                                                    className={`${errors.sub_logo  && errorClass('hasError')}`}
                                                     />
                                                     {errors.sub_logo && <div className="ui red pointing basic label">{errors.sub_logo.message}</div>}
                                                 </Grid.Column>
@@ -303,9 +394,9 @@ function ModalAddStocks(props){
                                                     <Controller
                                                     as={ <TextArea placeholder='Tell us more' style={{ minHeight: 100 }} />}
                                                     name="special_instruction"
-                                                    isClearable
                                                     control={control}
                                                     rules={{ required: "This is required" }}
+                                                    className={`${errors.special_instruction  && errorClass('hasError')}`}
                                                     />
                                                     {errors.special_instruction && <div className="ui red pointing basic label">{errors.special_instruction.message}</div>}
                                                 </Grid.Column>

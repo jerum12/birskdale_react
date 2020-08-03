@@ -13,7 +13,7 @@ import { DatePicker, message } from 'antd';
 
 const initialState = {
     count : 0,
-    login : localStorage.getItem("login")
+    login : sessionStorage.getItem("login")
   }
 
 const  reducer = (state, action) => {

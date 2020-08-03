@@ -17,23 +17,33 @@ module.exports = {
 
             const stocks = await  model.StocksModel
             .find()
+            .sort({transaction_date: -1})
+            .populate(['stock_no'])
             .populate(['leather_type'])
+            .populate(['gender'])
+            .populate(['color'])
+            .populate(['classification_1'])
+            .populate(['classification_2'])
+            .populate(['logo'])
+            .populate(['sub_logo'])
+            .populate(['lining'])
+            .populate(['stitch'])
             .exec()
 
           
 
             //var stocks = await db.StocksModel.paginate(query, options).populate(['_creator'])
             stocks.forEach(function(stock) {
-                stock.stock_details = 'Leather type: ' + stock.leather_type.description + '; ' +
-                                'Gender: ' + stock.gender + '; ' +
-                                'Color: ' + stock.color + '; ' +
-                                'Classification 1: ' + stock.classification_1 + '; ' +
-                                'Classification 2: ' + stock.classification_2 + '; ' +
-                                'Logo: ' + stock.logo + '; ' +
-                                'Sub Logo: ' + stock.sub_logo + '; ' +
-                                'Stitch: ' + stock.stitch + '; ' +
-                                'Lining: ' + stock.lining + '; ' +
-                                'Special Instruction: ' + stock.spercial_instruction;
+                stock.stock_details = 'LT: ' + stock.leather_type.description + '; ' +
+                                'G: ' + stock.gender.description + '; ' +
+                                'C: ' + stock.color.description + '; ' +
+                                'C1: ' + stock.classification_1.description + '; ' +
+                                'C2: ' + stock.classification_2.description + '; ' +
+                                'Lo: ' + stock.logo.description + '; ' +
+                                'SLo: ' + stock.sub_logo.description + '; ' +
+                                'S: ' + stock.stitch.description + '; ' +
+                                'Li: ' + stock.lining.description + '; ' +
+                                'SI: ' + stock.special_instruction;
               });
 
               //console.log(stocks)
@@ -72,20 +82,38 @@ module.exports = {
     saveStocks : async function (paramBody){
         try {
 
-            var leather_details = await model.LeatherTypeModel.findOne({code: paramBody.leather_type})
-                                    .then(function(details){
-                                    return details
-                                    }).catch(function(error){
-                                        throw Error(`No Leather Type for ${paramBody.leather_type}`)
-                                    })
+            const doesStocksExist = await model.StocksModel.exists({ 
+                stock_no: paramBody.stock_no,
+                color: paramBody.color,
+                gender: paramBody.gender,
+                leather_type: paramBody.leather_type,
+                classification_1: paramBody.classification_1,
+                classification_2: paramBody.classification_2,
+                logo: paramBody.logo,
+                sub_logo: paramBody.sub_logo,
+                lining: paramBody.lining,
+                stitch: paramBody.stitch,
+                special_instruction: paramBody.special_instruction,
+            });
 
-            if(!leather_details)
-                throw new Error(`Stocks not save`);
+            console.log(doesStocksExist)
 
+            if(doesStocksExist){
+                console.log('existing----------------')
+                throw Error("Stocks already existing.")
+            }
+            let total_size_run = 
+            paramBody.size_run_3 + paramBody.size_run_4 + 
+            paramBody.size_run_5 + paramBody.size_run_6 + 
+            paramBody.size_run_7 + paramBody.size_run_8 +
+            paramBody.size_run_9 + paramBody.size_run_10 +
+            paramBody.size_run_11 + paramBody.size_run_12 +
+            paramBody.size_run_13 + paramBody.size_run_14;
 
+            
             let newStocks =  new model.StocksModel({
                 stock_no: paramBody.stock_no,
-                leather_type: leather_details._id,
+                leather_type: paramBody.leather_type,
                 gender : paramBody.gender,
                 color : paramBody.color,
                 classification_1 : paramBody.classification_1,
@@ -107,20 +135,61 @@ module.exports = {
                 size_run_12 : paramBody.size_run_12,
                 size_run_13 : paramBody.size_run_13,
                 size_run_14 : paramBody.size_run_14,
-                total_size_run : paramBody.total_size_run
-             })
+                total_size_run : total_size_run
+            })
 
 
             // Saving the User 
             var savedStocks = await newStocks.save();
            
             if(!savedStocks){
-                throw new error("Error while saving stocks")
+                throw Error("Failed to save stocks!")
             }
 
         } catch (e) {
             console.log(e)
-             throw new Error(`Stocks not save`);
+            throw Error(e);
+        }
+    },
+
+    updateStocks : async function (paramID,paramBody){
+        try {
+            // console.log(paramID);
+            // console.log(paramBody);
+
+            const doesStocksExist = await model.StocksModel.exists({ 
+                stock_no: paramBody.stock_no,
+                color: paramBody.color,
+                gender: paramBody.gender,
+                leather_type: paramBody.leather_type,
+                classification_1: paramBody.classification_1,
+                classification_2: paramBody.classification_2,
+                logo: paramBody.logo,
+                sub_logo: paramBody.sub_logo,
+                lining: paramBody.lining,
+                stitch: paramBody.stitch,
+                special_instruction: paramBody.special_instruction,
+            });
+
+            console.log(doesStocksExist)
+
+            if(doesStocksExist){
+                console.log('existing----------------')
+                throw Error("Stocks already existing.")
+            }
+
+             await model.StocksModel.findByIdAndUpdate(paramID.id,paramBody)
+                                    .then(function(details){
+                                            return details
+                                    }).catch(function(error){
+                                        console.log(error)
+                                        throw Error(`No Stock Number for ${paramID.id}`)
+                                    })
+            
+
+        } catch (e) {
+            console.log(e)
+             throw Error(e);
         }
     }
     

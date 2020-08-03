@@ -1,4 +1,4 @@
-var User = require('../models/Users');
+var model = require("../models/ExportsModel");
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const config = require('../../config/Config')
@@ -9,13 +9,32 @@ module.exports = {
     createUser : async function (user) {
         // Creating a new Mongoose Object by using the new keyword
         //var hashedPassword = bcrypt.hashSync(user.password, 8);
+        // let { user_name } = req.body;
 
-        var newUser = new User({
+        // let isUserNameExists = await User.findOne({"user_name" : user_name});
+
+        // if(isUserNameExists){
+        //    return res.json({
+        //       status: "failed", code: "99", message: "Username already exist" , data: null
+        //    })
+        // } 
+        const doesUserExist = await model.UsersModel.exists({ 
+           user_name: user.user_name
+        });
+
+       console.log(doesUserExist)
+
+       if(doesUserExist){
+           console.log('existing----------------')
+           throw Error(`Username ${paramBody.user_name} is already used.`)
+       }
+
+        var newUser = new model.UsersModel({
             full_name: user.full_name,
             user_name: user.user_name,
             date: new Date(),
             password: user.password,
-            isAdmin : user.isAdmin
+            isAdmin : true
         })
 
         try {
@@ -45,17 +64,21 @@ module.exports = {
             // let _details = await User.findOne({"email" : user.email});
 
 
-            var _details = await User.findOne({user_name: user.user_name})
+            var _details = await model.UsersModel.findOne({user_name: user.user_name})
                             .then(function(user){
                                 return user
                             }).catch(function(error){
                                 throw Error("Invalid username or password")
                             })
 
+            if(!_details){
+                throw Error("Invalid username or password")
+            }
+
             let isPasswordValid = await bcrypt.compare(user.password, _details.password);
            
 
-            if(!_details || !isPasswordValid){
+            if(!isPasswordValid){
                 throw Error("Invalid username or password")
             }
        
@@ -78,7 +101,7 @@ module.exports = {
     deleteUser : async function (id) {
         // Delete the User
         try {
-            var deleted = await User.remove({_id: id})
+            var deleted = await model.UsersModel.remove({_id: id})
             if (deleted.n === 0 && deleted.ok === 1) {
                 throw Error("User Could not be deleted")
             }
@@ -97,12 +120,46 @@ module.exports = {
         }
         // Try Catch the awaited promise to handle the error 
         try {
-            var Users = await User.paginate(query, options)
+            //var Users = await User.paginate(query, options)
+            const Users = await  model.UsersModel
+            .find()
+            .exec()
+            
             // Return the Userd list that was retured by the mongoose promise
             return Users;
         } catch (e) {
             // return a Error message describing the reason 
             throw Error('Error while Paginating Users');
+        }
+    },
+
+    updateUser : async function (paramID,paramBody){
+        try {
+            console.log(paramBody)
+            if(paramBody.hasChanges){
+                const doesUserExist = await model.UsersModel.exists({ 
+                    user_name: paramBody.user_name
+                });
+    
+                console.log(doesUserExist)
+    
+                if(doesUserExist){
+                    console.log('existing----------------')
+                    throw Error(`Username ${paramBody.user_name} is already used.`)
+                }
+            }
+
+             await model.UsersModel.findByIdAndUpdate(paramID.id,paramBody)
+                                    .then(function(details){
+                                            return details
+                                    }).catch(function(error){
+                                        console.log(error)
+                                        throw Error(`No User for ${paramID.id}`)
+                                    })
+
+        } catch (e) {
+            console.log(e)
+             throw Error(e);
         }
     }
 }

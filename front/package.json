@@ -1,0 +1,62 @@
+{
+  "name": "birksdale",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "http://lite.codedthemes.com/datta-able/react/default/",
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.56",
+    "@progress/kendo-data-query": "^1.5.4",
+    "@progress/kendo-react-excel-export": "^3.15.0",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.3.1",
+    "disable-browser-back-navigation": "^0.1.0",
+    "font-awesome": "^4.7.0",
+    "google-maps-react": "^2.0.2",
+    "jquery": "^3.4.0",
+    "material-table": "^1.65.0",
+    "mui-datatables": "^3.1.5",
+    "node-sass": "^4.12.0",
+    "prop-types": "^15.7.2",
+    "rc-input-number": "^5.1.1",
+    "react": "^16.8.4",
+    "react-bootstrap": "^1.0.0-beta.5",
+    "react-bootstrap-sweetalert": "^5.1.15",
+    "react-dom": "^16.8.4",
+    "react-full-screen": "^0.2.4",
+    "react-hook-form": "^6.0.6",
+    "react-html-table-to-excel": "^2.0.0",
+    "react-idle-timer": "^4.2.12",
+    "react-loadable": "^5.5.0",
+    "react-nvd3": "^0.5.7",
+    "react-perfect-scrollbar": "^1.4.4",
+    "react-redux": "^6.0.1",
+    "react-reveal": "^1.2.2",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^3.0.0",
+    "react-select": "^3.1.0",
+    "react-window-size": "^1.2.2",
+    "redux": "^4.0.1",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "react-to-print": "^2.9.0"
+  }
+}

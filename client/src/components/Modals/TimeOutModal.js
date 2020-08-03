@@ -10,7 +10,7 @@ import { history } from '../../util/History';
     const [redirect, setredirect] = useState(false)
 
     const ok = () => {
-        localStorage.removeItem('jwtTokenKey');
+        sessionStorage.removeItem('jwtTokenKey');
         setredirect(true)
         genContext.dispatchName({type: 'LOGOUT_SUCCESS', payload: '' , login : false})
     }

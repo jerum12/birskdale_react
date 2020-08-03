@@ -16,13 +16,13 @@ function Dashboard() {
     const genContext = useContext(GenericContext)
 
     const [isLoggedOut,setIsLoggedOut] = useState(false)
-    const token = localStorage.getItem("jwtTokenKey")
+    const token = sessionStorage.getItem("jwtTokenKey")
     const decoded = jwt_decode(token)
     const [expanded, setexpanded] = useState(false)
 
 
     const logOut = () => {
-        localStorage.removeItem('jwtTokenKey');
+        sessionStorage.removeItem('jwtTokenKey');
         setIsLoggedOut(true)
         genContext.dispatchName({type: 'LOGOUT_SUCCESS', payload: ''})
     }

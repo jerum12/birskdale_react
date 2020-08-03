@@ -8,7 +8,9 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "front": "npm start --prefix front",
+    "dev": "concurrently -n 'server,client' -c 'red,green' \"npm run server\" \"npm run client\"",
+    "dev2": "concurrently -n 'server,front' -c 'red,green' \"npm run server\" \"npm run front\""
   },
   "author": "Jerum Galang",
   "license": "MIT",
