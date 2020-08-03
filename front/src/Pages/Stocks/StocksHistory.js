@@ -161,7 +161,7 @@ function StocksHistory(props) {
         }else{
             axios({
                 method: 'GET',
-                url: 'http://192.168.0.15:5000/api/stocks/history/data/' + det._id,
+                url: 'http://localhost:5000/api/stocks/history/data/' + det._id,
                 headers: {
                     'Content-Type': 'application/json',
                     'authorization' : sessionStorage.getItem('jwtTokenKey')

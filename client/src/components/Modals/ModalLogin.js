@@ -48,7 +48,7 @@ function ModalLogin(props){
 
         axios({
             method: 'POST',
-            url: 'http://192.168.0.15:5000/api/users/login',
+            url: 'http://localhost:5000/api/users/login',
             headers: {
                 'Content-Type': 'application/json'
               },

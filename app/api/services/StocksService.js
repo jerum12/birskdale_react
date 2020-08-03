@@ -191,6 +191,136 @@ module.exports = {
             console.log(e)
              throw Error(e);
         }
+    },
+    // Async function to get the User List
+    getReports : async function (query, page, limit, sort) { 
+        // Options setup for the mongoose paginate
+        var options = {
+            page,
+            limit,
+            sort
+        }
+        // Try Catch the awaited promise to handle the error 
+        try {
+
+            // const stocks = await  model.StocksModel
+            // .find()
+            // .sort({transaction_date: -1})
+            // .populate(['stock_no'])
+            // .populate(['leather_type'])
+            // .populate(['gender'])
+            // .populate(['color'])
+            // .populate(['classification_1'])
+            // .populate(['classification_2'])
+            // .populate(['logo'])
+            // .populate(['sub_logo'])
+            // .populate(['lining'])
+            // .populate(['stitch'])
+            // .exec()
+
+            
+            //   const stocks =  await  model.StocksModel.aggregate([
+            //         {$group: {
+            //                 _id : "$gender",
+            //                 total: {$sum:1},
+            //                 items: {
+            //                     $push: '$$ROOT'
+            //                   },
+            //                 //"$lookup": {from: 'tbl_param_color', localField: '_id', foreignField: '$items.color._id', as: 'd1'} ,
+            //             }
+            //         },
+            //     { "$lookup": {from: 'tbl_param_gender', localField: '_id', foreignField: '_id', as: 'descs'} },
+               
+            // ]).exec();  
+
+            // const stocks = await model.StocksModel.aggregate([
+            //     { 
+            //         "$project" : {
+            //             "items" : "$$ROOT"
+            //         }
+            //     },
+            //     { 
+            //         "$lookup" : {
+            //             "localField" : "items.gender", 
+            //             "from" : "tbl_param_gender", 
+            //             "foreignField" : "_id", 
+            //             "as" : "g"
+            //         }
+            //     }, 
+            //     { 
+            //         "$unwind" : {
+            //             "path" : "$g", 
+            //             "preserveNullAndEmptyArrays" : false
+            //         }
+            //     },
+            //     { 
+            //         "$lookup" : {
+            //             "localField" : "items.color", 
+            //             "from" : "tbl_param_color", 
+            //             "foreignField" : "_id", 
+            //             "as" : "c"
+            //         }
+            //     }, 
+            //     { 
+            //         "$unwind" : {
+            //             "path" : "$c", 
+            //             "preserveNullAndEmptyArrays" : false
+            //         }
+            //     }, 
+            //     { 
+            //         "$group" : {
+            //             "_id" : {
+            //                 "id" : "$g._id",
+            //                 "desc" : "$g.description",
+            //             }, 
+            //             "sums" : {
+            //                 "$sum" : {$sum:1}
+            //             },
+                        
+            //         }
+            //     },{ 
+            //         "$project" : {
+            //             "leather" : "$_id.desc",
+            //             "test" : "$c.description",
+            //             "sum12" : "$sums"
+            //         }
+            //     }
+            //   ]).exec()
+
+            const stocks =  await  model.StocksModel.aggregate([
+                {"$group" : {"_id" : "$gender","data" : "$$ROOT"}},
+                        {"$project" : {
+                            "tags" : "$data",
+                            "name" : "$data.name",
+                            "rating" : "$data.rating",
+                            "_id" : "$data._id"
+                            }
+                        }
+              ])
+                console.log(stocks)
+
+            //var stocks = await db.StocksModel.paginate(query, options).populate(['_creator'])
+            // stocks.forEach(function(stock) {
+            //     stock.stock_details = 'LT: ' + stock.leather_type.description + '; ' +
+            //                     'G: ' + stock.gender.description + '; ' +
+            //                     'C: ' + stock.color.description + '; ' +
+            //                     'C1: ' + stock.classification_1.description + '; ' +
+            //                     'C2: ' + stock.classification_2.description + '; ' +
+            //                     'Lo: ' + stock.logo.description + '; ' +
+            //                     'SLo: ' + stock.sub_logo.description + '; ' +
+            //                     'S: ' + stock.stitch.description + '; ' +
+            //                     'Li: ' + stock.lining.description + '; ' +
+            //                     'SI: ' + stock.special_instruction;
+            //   });
+
+              //console.log(stocks)
+
+             return stocks;
+        } catch (e) {
+            // return a Error message describing the reason 
+            console.log(e)
+            throw Error('Error while Paginating stocks');
+        }
     }
     
 }

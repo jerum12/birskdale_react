@@ -8,6 +8,7 @@ const auth = require('../authorization/Authorization');
 // router.post('/authenticate', validator.validateLoginBody, userController.authenticate);
 
 router.get('/dataall',   stocksController.getAll);
+router.get('/data/report',   stocksController.getAll);
 router.get('/data',  auth.authClientToken, stocksController.getAll);
 router.get('/data/:id', auth.authClientToken, stocksController.getById);
 router.post('/data',   auth.authClientToken, stocksController.save)

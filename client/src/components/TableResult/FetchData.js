@@ -38,7 +38,7 @@ class FetchData extends Component {
      getStocks = () => {
         axios({
               method: 'GET',
-              url: 'http://192.168.0.15:5000/api/stocks/dataall',
+              url: 'http://localhost:5000/api/stocks/dataall',
               headers: {
                   'Content-Type': 'application/json'
                 }

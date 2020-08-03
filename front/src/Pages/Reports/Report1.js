@@ -1,24 +1,21 @@
 
+import React, {Component, Fragment} from 'react';
 
-import React, {Fragment} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
+import axios from 'axios';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 
 const TAX_RATE = 0.07;
 
-const useStyles = makeStyles({
-  table: {
-    minWidth: 700,
-  },
-});
 
 function ccyFormat(num) {
   return `${num.toFixed(2)}`;
@@ -47,96 +44,75 @@ const invoiceSubtotal = subtotal(rows);
 const invoiceTaxes = TAX_RATE * invoiceSubtotal;
 const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
-class Example extends React.Component {
+
+class Example extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data : [],
+      loading : true
+
+    }
+  }
+  
+    //get stocks onload
+   componentDidMount() {
+      this.getData();
+   }
+
+   groupBy = (objectArray, property) => {
+      return objectArray.reduce(function (acc, obj) {
+        var key = obj[property].description;
+        if (!acc[key]) {
+          acc[key] = [];
+        }
+        acc[key].push(obj);
+        return acc;
+      }, {});
+   }
+
+   getData = () => {
+      axios({
+        method: 'GET',
+        url: 'http://localhost:5000/api/stocks/data',
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization' : sessionStorage.getItem('jwtTokenKey')
+        }
+      })
+        .then(response => {
+            console.log(response.data.data)
+            //console.log(this.groupBy(response.data.data, response.data.data.gender))
+            var groupedData = this.groupBy(response.data.data, 'gender');
+            this.setState({ stocks: groupedData, loading : false })
+        })
+        .catch(err => {
+            console.log(err);
+            this.setState({ loading : false })
+            return null;
+        });
+ };
 
     render() {
+      const {data,loading } = this.state;
 
+      if(loading)
+        return  (
+                  <Backdrop  style={{color : '#fff'}} open={true}>
+                    <CircularProgress color="inherit" />
+                  </Backdrop>
+                )
+      else
         return (
             <Fragment>
             <TableContainer component={Paper}>
             <Table aria-label="spanning table">
-                <TableHead>
-                <TableRow style={{backgroundColor : 'red'}}>
-                    <TableCell align="center" colSpan={3}>
-                    Details
-                    </TableCell>
-                    <TableCell align="right">Price</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>Desc</TableCell>
-                    <TableCell align="right">Qty.</TableCell>
-                    <TableCell align="right">Unit</TableCell>
-                    <TableCell align="right">Sum</TableCell>
-                </TableRow>
-                </TableHead>
-                <TableBody>
-                {rows.map((row) => (
-                    <TableRow key={row.desc}>
-                    <TableCell>{row.desc}</TableCell>
-                    <TableCell align="right">{row.qty}</TableCell>
-                    <TableCell align="right">{row.unit}</TableCell>
-                    <TableCell align="right">{ccyFormat(row.price)}</TableCell>
-                    </TableRow>
-                ))}
-
-                <TableRow>
-                    <TableCell rowSpan={3} />
-                    <TableCell colSpan={2}>Subtotal</TableCell>
-                    <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>Tax</TableCell>
-                    <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                    <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell colSpan={2}>Total</TableCell>
-                    <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                </TableRow>
-                </TableBody>
+                
             </Table>
 
-            <Table aria-label="spanning table">
-                <TableHead>
-                <TableRow>
-                    <TableCell align="center" colSpan={3}>
-                    Details
-                    </TableCell>
-                    <TableCell align="right">Price</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>Desc</TableCell>
-                    <TableCell align="right">Qty.</TableCell>
-                    <TableCell align="right">Unit</TableCell>
-                    <TableCell align="right">Sum</TableCell>
-                </TableRow>
-                </TableHead>
-                <TableBody>
-                {rows.map((row) => (
-                    <TableRow key={row.desc}>
-                    <TableCell>{row.desc}</TableCell>
-                    <TableCell align="right">{row.qty}</TableCell>
-                    <TableCell align="right">{row.unit}</TableCell>
-                    <TableCell align="right">{ccyFormat(row.price)}</TableCell>
-                    </TableRow>
-                ))}
-
-                <TableRow>
-                    <TableCell rowSpan={3} />
-                    <TableCell colSpan={2}>Subtotal</TableCell>
-                    <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell>Tax</TableCell>
-                    <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                    <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-                </TableRow>
-                <TableRow>
-                    <TableCell colSpan={2}>Total</TableCell>
-                    <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
-                </TableRow>
-                </TableBody>
-            </Table>    
+            
             </TableContainer>
 
 
@@ -154,7 +130,7 @@ class Report1 extends React.Component {
             trigger={() => {
               // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
               // to the root node of the returned component as it will be overwritten.
-              return <a href="#">Print this out!</a>;
+              return <button>Print this out!</button>;
             }}
             content={() => this.componentRef}
           />

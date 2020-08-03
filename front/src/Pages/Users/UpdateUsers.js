@@ -128,7 +128,7 @@ function UpdateUsers(props) {
                 
                     axios({
                         method: 'POST',
-                        url: 'http://192.168.0.15:5000/api/parameter/data/',
+                        url: 'http://localhost:5000/api/parameter/data/',
                         headers: {
                             'Content-Type': 'application/json',
                             'authorization' : sessionStorage.getItem('jwtTokenKey')
@@ -198,7 +198,7 @@ function UpdateUsers(props) {
                     console.log(parameterObject)
                     axios({
                         method: 'PUT',
-                        url: 'http://192.168.0.15:5000/api/users/data/'+ parameterObject._id,
+                        url: 'http://localhost:5000/api/users/data/'+ parameterObject._id,
                         headers: {
                             'Content-Type': 'application/json',
                             'authorization' : sessionStorage.getItem('jwtTokenKey')
@@ -239,7 +239,7 @@ function UpdateUsers(props) {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://192.168.0.15:5000/api/users/data',
+            url: 'http://localhost:5000/api/users/data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')
