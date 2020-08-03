@@ -3,47 +3,15 @@ import React, {Component, Fragment} from 'react';
 
 
 import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
 import axios from 'axios';
-import TableRow from '@material-ui/core/TableRow';
+
 import Paper from '@material-ui/core/Paper';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 
-const TAX_RATE = 0.07;
-
-
-function ccyFormat(num) {
-  return `${num.toFixed(2)}`;
-}
-
-function priceRow(qty, unit) {
-  return qty * unit;
-}
-
-function createRow(desc, qty, unit) {
-  const price = priceRow(qty, unit);
-  return { desc, qty, unit, price };
-}
-
-function subtotal(items) {
-  return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-}
-
-const rows = [
-  createRow('Paperclips (Box)', 100, 1.15),
-  createRow('Paper (Case)', 10, 45.99),
-  createRow('Waste Basket', 2, 17.99),
-];
-
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
-
+import TableReport from './TableReport'
 
 class Example extends Component {
 
@@ -62,16 +30,32 @@ class Example extends Component {
       this.getData();
    }
 
+ 
    groupBy = (objectArray, property) => {
       return objectArray.reduce(function (acc, obj) {
         var key = obj[property].description;
+        var test = [];
         if (!acc[key]) {
           acc[key] = [];
         }
         acc[key].push(obj);
+        
+        
+        console.log("-----------------")
         return acc;
       }, {});
    }
+
+   groupBy2 = (array, key) => {
+    return array.reduce((result, currentValue) => {
+        
+      (result[currentValue.gender.description] = result[currentValue.gender.description] || []).push(
+        currentValue
+      );
+      //console.log(result);
+      return result;
+    }, {});
+  };
 
    getData = () => {
       axios({
@@ -85,8 +69,9 @@ class Example extends Component {
         .then(response => {
             console.log(response.data.data)
             //console.log(this.groupBy(response.data.data, response.data.data.gender))
-            var groupedData = this.groupBy(response.data.data, 'gender');
-            this.setState({ stocks: groupedData, loading : false })
+            var groupedData = this.groupBy2(response.data.data, 'gender');
+            this.setState({ data: groupedData, loading : false })
+            
         })
         .catch(err => {
             console.log(err);
@@ -97,6 +82,7 @@ class Example extends Component {
 
     render() {
       const {data,loading } = this.state;
+      
 
       if(loading)
         return  (
@@ -104,20 +90,33 @@ class Example extends Component {
                     <CircularProgress color="inherit" />
                   </Backdrop>
                 )
-      else
-        return (
-            <Fragment>
-            <TableContainer component={Paper}>
-            <Table aria-label="spanning table">
-                
-            </Table>
+            else{
+                console.log(data)
+                for (const [key, value] of Object.entries(data)) {
+                    console.log(`${key}: ${value}`);
+                  }
 
-            
-            </TableContainer>
-
-
-            </Fragment>
-        );
+                return (
+                    <Fragment>
+                    <TableContainer component={Paper}>
+                    {/* <Table aria-label="spanning table">
+                   
+                         {
+                            
+                        //    data.map(item => {
+                        //     console.log(item)//return  <TableReport item={item}/>
+                        //     })
+                        }     
+                    </Table> */}
+        
+                    
+                    </TableContainer>
+        
+        
+                    </Fragment>
+                );
+            }
+        
         }
 }
 
