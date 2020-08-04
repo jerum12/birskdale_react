@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import {Dropdown} from 'react-bootstrap';
-import {NavLink,Redirect} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import ChatList from './ChatList';
 import Aux from "../../../../../hoc/_Aux";
-import DEMO from "../../../../../store/constant";
 
 import Avatar1 from '../../../../../assets/images/user/avatar-1.jpg';
-import Avatar2 from '../../../../../assets/images/user/avatar-2.jpg';
-import Avatar3 from '../../../../../assets/images/user/avatar-3.jpg';
+// import Avatar2 from '../../../../../assets/images/user/avatar-2.jpg';
+// import Avatar3 from '../../../../../assets/images/user/avatar-3.jpg';
 import * as actionTypes from "../../../../../store/actions";
 import {connect} from 'react-redux';
 import { history } from '../../../../../util/History';
@@ -35,7 +34,7 @@ class NavRight extends Component {
     }
 
     render() {
-        const { dispatch, isAuthenticated, errorMessage } = this.props
+        //const { dispatch, isAuthenticated, errorMessage } = this.props
 
         if (this.state.logValue) {
             return <Redirect to='/login' />
@@ -43,7 +42,7 @@ class NavRight extends Component {
 
         
         const token = sessionStorage.getItem("jwtTokenKey")
-        const decoded = token != null ? jwt_decode(token) : '';
+        const decoded = token !== null ? jwt_decode(token) : '';
         
         return (
             <Aux>
@@ -118,7 +117,7 @@ class NavRight extends Component {
                                 <div className="pro-head">
                                     <img src={Avatar1} className="img-radius" alt="User Profile"/>
                                     <span>{
-                                    decoded != ''
+                                    decoded !== ''
                                     ? decoded.details.full_name
                                     : ''}</span>
                                     {/* <a href={DEMO.BLANK_LINK} className="dud-logout" title="Logout">
@@ -127,7 +126,7 @@ class NavRight extends Component {
                                 </div>
                                 <ul className="pro-body">
                                     {/* <li><a href={DEMO.BLANK_LINK} className="dropdown-item"><i className="feather icon-lock"/> Lock Screen</a></li> */}
-                                    <li style={{color : '#252b2f', cursor : 'pointer'}}><a onClick={e=>this.logoutHandler(e)} className="dropdown-item"><i className="feather icon-log-out"/> Logged Out</a></li>
+                                    <li style={{color : '#252b2f', cursor : 'pointer'}}><a onClick={e=>this.logoutHandler(e)} className="dropdown-item"><i className="feather icon-log-out"/> Log Out</a></li>
                                 </ul>
                             </Dropdown.Menu>
                         </Dropdown>

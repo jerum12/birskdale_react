@@ -16,7 +16,7 @@ export default {
                     id: 'stocksmaintenance',
                     title: 'Stocks Maintenance',
                     type: 'collapse',
-                    icon: 'feather icon-box',
+                    icon: 'feather icon-trending-up',
                     children: [
                         {
                             id: 'inquirestocks',
@@ -64,7 +64,7 @@ export default {
                     id: 'parameter1',
                     title: 'Parameter Maintenance',
                     type: 'collapse',
-                    icon: 'feather icon-box',
+                    icon: 'feather icon-server',
                     children: [
                         {
                             id: 'parameterinquire',
@@ -92,7 +92,7 @@ export default {
                     id: 'user1',
                     title: 'User Maintenance',
                     type: 'collapse',
-                    icon: 'user',
+                    icon: 'feather icon-user',
                     children: [
                         {
                             id: 'userinquire',
@@ -100,12 +100,12 @@ export default {
                             type: 'item',
                             url: '/users/inquire'  
                         },
-                        {
-                            id: 'userinquire2',
-                            title: 'Inquire Users 2',
-                            type: 'item',
-                            url: '/users/inquire2'  
-                        },
+                        // {
+                        //     id: 'userinquire2',
+                        //     title: 'Inquire Users 2',
+                        //     type: 'item',
+                        //     url: '/users/inquire2'  
+                        // },
                         {
                             id: 'updateusers',
                             title: 'Update Users',
@@ -126,19 +126,25 @@ export default {
                     id: 'report1',
                     title: 'Reports',
                     type: 'collapse',
-                    icon: 'user',
+                    icon: 'feather icon-printer',
                     children: [
                         {
-                            id: 'report_1',
-                            title: 'Report 1',
+                            id: 'report_stocks',
+                            title: 'Report Stocks',
                             type: 'item',
-                            url: '/reports/1'  
+                            url: '/reports/stocks'  
                         },
                         {
                             id: 'report_2',
                             title: 'Report 2',
                             type: 'item',
                             url: '/reports/2'  
+                        },
+                        {
+                            id: 'report_3',
+                            title: 'Report 3',
+                            type: 'item',
+                            url: '/reports/3'  
                         }
                     ]
                 }

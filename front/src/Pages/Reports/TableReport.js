@@ -3,10 +3,8 @@ import TableRow from '@material-ui/core/TableRow';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
-
-
-const TAX_RATE = 0.07;
-
+import Table from '@material-ui/core/Table';
+import Moment from 'moment'
 
 function ccyFormat(num) {
   return `${num.toFixed(2)}`;
@@ -21,76 +19,120 @@ function createRow(desc, qty, unit) {
   return { desc, qty, unit, price };
 }
 
-function subtotal(items) {
-  return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+const subtotal = (items) => {
+  let array = []
+  array['size_run_3'] = items.map(({ size_run_3 }) => size_run_3).reduce((sum, i) => sum + i, 0);
+  array['size_run_4'] = items.map(({ size_run_4 }) => size_run_4).reduce((sum, i) => sum + i, 0);
+  array['size_run_5'] = items.map(({ size_run_5 }) => size_run_5).reduce((sum, i) => sum + i, 0);
+  array['size_run_6'] = items.map(({ size_run_6 }) => size_run_6).reduce((sum, i) => sum + i, 0);
+  array['size_run_7'] = items.map(({ size_run_7 }) => size_run_7).reduce((sum, i) => sum + i, 0);
+  array['size_run_8'] = items.map(({ size_run_8 }) => size_run_8).reduce((sum, i) => sum + i, 0);
+  array['size_run_9'] = items.map(({ size_run_9 }) => size_run_9).reduce((sum, i) => sum + i, 0);
+  array['size_run_10'] = items.map(({ size_run_10 }) => size_run_10).reduce((sum, i) => sum + i, 0);
+  array['size_run_11'] = items.map(({ size_run_11 }) => size_run_11).reduce((sum, i) => sum + i, 0);
+  array['size_run_12'] = items.map(({ size_run_12 }) => size_run_12).reduce((sum, i) => sum + i, 0);
+  array['size_run_13'] = items.map(({ size_run_13 }) => size_run_13).reduce((sum, i) => sum + i, 0);
+  array['size_run_14'] = items.map(({ size_run_14 }) => size_run_14).reduce((sum, i) => sum + i, 0);
+  array['total_size_run'] = items.map(({ total_size_run }) => total_size_run).reduce((sum, i) => sum + i, 0);
+  
+  return array;
 }
 
-const rows = [
-  createRow('Paperclips (Box)', 100, 1.15),
-  createRow('Paper (Case)', 10, 45.99),
-  createRow('Waste Basket', 2, 17.99),
-];
-
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
 
-function TableReport({item}){
-    console.log(item)
+function TableReport({category, value, index, length, originalData}){
+
+  const subTotalSizeRun = subtotal(value);
+  const totalSizeRun = subtotal(originalData);
     return (
-        <Fragment>
+        <Table aria-label="spanning table"  id="table-test" >
             <TableHead>
                   <TableRow>
-                      <TableCell align="left" colSpan={14}>
-                        Gender : Male
+                      <TableCell align="left" colSpan={15}>
+                        Gender : <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}}>{category}</span>
                       </TableCell>
                   </TableRow>
                   <TableRow>
-                      <TableCell>Transaction Date</TableCell>
-                      <TableCell>Stock Details</TableCell>
-                      <TableCell align="right">Size Run 3</TableCell>
-                      <TableCell align="right">Size Run 4</TableCell>
-                      <TableCell align="right">Size Run 5</TableCell>
-                      <TableCell align="right">Size Run 6</TableCell>
-                      <TableCell align="right">Size Run 7</TableCell>
-                      <TableCell align="right">Size Run 8</TableCell>
-                      <TableCell align="right">Size Run 9</TableCell>
-                      <TableCell align="right">Size Run 10</TableCell>
-                      <TableCell align="right">Size Run 11</TableCell>
-                      <TableCell align="right">Size Run 12</TableCell>
-                      <TableCell align="right">Size Run 13</TableCell>
-                      <TableCell align="right">Size Run 14</TableCell>
-                      <TableCell align="right">Total Size Run</TableCell>
+                      <TableCell style={{backgroundColor: '#203356', color: '#FFF'}}>Transaction Date</TableCell>
+                      <TableCell style={{backgroundColor: '#203356', color: '#FFF'}}>Stock Details</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 3</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 4</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 5</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 6</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 7</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 8</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 9</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 10</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 11</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 12</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 13</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 14</TableCell>
+                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Total Size Run</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row) => (
-                      <TableRow key={row.desc}>
-                      <TableCell>{row.desc}</TableCell>
-                      <TableCell align="right">{row.qty}</TableCell>
-                      <TableCell align="right">{row.unit}</TableCell>
-                      <TableCell align="right">{ccyFormat(row.price)}</TableCell>
+                  {value.map((row) => (
+                      <TableRow key={row._id}>
+                      <TableCell>{Moment(row.transaction_date).format('MM-DD-YYYY HH:mm:ss')}</TableCell>
+                      <TableCell style={{width : '200px'}}>{row.stock_details}</TableCell>
+                      <TableCell align="right">{row.size_run_3}</TableCell>
+                      <TableCell align="right">{row.size_run_4}</TableCell>
+                      <TableCell align="right">{row.size_run_5}</TableCell>
+                      <TableCell align="right">{row.size_run_6}</TableCell>
+                      <TableCell align="right">{row.size_run_7}</TableCell>
+                      <TableCell align="right">{row.size_run_8}</TableCell>
+                      <TableCell align="right">{row.size_run_9}</TableCell>
+                      <TableCell align="right">{row.size_run_10}</TableCell>
+                      <TableCell align="right">{row.size_run_11}</TableCell>
+                      <TableCell align="right">{row.size_run_12}</TableCell>
+                      <TableCell align="right">{row.size_run_13}</TableCell>
+                      <TableCell align="right">{row.size_run_14}</TableCell>
+                      <TableCell align="right">{row.total_size_run}</TableCell>
+                      {/* <TableCell align="right">{ccyFormat(row.price)}</TableCell> */}
                       </TableRow>
                   ))}
 
                   <TableRow>
-                      <TableCell rowSpan={3} />
-                      <TableCell colSpan={2}>Subtotal</TableCell>
-                      <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                      <TableCell>Tax</TableCell>
-                      <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                      <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-                  </TableRow>
-                  <TableRow>
-                      <TableCell colSpan={2}>Total</TableCell>
-                      <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
+                      <TableCell>&nbsp;</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>Subtotal</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_3}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_4}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_6}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_7}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_8}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_9}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_10}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_11}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_12}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_13}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_14}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.total_size_run}</TableCell>
                   </TableRow>
 
+                  {
+                    (parseInt(index)+1) === length && 
+                    <TableRow>
+                      <TableCell>&nbsp;</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>Total</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_3}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_4}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_6}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_7}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_8}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_9}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_10}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_11}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_12}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_13}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_14}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.total_size_run}</TableCell>
+                    </TableRow>
+                  }
+                 
                 </TableBody>
-        </Fragment>
+        </Table>
     );
 }
 

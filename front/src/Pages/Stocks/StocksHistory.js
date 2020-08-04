@@ -3,13 +3,11 @@ import MaterialTable from "material-table";
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemText from "@material-ui/core/ListItemText"
-import Divider from "@material-ui/core/Divider"
 import Grid from "@material-ui/core/Grid"
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import Aux from "../../hoc/_Aux";
-import {Row, Col, Card, Form} from 'react-bootstrap';
+import {Card} from 'react-bootstrap';
 
 import {SizeRunModal} from './SizeRunModal'
 
@@ -155,8 +153,7 @@ function StocksHistory(props) {
               state: {}
           });
           
-
-        if (det === undefined ){
+        if (det === '' || det === undefined ){
             props.history.push("/stocks/inquire")
         }else{
             axios({

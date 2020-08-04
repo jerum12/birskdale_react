@@ -48,7 +48,7 @@ function ModifyStockDetails(props){
             state: {}
         });
    
-        if (message === undefined ){
+        if (message === '' || message === undefined ){
             props.history.push("/stocks/modify")
         }else{
             

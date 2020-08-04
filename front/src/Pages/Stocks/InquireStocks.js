@@ -6,13 +6,16 @@ import Aux from "../../hoc/_Aux";
 import {Popup } from 'semantic-ui-react'
 import {Card} from 'react-bootstrap';
 import {handleResponse} from './GenericMethod'
-
+import Moment from 'moment'
 
 function InquireStocks(props) {
 
     const [columns, setColumns] = useState([
       {title: "id", field: "_id", hidden: true},
-      {title: "Transaction Date", field: "transaction_date", type: 'datetime'},
+      {title: "Transaction Date", field: "transaction_date", 
+        render: (rowData) => {
+          return Moment(rowData.transaction_date).format('MM-DD-YYYY HH:mm:ss')
+        }},
       { title: 'Stock Number', field: 'stock_no.description', 
         render: (rowData) => {
           return  <Link  to={{ pathname: "/stocks/history", state: { details: rowData}   }}>{rowData.stock_no.description}</Link>;

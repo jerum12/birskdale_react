@@ -1,11 +1,9 @@
 
 import React, {Component, Fragment} from 'react';
 
-
-import Table from '@material-ui/core/Table';
 import TableContainer from '@material-ui/core/TableContainer';
 import axios from 'axios';
-
+import {Card} from 'react-bootstrap';
 import Paper from '@material-ui/core/Paper';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -13,13 +11,14 @@ import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 
 import TableReport from './TableReport'
 
-class Example extends Component {
+class GenerateData extends Component {
 
   constructor(props) {
     super(props);
 
     this.state = {
       data : [],
+      originalData : [],
       loading : true
 
     }
@@ -34,7 +33,6 @@ class Example extends Component {
    groupBy = (objectArray, property) => {
       return objectArray.reduce(function (acc, obj) {
         var key = obj[property].description;
-        var test = [];
         if (!acc[key]) {
           acc[key] = [];
         }
@@ -67,10 +65,10 @@ class Example extends Component {
         }
       })
         .then(response => {
-            console.log(response.data.data)
+            //console.log(response.data.data)
             //console.log(this.groupBy(response.data.data, response.data.data.gender))
             var groupedData = this.groupBy2(response.data.data, 'gender');
-            this.setState({ data: groupedData, loading : false })
+            this.setState({ data: groupedData, originalData: response.data.data, loading : false })
             
         })
         .catch(err => {
@@ -81,7 +79,7 @@ class Example extends Component {
  };
 
     render() {
-      const {data,loading } = this.state;
+      const {data,originalData,loading } = this.state;
       
 
       if(loading)
@@ -91,28 +89,19 @@ class Example extends Component {
                   </Backdrop>
                 )
             else{
-                console.log(data)
-                for (const [key, value] of Object.entries(data)) {
-                    console.log(`${key}: ${value}`);
+                const items = []
+                const length =  Object.entries(data).length;
+                  for (const [index, [key, value]] of Object.entries(Object.entries(data))) {  
+                    items.push(<TableReport key={key} index={index} category={key} length={length} value={value} originalData={originalData}/>);
                   }
 
                 return (
                     <Fragment>
                     <TableContainer component={Paper}>
-                    {/* <Table aria-label="spanning table">
+      
+                         {items}     
                    
-                         {
-                            
-                        //    data.map(item => {
-                        //     console.log(item)//return  <TableReport item={item}/>
-                        //     })
-                        }     
-                    </Table> */}
-        
-                    
                     </TableContainer>
-        
-        
                     </Fragment>
                 );
             }
@@ -121,22 +110,33 @@ class Example extends Component {
 }
 
 
-class Report1 extends React.Component {
+class ReportStocks extends React.Component {
     render() {
       return (
         <div>
-          <ReactToPrint
-            trigger={() => {
-              // NOTE: could just as easily return <SomeComponent />. Do NOT pass an `onClick` prop
-              // to the root node of the returned component as it will be overwritten.
-              return <button>Print this out!</button>;
-            }}
-            content={() => this.componentRef}
-          />
-          <Example ref={el => (this.componentRef = el)} />
+         
+
+          <Card>
+              <Card.Header>
+                <Card.Title as="h5">Stock Details Report</Card.Title>
+                <div  style={{ display: "flex",justifyContent: "flex-end" }}>
+                  <ReactToPrint content={() => this.componentRef}>
+                    <PrintContextConsumer>
+                      {({ handlePrint }) => (
+                        <button onClick={handlePrint}  className="btn btn-primary shadow-2 mb-4">Print this out!</button>
+                      )}
+                    </PrintContextConsumer>
+                </ReactToPrint>
+              </div>
+              </Card.Header>
+              <Card.Body>
+                  <GenerateData ref={el => (this.componentRef = el)} />
+              </Card.Body>
+          </Card>
+       
         </div>
       );
     }
   }
 
-export default Report1
+export default ReportStocks

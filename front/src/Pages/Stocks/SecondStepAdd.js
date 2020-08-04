@@ -1,11 +1,11 @@
 import React, { Fragment, useState } from "react"
 import Grid from "@material-ui/core/Grid"
-import TextField from "@material-ui/core/TextField"
-import Button from "@material-ui/core/Button"
+//import TextField from "@material-ui/core/TextField"
+//import Button from "@material-ui/core/Button"
 import FormControl from "@material-ui/core/FormControl"
 import InputNumber from 'rc-input-number';
 import 'rc-input-number/assets/index.css';
-import InputLabel from "@material-ui/core/InputLabel"
+//import InputLabel from "@material-ui/core/InputLabel"
 import FormLabel from '@material-ui/core/FormLabel';
 import './Stocks.css'
 import AddIcon from '@material-ui/icons/Add';
@@ -36,8 +36,8 @@ const SecondStepAdd = ({
   isError
 }) => {
 
-  const [errorText, seterrorText] = useState();
-  const [value, setvalue] = useState();
+  // const [errorText, seterrorText] = useState();
+  // const [value, setvalue] = useState();
  
   // size_run_3 = 0;
   // size_run_4 = 0;
