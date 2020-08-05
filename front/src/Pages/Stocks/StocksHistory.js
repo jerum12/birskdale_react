@@ -10,6 +10,7 @@ import Aux from "../../hoc/_Aux";
 import {Card} from 'react-bootstrap';
 
 import {SizeRunModal} from './SizeRunModal'
+import config from "../../config";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -158,7 +159,7 @@ function StocksHistory(props) {
         }else{
             axios({
                 method: 'GET',
-                url: 'http://192.168.0.27:5000/api/stocks/history/data/' + det._id,
+                url: config.apiHistory+'data/' + det._id,
                 headers: {
                     'Content-Type': 'application/json',
                     'authorization' : sessionStorage.getItem('jwtTokenKey')

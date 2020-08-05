@@ -6,6 +6,7 @@ import Aux from "../../hoc/_Aux";
 import { Label,Message } from 'semantic-ui-react'
 import Alert from '@material-ui/lab/Alert';
 import {Row, Col, Card, Form} from 'react-bootstrap';
+import config from "../../config";
 
 
  function ModifyStocks() {
@@ -146,7 +147,7 @@ import {Row, Col, Card, Form} from 'react-bootstrap';
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://192.168.0.27:5000/api/stocks/data',
+            url: config.apiStocks+'data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')
@@ -170,7 +171,7 @@ import {Row, Col, Card, Form} from 'react-bootstrap';
       useEffect(() => {
         axios({
           method: 'GET',
-          url: 'http://192.168.0.27:5000/api/parameter/data',
+          url: config.apiParameter+'data',
           headers: {
               'Content-Type': 'application/json',
               'authorization' : sessionStorage.getItem('jwtTokenKey')
@@ -299,7 +300,7 @@ import {Row, Col, Card, Form} from 'react-bootstrap';
 
                                 axios({
                                   method: 'PUT',
-                                  url: 'http://192.168.0.27:5000/api/stocks/data/' + newData._id,
+                                  url: config.apiStocks+'data/' + newData._id,
                                   headers: {
                                     'Content-Type': 'application/json',
                                     'authorization' : sessionStorage.getItem('jwtTokenKey')

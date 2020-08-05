@@ -15,6 +15,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField";
 import SweetAlert from 'react-bootstrap-sweetalert';
 import QueueIcon from '@material-ui/icons/Queue';
+import config from "../../config";
 
 function UpdateParameter(props) {
 
@@ -127,7 +128,7 @@ function UpdateParameter(props) {
                 
                     axios({
                         method: 'POST',
-                        url: 'http://192.168.0.27:5000/api/parameter/data/',
+                        url: config.apiParameter+'data/',
                         headers: {
                             'Content-Type': 'application/json',
                             'authorization' : sessionStorage.getItem('jwtTokenKey')
@@ -185,7 +186,7 @@ function UpdateParameter(props) {
                 
                     axios({
                         method: 'PUT',
-                        url: 'http://192.168.0.27:5000/api/parameter/data/'+ parameterObject._id,
+                        url: config.apiParameter+'data/'+ parameterObject._id,
                         headers: {
                             'Content-Type': 'application/json',
                             'authorization' : sessionStorage.getItem('jwtTokenKey')
@@ -226,7 +227,7 @@ function UpdateParameter(props) {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://192.168.0.27:5000/api/parameter/data',
+            url: config.apiParameter+'data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')

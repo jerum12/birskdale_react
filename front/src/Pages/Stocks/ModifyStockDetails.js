@@ -11,6 +11,7 @@ import './Stocks.css';
 import Alert from '@material-ui/lab/Alert';
 import StepFormModify from './StepFormModify'
 import {history} from '../../util/History'
+import config from '../../config';
 
 function ModifyStockDetails(props){ 
 
@@ -54,7 +55,7 @@ function ModifyStockDetails(props){
             
             axios({
                 method: 'GET',
-                url: 'http://192.168.0.27:5000/api/parameter/data',
+                url: config.apiParameter+'data',
                 headers: {
                     'Content-Type': 'application/json',
                     'authorization' : sessionStorage.getItem('jwtTokenKey')

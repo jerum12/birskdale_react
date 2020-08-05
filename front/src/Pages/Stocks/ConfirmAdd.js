@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
-
+import config from '../../config';
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
@@ -103,7 +103,7 @@ const handleSubmit = () => {
 
     axios({
         method: 'POST',
-        url: 'http://192.168.0.27:5000/api/stocks/data',
+        url: config.apiStocks+'data',
         headers: {
             'Content-Type': 'application/json',
             'authorization' : sessionStorage.getItem('jwtTokenKey')

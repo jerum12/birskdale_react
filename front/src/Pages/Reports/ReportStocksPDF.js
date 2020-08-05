@@ -9,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import autoTable  from 'jspdf-autotable'
 import {Card} from 'react-bootstrap';
 import TableReport from './TableReport'
+import config from '../../config';
 
 class ReportStocksPDF extends Component {
 
@@ -54,7 +55,7 @@ class ReportStocksPDF extends Component {
    getData = () => {
       axios({
         method: 'GET',
-        url: 'http://192.168.0.27:5000/api/stocks/data',
+        url: config.apiStocks+'data',
         headers: {
           'Content-Type': 'application/json',
           'authorization' : sessionStorage.getItem('jwtTokenKey')

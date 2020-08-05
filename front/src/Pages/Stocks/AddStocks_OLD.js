@@ -9,6 +9,7 @@ import  Breadcrumb from "../../App/layout/AdminLayout/Breadcrumb";
 import ReactSelect from "react-select";
 import './Stocks.css';
 import Alert from '@material-ui/lab/Alert';
+import config from '../../config';
 
 function AddStocks(props){ 
 
@@ -33,7 +34,7 @@ function AddStocks(props){
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://192.168.0.27:5000/api/parameter/data',
+            url: config.apiParameter+'data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')
@@ -146,7 +147,7 @@ function AddStocks(props){
 
         axios({
             method: 'POST',
-            url: 'http://192.168.0.27:5000/api/stocks/data',
+            url: config.apiStocks+'data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')

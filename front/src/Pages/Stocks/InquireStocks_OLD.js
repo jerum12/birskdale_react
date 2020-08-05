@@ -13,6 +13,7 @@ import Paper from '@material-ui/core/Paper';
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import './Stocks.css';
 import {Row, Col, Card} from 'react-bootstrap';
+import config from '../../config';
 
 let dataValue = [];
 
@@ -222,7 +223,7 @@ class InquireStocks extends React.Component {
      getStocks = () => {
         axios({
               method: 'GET',
-              url: 'http://192.168.0.27:5000/api/stocks/data',
+              url: config.apiStocks+'data',
               headers: {
                   'Content-Type': 'application/json',
                   'authorization' : sessionStorage.getItem('jwtTokenKey')

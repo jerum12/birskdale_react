@@ -7,6 +7,7 @@ import {Popup } from 'semantic-ui-react'
 import {Card} from 'react-bootstrap';
 import {handleResponse} from './GenericMethod'
 import Moment from 'moment'
+import config from "../../config";
 
 function InquireStocks(props) {
 
@@ -124,7 +125,7 @@ function InquireStocks(props) {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://192.168.0.27:5000/api/stocks/data',
+            url: config.apiStocks+'data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')

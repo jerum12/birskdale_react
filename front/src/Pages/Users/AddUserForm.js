@@ -6,6 +6,8 @@ import axios from 'axios';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import TextField from "@material-ui/core/TextField"
 
+import config from '../../config';
+
 // Destructure props
 const AddUserForm = (props) => {
 
@@ -56,7 +58,7 @@ const handleSubmit = () => {
 
     axios({
         method: 'POST',
-        url: 'http://192.168.0.27:5000/api/users/data/',
+        url: config.apiUsers+'data/',
         headers: {
           'Content-Type': 'application/json',
           'authorization' : sessionStorage.getItem('jwtTokenKey')

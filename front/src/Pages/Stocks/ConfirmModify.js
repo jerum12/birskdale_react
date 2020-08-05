@@ -12,6 +12,7 @@ import {  Redirect } from 'react-router-dom';
 import {history} from '../../util/History'
 
 import axios from 'axios';
+import config from "../../config"
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -84,7 +85,7 @@ const handleSubmit = () => {
 
     axios({
         method: 'PUT',
-        url: 'http://192.168.0.27:5000/api/stocks/data/' + details._id,
+        url: config.apiStocks+'data/' + details._id,
         headers: {
           'Content-Type': 'application/json',
           'authorization' : sessionStorage.getItem('jwtTokenKey')

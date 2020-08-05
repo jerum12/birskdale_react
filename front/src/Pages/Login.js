@@ -9,6 +9,7 @@ import Alert from 'react-bootstrap/Alert';
 import { Label,Message } from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import * as actionTypes from "../store/actions";
+import config from '../config';
 import './Stocks/Stocks.css'
 
 function Login(props){
@@ -34,7 +35,7 @@ function Login(props){
 
         axios({
             method: 'POST',
-            url: 'http://192.168.0.27:5000/api/users/login',
+            url: config.apiUsers+'login',
             headers: {
                 'Content-Type': 'application/json'
               },

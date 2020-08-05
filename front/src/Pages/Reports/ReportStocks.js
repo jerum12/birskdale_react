@@ -10,6 +10,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 
 import TableReport from './TableReport'
+import config from '../../config';
 
 class GenerateData extends Component {
 
@@ -58,7 +59,7 @@ class GenerateData extends Component {
    getData = () => {
       axios({
         method: 'GET',
-        url: 'http://192.168.0.27:5000/api/stocks/data',
+        url: config.apiStocks+'data',
         headers: {
           'Content-Type': 'application/json',
           'authorization' : sessionStorage.getItem('jwtTokenKey')

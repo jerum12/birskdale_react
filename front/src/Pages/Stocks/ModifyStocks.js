@@ -4,6 +4,7 @@ import { Link, withRouter} from 'react-router-dom';
 import axios from 'axios';
 import Aux from "../../hoc/_Aux";
 import {Card} from 'react-bootstrap';
+import config from '../../config';
 
  function ModifyStocks(props) {
 
@@ -88,7 +89,7 @@ import {Card} from 'react-bootstrap';
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://192.168.0.27:5000/api/stocks/data',
+            url: config.apiStocks+'data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')

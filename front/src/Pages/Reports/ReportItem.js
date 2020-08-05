@@ -13,7 +13,7 @@ import Grid from "@material-ui/core/Grid"
 import FormControl from "@material-ui/core/FormControl"
 import FormLabel from '@material-ui/core/FormLabel';
 import TextField from "@material-ui/core/TextField";
-
+import config from '../../config';
 
 import TableReportHistory from './TableReportHistory'
 
@@ -64,7 +64,7 @@ class GenerateData extends Component {
    getData = () => {
       axios({
         method: 'GET',
-        url: 'http://192.168.0.27:5000/api/stocks/history/data',
+        url: config.apiHistory+'/data',
         headers: {
           'Content-Type': 'application/json',
           'authorization' : sessionStorage.getItem('jwtTokenKey')
@@ -139,7 +139,7 @@ class ReportItem extends React.Component {
                 date_from : event.target.date_from.value, date_to : event.target.date_to.value
             },
           }
-          axios.get('http://192.168.0.27:5000/api/stocks/history/data', config)
+          axios.get(config.apiHistory+'data', config)
             .then(function (response) {
     
                     console.log(response.data.data)

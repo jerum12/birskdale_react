@@ -7,6 +7,7 @@ import {Card} from 'react-bootstrap';
 import {handleResponse} from '../Stocks/GenericMethod'
 import { makeStyles } from '@material-ui/core/styles';
 
+import config from '../../config';
 
 
 function InquireUsers(props) {
@@ -42,7 +43,7 @@ function InquireUsers(props) {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://192.168.0.27:5000/api/users/data',
+            url: config.apiUsers+'data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')

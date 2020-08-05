@@ -14,6 +14,7 @@ import Chip from '@material-ui/core/Chip';
 import jwt_decode from 'jwt-decode'
 import axios from 'axios';
 import SweetAlert from 'react-bootstrap-sweetalert';
+import config from '../../config';
 
 // Destructure props
 const SizeRunForm = ({
@@ -125,7 +126,7 @@ const handleSubmit = () => {
 
     axios({
         method: 'POST',
-        url: 'http://192.168.0.27:5000/api/stocks/history/data/',
+        url: config.apiHistory+'data/',
         headers: {
           'Content-Type': 'application/json',
           'authorization' : sessionStorage.getItem('jwtTokenKey')

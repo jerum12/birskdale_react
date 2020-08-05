@@ -17,6 +17,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Pic from '../../assets/images/dp2.png'
 import UserData from './UserData'
 
+import config from '../../config';
+
 function InquireUsers(props) {
 
     const useStyles = makeStyles((theme) => ({
@@ -51,7 +53,7 @@ function InquireUsers(props) {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://192.168.0.27:5000/api/users/data',
+            url: config.apiUsers+'data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')

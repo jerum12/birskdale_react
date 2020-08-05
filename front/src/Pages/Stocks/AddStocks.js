@@ -5,6 +5,7 @@ import Aux from "../../hoc/_Aux";
 import  Breadcrumb from "../../App/layout/AdminLayout/Breadcrumb";
 import './Stocks.css';
 import StepFormAdd from './StepFormAdd'
+import config from '../../config';
 
 function AddStocks(props){ 
 
@@ -14,7 +15,7 @@ function AddStocks(props){
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://192.168.0.27:5000/api/parameter/data',
+            url: config.apiParameter+'data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')

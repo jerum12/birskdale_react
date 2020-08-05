@@ -6,7 +6,7 @@ import Aux from "../../hoc/_Aux";
 import Grid from "@material-ui/core/Grid"
 import {Card} from 'react-bootstrap';
 import {handleResponse} from '../Stocks/GenericMethod'
-
+import config from '../../config';
 
 function InquireParameter(props) {
 
@@ -22,7 +22,7 @@ function InquireParameter(props) {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://192.168.0.27:5000/api/parameter/data',
+            url: config.apiParameter+'/data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')
