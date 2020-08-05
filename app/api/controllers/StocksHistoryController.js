@@ -17,11 +17,13 @@ module.exports = {
         var page = req.query.page ? req.query.page : 1
         var limit = req.query.limit ? req.query.limit : 10;
         var sort = sortOptions
+        var query = req.query
+
 
         try {
-            var Stocks = await StocksHistoryService.getStocksHistory({}, page, parseInt(limit), sort)
+            var Stocks = await StocksHistoryService.getStocksHistory(query, page, parseInt(limit), sort)
             // Return the Users list with the appropriate HTTP password Code and Message.
-            return res.status(200).json({code: "00", status: "success", data: Stocks, message: "History of stocks successfully recieved"});
+            return res.status(200).json({code: "00", status: "success", data: Stocks, message: "History of stocks successfully retrieved"});
         } catch (e) {
             //Return an Error Response Message with Code and the Error Message.
             // return res.status(400).json({

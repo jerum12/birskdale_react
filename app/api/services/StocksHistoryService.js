@@ -12,43 +12,111 @@ module.exports = {
             limit,
             sort
         }
+
+        
+        
         // Try Catch the awaited promise to handle the error 
         try {
+            // var _details = ''
+            // if(query.date_from !== undefined || query.date_to  !== undefined){
 
-            const stocks = await  model.StocksHistoryModel
-            .find()
-            .sort({transaction_date: -1})
-            .populate(['stock_no'])
-            .populate(['leather_type'])
-            .populate(['gender'])
-            .populate(['color'])
-            .populate(['classification_1'])
-            .populate(['classification_2'])
-            .populate(['logo'])
-            .populate(['sub_logo'])
-            .populate(['lining'])
-            .populate(['stitch'])
-            .exec()
+            // }else{
+
+            // }
+            let date_less_7 = new Date();
+            date_less_7.setDate(date_less_7.getDate() - 7)
+            let date_today = new Date();
+
+            let date_from = query.date_from !== undefined ? query.date_from : date_less_7;
+            let date_to = query.date_from !== undefined ? query.date_to : date_today;
+
+            console.log(date_from)
+            console.log(date_to)
+
+            var _details = await model.StocksHistoryModel.find({
+                                        'transaction_date' : {"$gte": new Date(date_from), "$lte": new Date(date_to)}
+                                      })
+                                      .populate({
+                                          path : 'stocks_id',
+                                          populate : {
+                                              path : 'stock_no'
+                                          }
+                                      })
+                                      .populate({
+                                          path : 'stocks_id',
+                                          populate : {
+                                            path : 'color'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                          path : 'gender'
+                                        },
+                                      })
+                                     .populate({
+                                            path : 'stocks_id',
+                                            populate : {
+                                            path : 'leather_type'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'classification_1'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'classification_2'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'logo'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'sub_logo'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'lining'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'stitch'
+                                        },
+                                      })
+                                      .exec()
 
           
 
             //var stocks = await db.StocksModel.paginate(query, options).populate(['_creator'])
-            stocks.forEach(function(stock) {
-                stock.stock_details = 'LT: ' + stock.leather_type.description + '; ' +
-                                'G: ' + stock.gender.description + '; ' +
-                                'C: ' + stock.color.description + '; ' +
-                                'C1: ' + stock.classification_1.description + '; ' +
-                                'C2: ' + stock.classification_2.description + '; ' +
-                                'Lo: ' + stock.logo.description + '; ' +
-                                'SLo: ' + stock.sub_logo.description + '; ' +
-                                'S: ' + stock.stitch.description + '; ' +
-                                'Li: ' + stock.lining.description + '; ' +
-                                'SI: ' + stock.special_instruction;
-              });
+            // stocks.forEach(function(stock) {
+            //     stock.stock_details = 'LT: ' + stock.leather_type.description + '; ' +
+            //                     'G: ' + stock.gender.description + '; ' +
+            //                     'C: ' + stock.color.description + '; ' +
+            //                     'C1: ' + stock.classification_1.description + '; ' +
+            //                     'C2: ' + stock.classification_2.description + '; ' +
+            //                     'Lo: ' + stock.logo.description + '; ' +
+            //                     'SLo: ' + stock.sub_logo.description + '; ' +
+            //                     'S: ' + stock.stitch.description + '; ' +
+            //                     'Li: ' + stock.lining.description + '; ' +
+            //                     'SI: ' + stock.special_instruction;
+            //   });
 
               //console.log(stocks)
 
-             return stocks;
+             return _details;
         } catch (e) {
             // return a Error message describing the reason 
             console.log(e)

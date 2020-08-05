@@ -21,7 +21,7 @@ module.exports = {
         try {
             var Stocks = await StocksService.getStocks({}, page, parseInt(limit), sort)
             // Return the Users list with the appropriate HTTP password Code and Message.
-            return res.status(200).json({code: "00", status: "success", data: Stocks, message: "Stocks successfully recieved!"});
+            return res.status(200).json({code: "00", status: "success", data: Stocks, message: "Stocks successfully retrieved!"});
         } catch (e) {
             //Return an Error Response Message with Code and the Error Message.
             // return res.status(400).json({
