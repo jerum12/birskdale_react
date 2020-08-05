@@ -84,7 +84,7 @@ const handleSubmit = () => {
 
     axios({
         method: 'PUT',
-        url: 'http://localhost:5000/api/stocks/data/' + details._id,
+        url: 'http://192.168.0.27:5000/api/stocks/data/' + details._id,
         headers: {
           'Content-Type': 'application/json',
           'authorization' : sessionStorage.getItem('jwtTokenKey')

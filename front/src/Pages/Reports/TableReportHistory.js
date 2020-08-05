@@ -33,14 +33,31 @@ const subtotal = (items) => {
   array['size_run_12'] = items.map(({ size_run_12 }) => size_run_12).reduce((sum, i) => sum + i, 0);
   array['size_run_13'] = items.map(({ size_run_13 }) => size_run_13).reduce((sum, i) => sum + i, 0);
   array['size_run_14'] = items.map(({ size_run_14 }) => size_run_14).reduce((sum, i) => sum + i, 0);
-  array['total_size_run'] = items.map(({ total_size_run }) => total_size_run).reduce((sum, i) => sum + i, 0);
+  array['total'] = items.map(({ total }) => total).reduce((sum, i) => sum + i, 0);
   
   return array;
+}
+const details = (items) => {
+    let data = ''
+    items.map(({stocks_id}) => {
+            data = ''
+           data =       'LT: ' + stocks_id.leather_type.description + '; ' +
+                        'G: ' + stocks_id.gender.description + '; ' +
+                        'C: ' + stocks_id.color.description + '; ' +
+                        'C1: ' + stocks_id.classification_1.description + '; ' +
+                        'C2: ' + stocks_id.classification_2.description + '; ' +
+                        'Lo: ' + stocks_id.logo.description + '; ' +
+                        'SLo: ' + stocks_id.sub_logo.description + '; ' +
+                        'S: ' + stocks_id.stitch.description + '; ' +
+                        'Li: ' + stocks_id.lining.description + '; ' +
+                        'SI: ' + stocks_id.special_instruction;
+    })
+    return data
 }
 
 
 
-function TableReport({category, value, index, length, originalData}){
+function TableReportHistory({category, value, index, length, originalData}){
 
   const subTotalSizeRun = subtotal(value);
   const totalSizeRun = subtotal(originalData);
@@ -49,12 +66,12 @@ function TableReport({category, value, index, length, originalData}){
             <TableHead>
                   <TableRow>
                       <TableCell align="left" colSpan={15}>
-                        Gender : <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}}>{category}</span>
+                        Stock Details : <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}}>{details(value)}</span>
                       </TableCell>
                   </TableRow>
                   <TableRow>
                       <TableCell style={{backgroundColor: '#203356', color: '#FFF'}}>Transaction Date</TableCell>
-                      <TableCell style={{backgroundColor: '#203356', color: '#FFF'}}>Stock Details</TableCell>
+                      <TableCell style={{backgroundColor: '#203356', color: '#FFF'}}>Transaction By</TableCell>
                       <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 3</TableCell>
                       <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 4</TableCell>
                       <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Size Run 5</TableCell>
@@ -74,7 +91,7 @@ function TableReport({category, value, index, length, originalData}){
                   {value.map((row) => (
                       <TableRow key={row._id}>
                       <TableCell>{Moment(row.transaction_date).format('MM-DD-YYYY HH:mm:ss')}</TableCell>
-                      <TableCell style={{width : '200px'}}>{row.stock_details}</TableCell>
+                      <TableCell align="right">{row.transaction_by}</TableCell>
                       <TableCell align="right">{row.size_run_3}</TableCell>
                       <TableCell align="right">{row.size_run_4}</TableCell>
                       <TableCell align="right">{row.size_run_5}</TableCell>
@@ -87,7 +104,7 @@ function TableReport({category, value, index, length, originalData}){
                       <TableCell align="right">{row.size_run_12}</TableCell>
                       <TableCell align="right">{row.size_run_13}</TableCell>
                       <TableCell align="right">{row.size_run_14}</TableCell>
-                      <TableCell align="right">{row.total_size_run}</TableCell>
+                      <TableCell align="right">{row.total}</TableCell>
                       {/* <TableCell align="right">{ccyFormat(row.price)}</TableCell> */}
                       </TableRow>
                   ))}
@@ -107,7 +124,7 @@ function TableReport({category, value, index, length, originalData}){
                       <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_12}</TableCell>
                       <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_13}</TableCell>
                       <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_14}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.total_size_run}</TableCell>
+                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.total}</TableCell>
                   </TableRow>
 
                   {
@@ -127,7 +144,7 @@ function TableReport({category, value, index, length, originalData}){
                       <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_12}</TableCell>
                       <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_13}</TableCell>
                       <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_14}</TableCell>
-                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.total_size_run}</TableCell>
+                      <TableCell align="right" style={{fontSize : '20px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.total}</TableCell>
                     </TableRow>
                   }
                  
@@ -136,4 +153,4 @@ function TableReport({category, value, index, length, originalData}){
     );
 }
 
-export default TableReport;
+export default TableReportHistory;

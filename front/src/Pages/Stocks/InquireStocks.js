@@ -124,7 +124,7 @@ function InquireStocks(props) {
     useEffect(() => {
         axios({
             method: 'GET',
-            url: 'http://localhost:5000/api/stocks/data',
+            url: 'http://192.168.0.27:5000/api/stocks/data',
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : sessionStorage.getItem('jwtTokenKey')

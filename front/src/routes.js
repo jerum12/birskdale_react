@@ -26,9 +26,11 @@ const DashboardDefault = React.lazy(() => import('./Demo/Dashboard/Default'));
     const UIUpdateUsers = React.lazy(() => import('./Pages/Users/UpdateUsers'));
 
 //FOR REPORTS
-    const UIReport = React.lazy(() => import('./Pages/Reports/ReportStocks'));
-    const UIReport2 = React.lazy(() => import('./Pages/Reports/Report4'));
-    const UIReport3 = React.lazy(() => import('./Pages/Reports/Report5'));
+    const UIReportStocks = React.lazy(() => import('./Pages/Reports/ReportStocks'));
+    const UIReportStocksPDF = React.lazy(() => import('./Pages/Reports/ReportStocksPDF'));
+
+    const UIReportItem = React.lazy(() => import('./Pages/Reports/ReportItem'));
+    const UIReportItemPDF = React.lazy(() => import('./Pages/Reports/ReportItemPDF'));
 
 const UIBasicButton = React.lazy(() => import('./Demo/UIElements/Basic/Button'));
 const UIBasicBadges = React.lazy(() => import('./Demo/UIElements/Basic/Badges'));
@@ -65,9 +67,10 @@ const routes = [
     { path: '/users/inquire', exact: true, name: 'Inquire Users', component: UIInquireUsers },
     { path: '/users/update', exact: true, name: 'Update User', component: UIUpdateUsers },
     
-    { path: '/reports/stocks', exact: true, name: 'Report 1', component: UIReport },
-    { path: '/reports/2', exact: true, name: 'Report 2', component: UIReport2 },
-    { path: '/reports/3', exact: true, name: 'Report 2', component: UIReport3 },
+    { path: '/reports/stocks', exact: true, name: 'Report 1', component: UIReportStocks },
+    { path: '/reports/stocks2', exact: true, name: 'Report 2', component: UIReportStocksPDF },
+    { path: '/reports/item', exact: true, name: 'Report 1', component: UIReportItem },
+    { path: '/reports/item2', exact: true, name: 'Report 2', component: UIReportItemPDF },
     
     { path: '/basic/collapse', exact: true, name: 'Basic Collapse', component: UIBasicCollapse },
     { path: '/basic/tabs-pills', exact: true, name: 'Basic Tabs & Pills', component: UIBasicTabsPills },
