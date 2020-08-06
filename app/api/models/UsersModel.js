@@ -23,7 +23,7 @@
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const config = require('./../../config/Config')
+const config = require('../../config/Config')
 
 //Define a schema
 const Schema = mongoose.Schema;

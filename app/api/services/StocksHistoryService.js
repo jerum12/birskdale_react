@@ -13,16 +13,10 @@ module.exports = {
             sort
         }
 
-        
-        
+
         // Try Catch the awaited promise to handle the error 
         try {
-            // var _details = ''
-            // if(query.date_from !== undefined || query.date_to  !== undefined){
-
-            // }else{
-
-            // }
+          
             let date_less_7 = new Date();
             date_less_7.setDate(date_less_7.getDate() - 7)
             let date_today = new Date();
@@ -30,11 +24,16 @@ module.exports = {
             let date_from = query.date_from !== undefined ? query.date_from : date_less_7;
             let date_to = query.date_from !== undefined ? query.date_to : date_today;
 
-            console.log(date_from)
-            console.log(date_to)
+
+
+            console.log(query.date_from)
+            console.log(query.date_to)
 
             var _details = await model.StocksHistoryModel.find({
-                                        'transaction_date' : {"$gte": new Date(date_from), "$lte": new Date(date_to)}
+                                        'transaction_date' : {
+                                            "$gte": new Date(new Date(date_from).setHours(00, 00, 00)),
+                                            "$lt": new Date(new Date(date_to).setHours(23, 59, 59))
+                                        }
                                       })
                                       .populate({
                                           path : 'stocks_id',
