@@ -91,7 +91,7 @@ function TableReportHistory({category, value, index, length, originalData}){
                   {value.map((row) => (
                       <TableRow key={row._id}>
                       <TableCell>{Moment(row.transaction_date).format('MM-DD-YYYY HH:mm:ss')}</TableCell>
-                      <TableCell align="right">{row.transaction_by}</TableCell>
+                      <TableCell align="right">{row.transaction_by.full_name}</TableCell>
                       <TableCell align="right">{row.size_run_3}</TableCell>
                       <TableCell align="right">{row.size_run_4}</TableCell>
                       <TableCell align="right">{row.size_run_5}</TableCell>

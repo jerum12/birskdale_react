@@ -1,35 +1,59 @@
-import React, { Component, Fragment } from 'react'  
-import TableContainer from '@material-ui/core/TableContainer';  
-import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Paper from '@material-ui/core/Paper';  
-import axios from 'axios';  
-import jsPDF from 'jspdf';  
-import Button from '@material-ui/core/Button';  
-import autoTable  from 'jspdf-autotable'
-import {Card} from 'react-bootstrap';
-import TableReport from './TableReport'
 
+import React, {Component, Fragment} from 'react';
+
+import axios from 'axios';
 import config from '../../config';
 
-class ReportItemPDF extends Component {
+import ReportItemDataPDF from './ReportItemDataPDF'
+
+class ReportItemPDF extends React.Component {
+  _isMounted = false;
 
   constructor(props) {
     super(props);
 
+     let date_less_7 = new Date();
+    date_less_7.setDate(date_less_7.getDate() - 7)
+    
+    let date_today = new Date()
+    //date_today.setDate(date_today.getDate())
+    
+
     this.state = {
       data : [],
       originalData : [],
-      loading : true
-
+      loading : true,
+      date_from_state :  date_less_7.toISOString().substring(0,10),
+      date_to_state : date_today.toISOString().substring(0,10)
     }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.groupBy2 = this.groupBy2.bind(this);
+    this.handleChange = this.handleChange.bind(this) 
   }
   
     //get stocks onload
    componentDidMount() {
-      this.getData();
+    this._isMounted = true;
+
+    
+    // let date_from = new Date();
+    // date_from.setDate(date_from.getDate() - 6)
+    
+    // let date_to = new Date()
+    // date_to.setDate(date_to.getDate() + 1)
+
+   
+
+    // this.setState({date_from_state : date_less_7.toISOString().substring(0,10), 
+    //               date_to_state : date_today.toISOString().substring(0,10)})
+  
+      this.getData(this.state.date_from_state,this.state.date_to_state);
    }
 
+   componentWillUnmount() {
+    this._isMounted = false;
+  }
  
    groupBy = (objectArray, property) => {
       return objectArray.reduce(function (acc, obj) {
@@ -46,28 +70,34 @@ class ReportItemPDF extends Component {
    groupBy2 = (array, key) => {
     return array.reduce((result, currentValue) => {
         
-      (result[currentValue.gender.description] = result[currentValue.gender.description] || []).push(
+      (result[currentValue.stocks_id._id] = result[currentValue.stocks_id._id] || []).push(
         currentValue
       );
       return result;
     }, {});
   };
 
-   getData = () => {
-      axios({
-        method: 'GET',
-        url: config.apiHistory+'data',
+   getData = (date_from,date_to) => {
+
+        //this.setState({loading :true })
+        let configParam = {
         headers: {
-          'Content-Type': 'application/json',
-          'authorization' : sessionStorage.getItem('jwtTokenKey')
-        }
-      })
+            'Content-Type': 'application/json',
+            'authorization' : sessionStorage.getItem('jwtTokenKey')
+          },
+        params: {
+            date_from : date_from, date_to : date_to
+        },
+      }
+      
+      axios.get(config.apiHistory+'data', configParam)
         .then(response => {
             //console.log(response.data.data)
             //console.log(this.groupBy(response.data.data, response.data.data.gender))
-            var groupedData = this.groupBy2(response.data.data, 'gender');
-            this.setState({ data: groupedData, originalData: response.data.data, loading : false })
-            
+            if (this._isMounted) {
+              var groupedData = this.groupBy2(response.data.data, 'stocks_id');
+              this.setState({ data: groupedData, originalData: response.data.data, loading : false })
+            }       
         })
         .catch(err => {
             console.log(err);
@@ -76,59 +106,37 @@ class ReportItemPDF extends Component {
         });
  };
 
-    render() {
-      const {data,originalData,loading } = this.state;
+    handleChange = (input) => (event,value) => {
       
+      if(input === 'date_from_state')
+        this.setState({ date_from_state : event.target.value })
+      else
+        this.setState({ date_to_state : event.target.value })
+    }
 
-      if(loading)
-        return  (
-                  <Backdrop  style={{color : '#fff'}} open={true}>
-                    <CircularProgress color="inherit" />
-                  </Backdrop>
-                )
-      else{
-            const items = []
-            const length =  Object.entries(data).length;
-              for (const [index, [key, value]] of Object.entries(Object.entries(data))) {  
-                items.push(<TableReport key={key} index={index} category={key} length={length} value={value} originalData={originalData}/>);
-              }
+    handleSubmit = (event) => {
+        //console.log(event.target.date_from_state.value)
+        this.getData( event.target.date_from_state.value, event.target.date_to_state.value);
+        event.preventDefault();
+      }
 
-            return (
-                <Fragment>
-                  <Card>
-                    <Card.Header>
-                      <Card.Title as="h5">Stock Details Report</Card.Title>
-                        <div  style={{ display: "flex",justifyContent: "flex-end" }}>
-                            <button onClick={() =>{
-                                var pdf = new jsPDF('l', 'pt', "a4");
-                  
-                                pdf.text("Stocks Summary Report", 40, 50);
+    render() {
+      //console.log(data)
 
+      return(
+            <ReportItemDataPDF 
+            loading={this.state.loading}
+            data={this.state.data}
+            handleSubmit={this.handleSubmit}
+            handleChange={this.handleChange}
+            originalData={this.state.originalData}
+            // date_less_7={date_less_7} 
+            // date_today={date_today}
+            date_from_state={this.state.date_from_state}
+            date_to_state={this.state.date_to_state}/>
+          );
+      
+    }
+  }
 
-                                for(var i=0 ; i < length; i++){
-                                    autoTable(pdf, {html: '#table_'+i,margin: {top: 70}})
-                                }
-
-                                pdf.save('Stocks Details.pdf');  
-
-                              }} 
-                              className="btn btn-primary shadow-2 mb-4">  
-                              Generate Pdf  
-                            </button>  
-                        </div>
-                    </Card.Header>
-                    <Card.Body>                
-                      <TableContainer component={Paper} id="pdfdiv">
-                              {items}     
-                      </TableContainer>
-                    </Card.Body>
-                  </Card>
-
-                </Fragment>
-            );
-        }
-        
-        }
-}
-
-export default ReportItemPDF  
+export default ReportItemPDF

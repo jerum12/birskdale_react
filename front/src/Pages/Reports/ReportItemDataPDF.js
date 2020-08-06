@@ -13,12 +13,15 @@ import Grid from "@material-ui/core/Grid"
 import FormControl from "@material-ui/core/FormControl"
 import FormLabel from '@material-ui/core/FormLabel';
 import TextField from "@material-ui/core/TextField";
+import jsPDF from 'jspdf';  
+import autoTable  from 'jspdf-autotable'
 
 import TableReportHistory from './TableReportHistory'
 
 
 
-class ReportItemData extends React.Component {
+
+class ReportItemDataPDF extends React.Component {
 
 
     render() {
@@ -99,13 +102,22 @@ class ReportItemData extends React.Component {
                     </form>
 
                     <div  style={{ display: "inline"}}>
-                      <ReactToPrint content={() => this.componentRef}>
-                        <PrintContextConsumer>
-                          {({ handlePrint }) => (
-                            <button onClick={handlePrint}  className="btn btn-primary shadow-2 mb-4">Print this out!</button>
-                          )}
-                        </PrintContextConsumer>
-                    </ReactToPrint>
+                             <button onClick={() =>{
+                                var pdf = new jsPDF('l', 'pt', "a4");
+                  
+                                pdf.text("Stocks Item Summary Report", 40, 50);
+
+
+                                for(var i=0 ; i < length; i++){
+                                    autoTable(pdf, {html: '#table_'+i,margin: {top: 70}})
+                                }
+
+                                pdf.save('Stocks Item.pdf');  
+
+                              }} 
+                              className="btn btn-primary shadow-2 mb-4">  
+                              Generate Pdf  
+                            </button>  
                   </div>
                   </Card.Header>
                   <Card.Body>
@@ -120,4 +132,4 @@ class ReportItemData extends React.Component {
     }
   }
 
-export default ReportItemData
+export default ReportItemDataPDF

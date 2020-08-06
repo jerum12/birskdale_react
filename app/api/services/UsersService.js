@@ -18,40 +18,41 @@ module.exports = {
         //       status: "failed", code: "99", message: "Username already exist" , data: null
         //    })
         // } 
-        const doesUserExist = await model.UsersModel.exists({ 
-           user_name: user.user_name
-        });
-
-       console.log(doesUserExist)
-
-       if(doesUserExist){
-           console.log('existing----------------')
-           throw Error(`Username ${paramBody.user_name} is already used.`)
-       }
-
-        var newUser = new model.UsersModel({
-            full_name: user.full_name,
-            user_name: user.user_name,
-            date: new Date(),
-            password: user.password,
-            isAdmin : true
-        })
-
+        
         try {
+            const doesUserExist = await model.UsersModel.exists({ 
+                user_name: user.user_name
+            });
+
+            console.log(doesUserExist)
+
+            if(doesUserExist){
+                console.log('existing user----------------')
+                throw Error(`Username ${user.user_name} is already used.`)
+            }
+
+            var newUser = new model.UsersModel({
+                full_name: user.full_name,
+                user_name: user.user_name,
+                date: new Date(),
+                password: user.password,
+                isAdmin : true
+            })
+
             // Saving the User 
             var savedUser = await newUser.save();
             // var token = jwt.sign({id: savedUser._id}, config.SECRET_KEY, {
             //     expiresIn: 86400 // expires in 24 hours
             // });
             if(!savedUser){
-                throw new error("Error while Creating User")
+                throw Error("Error while Creating User")
             }
 
             //return token;
         } catch (e) {
             // return a Error message describing the reason     
             console.log(e)
-            throw Error("Error while Creating User")
+             throw Error(e);
         }
     },
 
@@ -86,7 +87,7 @@ module.exports = {
             // var _details = await User.findOne({ email: user.email });
             // var passwordIsValid = bcrypt.compareSync(user.password, _details.password);
             // if (!passwordIsValid) throw Error("Invalid username/password")
-            let token = jwt.sign({ id: _details._id, details : _details }, config.SECRET_KEY, { expiresIn: '3600s' });
+            let token = jwt.sign({ id: _details._id, details : {'full_name':_details.full_name, 'user_name' : _details.user_name} }, config.SECRET_KEY, { expiresIn: '3600s' });
 
            
             return token;
@@ -94,7 +95,7 @@ module.exports = {
         } catch (e) {
             console.log(e)
             // return a Error message describing the reason     
-            throw Error("catch error => " + e)
+            throw Error(e)
         }
     },
 
@@ -161,5 +162,59 @@ module.exports = {
             console.log(e)
              throw Error(e);
         }
-    }
+    },
+    validateUser : async function (user) {
+
+        try {
+
+
+            var _details = await model.UsersModel.findOne({user_name: user.user_name})
+                            .then(function(user){
+                                return user
+                            }).catch(function(error){
+                                throw Error(`Username ${user.user_name} is not valid.`)
+                            })
+
+            if(!_details){
+                throw Error(`Username ${user.user_name} is not valid.`)
+            }
+
+            let isPasswordValid = await bcrypt.compare(user.current_password, _details.password);
+           
+
+            if(!isPasswordValid){
+                throw Error("Invalid current password")
+            }
+      
+            return true;
+
+        } catch (e) {
+            console.log(e)   
+            throw Error(e)
+        }
+    },
+    updatePassword : async function (user){
+        try {
+            const hashedPassword = bcrypt.hashSync(user.password, config.saltRounds);
+            console.log(hashedPassword)
+
+            const filter = { _id: user.id };
+            const update = { password: hashedPassword };
+
+             await model.UsersModel.findOneAndUpdate(filter, update, {
+                returnOriginal: false
+              }) 
+              .then(function(details){
+                  return details
+              }).catch(function(error){
+                  console.log(error)
+                  throw Error(`Error updateing password`)
+               });
+
+
+        } catch (e) {
+            console.log(e)
+             throw Error(e);
+        }
+    },
 }

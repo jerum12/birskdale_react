@@ -102,7 +102,10 @@ function UpdateUsers(props) {
 
     const classes = useStyles();
     
-    const handleClose = () => setShowModal(false);
+    const handleClose = () => {
+        setShowModal(false)
+        setReloadTable(true)
+    };
 
     const hideAlert = () => {
         setAlertSuccess(false)

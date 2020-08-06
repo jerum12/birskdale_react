@@ -52,7 +52,7 @@ function StocksHistory(props) {
     const [columns, setColumns] = useState([
       {title: "id", field: "_id", hidden: true},
       {title: "Transaction Date", field: "transaction_date", type: 'datetime'},
-      {title: "Transaction By", field: "transaction_by",
+      {title: "Transaction By", field: "transaction_by.full_name",
         cellStyle: {
             width: 5,
             minWidth : 5
@@ -167,7 +167,7 @@ function StocksHistory(props) {
                 })
               .then(response => {
                   //let json = response.data.data;
-                  //console.log(json)
+                  console.log(response.data.data)
                   setdetails(det)
                   setData(response.data.data)
                   setloading(true)
@@ -190,9 +190,7 @@ function StocksHistory(props) {
                         <Card.Header>
                             <Card.Title as="h5">Stocks Details & History</Card.Title>
 
-                                <div
-                                    style={{ display: "flex",justifyContent: "flex-end" }}
-                                >
+                            <div  style={{ marginTop: "15px"}}>
                                 <button className="btn btn-primary shadow-2 mb-4"
                                         onClick={()=>{
                                     props.history.goBack()

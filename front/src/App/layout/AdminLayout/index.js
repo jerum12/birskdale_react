@@ -72,7 +72,7 @@ class AdminLayout extends Component {
       _onIdle(e) {
         //console.log('user is idle', e)
         const isTimedOut = this.state.isTimedOut
-         console.log(isTimedOut + '-timeout') 
+         //console.log(isTimedOut + '-timeout') 
         if (isTimedOut) {
             this.onLogOut();
         } else {

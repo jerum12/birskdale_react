@@ -105,11 +105,11 @@ module.exports = {
                 status: "success", code: "00", message: "User added successfully!!!", data: null 
                })
             
-        }catch(error){
-            console.log(error);
+        }catch(e){
+            console.log(e);
             return res.json(
                 { 
-                  status: "failed", code: "99", message: "There was a problem registering user", data: null
+                  status: "failed", code: "99", message: e.message , data: null
                 }
             );
         }
@@ -173,7 +173,7 @@ module.exports = {
 
          } catch (e) {
                return res.json({
-                  status: "failed", code: "99", message: "Invalid username or password" , data: null
+                  status: "failed", code: "99", message: e.message , data: null
                   }
                )
          }
@@ -219,6 +219,42 @@ module.exports = {
 			// 	res.json({status:"success", message: "Movie updated successfully!!!", data:null});
 			// }
 	
-	},
+   },
+   validate_update : async function (req, res, next){
+
+    
+      // Req.Body contains the form submit values.
+
+         try {
+
+            let User = {
+               id : req.body.user_id,
+               current_password : req.body.current_password,
+               user_name : req.body.user_name,
+               password: req.body.new_password
+            }
+
+            console.log(User)
+         
+            // Calling the Service function with the new object from the Request Body
+            var valid = await UserService.validateUser(User);
+
+            if(valid){
+               await UserService.updatePassword(User);
+            }
+
+            return res.status(200).json(
+                 {
+                  status: "success", code: "00", message: "Password changed succefully"
+                }
+            )
+
+         } catch (e) {
+               return res.json({
+                  status: "failed", code: "99", message: e.message , data: null
+                  }
+               )
+         }
+   },
 
 }					

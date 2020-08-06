@@ -13,10 +13,10 @@ class ReportItem extends React.Component {
     super(props);
 
      let date_less_7 = new Date();
-    date_less_7.setDate(date_less_7.getDate() - 6)
+    date_less_7.setDate(date_less_7.getDate() - 7)
     
     let date_today = new Date()
-    date_today.setDate(date_today.getDate() + 1)
+    //date_today.setDate(date_today.getDate())
     
 
     this.state = {
@@ -92,7 +92,7 @@ class ReportItem extends React.Component {
       
       axios.get(config.apiHistory+'data', configParam)
         .then(response => {
-            //console.log(response.data.data)
+            console.log(response.data.data)
             //console.log(this.groupBy(response.data.data, response.data.data.gender))
             if (this._isMounted) {
               var groupedData = this.groupBy2(response.data.data, 'stocks_id');

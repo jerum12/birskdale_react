@@ -118,7 +118,7 @@ const handleSubmit = () => {
         size_run_13_new : s13_state === "" ? 0 : s13_state,
         size_run_14_new : s14_state === "" ? 0 : s14_state, 
         transaction_date : new Date(),
-        transaction_by : decoded.details.full_name,
+        transaction_by : decoded.id,
         stocks_id : _id
     };
 

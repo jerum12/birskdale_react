@@ -10,6 +10,7 @@ const auth = require('../authorization/Authorization');
 router.get('/data',  auth.authClientToken, userController.getAll);
 router.post('/register',  validator.validateRegistrationBody, userController.createUser);
 router.post('/login', validator.validateLoginBody, userController.login);
+router.post('/validate', auth.authClientToken, userController.validate_update);
 router.post('/data', auth.authClientToken, userController.createUser);
 router.put('/data/:id', auth.authClientToken, userController.updateUser);
 

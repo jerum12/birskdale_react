@@ -120,7 +120,7 @@ class ReportStocks extends React.Component {
           <Card>
               <Card.Header>
                 <Card.Title as="h5">Stock Details Report</Card.Title>
-                <div  style={{ display: "flex",justifyContent: "flex-end" }}>
+                <div  style={{ marginTop: "15px"}}>
                   <ReactToPrint content={() => this.componentRef}>
                     <PrintContextConsumer>
                       {({ handlePrint }) => (

@@ -5,7 +5,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Paper from '@material-ui/core/Paper';  
 import axios from 'axios';  
 import jsPDF from 'jspdf';  
-import Button from '@material-ui/core/Button';  
 import autoTable  from 'jspdf-autotable'
 import {Card} from 'react-bootstrap';
 import TableReport from './TableReport'
@@ -97,7 +96,7 @@ class ReportStocksPDF extends Component {
                   <Card>
                     <Card.Header>
                       <Card.Title as="h5">Stock Details Report</Card.Title>
-                        <div  style={{ display: "flex",justifyContent: "flex-end" }}>
+                        <div  style={{ marginTop: "15px"}}>
                             <button onClick={() =>{
                                 var pdf = new jsPDF('l', 'pt', "a4");
                   

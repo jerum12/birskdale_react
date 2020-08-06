@@ -18,7 +18,7 @@ export const SizeRunModal = ({showModal, handleClose, props, data}) => {
             <Modal.Title>Size Run</Modal.Title>
             </Modal.Header>
             <Modal.Body>         
-                <SizeRunForm data={data} props={props}/>
+                <SizeRunForm data={data} props={props} handleClose={handleClose}/>
             </Modal.Body>
             {/* <Modal.Footer>
             <Button variant="danger" onClick={handleClose}>

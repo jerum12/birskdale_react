@@ -9,19 +9,20 @@ import Avatar1 from '../../../../../assets/images/user/avatar-1.jpg';
 // import Avatar3 from '../../../../../assets/images/user/avatar-3.jpg';
 import * as actionTypes from "../../../../../store/actions";
 import {connect} from 'react-redux';
-import { history } from '../../../../../util/History';
+
 import jwt_decode from 'jwt-decode'
+import VpnKeyIcon from '@material-ui/icons/VpnKey';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { ChangePasswordModal } from './ChangePasswordModal';
 
 
-// const redirect = () => {
-//     history.push('/birksdale/login')
-// }
 
 class NavRight extends Component {    
 
     state = {
         listOpen: false,
-        logValue : false
+        logValue : false,
+        showModal : false
     };
 
     logoutHandler =(e) => {
@@ -31,6 +32,14 @@ class NavRight extends Component {
         this.setState({
             logValue: true
          });
+    }
+
+    handleClose = () => {
+        this.setState({showModal : false})
+     }
+
+    openModal =(e) => {
+       this.setState({showModal : true})
     }
 
     render() {
@@ -126,12 +135,18 @@ class NavRight extends Component {
                                 </div>
                                 <ul className="pro-body">
                                     {/* <li><a href={DEMO.BLANK_LINK} className="dropdown-item"><i className="feather icon-lock"/> Lock Screen</a></li> */}
-                                    <li style={{color : '#252b2f', cursor : 'pointer'}}><a onClick={e=>this.logoutHandler(e)} className="dropdown-item"><i className="feather icon-log-out"/> Log Out</a></li>
+                                    <li style={{color : 'black', cursor : 'pointer'}}><a onClick={e=>this.openModal(e)} className="dropdown-item"><VpnKeyIcon/>&nbsp;Change Password</a></li>
+                                    <li style={{color : 'black', cursor : 'pointer'}}><a onClick={e=>this.logoutHandler(e)} className="dropdown-item"><ExitToAppIcon/>&nbsp;Log Out</a></li>
                                 </ul>
                             </Dropdown.Menu>
                         </Dropdown>
                     </li>
                 </ul>
+                    <ChangePasswordModal  
+                        showModal={this.state.showModal} 
+                        handleClose={this.handleClose}
+                        props={this.props}
+                    />
                 <ChatList listOpen={this.state.listOpen} closed={() => {this.setState({listOpen: false});}} />
             </Aux>
         );

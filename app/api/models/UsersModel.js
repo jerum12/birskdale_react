@@ -42,8 +42,7 @@ const UserSchema = new Schema({
 	password: {
 		type: String,
 		trim: true,
-    required: true,
-    minlength: 6
+    required: true
   },
   date_created : {
     type : Date,
@@ -59,4 +58,4 @@ UserSchema.pre('save', function(next){
   next();
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('UsersModel', UserSchema);

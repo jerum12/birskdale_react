@@ -7,9 +7,9 @@ const validateRegistrationBody =
         .exists()
         .withMessage('Full Name field is required')
         .notEmpty()
-        .withMessage("Full Name is mandatory")
-        .isLength({min:3})
-        .withMessage('Full Name must be greater than 3 letters'),
+        .withMessage("Full Name is mandatory"),
+        //.isLength({min:3})
+        //.withMessage('Full Name must be greater than 3 letters'),
 
         body('user_name').exists()
         .withMessage('Username field is required')
@@ -21,8 +21,8 @@ const validateRegistrationBody =
         .withMessage('Password field is required')
         .notEmpty()
         .withMessage("Password is mandatory")
-        .isLength({min : 6})
-        .withMessage('Password must be in between 8 to 12 characters long')
+        //.isLength({min : 6})
+        //.withMessage('Password must be in between 8 to 12 characters long')
         .not().isIn(['12345678', 'password', 'god'])
         .withMessage('Do not use a common word as the password')
   ]

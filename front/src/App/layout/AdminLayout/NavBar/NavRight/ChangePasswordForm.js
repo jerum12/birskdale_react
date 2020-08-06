@@ -5,11 +5,12 @@ import FormControl from "@material-ui/core/FormControl"
 import axios from 'axios';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import TextField from "@material-ui/core/TextField"
+import jwt_decode from 'jwt-decode'
 
-import config from '../../config';
+import config from '../../../../../config';
 
 // Destructure props
-const AddUserForm = (props) => {
+const ChangePasswordForm = (props) => {
 
 const [alertSuccess, setAlertSuccess] = useState(false)
 const [alertFailed, setAlertFailed] = useState(false)
@@ -19,9 +20,8 @@ const [isError, setIsError] = useState(false)
 
 
 const [fields, setFields] = useState({
-    full_name : "",
-    user_name : "",
-    password : "",
+    current_password : "",
+    new_password : "",
     conf_password : ""
   })
   
@@ -31,12 +31,12 @@ const [filedError, setFieldError] = useState({
   })
 
 
-const onSuccess = () => {
-    setAlertSuccess(false);
-    setAlertFailed(false);      
-   //props.history.push('/users/update')
-  window.location.reload(false);
-}
+// const onSuccess = () => {
+//     setAlertSuccess(false);
+//     setAlertFailed(false);      
+//    //props.history.push('/users/update')
+//   window.location.reload(false);
+// }
 
 const hideAlert = () => {
     
@@ -46,19 +46,20 @@ const hideAlert = () => {
 
 const handleSubmit = () => {
 
-    const parameterObject = {
-        full_name : fields.full_name,
-        user_name : fields.user_name,
-        password : fields.password,
-        transaction_date : new Date(),
-       
-    };
+    const token = sessionStorage.getItem("jwtTokenKey")
+    const decoded = jwt_decode(token)
 
-    console.log(parameterObject);
+    const parameterObject = {
+        user_id : decoded.id,
+        user_name : decoded.details.user_name,
+        current_password : fields.current_password,
+        new_password : fields.new_password,
+        transaction_date : new Date(),
+    };
 
     axios({
         method: 'POST',
-        url: config.apiUsers+'data/',
+        url: config.apiUsers+'validate/',
         headers: {
           'Content-Type': 'application/json',
           'authorization' : sessionStorage.getItem('jwtTokenKey')
@@ -90,38 +91,35 @@ const mandatory = value === null || value === ""
 
 
     switch (input) {
-        case "full_name":
-          formErrors.full_name = mandatory
-              ? "Mandatory"
-              : ""
-          break
-          case "user_name":
-              formErrors.user_name = mandatory
-                  ? "Mandatory"
-                  : ""
+          case "current_password":
+                if( mandatory){
+                    formErrors.current_password = "Mandatory"
+                }else{
+                    formErrors.current_password = ""
+                }
               break
-          case "password":
+          case "new_password":
             
               if( mandatory){
-                formErrors.password = "Mandatory"
+                formErrors.new_password = "Mandatory"
               }
               else if( fields.conf_password !== '' && value !== fields.conf_password ){
-                formErrors.password = "Password & Confirm Password did not match"
+                formErrors.new_password = "Password & Confirm Password did not match"
               }else if( fields.conf_password !== '' && value !== fields.conf_password ){
-                formErrors.password = "Password & Confirm Password did not match"
+                formErrors.new_password = "Password & Confirm Password did not match"
               }else{
-                formErrors.password = ""
+                formErrors.new_password = ""
               }
               break
           case "conf_password":
               if( mandatory){
                 formErrors.conf_password = "Mandatory"
               }
-              else if( fields.password !== '' && fields.password !== value ){
+              else if( fields.new_password !== '' && fields.new_password !== value ){
                 formErrors.conf_password = "Password & Confirm Password did not match"
-              }else if( fields.password !== '' && fields.password === value ){
+              }else if( fields.new_password !== '' && fields.new_password === value ){
                 formErrors.conf_password = ""
-                formErrors.password = ""
+                formErrors.new_password = ""
               }else{
                 formErrors.conf_password = ""
               }
@@ -153,67 +151,64 @@ const mandatory = value === null || value === ""
 
   
 const isEmpty =
-fields.full_name !== null && fields.full_name !== '' &&
-fields.user_name !== null && fields.user_name !== '' &&
-fields.password !== null && fields.password !== '' &&
-fields.conf_password !== null && fields.conf_password !== '' 
+fields.current_password !== null && fields.current_password !== '' &&
+fields.conf_password !== null && fields.conf_password !== '' &&
+fields.new_password !== null && fields.new_password !== '' 
 
   return (
     <Fragment>
       <Grid container spacing={1}>
-            <Grid item xs={12} sm={6}>
-                <FormControl fullWidth margin="normal">
-                    <TextField
-                    label="Full Name"
-                    name="full_name"
-                    defaultValue={fields.full_name}
-                    onChange={handleChange("full_name")}
-                    margin="normal"
-                    error={filedError.full_name !== ""}
-                    helperText={
-                        filedError.full_name !== "" ? `${filedError.full_name}` : ""
-                    }
-                    required
-                />
-                </FormControl>
-          </Grid>
+
          
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
                 <FormControl fullWidth margin="normal">
                     <TextField
-                    label="Username"
-                    name="user_name"
-                    defaultValue={fields.user_name}
-                    onChange={handleChange("user_name")}
+                    label="Current Password"
+                    name="current_password"
+                    defaultValue={fields.current_password}
+                    onChange={handleChange("current_password")}
                     margin="normal"
-                    error={filedError.user_name !== ""}
-                    helperText={
-                        filedError.user_name !== "" ? `${filedError.user_name}` : ""
-                    }
-                    required
-                />
-                </FormControl>
-          </Grid>
-
-          <Grid item xs={12} sm={6}>
-                <FormControl fullWidth margin="normal">
-                    <TextField
-                    label="Password"
-                    name="password"
                     type="password"
-                    defaultValue={fields.password}
-                    onChange={handleChange("password")}
-                    margin="normal"
-                    error={filedError.password !== ""}
+                    error={filedError.current_password !== ""}
                     helperText={
-                        filedError.password !== "" ? `${filedError.password}` : ""
+                        filedError.current_password !== "" ? `${filedError.current_password}` : ""
                     }
+                    inputProps={{
+                        autocomplete: 'new-password',
+                        form: {
+                          autocomplete: 'off',
+                        },
+                      }}
                     required
                 />
                 </FormControl>
           </Grid>
 
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
+                <FormControl fullWidth margin="normal">
+                    <TextField
+                    label="New Password"
+                    name="new_password"
+                    type="password"
+                    defaultValue={fields.new_password}
+                    onChange={handleChange("new_password")}
+                    margin="normal"
+                    error={filedError.new_password !== ""}
+                    helperText={
+                        filedError.new_password !== "" ? `${filedError.new_password}` : ""
+                    }
+                    inputProps={{
+                        autocomplete: 'new-password',
+                        form: {
+                          autocomplete: 'off',
+                        },
+                      }}
+                    required
+                />
+                </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={12}>
                 <FormControl fullWidth margin="normal">
                     <TextField
                     label="Confirm Password"
@@ -226,6 +221,12 @@ fields.conf_password !== null && fields.conf_password !== ''
                     helperText={
                         filedError.conf_password !== "" ? `${filedError.conf_password}` : ""
                     }
+                    inputProps={{
+                        autocomplete: 'new-password',
+                        form: {
+                          autocomplete: 'off',
+                        },
+                      }}
                     required
                 />
                 </FormControl>
@@ -305,4 +306,4 @@ fields.conf_password !== null && fields.conf_password !== ''
   )
 }
 
-export default AddUserForm
+export default ChangePasswordForm

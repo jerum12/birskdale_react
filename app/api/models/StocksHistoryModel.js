@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 const stocksHistorySchema = new Schema({
     
     transaction_date : {type: Date, default: Date.now},
-    transaction_by : {type: String, default:'',required: true},
+    transaction_by :  { type: Schema.Types.ObjectId, required: true, ref: 'UsersModel' },
     stocks_id :  { type: Schema.Types.ObjectId, required: true, ref: 'StocksModel' },
     size_run_3 : { type: Number, default: 0 },
     size_run_4 : { type: Number, default: 0 },

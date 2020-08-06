@@ -24,17 +24,16 @@ module.exports = {
             let date_from = query.date_from !== undefined ? query.date_from : date_less_7;
             let date_to = query.date_from !== undefined ? query.date_to : date_today;
 
-
-
             console.log(query.date_from)
             console.log(query.date_to)
 
             var _details = await model.StocksHistoryModel.find({
                                         'transaction_date' : {
                                             "$gte": new Date(new Date(date_from).setHours(00, 00, 00)),
-                                            "$lt": new Date(new Date(date_to).setHours(23, 59, 59))
+                                            "$lte": new Date(new Date(date_to).setHours(23, 59, 59))
                                         }
                                       })
+                                      .populate('transaction_by','full_name')
                                       .populate({
                                           path : 'stocks_id',
                                           populate : {
@@ -138,6 +137,7 @@ module.exports = {
              var _details = await model.StocksHistoryModel.find()
                                       .where('stocks_id')
                                       .equals(id)
+                                      .populate('transaction_by','full_name')
                                       .populate({
                                           path : 'stocks_id',
                                           populate : {

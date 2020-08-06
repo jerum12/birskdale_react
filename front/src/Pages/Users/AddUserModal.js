@@ -16,7 +16,7 @@ export const AddUserModal = ({showModal, handleClose, props}) => {
             <Modal.Title>Add User Form</Modal.Title>
             </Modal.Header>
             <Modal.Body>         
-                <AddUserForm props={props}/>
+                <AddUserForm props={props} handleClose={handleClose}/>
             </Modal.Body>
             {/* <Modal.Footer>
             <Button variant="danger" onClick={handleClose}>
