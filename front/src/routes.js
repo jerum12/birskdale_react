@@ -52,7 +52,7 @@ const OtherSamplePage = React.lazy(() => import('./Demo/Other/SamplePage'));
 const OtherDocs = React.lazy(() => import('./Demo/Other/Docs'));
 
 const routes = [
-    { path: '/dashboard/default', exact: true, name: 'Default', component: DashboardDefault },
+    //{ path: '/dashboard/default', exact: true, name: 'Default', component: DashboardDefault },
     { path: '/stocks/inquire', exact: true, name: 'Inquire Stocks', component: UIInquireStocks },
     { path: '/stocks/add', exact: true, name: 'Basic Badges', component: UIAddStocks },
     { path: '/stocks/modify', exact: true, name: 'Modify Stocks', component: UIModifyStocks },

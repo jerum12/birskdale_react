@@ -202,7 +202,7 @@ function StocksHistory(props) {
                              
                         </Card.Header>
                         <Card.Body>   
-                                <Grid container spacing={2}>
+                            <Grid container spacing={2}>
                                 <Grid item xs={12} md={3}>
                                 {/* <Typography variant="h6" className={classes.title}>
                                     &nbsp;
@@ -317,6 +317,115 @@ function StocksHistory(props) {
                                 </div>
                                 </Grid>
                         
+                                <Grid item xs={12} md={3}>
+
+                                <div className={classes.demo}>
+                                    <List>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 3 Value"
+                                            secondary={details.size_run_3}
+                                        />
+                                        </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 4 Value"
+                                            secondary={details.size_run_4}
+                                        />
+                                        </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 5 Value"
+                                            secondary={details.size_run_5}
+                                        />
+                                        </ListItem>
+                                    </List>
+                                </div>
+                                </Grid>
+
+                                <Grid item xs={12} md={3}>
+                                <div className={classes.demo}>
+                                    <List>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 6 Value"
+                                            secondary={details.size_run_6}
+                                        />
+                                        </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 7 Value"
+                                            secondary={details.size_run_7}
+                                        />
+                                        </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 8 Value"
+                                            secondary={details.size_run_8}
+                                        />
+                                        </ListItem>
+                                
+                                    </List>
+                                </div>
+                                </Grid>
+
+                                <Grid item xs={12} md={3}>
+                                <div className={classes.demo}>
+                                    <List>
+                                    <ListItem>
+                                        <ListItemText className={classes.primary}
+                                        primary="Size Run 9 Value"
+                                        secondary={details.size_run_9}
+                                        />
+                                    </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 10 Value"
+                                            secondary={details.size_run_10}
+                                        />
+                                        </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 11 Value"
+                                            secondary={details.size_run_11}
+                                        />
+                                        </ListItem>
+                                
+                                    </List>
+                                </div>
+                                </Grid>
+
+                                <Grid item xs={12} md={3}>
+                                {/* <Typography variant="h6" className={classes.title}>
+                                        &nbsp;
+                                </Typography>
+                                <Divider/> */}
+                                <div className={classes.demo}>
+                                    <List>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 12 Value"
+                                            secondary={details.size_run_12}
+                                        />
+                                        </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 13 Value"
+                                            secondary={details.size_run_13}
+                                        />
+                                        </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Size Run 14 Value"
+                                            secondary={details.size_run_14}
+                                        />
+                                        </ListItem>
+                        
+                                
+                                    </List>
+                                </div>
+                                </Grid>
+
                             </Grid>
                         
                     

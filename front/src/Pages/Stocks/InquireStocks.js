@@ -5,7 +5,6 @@ import axios from 'axios';
 import Aux from "../../hoc/_Aux";
 import {Popup } from 'semantic-ui-react'
 import {Card} from 'react-bootstrap';
-import {handleResponse} from './GenericMethod'
 import Moment from 'moment'
 import config from "../../config";
 
@@ -132,13 +131,13 @@ function InquireStocks(props) {
               }
             })
           .then(response => {
-             handleResponse(response,props)
+             //handleResponse(response,props)
 
              if(response.data.code === '00'){
               setData( response.data.data)
               setLoading(true)
              }else{
-               alert('2')
+               //alert('2')
               setLoading(false)
              }
             

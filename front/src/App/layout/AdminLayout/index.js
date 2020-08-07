@@ -16,6 +16,7 @@ import * as actionTypes from "../../../store/actions";
 import disableBrowserBackButton from 'disable-browser-back-navigation';
 import {JWTExpiredModal} from '../../../Pages/JWTExpiredModal'
 import SweetAlert from 'react-bootstrap-sweetalert';
+import jwt_decode from 'jwt-decode'
 
 import './app.scss';
 
@@ -29,7 +30,8 @@ class AdminLayout extends Component {
             showModal: false,
             userLoggedIn: false,
             isTimedOut: false,
-            showModalJWT: false
+            showModalJWT: false,
+            expired : false
         }
 
         this.idleTimer = null
@@ -39,18 +41,35 @@ class AdminLayout extends Component {
 
         this.handleClose = this.handleClose.bind(this)
         this.handleLogout = this.handleLogout.bind(this)
+        //this.handleCloseExpired = this.handleCloseExpired.bind(this)
     }
 
     
     handleClose() {
         this.setState({showModal: false})
-      }
+    }
+
+    // handleCloseExpired() {
+    //     this.setState({expired: false})
+    //     this.onLogOut();
+    // }
   
-      handleLogout() {
+    handleLogout() {
+        this.setState({expired: false})
         this.setState({showModal: false})
         this.setState({showModalJWT: false})
         this.onLogOut();
-      }
+    }
+
+    _setExpiredState () {
+        const token = sessionStorage.getItem('jwtTokenKey');
+        const decoded = jwt_decode(token)
+        const dateNow = parseInt(Date.now()/1000);
+
+        if(decoded.exp < dateNow)
+            this.setState({showModalJWT : true})
+             //this.setState({expired : true})
+    }
 
       onLogOut(){
         console.log('logout')
@@ -88,6 +107,31 @@ class AdminLayout extends Component {
             this.props.onFullScreenExit();
         }
     };
+      
+    //   componentDidUpdate() {
+    //     if(sessionStorage.getItem("expired")){
+    //         this._setExpiredState();
+    //         // return <SweetAlert
+    //         //      warning
+    //         //      confirmBtnText="Logout"
+    //         //      confirmBtnBsStyle="primary"
+    //         //      title="Your session has expired! Please login again."
+    //         //      onConfirm ={this.handleLogout}
+    //         //      onCancel ={this.handleClose}
+                 
+    //         //      />
+    //     }
+    //   }
+
+      componentDidMount() {
+        this.intervalID = setInterval(
+          () => this._setExpiredState(),
+          500
+        );
+      }
+      componentWillUnmount() {
+        clearInterval(this.intervalID);
+      }
 
     componentWillMount() {
         disableBrowserBackButton();
@@ -104,16 +148,7 @@ class AdminLayout extends Component {
 
     render() {
         //console.log('admin layout ')
-        if(sessionStorage.getItem("expired")){
-            return <SweetAlert
-                 warning
-                 confirmBtnText="Logout"
-                 confirmBtnBsStyle="primary"
-                 title="Your session has expired! Please login again."
-                 onConfirm ={this.handleLogout}
-                 focusCancelBtn
-                 />
-        }
+       
         /* full screen exit call */
         document.addEventListener('fullscreenchange', this.fullScreenExitHandler);
         document.addEventListener('webkitfullscreenchange', this.fullScreenExitHandler);
@@ -180,6 +215,21 @@ class AdminLayout extends Component {
                     showModal={this.state.showModalJWT} 
                     handleLogout={this.handleLogout}
                 />
+
+                {/* { this.state.expired ?
+                    <SweetAlert
+                    warning
+                    confirmBtnText="Logout"
+                    confirmBtnBsStyle="primary"
+                    title={<span><div>Your session has expired! </div>Please login again.</span>}
+      
+                    onConfirm ={this.handleLogout}
+                    onCancel ={this.handleLogout}
+                    
+                    />
+                    :
+                    ''
+                } */}
 
             </Aux>
         );

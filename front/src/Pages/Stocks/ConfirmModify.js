@@ -8,11 +8,17 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import SweetAlert from 'react-bootstrap-sweetalert';
 import ArrowBackOutlinedIcon from '@material-ui/icons/ArrowBackOutlined';
-import {  Redirect } from 'react-router-dom';
-import {history} from '../../util/History'
-
+import { connect } from "react-redux";
+import * as actionTypes from "../../store/actions";
 import axios from 'axios';
 import config from "../../config"
+
+const mapDispatchToProps = dispatch => {
+  return {
+      successUpdate: () => dispatch({type: actionTypes.HAS_STOCKS_UPDATE, value : true}),
+  }
+};
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -55,7 +61,8 @@ const ConfirmModify = ({
     sub_logo,
     lining,
     stitch,
-    special_instruction }
+    special_instruction },
+    successUpdate
 }) => {
 
 const classes = useStyles();
@@ -96,6 +103,7 @@ const handleSubmit = () => {
           console.log(response.data)
 
             if(response.data.code === '00'){
+                successUpdate()
                 setAlertSuccess(true)   
             }else{
                 setMessage(response.data.message)
@@ -340,4 +348,8 @@ const hideAlert = () => {
   )
 }
 
-export default ConfirmModify
+const Confirm = connect(
+  null,
+  mapDispatchToProps
+)(ConfirmModify);
+export default Confirm

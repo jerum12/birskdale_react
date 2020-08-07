@@ -5,13 +5,13 @@ export default {
             title: 'Stocks',
             type: 'group',
             children: [
-                {
-                    id: 'dashboard',
-                    title: 'Dashboard',
-                    type: 'item',
-                    url: '/dashboard/default',
-                    icon: 'feather icon-home',
-                },
+                // {
+                //     id: 'dashboard',
+                //     title: 'Dashboard',
+                //     type: 'item',
+                //     url: '/dashboard/default',
+                //     icon: 'feather icon-home',
+                // },
                  {
                     id: 'stocksmaintenance',
                     title: 'Stocks Maintenance',

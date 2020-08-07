@@ -173,6 +173,7 @@ fields.conf_password !== null && fields.conf_password !== ''
                     helperText={
                         filedError.full_name !== "" ? `${filedError.full_name}` : ""
                     }
+                    
                     required
                 />
                 </FormControl>
@@ -208,6 +209,12 @@ fields.conf_password !== null && fields.conf_password !== ''
                     helperText={
                         filedError.password !== "" ? `${filedError.password}` : ""
                     }
+                    inputProps={{
+                      autocomplete: 'new-password',
+                      form: {
+                        autocomplete: 'off',
+                      },
+                    }}
                     required
                 />
                 </FormControl>
@@ -226,6 +233,12 @@ fields.conf_password !== null && fields.conf_password !== ''
                     helperText={
                         filedError.conf_password !== "" ? `${filedError.conf_password}` : ""
                     }
+                    inputProps={{
+                      autocomplete: 'new-password',
+                      form: {
+                        autocomplete: 'off',
+                      },
+                    }}
                     required
                 />
                 </FormControl>

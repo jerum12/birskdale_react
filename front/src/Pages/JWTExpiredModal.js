@@ -12,8 +12,9 @@ export const JWTExpiredModal = ({showModal, handleLogout}) => {
                  warning
                  confirmBtnText="Logout"
                  confirmBtnBsStyle="primary"
-                 title="Your session has expired! Please login again."
-                 onConfirm ={handleLogout}
+                 title={<span><div>Your session has expired! </div>Please login again.</span>}
+                 onConfirm = {handleLogout}
+                 onCancel = {handleLogout}
                  focusCancelBtn
                  />
                  

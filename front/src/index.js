@@ -17,7 +17,7 @@ const store = createStore(reducer);
 //     //this is just a function that saves state to localStorage
 //     sessionStorage.setItem('TOKEN', store.getState().token);
 // }); 
-
+console.log(store.getState())
 const app = (
 
     

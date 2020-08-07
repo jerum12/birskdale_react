@@ -6,7 +6,8 @@ const initialState = {
     isTrigger: [], //for active default menu, set blank for horizontal
     ...config,
     isFullScreen: false, // static can't change
-    isAuthenticated : sessionStorage.getItem('login')
+    isAuthenticated : sessionStorage.getItem('login'),
+    hasStocksUpdate : false
 };
 
 const reducer = (state = initialState, action) => {
@@ -84,29 +85,34 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 layout: action.layout
             };
-            case actionTypes.LOGIN_REQUEST:
-                return Object.assign({}, state, {
-                    isFetching: true,
-                    isAuthenticated: false,
-                    user: action.creds
-                })
-            case actionTypes.LOGIN_SUCCESS:
-                return Object.assign({}, state, {
-                    isFetching: false,
-                    isAuthenticated: true,
-                    errorMessage: ''
-                })
-            case actionTypes.LOGIN_FAILURE:
-                return Object.assign({}, state, {
-                    isFetching: false,
-                    isAuthenticated: false,
-                    errorMessage: action.message
-                })
-            case actionTypes.LOGOUT_SUCCESS:
-                return Object.assign({}, state, {
-                    isFetching: true,
-                    isAuthenticated: false
-                })
+        case actionTypes.LOGIN_REQUEST:
+            return Object.assign({}, state, {
+                isFetching: true,
+                isAuthenticated: false,
+                user: action.creds
+            })
+        case actionTypes.LOGIN_SUCCESS:
+            return Object.assign({}, state, {
+                isFetching: false,
+                isAuthenticated: true,
+                errorMessage: ''
+            })
+        case actionTypes.LOGIN_FAILURE:
+            return Object.assign({}, state, {
+                isFetching: false,
+                isAuthenticated: false,
+                errorMessage: action.message
+            })
+        case actionTypes.LOGOUT_SUCCESS:
+            return Object.assign({}, state, {
+                isFetching: true,
+                isAuthenticated: false
+            })
+        case actionTypes.HAS_STOCKS_UPDATE:
+            return {
+                ...state,
+                hasStocksUpdate: action.value
+            };
         default:
             return state;
     }
