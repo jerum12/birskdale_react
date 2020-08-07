@@ -2,6 +2,7 @@
   "name": "reactexpress",
   "version": "1.0.0",
   "description": "Starter kit for creating React and Express apps",
+  "homepage": "http://localhost/birksdale/login/",
   "main": "server.js",
   "scripts": {
     "client-install": "cd client && npm install",
