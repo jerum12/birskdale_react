@@ -59,78 +59,156 @@ function StocksHistory(props) {
         },
       },
       { title: '3', field: 'size_run_3', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_3) === -1)
+                return  <span style={{color : 'red'}}>{rowData.size_run_3}</span>;
+            else
+                return  <span style={{color : 'blue'}}>{rowData.size_run_3}</span>;
+        },
         cellStyle: {
             width: 5,
             minWidth : 5
         },
       },
       { title: '4', field: 'size_run_4', type: 'numeric',   
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_4) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_4}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_4}</span>;
+            },
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
-      { title: '5', field: 'size_run_5', type: 'numeric',   
+      { title: '5', field: 'size_run_5', type: 'numeric',
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_5) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_5}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_5}</span>;
+            },   
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
-      { title: '6', field: 'size_run_6', type: 'numeric',   
+      { title: '6', field: 'size_run_6', type: 'numeric',  
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_6) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_6}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_6}</span>;
+            }, 
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
       { title: '7', field: 'size_run_7', type: 'numeric',   
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_7) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_7}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_7}</span>;
+            },
         cellStyle: {
             width: 10,
             minWidth : 10
         },  
       },
       { title: '8', field: 'size_run_8', type: 'numeric',   
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_8) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_8}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_8}</span>;
+            },
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
       { title: '9', field: 'size_run_9', type: 'numeric',   
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_9) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_9}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_9}</span>;
+            },
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
-      { title: '10', field: 'size_run_10', type: 'numeric',   
+      { title: '10', field: 'size_run_10', type: 'numeric',  
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_10) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_10}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_10}</span>;
+            }, 
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
       { title: '11', field: 'size_run_11', type: 'numeric',  
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_11) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_11}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_11}</span>;
+            },
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
-      { title: '12', field: 'size_run_12', type: 'numeric',   
+      { title: '12', field: 'size_run_12', type: 'numeric',  
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_12) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_12}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_12}</span>;
+            }, 
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
       { title: '13', field: 'size_run_13', type: 'numeric',   
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_13) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_13}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_13}</span>;
+            },
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
-      { title: '14', field: 'size_run_14', type: 'numeric',   
+      { title: '14', field: 'size_run_14', type: 'numeric',  
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_14) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_14}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_14}</span>;
+            }, 
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
       { title: 'Total', field: 'total', type: 'numeric',   
+            render: (rowData) => {
+                if(Math.sign(rowData.total) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.total}</span>;
+                else
+                    return  <span style={{color : 'blue'}}>{rowData.total}</span>;
+            },
         cellStyle: {
             width: 10,
             minWidth : 10
@@ -143,7 +221,7 @@ function StocksHistory(props) {
 
     useEffect(() => {
 
-        console.log(props.location)
+        //console.log(props.location)
 
         if(props.location.state !== undefined){
             det = props.location.state.details;
@@ -167,13 +245,13 @@ function StocksHistory(props) {
                 })
               .then(response => {
                   //let json = response.data.data;
-                  console.log(response.data.data)
+                  //console.log(response.data.data)
                   setdetails(det)
                   setData(response.data.data)
                   setloading(true)
               })
               .catch(err => {
-                  console.log(err);
+                  //console.log(err);
                   return null;
               });
         }

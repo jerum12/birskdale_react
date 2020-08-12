@@ -54,21 +54,21 @@ class ReportStocksPDF extends Component {
    getData = () => {
       axios({
         method: 'GET',
-        url: config.apiStocks+'data',
+        url: config.apiStocks+'/data/report',
         headers: {
           'Content-Type': 'application/json',
           'authorization' : sessionStorage.getItem('jwtTokenKey')
         }
       })
         .then(response => {
-            //console.log(response.data.data)
-            //console.log(this.groupBy(response.data.data, response.data.data.gender))
+            ////console.log(response.data.data)
+            ////console.log(this.groupBy(response.data.data, response.data.data.gender))
             var groupedData = this.groupBy2(response.data.data, 'gender');
             this.setState({ data: groupedData, originalData: response.data.data, loading : false })
             
         })
         .catch(err => {
-            console.log(err);
+            //console.log(err);
             this.setState({ loading : false })
             return null;
         });

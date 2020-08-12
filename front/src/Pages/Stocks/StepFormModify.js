@@ -22,7 +22,7 @@ const StepFormModify = ({
     details
 }) => {
 
-  //console.log(details + '--------------------------details')
+  ////console.log(details + '--------------------------details')
 
   const [steps, setSteps] = useState(0)
 
@@ -58,7 +58,7 @@ const StepFormModify = ({
     ...initalFields
   })
 
-  //console.log(filedError)
+  ////console.log(filedError)
 
   const [isError, setIsError] = useState(false)
 
@@ -81,7 +81,7 @@ const StepFormModify = ({
                         fields.stitch.description === details.stitch.description &&
                         fields.lining.description === details.lining.description &&
                         fields.special_instruction === details.special_instruction
-      console.log(noChange + '------------------')
+      //console.log(noChange + '------------------')
       if(noChange){
         setIsError(true)
         event.preventDefault();
@@ -94,7 +94,7 @@ const StepFormModify = ({
   // Handle fields change
   const handleChange = (input) => (event,value) => {
 
-    //console.log(value + 'value');
+    ////console.log(value + 'value');
     // Set values to the fields
 
     if(input === "special_instruction"){
@@ -114,16 +114,16 @@ const StepFormModify = ({
       })
     }
 
-    //console.log(fields + "-------------------------------fields")
+    ////console.log(fields + "-------------------------------fields")
     //for size run
-    //console.log(event)
+    ////console.log(event)
 
     // Handle errors
     const formErrors = { ...filedError }
     const mandatory = value === null
     //const mandatory2 = event.target.value.length === 0
     
-    //console.log(formErrors)
+    ////console.log(formErrors)
     switch (input) {
       case "stock_no":
         formErrors.stock_no = mandatory
@@ -184,7 +184,7 @@ const StepFormModify = ({
       default:
         break
     }
-    //console.log(Object.values(formErrors))
+    ////console.log(Object.values(formErrors))
 
     // set error hook
     for(var i=0 ; i < Object.values(formErrors).length; i++){

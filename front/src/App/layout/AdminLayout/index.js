@@ -15,7 +15,7 @@ import Aux from "../../../hoc/_Aux";
 import * as actionTypes from "../../../store/actions";
 import disableBrowserBackButton from 'disable-browser-back-navigation';
 import {JWTExpiredModal} from '../../../Pages/JWTExpiredModal'
-import SweetAlert from 'react-bootstrap-sweetalert';
+//import SweetAlert from 'react-bootstrap-sweetalert';
 import jwt_decode from 'jwt-decode'
 
 import './app.scss';
@@ -72,26 +72,26 @@ class AdminLayout extends Component {
     }
 
       onLogOut(){
-        console.log('logout')
+        //console.log('logout')
         sessionStorage.clear();
         this.props.loggedOut();
         this.props.history.push('/login')  
       }
 
     _onAction(e) {
-       // console.log('user did something', e)
+       // //console.log('user did something', e)
         this.setState({isTimedOut: false})
       }
      
       _onActive(e) {
-       // console.log('user is active', e)
+       // //console.log('user is active', e)
         this.setState({isTimedOut: false})
       }
      
       _onIdle(e) {
-        //console.log('user is idle', e)
+        ////console.log('user is idle', e)
         const isTimedOut = this.state.isTimedOut
-         //console.log(isTimedOut + '-timeout') 
+         ////console.log(isTimedOut + '-timeout') 
         if (isTimedOut) {
             this.onLogOut();
         } else {
@@ -147,7 +147,7 @@ class AdminLayout extends Component {
     }
 
     render() {
-        //console.log('admin layout ')
+        ////console.log('admin layout ')
        
         /* full screen exit call */
         document.addEventListener('fullscreenchange', this.fullScreenExitHandler);

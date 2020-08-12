@@ -58,7 +58,7 @@ function InquireParameter(props) {
              handleResponse(response,props)
 
              if(response.data.code === '00'){
-              console.log( response.data.data)
+              //console.log( response.data.data)
               setData( response.data.data)
               setLoading(true)
              }else{
@@ -68,7 +68,7 @@ function InquireParameter(props) {
             
           })
           .catch(err => {
-              console.log(err);
+              //console.log(err);
               setLoading(false)
           });
       }, [])

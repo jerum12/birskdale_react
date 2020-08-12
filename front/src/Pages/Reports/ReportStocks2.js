@@ -4,16 +4,16 @@ import React, {Component, Fragment} from 'react';
 import axios from 'axios';
 import config from '../../config';
 
-import ReportItemDataPDF from './ReportItemDataPDF'
+import ReportStocks2Data from './ReportStocks2Data'
 
-class ReportItemPDF extends React.Component {
+class ReportStocks2 extends React.Component {
   _isMounted = false;
 
   constructor(props) {
     super(props);
 
      let date_less_7 = new Date();
-    date_less_7.setDate(date_less_7.getDate() - 7)
+    date_less_7.setDate(date_less_7.getDate() - 30)
     
     let date_today = new Date()
     //date_today.setDate(date_today.getDate())
@@ -35,18 +35,6 @@ class ReportItemPDF extends React.Component {
     //get stocks onload
    componentDidMount() {
     this._isMounted = true;
-
-    
-    // let date_from = new Date();
-    // date_from.setDate(date_from.getDate() - 6)
-    
-    // let date_to = new Date()
-    // date_to.setDate(date_to.getDate() + 1)
-
-   
-
-    // this.setState({date_from_state : date_less_7.toISOString().substring(0,10), 
-    //               date_to_state : date_today.toISOString().substring(0,10)})
   
       this.getData(this.state.date_from_state,this.state.date_to_state);
    }
@@ -70,7 +58,7 @@ class ReportItemPDF extends React.Component {
    groupBy2 = (array, key) => {
     return array.reduce((result, currentValue) => {
         
-      (result[currentValue.stocks_id._id] = result[currentValue.stocks_id._id] || []).push(
+      (result[currentValue.gender._id] = result[currentValue.gender._id] || []).push(
         currentValue
       );
       return result;
@@ -82,20 +70,19 @@ class ReportItemPDF extends React.Component {
         //this.setState({loading :true })
         let configParam = {
         headers: {
-            'Content-Type': 'application/json',
-            'authorization' : sessionStorage.getItem('jwtTokenKey')
+            'Content-Type': 'application/json'
           },
         params: {
             date_from : date_from, date_to : date_to
         },
       }
       
-      axios.get(config.apiHistory+'data/report', configParam)
+      axios.get(config.apiStocks+'/data/report', configParam)
         .then(response => {
-            ////console.log(response.data.data)
+            //console.log(response.data.data)
             ////console.log(this.groupBy(response.data.data, response.data.data.gender))
             if (this._isMounted) {
-              var groupedData = this.groupBy2(response.data.data, 'stocks_id');
+              var groupedData = this.groupBy2(response.data.data, 'gender');
               this.setState({ data: groupedData, originalData: response.data.data, loading : false })
             }       
         })
@@ -106,25 +93,25 @@ class ReportItemPDF extends React.Component {
         });
  };
 
- handleChange = (input) => (value) => {
+    handleChange = (input) => (value) => {
       
-  if(input === 'date_from_state')
-    this.setState({ date_from_state : value })
-  else
-    this.setState({ date_to_state : value})
-}
+      if(input === 'date_from_state')
+        this.setState({ date_from_state : value })
+      else
+        this.setState({ date_to_state : value})
+    }
 
-handleSubmit = (event) => {
-    ////console.log(event.target.date_from_state.value)
-    this.getData( event.target.date_from_state.value, event.target.date_to_state.value);
-    event.preventDefault();
-  }
+    handleSubmit = (event) => {
+        ////console.log(event.target.date_from_state.value)
+        this.getData( event.target.date_from_state.value, event.target.date_to_state.value);
+        event.preventDefault();
+      }
 
     render() {
       ////console.log(data)
 
       return(
-            <ReportItemDataPDF 
+            <ReportStocks2Data 
             loading={this.state.loading}
             data={this.state.data}
             handleSubmit={this.handleSubmit}
@@ -139,4 +126,4 @@ handleSubmit = (event) => {
     }
   }
 
-export default ReportItemPDF
+export default ReportStocks2

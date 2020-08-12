@@ -71,7 +71,7 @@ app.use(function(req, res, next) {
 
 // handle errors
 app.use(function(err, req, res, next) {
-	console.log(err.status);
+	//console.log(err.status);
 	
   if(err.status === 404){
       return res.json({

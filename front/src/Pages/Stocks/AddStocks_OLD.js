@@ -42,12 +42,12 @@ function AddStocks(props){
             })
             .then(response => {
                 
-                console.log('data----------')
-                console.log(response.data)
+                //console.log('data----------')
+                //console.log(response.data)
 
                 if(response.data.code === '99'){
                     //setshowTimeout(true)
-                    console.log('error')
+                    //console.log('error')
                 }else{
                     inputOptions(response)
                 }
@@ -55,13 +55,13 @@ function AddStocks(props){
              
             })
             .catch(err => {
-                console.log(err);
+                //console.log(err);
             });
 
     },[]);
 
     const errorClass = (error) => {
-        //console.log(error)
+        ////console.log(error)
         return(!error ? '' : 'has-error');
       }
 
@@ -156,17 +156,17 @@ function AddStocks(props){
             })
             .then(function (response) {
                 //handle success
-                console.log(response.status)
-                console.log(response.data.code)
+                //console.log(response.status)
+                //console.log(response.data.code)
 
                 if(response.status === 201 || response.status === 200){
                     if(response.data.code === '00'){
-                        console.log(response.data.message)
+                        //console.log(response.data.message)
                         let a = message
                         a = response.data.message
                         setMessage(a)
                         setSuccess(true)
-                        console.log(message +'successssss')
+                        //console.log(message +'successssss')
                       //  sessionStorage.setItem('jwtTokenKey',  'Bearer ' + response.data.data.token)
                       //  sessionStorage.setItem('login',  true)
                         //genContext.dispatchName({type: 'LOGIN_SUCCESS', payload: response.data.data.token, login : true})
@@ -189,14 +189,14 @@ function AddStocks(props){
             })
             .catch(function (error) {
                 setSuccess(false)
-                console.log( Object.assign({}, error).response)
-                //console.log('error', Object.assign({}, error).response.data.message);
+                //console.log( Object.assign({}, error).response)
+                ////console.log('error', Object.assign({}, error).response.data.message);
                 //props.failedLogin( Object.assign({}, error).response);
             });
     };
 
     const handleChange = () => {
-        console.log(`Option selected:`);
+        //console.log(`Option selected:`);
       };
 
         return (

@@ -17,6 +17,12 @@ import TextField from "@material-ui/core/TextField";
 import TableReportHistory from './TableReportHistory'
 
 
+import {
+  MuiPickersUtilsProvider,
+  DatePicker,
+} from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+
 
 class ReportItemData extends React.Component {
 
@@ -53,10 +59,10 @@ class ReportItemData extends React.Component {
                     <Card.Title as="h5">Stocks History Report</Card.Title>
                     <form onSubmit={handleSubmit}  style={{display : 'inline'}}>
                         <Grid container spacing={1}>
-                            <Grid item xs={12} sm={3}>
+                            <Grid item xs={12} sm={2}>
                                 <FormControl fullWidth required margin="normal">
-                                <FormLabel component="legend" className='date_from'>Date From</FormLabel>
-                                <TextField
+                                {/* <FormLabel component="legend" className='date_from'>Date From</FormLabel> */}
+                                {/* <TextField
                                     id="date"
                                     name="date_from_state"
                                     type="date"
@@ -68,14 +74,26 @@ class ReportItemData extends React.Component {
                                     onChange={handleChange('date_from_state')}
                                     error={date_from_state === ""}
                                     helperText={date_from_state === "" ? 'Invalid Date!' : ' '}
-                                />
-                                    
+                                /> */}
+                                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                        <DatePicker
+                                          autoOk
+                                          disableToolbar
+                                          label="Date From"
+                                          variant="inline"
+                                          value={date_from_state}
+                                          onChange={handleChange('date_from_state')}
+                                          format="MM/dd/yyyy"
+                                          disableFuture={true}
+                                          name="date_from_state"
+                                        />
+                                      </MuiPickersUtilsProvider>
                                 </FormControl>
                             </Grid>
 
-                            <Grid item xs={12} sm={3}>
+                            <Grid item xs={12} sm={2}>
                                 <FormControl fullWidth required margin="normal">
-                                <FormLabel component="legend" className='date_from'>Date To</FormLabel>
+                                {/* <FormLabel component="legend" className='date_from'>Date To</FormLabel>
                                 <TextField
                                     id="date"
                                     name="date_to_state"
@@ -88,7 +106,20 @@ class ReportItemData extends React.Component {
                                     onChange={handleChange('date_to_state')}
                                     error={date_to_state === ""}
                                     helperText={date_to_state === "" ? 'Invalid Date!' : ' '}
-                                />
+                                /> */}
+                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                        <DatePicker
+                                          autoOk
+                                          disableToolbar
+                                          label="Date To"
+                                          variant="inline"
+                                          value={date_to_state}
+                                          onChange={handleChange('date_to_state')}
+                                          format="MM/dd/yyyy"
+                                          disableFuture={true}
+                                          name="date_to_state"
+                                        />
+                                      </MuiPickersUtilsProvider>
                                     
                                 </FormControl>
                             </Grid>

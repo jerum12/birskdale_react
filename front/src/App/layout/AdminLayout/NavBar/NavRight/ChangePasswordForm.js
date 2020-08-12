@@ -77,7 +77,7 @@ const handleSubmit = () => {
                 setAlertFailed(true);
             }
         }).catch((error) => {
-          console.log(error)
+          //console.log(error)
             setAlertFailed(true);
                 setMessage(error.message)
         })

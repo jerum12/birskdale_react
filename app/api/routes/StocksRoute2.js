@@ -5,7 +5,7 @@ const StocksModel = require('../models/StocksModel')
 
 
 // router.use(function (req, res, next) {
-//   console.log('Time:', Date.now())
+//   //console.log('Time:', Date.now())
 //   next()
 // })
 
@@ -17,7 +17,7 @@ const StocksModel = require('../models/StocksModel')
 //           if(error)
 //             res.send("error has occured")
 //           else{
-//             console.log(stocks)
+//             //console.log(stocks)
 //             res.json(stocks)
 //           }
 //         })
@@ -29,7 +29,7 @@ router.get("/get-data", (req, res) => {
           .sort({transaction_date: -1})
           .exec()
           .then((stocks) => {
-            console.log(stocks)
+            //console.log(stocks)
   
             stocks.forEach(function(stock) {
               stock.stock_details = 'Leather type ' + stock.leather_type + '; ' +
@@ -59,7 +59,7 @@ router.get("/get-data", (req, res) => {
   //           if(error)
   //             res.send("error has occured")
   //           else{
-  //             console.log(stock)
+  //             //console.log(stock)
   //             res.json(stock)
   //           }
   //         })
@@ -70,7 +70,7 @@ router.get("/get-data", (req, res) => {
           })
           .exec()
           .then( (stock) =>{
-              console.log(stock)
+              //console.log(stock)
               res.json(stock)
           }).catch(error => {
             res.send("error has occured")
@@ -113,7 +113,7 @@ router.get("/get-data", (req, res) => {
       if(error)
           res.send("error has occured")
         else{
-          console.log("Success")
+          //console.log("Success")
           res.sendStatus(200)
         }
     })
@@ -127,7 +127,7 @@ router.get("/get-data", (req, res) => {
   //     if(error)
   //       res.send('error saving')
   //     else{
-  //       console.log("Success")
+  //       //console.log("Success")
   //       res.send(stock)
   //     }
   //   })
@@ -145,7 +145,7 @@ router.get("/get-data", (req, res) => {
         if(error)
           res.status(500).json({status : 'failure'})
         else{
-          console.log(newStock)
+          //console.log(newStock)
           res.sendStatus(200)
         }
     }
@@ -154,7 +154,7 @@ router.get("/get-data", (req, res) => {
     // var id = req.body.title
     // Stocks.findById(id, (error,stock) => {
     //     if(error){
-    //       console.log("error update")
+    //       //console.log("error update")
     //     }
   
     //     stock.leather_type = req.body.leather_type
@@ -172,7 +172,7 @@ router.get("/get-data", (req, res) => {
       if(error)
             console.log("error delete")
           else{
-            console.log(stock)
+            //console.log(stock)
             res.sendStatus(200)
           }
     })

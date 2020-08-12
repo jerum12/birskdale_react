@@ -26,7 +26,7 @@ class NavRight extends Component {
     };
 
     logoutHandler =(e) => {
-        console.log('logout')
+        //console.log('logout')
         sessionStorage.clear();
         this.props.loggedOut();
         this.setState({

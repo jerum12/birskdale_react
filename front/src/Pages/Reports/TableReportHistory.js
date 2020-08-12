@@ -41,7 +41,8 @@ const details = (items) => {
     let data = ''
     items.map(({stocks_id}) => {
             data = ''
-           data =       'LT: ' + stocks_id.leather_type.description + '; ' +
+           data =       'SN: ' + stocks_id.stock_no.description + '; ' +
+                        'LT: ' + stocks_id.leather_type.description + '; ' +
                         'G: ' + stocks_id.gender.description + '; ' +
                         'C: ' + stocks_id.color.description + '; ' +
                         'C1: ' + stocks_id.classification_1.description + '; ' +
@@ -67,6 +68,8 @@ function TableReportHistory({category, value, index, length, originalData}){
                   <TableRow>
                       <TableCell align="left" colSpan={15}>
                         Stock Details : <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}}>{details(value)}</span>
+                        &nbsp;
+                        <span style={{float : 'right'}}>Count : {value.length}</span>
                       </TableCell>
                   </TableRow>
                   <TableRow>

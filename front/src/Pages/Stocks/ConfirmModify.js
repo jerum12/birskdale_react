@@ -88,7 +88,7 @@ const handleSubmit = () => {
         transaction_date : new Date()
     };
 
-    console.log(parameterObject);
+    //console.log(parameterObject);
 
     axios({
         method: 'PUT',
@@ -100,7 +100,7 @@ const handleSubmit = () => {
         data: parameterObject
         })
         .then((response) => {
-          console.log(response.data)
+          //console.log(response.data)
 
             if(response.data.code === '00'){
                 successUpdate()
@@ -110,7 +110,7 @@ const handleSubmit = () => {
                 setAlertFailed(true);
             }
         }).catch((error) => {
-          console.log(error)
+          //console.log(error)
             setAlertFailed(true);
                 setMessage(error.message)
         })
@@ -141,7 +141,7 @@ const handleSubmit = () => {
     //     })
     //     .catch(function (error) {
     //         setAlertFailed(true);
-    //         console.log( Object.assign({}, error).response)
+    //         //console.log( Object.assign({}, error).response)
     //         setMessage(Object.assign({}, error).response)
     //     });
       

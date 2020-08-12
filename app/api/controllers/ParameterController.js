@@ -9,7 +9,7 @@ module.exports = {
         let sort_by = req.query.sort_by
         let sort_type = req.query.sort_type
         
-        console.log("get All Parameter------------")
+        //console.log("get All Parameter------------")
         let sortOptions = {
             [sort_by] : sort_type
         }
@@ -39,7 +39,7 @@ module.exports = {
         let sort_by = req.query.sort_by
         let sort_type = req.query.sort_type
         
-        console.log("get All Parameter------------")
+        //console.log("get All Parameter------------")
         let sortOptions = {
             [sort_by] : sort_type
         }
@@ -66,14 +66,14 @@ module.exports = {
 
         try {
         
-            console.log(req.body)
+            //console.log(req.body)
             var result = await ParameterService.saveParameter(req.body)
             let type = req.body.type
              return res.status(200).json({code: "00" , message: `${type.toUpperCase()} Parameter successfully saved!`});
           
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             //Return an Error Response Message with Code and the Error Message.
             // return res.status(400).json({
             //         status: "failed", code: "99", message: e.message , data: null

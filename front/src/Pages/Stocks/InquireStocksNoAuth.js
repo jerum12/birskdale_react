@@ -17,6 +17,7 @@ import LastPage from '@material-ui/icons/LastPage';
 import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
+import CachedIcon from '@material-ui/icons/Cached';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import Moment from 'moment'
 
@@ -148,7 +149,8 @@ function InquireStocksNoAuth(props) {
   
     const [data, setData] = useState([]); //table data
     const [loading, setLoading] = useState(false)
-
+    const [reloadTable,setReloadTable]= useState(false)
+    
     useEffect(() => {
         axios({
             method: 'GET',
@@ -167,59 +169,51 @@ function InquireStocksNoAuth(props) {
             
           })
           .catch(err => {
-              console.log(err);
+              //console.log(err);
               setLoading(false)
           });
-      }, [])
+      }, [reloadTable])
 
     return (
         <Aux>
-            {/* {
+            {
               loading ?
 
             
               <MaterialTable
-              title="Inquire Stocks"
-              icons={tableIcons}
-              style={{padding : '20px'}}
-              columns={columns}
-              data={data}
-              options={{
-                  exportButton: true,
-                  headerStyle: {
-                      backgroundColor: '#203356',
-                      color: '#FFF'
-                  },
-                  rowStyle: {
-                      backgroundColor: '#EEE',
-                  },
-                  pageSize:5
-              }}
-             
-            />
+                title="Inquire Stocks"
+                icons={tableIcons}
+                style={{padding : '20px'}}
+                columns={columns}
+                data={data}
+                options={{
+                    //exportButton: true,
+                    headerStyle: {
+                        backgroundColor: '#203356',
+                        color: '#FFF'
+                    },
+                    rowStyle: {
+                        backgroundColor: '#EEE',
+                    },
+                    pageSize:5
+                }}
+                actions={[ 
+                    {
+                    icon: () => <CachedIcon/>,
+                    tooltip: 'Refresh',
+                    isFreeAction: true,
+                    onClick: () => { 
+                        setReloadTable(true)
+                    }
+                    }        
+        
+                ]}
+              />
                 :
                   ''
-              } */}
+              } 
 
-            <MaterialTable
-              title="Inquire Stocks"
-              icons={tableIcons}
-              style={{padding : '20px'}}
-              columns={columns}
-              data={data}
-              options={{
-                  exportButton: true,
-                  headerStyle: {
-                      backgroundColor: '#203356',
-                      color: '#FFF'
-                  },
-                  rowStyle: {
-                      backgroundColor: '#EEE',
-                  },
-                  pageSize:5
-              }}
-             
-            />
+           
             
 
         </Aux>

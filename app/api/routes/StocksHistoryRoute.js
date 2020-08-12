@@ -9,6 +9,7 @@ var auth = require('../authorization/Authorization');
 
 
 router.get('/data',  auth.authClientToken, stocksHistoryController.getStocksHistory);
+router.get('/data/report',  stocksHistoryController.getStocksHistory);
 router.get('/data/:id', auth.authClientToken, stocksHistoryController.getStocksHistoryById);
 router.post('/data',   auth.authClientToken, stocksHistoryController.saveStocksHistory)
 router.put('/data/:id',   auth.authClientToken, stocksHistoryController.updateStocksHistory)

@@ -61,7 +61,7 @@ export function requestLogin(creds) {
   // Logs the user out
   export function logoutUser() {
     return dispatch => {
-      console.log('-----------------------------------------------------')
+      //console.log('-----------------------------------------------------')
       dispatch(requestLogout())
       sessionStorage.removeItem('token')
       sessionStorage.removeItem('access_token')

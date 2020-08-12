@@ -46,12 +46,12 @@ module.exports = {
                                 'SI: ' + stock.special_instruction;
               });
 
-              //console.log(stocks)
+              ////console.log(stocks)
 
              return stocks;
         } catch (e) {
             // return a Error message describing the reason 
-            console.log(e)
+            //console.log(e)
             throw Error('Error while Paginating stocks');
         }
     },
@@ -61,11 +61,11 @@ module.exports = {
         // Get the stocks
         try {
 
-            //console.log(id + '--------param here')
+            ////console.log(id + '--------param here')
             var _details = await model.StocksModel.findOne({_id: id})
 
           
-            //console.log(_details)
+            ////console.log(_details)
 
             if(!_details){
                 throw new Error(`Stocks NOT_FOUND, the id: ${id}`);
@@ -74,7 +74,7 @@ module.exports = {
             }
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
              throw new Error(`Stocks NOT_FOUND, the id: ${id}`);
         }
     },
@@ -96,10 +96,10 @@ module.exports = {
                 special_instruction: paramBody.special_instruction,
             });
 
-            console.log(doesStocksExist)
+            //console.log(doesStocksExist)
 
             if(doesStocksExist){
-                console.log('existing----------------')
+                //console.log('existing----------------')
                 throw Error("Stocks already existing.")
             }
             let total_size_run = 
@@ -147,15 +147,15 @@ module.exports = {
             }
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             throw Error(e);
         }
     },
 
     updateStocks : async function (paramID,paramBody){
         try {
-            // console.log(paramID);
-            // console.log(paramBody);
+            // //console.log(paramID);
+            // //console.log(paramBody);
 
             const doesStocksExist = await model.StocksModel.exists({ 
                 stock_no: paramBody.stock_no,
@@ -171,10 +171,10 @@ module.exports = {
                 special_instruction: paramBody.special_instruction,
             });
 
-            console.log(doesStocksExist)
+            //console.log(doesStocksExist)
 
             if(doesStocksExist){
-                console.log('existing----------------')
+                //console.log('existing----------------')
                 throw Error("Stocks already existing.")
             }
 
@@ -182,13 +182,13 @@ module.exports = {
                                     .then(function(details){
                                             return details
                                     }).catch(function(error){
-                                        console.log(error)
+                                        //console.log(error)
                                         throw Error(`No Stock Number for ${paramID.id}`)
                                     })
             
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
              throw Error(e);
         }
     },
@@ -203,20 +203,31 @@ module.exports = {
         // Try Catch the awaited promise to handle the error 
         try {
 
-            // const stocks = await  model.StocksModel
-            // .find()
-            // .sort({transaction_date: -1})
-            // .populate(['stock_no'])
-            // .populate(['leather_type'])
-            // .populate(['gender'])
-            // .populate(['color'])
-            // .populate(['classification_1'])
-            // .populate(['classification_2'])
-            // .populate(['logo'])
-            // .populate(['sub_logo'])
-            // .populate(['lining'])
-            // .populate(['stitch'])
-            // .exec()
+            let date_less_7 = new Date();
+            date_less_7.setDate(date_less_7.getDate() - 30)
+            let date_today = new Date();
+
+            let date_from = query.date_from !== undefined ? query.date_from : date_less_7;
+            let date_to = query.date_from !== undefined ? query.date_to : date_today;
+
+            const stocks = await  model.StocksModel
+            .find({
+                'transaction_date' : {
+                    "$gte": new Date(new Date(date_from).setHours(00, 00, 00)),
+                    "$lte": new Date(new Date(date_to).setHours(23, 59, 59))
+                }
+              })
+            .populate(['stock_no'])
+            .populate(['leather_type'])
+            .populate(['gender'])
+            .populate(['color'])
+            .populate(['classification_1'])
+            .populate(['classification_2'])
+            .populate(['logo'])
+            .populate(['sub_logo'])
+            .populate(['lining'])
+            .populate(['stitch'])
+            .exec()
 
             
             //   const stocks =  await  model.StocksModel.aggregate([
@@ -287,38 +298,37 @@ module.exports = {
             //     }
             //   ]).exec()
 
-            const stocks =  await  model.StocksModel.aggregate([
-                {"$group" : {"_id" : "$gender","data" : "$$ROOT"}},
-                        {"$project" : {
-                            "tags" : "$data",
-                            "name" : "$data.name",
-                            "rating" : "$data.rating",
-                            "_id" : "$data._id"
-                            }
-                        }
-              ])
-                console.log(stocks)
+            // const stocks =  await  model.StocksModel.aggregate([
+            //     {"$group" : {"_id" : "$gender","data" : "$$ROOT"}},
+            //             {"$project" : {
+            //                 "tags" : "$data",
+            //                 "name" : "$data.name",
+            //                 "rating" : "$data.rating",
+            //                 "_id" : "$data._id"
+            //                 }
+            //             }
+            //   ])
+                //console.log(stocks)
 
-            //var stocks = await db.StocksModel.paginate(query, options).populate(['_creator'])
-            // stocks.forEach(function(stock) {
-            //     stock.stock_details = 'LT: ' + stock.leather_type.description + '; ' +
-            //                     'G: ' + stock.gender.description + '; ' +
-            //                     'C: ' + stock.color.description + '; ' +
-            //                     'C1: ' + stock.classification_1.description + '; ' +
-            //                     'C2: ' + stock.classification_2.description + '; ' +
-            //                     'Lo: ' + stock.logo.description + '; ' +
-            //                     'SLo: ' + stock.sub_logo.description + '; ' +
-            //                     'S: ' + stock.stitch.description + '; ' +
-            //                     'Li: ' + stock.lining.description + '; ' +
-            //                     'SI: ' + stock.special_instruction;
-            //   });
+                stocks.forEach(function(stock) {
+                    stock.stock_details = 'LT: ' + stock.leather_type.description + '; ' +
+                                    'G: ' + stock.gender.description + '; ' +
+                                    'C: ' + stock.color.description + '; ' +
+                                    'C1: ' + stock.classification_1.description + '; ' +
+                                    'C2: ' + stock.classification_2.description + '; ' +
+                                    'Lo: ' + stock.logo.description + '; ' +
+                                    'SLo: ' + stock.sub_logo.description + '; ' +
+                                    'S: ' + stock.stitch.description + '; ' +
+                                    'Li: ' + stock.lining.description + '; ' +
+                                    'SI: ' + stock.special_instruction;
+                  });
 
-              //console.log(stocks)
+              ////console.log(stocks)
 
              return stocks;
         } catch (e) {
             // return a Error message describing the reason 
-            console.log(e)
+            //console.log(e)
             throw Error('Error while Paginating stocks');
         }
     }

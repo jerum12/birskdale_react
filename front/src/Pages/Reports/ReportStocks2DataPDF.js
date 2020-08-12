@@ -8,15 +8,14 @@ import Paper from '@material-ui/core/Paper';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
-import Moment from 'moment'
+
 import Grid from "@material-ui/core/Grid"
 import FormControl from "@material-ui/core/FormControl"
-import FormLabel from '@material-ui/core/FormLabel';
-import TextField from "@material-ui/core/TextField";
+import Moment from 'moment'
 import jsPDF from 'jspdf';  
 import autoTable  from 'jspdf-autotable'
 
-import TableReportHistory from './TableReportHistory'
+import TableReport from './TableReport'
 
 import {
   MuiPickersUtilsProvider,
@@ -25,7 +24,7 @@ import {
 import DateFnsUtils from '@date-io/date-fns';
 
 
-class ReportItemDataPDF extends React.Component {
+class ReportStocks2DataPDF extends React.Component {
 
 
     render() {
@@ -52,12 +51,12 @@ class ReportItemDataPDF extends React.Component {
         date_min = date_min.toISOString().substring(0,10)
         
           for (const [index, [key, value]] of Object.entries(Object.entries(data))) {  
-            items.push(<TableReportHistory key={key} index={index} category={key} length={length} value={value} originalData={originalData}/>);
+            items.push(<TableReport key={key} index={index} category={key} length={length} value={value} originalData={originalData}/>);
           }
           return (
               <Card>
                   <Card.Header>
-                    <Card.Title as="h5">Stocks History Report</Card.Title>
+                    <Card.Title as="h5">Stocks Details Report</Card.Title>
                     <form onSubmit={handleSubmit}  style={{display : 'inline'}}>
                         <Grid container spacing={1}>
                             <Grid item xs={12} sm={2}>
@@ -135,14 +134,14 @@ class ReportItemDataPDF extends React.Component {
                              <button onClick={() =>{
                                 var pdf = new jsPDF('l', 'pt', "a4");
                   
-                                pdf.text("Stocks Item Summary Report", 40, 50);
+                                pdf.text("Stocks Details Report", 40, 50);
 
 
                                 for(var i=0 ; i < length; i++){
                                     autoTable(pdf, {html: '#table_'+i,margin: {top: 70}})
                                 }
 
-                                pdf.save('Stocks History Report_'+ Moment(new Date()).format('MMDDYYYYHHmmss') + '.pdf');   
+                                pdf.save('Stocks Details Report_'+ Moment(new Date()).format('MMDDYYYYHHmmss') + '.pdf');  
 
                               }} 
                               className="btn btn-primary shadow-2 mb-4">  
@@ -162,4 +161,4 @@ class ReportItemDataPDF extends React.Component {
     }
   }
 
-export default ReportItemDataPDF
+export default ReportStocks2DataPDF

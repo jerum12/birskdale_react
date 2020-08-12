@@ -26,7 +26,7 @@ const FirstStepAdd = ({
   arrayParam
 }) => {
 
-  //console.log(color);
+  ////console.log(color);
   
   // Check if all values are not empty
   const isEmpty =
@@ -42,17 +42,17 @@ const FirstStepAdd = ({
     stitch !== null && stitch !== '' 
 
 
-    // console.log(stock_no)
-    // console.log(gender)
-    // console.log(color)
-    // console.log(leather_type)
-    // console.log(classification_1)
-    // console.log(classification_2)
-    // console.log(logo)
-    // console.log(sub_logo)
-    // console.log(lining)
-    // console.log(stitch)
-    // console.log(isEmpty+ '-----------')
+    // //console.log(stock_no)
+    // //console.log(gender)
+    // //console.log(color)
+    // //console.log(leather_type)
+    // //console.log(classification_1)
+    // //console.log(classification_2)
+    // //console.log(logo)
+    // //console.log(sub_logo)
+    // //console.log(lining)
+    // //console.log(stitch)
+    // //console.log(isEmpty+ '-----------')
 
     // const [stockArray, setstockArray] = useState([])
     // const [class1Array, setClass1Array] = useState([])
@@ -68,7 +68,7 @@ const FirstStepAdd = ({
     // const { register, handleSubmit, reset, errors, control } = useForm();
 
     // useEffect(() => {
-    //     console.log(arrayParam)
+    //     //console.log(arrayParam)
     //     inputOptions()
     // }, [inputOptions])
 

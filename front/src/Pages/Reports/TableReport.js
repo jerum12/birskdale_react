@@ -38,7 +38,13 @@ const subtotal = (items) => {
   return array;
 }
 
-
+const details = (items) => {
+  let data = ''
+  items.map(({gender}) => {
+          data =  gender.description 
+  })
+  return data
+}
 
 function TableReport({category, value, index, length, originalData}){
 
@@ -49,7 +55,9 @@ function TableReport({category, value, index, length, originalData}){
             <TableHead>
                   <TableRow>
                       <TableCell align="left" colSpan={15}>
-                        Gender : <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}}>{category}</span>
+                        Gender : <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}}>{details(value)}</span>
+                        <br/>
+                        <span style={{float : 'right'}}>Count : {value.length}</span>
                       </TableCell>
                   </TableRow>
                   <TableRow>

@@ -120,11 +120,11 @@ const columns = [
       return true;
     },
     onRowsDelete : (row) => {
-        console.log(row.data.length )
+        //console.log(row.data.length )
     },
     renderExpandableRow: (rowData, rowMeta) => {
       const colSpan = rowData.length + 1;
-      console.log(rowData[11])
+      //console.log(rowData[11])
       let obj = [];
       for(var i=0 ; i < dataValue.length; i++){
         if(dataValue[i]._id === rowData[11]){
@@ -142,7 +142,7 @@ const columns = [
             obj.push(dataValue[i].size_run_14);
         }
     }
-     console.log(obj) 
+     //console.log(obj) 
       return (
        
             <Fragment>
@@ -170,7 +170,7 @@ const columns = [
              </Fragment>
       );
     },
-    onRowExpansionChange: (curExpanded, allExpanded, rowsExpanded) => console.log(curExpanded, allExpanded, rowsExpanded)
+    onRowExpansionChange: (curExpanded, allExpanded, rowsExpanded) => //console.log(curExpanded, allExpanded, rowsExpanded)
   };
 
   const theme = createMuiTheme({
@@ -230,7 +230,7 @@ class InquireStocks extends React.Component {
                 }
           })
             .then(response => {
-                console.log(response.data.data)
+                //console.log(response.data.data)
                 let json = response.data.data;
          
                 let newData = [];
@@ -262,12 +262,12 @@ class InquireStocks extends React.Component {
                 //     newObj.push(obj.gender.description)
                 //     newObj.push(obj.lining.description)
                 // });
-                console.log(newData)
+                //console.log(newData)
                 dataValue = json;
                 this.setState({ data: newData})
             })
             .catch(err => {
-                console.log(err);
+                //console.log(err);
                 return null;
             });
      };

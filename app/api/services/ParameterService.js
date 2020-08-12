@@ -42,7 +42,7 @@ module.exports = {
              return jsonParam;
         } catch (e) {
             // return a Error message describing the reason 
-            console.log(e)
+            //console.log(e)
             throw Error('Error while retrieving parameters!');
         }
     },
@@ -159,10 +159,10 @@ module.exports = {
                     break;
             }
 
-            console.log(doesParameterExisting)
+            //console.log(doesParameterExisting)
 
             if(doesParameterExisting){
-                console.log('existing----------------')
+                //console.log('existing----------------')
                 throw Error(`${type.toUpperCase()} already existing!`)
             }            
             
@@ -175,7 +175,7 @@ module.exports = {
             }
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             throw Error(e);
         }
     },
@@ -186,8 +186,8 @@ module.exports = {
             let newParameter = '';
             let type = paramBody.type;
 
-            // console.log(paramID)
-            // console.log(paramBody)
+            // //console.log(paramID)
+            // //console.log(paramBody)
 
             switch (type) {
                 case "stock number":
@@ -315,31 +315,31 @@ module.exports = {
                     break;
             }
 
-            console.log(doesParameterExisting)
+            //console.log(doesParameterExisting)
 
             if(doesParameterExisting){
-                console.log('existing----------------')
+                //console.log('existing----------------')
                 throw Error(`${type.toUpperCase()} Parameter already existing.`)
             }   
 
             switch (type) {
                 case "stock number":
-                    console.log(newParameter)
+                    //console.log(newParameter)
                     let a = await model.StockModel.findByIdAndUpdate(paramID.id,newParameter)
                     .then(function(details){
                             return details
                     }).catch(function(error){
-                        console.log(error)
+                        //console.log(error)
                         throw Error(error)
                     })
-                    console.log(a)
+                    //console.log(a)
                 break;
                 case "color":
                     await model.ColorModel.findByIdAndUpdate(paramID.id,newParameter)
                     .then(function(details){
                             return details
                     }).catch(function(error){
-                        console.log(error)
+                        //console.log(error)
                         throw Error(error)
                     })
                 break;
@@ -348,7 +348,7 @@ module.exports = {
                     .then(function(details){
                             return details
                     }).catch(function(error){
-                        console.log(error)
+                        //console.log(error)
                         throw Error(error)
                     })
                 break;
@@ -357,7 +357,7 @@ module.exports = {
                     .then(function(details){
                             return details
                     }).catch(function(error){
-                        console.log(error)
+                        //console.log(error)
                         throw Error(error)
                     })
                 break;
@@ -366,7 +366,7 @@ module.exports = {
                     .then(function(details){
                             return details
                     }).catch(function(error){
-                        console.log(error)
+                        //console.log(error)
                         throw Error(error)
                     })
                 break;
@@ -375,7 +375,7 @@ module.exports = {
                     .then(function(details){
                             return details
                     }).catch(function(error){
-                        console.log(error)
+                        //console.log(error)
                         throw Error(error)
                     })
                 break;
@@ -384,7 +384,7 @@ module.exports = {
                     .then(function(details){
                             return details
                     }).catch(function(error){
-                        console.log(error)
+                        //console.log(error)
                         throw Error(error)
                     })
                 break;
@@ -393,7 +393,7 @@ module.exports = {
                     .then(function(details){
                             return details
                     }).catch(function(error){
-                        console.log(error)
+                        //console.log(error)
                         throw Error(error)
                     })
                 break;
@@ -402,7 +402,7 @@ module.exports = {
                     .then(function(details){
                             return details
                     }).catch(function(error){
-                        console.log(error)
+                        //console.log(error)
                         throw Error(error)
                     })
                 break;
@@ -411,7 +411,7 @@ module.exports = {
                     .then(function(details){
                             return details
                     }).catch(function(error){
-                        console.log(error)
+                        //console.log(error)
                         throw Error(error)
                     })
                 break;
@@ -423,7 +423,7 @@ module.exports = {
             
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
              throw Error(e);
         }
     }

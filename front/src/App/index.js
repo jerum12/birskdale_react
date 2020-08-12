@@ -35,7 +35,7 @@ class App extends Component {
       }
 
       onLogOut(){
-        console.log('logout')
+        //console.log('logout')
         sessionStorage.removeItem('jwtTokenKey');
         sessionStorage.removeItem('login');
         this.props.loggedOut();
@@ -43,7 +43,7 @@ class App extends Component {
       }
     // setupBeforeUnloadListener = () => {
     //     window.addEventListener("beforeunload", (ev) => {
-    //         console.log('clear storage')
+    //         //console.log('clear storage')
     //         ev.preventDefault();
     //         //return ev.returnValue = 'Are you sure you want to close?';
     //         sessionStorage.clear();
@@ -65,14 +65,14 @@ class App extends Component {
     // onBackButtonEvent = (e) => {
     //     e.preventDefault();
 
-    //     console.log('clicked back')
+    //     //console.log('clicked back')
     //     // if (!this.state.isBackButtonClicked) {
-    //     //     //console.log('clicked back')
+    //     //     ////console.log('clicked back')
     //     //      if (window.confirm("Do you want to save your changes")) {
     //     //    //this.isBackButtonClicked = true;
     //     //    this.setState({ isBackButtonClicked: true })
     //     //    // your custom logic to page transition,like react-router-dom history.push()
-    //     //    console.log('clicked back')
+    //     //    //console.log('clicked back')
     //     //     } else {
     //     //      window.history.pushState(null, null, window.location.pathname);
     //     //      this.setState({ isBackButtonClicked: false })
@@ -93,7 +93,7 @@ class App extends Component {
 
     //    setupBeforeUnloadListener = () => {
     //     window.addEventListener("beforeunload", (ev) => {
-    //         console.log('refresh page')
+    //         //console.log('refresh page')
     //         sessionStorage.clear();
     //     });
     // };
@@ -102,13 +102,13 @@ class App extends Component {
     
     //  onBackButtonEvent = (e) => {
     //     e.preventDefault();
-    //    console.log('clicked back')
+    //    //console.log('clicked back')
     //   }
 
       
     render() {
 
-        //console.log("here--------------------")
+        ////console.log("here--------------------")
 
         
         const menu = routes.map((route, index) => {

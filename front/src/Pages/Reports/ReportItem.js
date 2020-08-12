@@ -90,38 +90,38 @@ class ReportItem extends React.Component {
         },
       }
       
-      axios.get(config.apiHistory+'data', configParam)
+      axios.get(config.apiHistory+'data/report', configParam)
         .then(response => {
-            console.log(response.data.data)
-            //console.log(this.groupBy(response.data.data, response.data.data.gender))
+            //console.log(response.data.data)
+            ////console.log(this.groupBy(response.data.data, response.data.data.gender))
             if (this._isMounted) {
               var groupedData = this.groupBy2(response.data.data, 'stocks_id');
               this.setState({ data: groupedData, originalData: response.data.data, loading : false })
             }       
         })
         .catch(err => {
-            console.log(err);
+            //console.log(err);
             this.setState({ loading : false })
             return null;
         });
  };
 
-    handleChange = (input) => (event,value) => {
+    handleChange = (input) => (value) => {
       
       if(input === 'date_from_state')
-        this.setState({ date_from_state : event.target.value })
+        this.setState({ date_from_state : value })
       else
-        this.setState({ date_to_state : event.target.value })
+        this.setState({ date_to_state : value})
     }
 
     handleSubmit = (event) => {
-        //console.log(event.target.date_from_state.value)
+        ////console.log(event.target.date_from_state.value)
         this.getData( event.target.date_from_state.value, event.target.date_to_state.value);
         event.preventDefault();
       }
 
     render() {
-      //console.log(data)
+      ////console.log(data)
 
       return(
             <ReportItemData 

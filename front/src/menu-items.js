@@ -138,7 +138,18 @@ export default {
                             id: 'report_stocks_pdf',
                             title: 'Report Stocks PDF',
                             type: 'item',
+                            url: '/reports/stocksPdf'  
+                        },
+                        {
+                            id: 'report_stocks_2',
+                            title: 'Report Stocks 2',
+                            type: 'item',
                             url: '/reports/stocks2'  
+                        },{
+                            id: 'report_stocks_pdf2',
+                            title: 'Report Stocks PDF 2',
+                            type: 'item',
+                            url: '/reports/stocksPdf2'  
                         },
                         {
                             id: 'report_item',
@@ -150,7 +161,7 @@ export default {
                             id: 'report_item_pdf',
                             title: 'Report Item PDF',
                             type: 'item',
-                            url: '/reports/item2'  
+                            url: '/reports/itemPdf'  
                         }
                     ]
                 }

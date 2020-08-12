@@ -18,7 +18,6 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import TrendingUpIcon from '@material-ui/icons/TrendingUp';
-import MaterialTable from "material-table";
 import {Popup } from 'semantic-ui-react'
 import AddBox from '@material-ui/icons/AddBox';
 import ArrowUpward from '@material-ui/icons/ArrowUpward';
@@ -34,9 +33,20 @@ import LastPage from '@material-ui/icons/LastPage';
 import Remove from '@material-ui/icons/Remove';
 import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
-import CachedIcon from '@material-ui/icons/Cached';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import Moment from 'moment'
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
+import InquireStocksNoAuth from './Stocks/InquireStocksNoAuth'
+import ReportStocks from './Reports/ReportStocks'
+import ReportStocksPDF from './Reports/ReportStocksPDF'
+import ReportItem from './Reports/ReportItem'
+import ReportItemPDF from './Reports/ReportItemPDF'
+import ReportStocks2 from './Reports/ReportStocks2'
+import ReportStocks2PDF from './Reports/ReportStocks2PDF'
+
 
 
 function TabPanel(props) {
@@ -101,6 +111,8 @@ function Login(props){
         ThirdStateCheck: forwardRef((props, ref) => <Remove {...props} ref={ref} />),
         ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
         };
+
+      
 
     const [columns, setColumns] = useState([
       {title: "id", field: "_id", hidden: true},
@@ -202,9 +214,11 @@ function Login(props){
       }
     ]);
   
-    const [data, setData] = useState([]); //table data
-    const [loading, setLoading] = useState(false)
-    const [reloadTable,setReloadTable]= useState(false)
+    //const [data, setData] = useState([]); //table data
+    //const [loading, setLoading] = useState(false)
+    //const [reloadTable,setReloadTable]= useState(false)
+    const [selectData, setSelectData] = useState('')
+    
     
     useEffect(() => {
      sessionStorage.clear();
@@ -213,39 +227,41 @@ function Login(props){
 
     // useEffect(() => {
     //     let id = setInterval(() => {
-    //         console.log(props.hasStocksUpdate)
+    //         //console.log(props.hasStocksUpdate)
     //     }, 1000);
     //     return () => clearInterval(id);
     //   }, []);
     
-    useEffect(() => {
-        console.log("test111111111111111111111111")
-        axios({
-            method: 'GET',
-            url: config.apiStocks+'dataall',
-            headers: {
-                'Content-Type': 'application/json'
-                }
-            })
-            .then(response => {
-                if(response.data.code === '00'){
-                    setData( response.data.data)
-                    setLoading(true)
-                }else{
-                    setLoading(false)
-                }
+    // useEffect(() => {
+    //     //console.log("test111111111111111111111111")
+    //     axios({
+    //         method: 'GET',
+    //         url: config.apiStocks+'dataall',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //             }
+    //         })
+    //         .then(response => {
+    //             if(response.data.code === '00'){
+    //                 setData( response.data.data)
+    //                 setLoading(true)
+    //             }else{
+    //                 setLoading(false)
+    //             }
             
-            })
-            .catch(err => {
-                console.log(err);
-                setLoading(false)
-            });
-            setReloadTable(false)
-    }, [reloadTable])
+    //         })
+    //         .catch(err => {
+    //             //console.log(err);
+    //             setLoading(false)
+    //         });
+    //         setReloadTable(false)
+    // }, [reloadTable])
  
     const handleChange = (event, newValue) => {
-    setValue(newValue);
-    };
+        setSelectData('Stocks')
+        setValue(newValue);
+    }
+    
 
       
     const onSubmit = data => {
@@ -265,7 +281,7 @@ function Login(props){
             })
             .then(function (response) {
                 //handle success
-                console.log(response)
+                //console.log(response)
                 if(response.status === 201 || response.status === 200){
                     if(response.data.code === '00'){
                         sessionStorage.setItem('jwtTokenKey',  'Bearer ' + response.data.data.token)
@@ -290,18 +306,32 @@ function Login(props){
                 //handle error
                 //genContext.dispatchName({type: 'LOGIN_FAILED', payload: '', login : false})
                 setToDashboard(false)
-                console.log( Object.assign({}, error).response)
-                //console.log('error', Object.assign({}, error).response.data.message);
+                //console.log( Object.assign({}, error).response)
+                ////console.log('error', Object.assign({}, error).response.data.message);
                 props.failedLogin( Object.assign({}, error).response);
             });
     };
+
+    const handleChangeStocks = (event) => setSelectData(event.target.value)
+      
+
     const errorClass = (error) => {
-        //console.log(error)
         return(!error ? '' : 'has-error');
       }
-
-      //console.log(props.hasStocksUpdate + '-----------------------------')
-
+    
+    let renderComponent;
+    if(selectData === 'Report_Stock_Details'){
+        renderComponent = <ReportStocks2/>
+    }else if(selectData === 'Report_Stock_Details_PDF'){
+        renderComponent = <ReportStocks2PDF/>
+    }else if(selectData === 'Report_Item'){
+        renderComponent = <ReportItem/>
+    }else if(selectData === 'Report_Item_PDF'){
+        renderComponent = <ReportItemPDF/>
+    }else{
+        renderComponent = <InquireStocksNoAuth/>
+    }
+    
     if (toDashboard) 
        // props.history.push('/about')
         return <Redirect to='/stocks/inquire' />
@@ -309,8 +339,8 @@ function Login(props){
 
         return(
             <Aux>
-                {  loading 
-                    ?  
+                {/* {  loading 
+                    ?   */}
                     
                     <div className="auth-wrapper">
                         <div className="auth-content">
@@ -345,7 +375,7 @@ function Login(props){
                                                 border: 'none',
                                                 marginBottom: '30px',
                                                 transition: 'all 0.5s ease-in-out',
-                                                width: '75%',
+                                                width: '60%',
                                                 margin : '0px auto'
                                             }}
                                             >
@@ -412,36 +442,29 @@ function Login(props){
                                             </div>
                                         </TabPanel>
                                         <TabPanel value={value} index={1}>
-                                            <MaterialTable
-                                                title="Inquire Stocks"
-                                                icons={tableIcons}
-                                                style={{padding : '20px'}}
-                                                columns={columns}
-                                                data={data}
-                                                options={{
-                                                    exportButton: true,
-                                                    headerStyle: {
-                                                        backgroundColor: '#203356',
-                                                        color: '#FFF'
-                                                    },
-                                                    rowStyle: {
-                                                        backgroundColor: '#EEE',
-                                                    },
-                                                    pageSize:5
-                                                }}
-                                                actions={[ 
-                                                    {
-                                                      icon: () => <CachedIcon/>,
-                                                      tooltip: 'Refresh',
-                                                      isFreeAction: true,
-                                                      onClick: () => { 
-                                                        setReloadTable(true)
-                                                      }
-                                                    }        
-                                          
-                                                  ]}
-                                                
-                                                />
+
+                                            <FormControlLabel
+                                                control={
+                                                    <Select
+                                                        style={{paddingLeft : '10px'}}
+                                                        labelId="demo-simple-select-label"
+                                                        id="demo-simple-select"
+                                                        defaultValue={'Stocks'}
+                                                        onChange={handleChangeStocks}
+                                                        >
+                                                            <MenuItem value={'Stocks'}>Inquire Stocks</MenuItem>
+                                                            <MenuItem value={'Report_Stock_Details'}>Stock Details Report</MenuItem>
+                                                            <MenuItem value={'Report_Stock_Details_PDF'}>Stock Details PDF Report</MenuItem>
+                                                            <MenuItem value={'Report_Item'}>Stock History Report</MenuItem>
+                                                            <MenuItem value={'Report_Item_PDF'}>Stock History PDF Report</MenuItem>
+                                                        </Select>
+                                                }
+                                                label="Select Type :"
+                                                labelPlacement="start"
+                                            />
+
+                                                {renderComponent}
+                                            
                                         </TabPanel>
                                         
                                     </div>
@@ -449,7 +472,7 @@ function Login(props){
                             </div>
                         </div>
                     </div>
-                : ''}
+                {/* : ''} */}
             </Aux>
         );
         

@@ -50,7 +50,7 @@ function InquireUsers(props) {
               }
             })
           .then(response => {
-              console.log(response)
+              //console.log(response)
              handleResponse(response,props)
 
              if(response.data.code === '00'){
@@ -63,7 +63,7 @@ function InquireUsers(props) {
             
           })
           .catch(err => {
-              console.log(err);
+              //console.log(err);
               setLoading(false)
           });
       }, [])

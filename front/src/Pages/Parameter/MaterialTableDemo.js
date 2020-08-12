@@ -59,7 +59,7 @@ export default function MaterialTableDemo() {
       field: "name",
       editComponent: props => (
         <Fragment>
-        {console.log(a)}
+        {//console.log(a)}
         <TextField
           required
           type="text"
@@ -86,7 +86,7 @@ export default function MaterialTableDemo() {
               formErrors.validateInput = true
             }
 
-            console.log(formErrors)
+            //console.log(formErrors)
 
             a= formErrors
             // if (nameerror.validateInput) {

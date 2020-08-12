@@ -90,7 +90,7 @@ const StepFormAdd = ({
   // Handle fields change
   const handleChange = (input) => (event,value) => {
 
-    //console.log(value + 'value');
+    ////console.log(value + 'value');
     // Set values to the fields
 
     if(input === "special_instruction"){
@@ -110,9 +110,9 @@ const StepFormAdd = ({
       })
     }
 
-    //console.log(fields)
+    ////console.log(fields)
     //for size run
-    //console.log(event)
+    ////console.log(event)
 
     // Handle errors
     const formErrors = { ...filedError }
@@ -264,7 +264,7 @@ const StepFormAdd = ({
     }
     // Object.values(formErrors).every(error =>
     //   {
-    //     console.log(error  +  '-error here')
+    //     //console.log(error  +  '-error here')
     //     if(error.length > 0 ){
     //         setIsError(true)
     //         return false;

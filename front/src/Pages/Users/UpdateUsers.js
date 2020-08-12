@@ -116,9 +116,9 @@ function UpdateUsers(props) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                     
-                //console.log('here-----promise')
+                ////console.log('here-----promise')
                 if (newData.code === "" || newData.description === "") {
-                    //console.log('here-----reject')
+                    ////console.log('here-----reject')
                     reject();
                     return;
                   }
@@ -139,7 +139,7 @@ function UpdateUsers(props) {
                           },
                         data: parameterObject
                     }).then(function (response) {
-                            //console.log(response)
+                            ////console.log(response)
                         if(response.status === 201 || response.status === 200){
                             if(response.data.code === '00'){
                                 setMessage(response.data.message)
@@ -183,7 +183,7 @@ function UpdateUsers(props) {
                     return
                 }
                 if (newData.full_name === "" || newData.user_name === "") {
-                    //console.log('here-----reject')
+                    ////console.log('here-----reject')
                     reject();
                     return;
                 }
@@ -199,7 +199,7 @@ function UpdateUsers(props) {
                         hasChanges: hasChanges
                     };
                 
-                    console.log(parameterObject)
+                    //console.log(parameterObject)
                     axios({
                         method: 'PUT',
                         url: config.apiUsers+'data/'+ parameterObject._id,
@@ -209,7 +209,7 @@ function UpdateUsers(props) {
                           },
                         data: parameterObject
                     }).then(function (response) {
-                            //console.log(response)
+                            ////console.log(response)
                         if(response.status === 201 || response.status === 200){
                             if(response.data.code === '00'){
                                 setMessage(response.data.message)
@@ -253,7 +253,7 @@ function UpdateUsers(props) {
              handleResponse(response,props)
 
              if(response.data.code === '00'){
-              ////console.log( response.data.data)
+              //////console.log( response.data.data)
               setData( response.data.data)
               setLoading(true)
              }else{
@@ -263,7 +263,7 @@ function UpdateUsers(props) {
             
           })
           .catch(err => {
-              //console.log(err);
+              ////console.log(err);
               setLoading(false)
           });
           setReloadTable(false)

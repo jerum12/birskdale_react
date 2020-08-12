@@ -24,8 +24,8 @@ module.exports = {
             let date_from = query.date_from !== undefined ? query.date_from : date_less_7;
             let date_to = query.date_from !== undefined ? query.date_to : date_today;
 
-            console.log(query.date_from)
-            console.log(query.date_to)
+            //console.log(query.date_from)
+            //console.log(query.date_to)
 
             var _details = await model.StocksHistoryModel.find({
                                         'transaction_date' : {
@@ -112,12 +112,12 @@ module.exports = {
             //                     'SI: ' + stock.special_instruction;
             //   });
 
-              //console.log(stocks)
+              ////console.log(stocks)
 
              return _details;
         } catch (e) {
             // return a Error message describing the reason 
-            console.log(e)
+            //console.log(e)
             throw Error('Error while Paginating stocks');
         }
     },
@@ -127,7 +127,7 @@ module.exports = {
         // Get the stocks
         try {
 
-            //console.log(id + '--------param here')
+            ////console.log(id + '--------param here')
             // var _details = await model.StocksHistoryModel.find()
             //                           .where('stocks_id')
             //                           .equals(id)
@@ -200,7 +200,7 @@ module.exports = {
                                       })
                                       .exec()
 
-            //console.log(_details)
+            ////console.log(_details)
 
             if(!_details){
                 throw new Error(`Stocks History not found on the id: ${id}`);
@@ -209,7 +209,7 @@ module.exports = {
             }
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
              throw new Error(`Stocks NOT_FOUND, the id: ${id}`);
         }
     },
@@ -223,7 +223,7 @@ module.exports = {
             });
     
             if(!doesStocksExist){
-                console.log('existing----------------')
+                //console.log('existing----------------')
                 throw Error("Stocks are not available")
             }
 
@@ -254,7 +254,7 @@ module.exports = {
                 transaction_by : paramBody.transaction_by
             })
             
-            //console.log(newStocksHist)
+            ////console.log(newStocksHist)
             // Saving the history 
             var savedStocks = await newStocksHist.save();
            
@@ -286,27 +286,27 @@ module.exports = {
                 size_run_14 : paramBody.size_run_14_new,
                 total_size_run : total_size_run
             })
-            //console.log(updateStocksSizeRun)
+            ////console.log(updateStocksSizeRun)
 
             await model.StocksModel.findByIdAndUpdate(paramBody.stocks_id,updateStocksSizeRun)
             .then(function(details){
                     return details
             }).catch(function(error){
-                console.log(error)
+                //console.log(error)
                 throw Error(`No Stock Number for ${paramBody.stocks_id}`)
             })
             
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             throw Error(e);
         }
     },
 
     updateStocksHistory : async function (paramID,paramBody){
         try {
-            // console.log(paramID);
-            // console.log(paramBody);
+            // //console.log(paramID);
+            // //console.log(paramBody);
 
             const doesStocksExist = await model.StocksHistoryModel.exists({ 
                 stock_no: paramBody.stock_no,
@@ -322,10 +322,10 @@ module.exports = {
                 special_instruction: paramBody.special_instruction,
             });
 
-            console.log(doesStocksExist)
+            //console.log(doesStocksExist)
 
             if(doesStocksExist){
-                console.log('existing----------------')
+                //console.log('existing----------------')
                 throw Error("Stocks already existing.")
             }
 
@@ -333,13 +333,13 @@ module.exports = {
                             .then(function(details){
                                  return details
                             }).catch(function(error){
-                                console.log(error)
+                                //console.log(error)
                                 throw Error(`No Stock Number for ${paramID.id}`)
                             })
             
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
              throw Error(e);
         }
     }

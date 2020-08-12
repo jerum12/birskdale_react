@@ -24,10 +24,10 @@ module.exports = {
                 user_name: user.user_name
             });
 
-            console.log(doesUserExist)
+            //console.log(doesUserExist)
 
             if(doesUserExist){
-                console.log('existing user----------------')
+                //console.log('existing user----------------')
                 throw Error(`Username ${user.user_name} is already used.`)
             }
 
@@ -51,7 +51,7 @@ module.exports = {
             //return token;
         } catch (e) {
             // return a Error message describing the reason     
-            console.log(e)
+            //console.log(e)
              throw Error(e);
         }
     },
@@ -61,7 +61,7 @@ module.exports = {
         // Creating a new Mongoose Object by using the new keyword
         
         try {
-            // console.log(user)
+            // //console.log(user)
             // let _details = await User.findOne({"email" : user.email});
 
 
@@ -93,7 +93,7 @@ module.exports = {
             return token;
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             // return a Error message describing the reason     
             throw Error(e)
         }
@@ -136,16 +136,16 @@ module.exports = {
 
     updateUser : async function (paramID,paramBody){
         try {
-            console.log(paramBody)
+            //console.log(paramBody)
             if(paramBody.hasChanges){
                 const doesUserExist = await model.UsersModel.exists({ 
                     user_name: paramBody.user_name
                 });
     
-                console.log(doesUserExist)
+                //console.log(doesUserExist)
     
                 if(doesUserExist){
-                    console.log('existing----------------')
+                    //console.log('existing----------------')
                     throw Error(`Username ${paramBody.user_name} is already used.`)
                 }
             }
@@ -154,12 +154,12 @@ module.exports = {
                                     .then(function(details){
                                             return details
                                     }).catch(function(error){
-                                        console.log(error)
+                                        //console.log(error)
                                         throw Error(`No User for ${paramID.id}`)
                                     })
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
              throw Error(e);
         }
     },
@@ -189,14 +189,14 @@ module.exports = {
             return true;
 
         } catch (e) {
-            console.log(e)   
+            //console.log(e)   
             throw Error(e)
         }
     },
     updatePassword : async function (user){
         try {
             const hashedPassword = bcrypt.hashSync(user.password, config.saltRounds);
-            console.log(hashedPassword)
+            //console.log(hashedPassword)
 
             const filter = { _id: user.id };
             const update = { password: hashedPassword };
@@ -207,13 +207,13 @@ module.exports = {
               .then(function(details){
                   return details
               }).catch(function(error){
-                  console.log(error)
+                  //console.log(error)
                   throw Error(`Error updateing password`)
                });
 
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
              throw Error(e);
         }
     },

@@ -30,7 +30,7 @@ const FirstStepModify = ({
 }) => {
 
 
-  //console.log(color);
+  ////console.log(color);
   
   // Check if all values are not empty
   const isEmpty =
@@ -59,17 +59,17 @@ const FirstStepModify = ({
     special_instruction !== null && special_instruction === details.special_instruction
 
     
-     //console.log(stock_no + '================')
-    // console.log(gender)
-    // console.log(color)
-    // console.log(leather_type)
-    // console.log(classification_1)
-    // console.log(classification_2)
-    // console.log(logo)
-    // console.log(sub_logo)
-    // console.log(lining)
-    // console.log(stitch)
-    // console.log(isEmpty+ '-----------')
+     ////console.log(stock_no + '================')
+    // //console.log(gender)
+    // //console.log(color)
+    // //console.log(leather_type)
+    // //console.log(classification_1)
+    // //console.log(classification_2)
+    // //console.log(logo)
+    // //console.log(sub_logo)
+    // //console.log(lining)
+    // //console.log(stitch)
+    // //console.log(isEmpty+ '-----------')
 
   return (
       
@@ -85,9 +85,9 @@ const FirstStepModify = ({
                 onChange={handleChange('stock_no')}
                 getOptionLabel={option => typeof option === 'string' ? option : option.description}
                 getOptionSelected={ value => {
-                    //console.log(stock_no)
+                    ////console.log(stock_no)
                     if(stock_no.description === value.description){
-                        //console.log('equal-----------------')
+                        ////console.log('equal-----------------')
                         return stock_no.description === value.description
                     }
                 }}
@@ -124,7 +124,7 @@ const FirstStepModify = ({
                     getOptionLabel={option => typeof option === 'string' ? option : option.description}
                     getOptionSelected={ value => {
                       if(color.description === value.description){
-                          //console.log('equal-----------------')
+                          ////console.log('equal-----------------')
                           return color.description === value.description
                       }
                   }}
@@ -160,7 +160,7 @@ const FirstStepModify = ({
                         getOptionLabel={option => typeof option === 'string' ? option : option.description}
                         getOptionSelected={ value => {
                           if(gender.description === value.description){
-                              //console.log('equal-----------------')
+                              ////console.log('equal-----------------')
                               return gender.description === value.description
                           }
                       }}
@@ -195,7 +195,7 @@ const FirstStepModify = ({
                         getOptionLabel={option => typeof option === 'string' ? option : option.description}
                         getOptionSelected={ value => {
                           if(leather_type.description === value.description){
-                              //console.log('equal-----------------')
+                              ////console.log('equal-----------------')
                               return leather_type.description === value.description
                           }
                       }}
@@ -231,7 +231,7 @@ const FirstStepModify = ({
                         getOptionLabel={option => typeof option === 'string' ? option : option.description}
                         getOptionSelected={ value => {
                           if(classification_1.description === value.description){
-                              //console.log('equal-----------------')
+                              ////console.log('equal-----------------')
                               return classification_1.description === value.description
                           }
                       }}
@@ -266,7 +266,7 @@ const FirstStepModify = ({
                         getOptionLabel={option => typeof option === 'string' ? option : option.description}
                         getOptionSelected={ value => {
                           if(classification_2.description === value.description){
-                              //console.log('equal-----------------')
+                              ////console.log('equal-----------------')
                               return classification_2.description === value.description
                           }
                       }}
@@ -302,7 +302,7 @@ const FirstStepModify = ({
                         getOptionLabel={option => typeof option === 'string' ? option : option.description}
                         getOptionSelected={ value => {
                           if(logo.description === value.description){
-                              //console.log('equal-----------------')
+                              ////console.log('equal-----------------')
                               return logo.description === value.description
                           }
                       }}
@@ -337,7 +337,7 @@ const FirstStepModify = ({
                         getOptionLabel={option => typeof option === 'string' ? option : option.description}
                         getOptionSelected={ value => {
                           if(sub_logo.description === value.description){
-                              //console.log('equal-----------------')
+                              ////console.log('equal-----------------')
                               return sub_logo.description === value.description
                           }
                       }}
@@ -373,7 +373,7 @@ const FirstStepModify = ({
                         getOptionLabel={option => typeof option === 'string' ? option : option.description}
                         getOptionSelected={ value => {
                           if(lining.description === value.description){
-                              //console.log('equal-----------------')
+                              ////console.log('equal-----------------')
                               return lining.description === value.description
                           }
                       }}
@@ -408,7 +408,7 @@ const FirstStepModify = ({
                         getOptionLabel={option => typeof option === 'string' ? option : option.description}
                         getOptionSelected={ value => {
                           if(stitch.description === value.description){
-                              //console.log('equal-----------------')
+                              ////console.log('equal-----------------')
                               return stitch.description === value.description
                           }
                       }}

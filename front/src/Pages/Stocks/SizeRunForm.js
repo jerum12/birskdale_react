@@ -122,7 +122,7 @@ const handleSubmit = () => {
         stocks_id : _id
     };
 
-    console.log(parameterObject);
+    //console.log(parameterObject);
 
     axios({
         method: 'POST',
@@ -134,7 +134,7 @@ const handleSubmit = () => {
         data: parameterObject
         })
         .then((response) => {
-          console.log(response.data)
+          //console.log(response.data)
 
             if(response.data.code === '00'){
                 setAlertSuccess(true)   
@@ -143,7 +143,7 @@ const handleSubmit = () => {
                 setAlertFailed(true);
             }
         }).catch((error) => {
-          console.log(error)
+          //console.log(error)
             setAlertFailed(true);
                 setMessage(error.message)
         })
@@ -279,7 +279,7 @@ const mandatory = value === null
 
     //     if(value === null){
     //         sets3_state(size_run_3)
-    //         console.log('error')
+    //         //console.log('error')
     //     }else{
     //         sets3_state(processValue)
     //     }

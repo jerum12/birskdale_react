@@ -45,7 +45,7 @@ module.exports = {
       let sort_by = req.query.sort_by
       let sort_type = req.query.sort_type
       
-      console.log("get All Users ------------")
+      //console.log("get All Users ------------")
       let sortOptions = {
           [sort_by] : sort_type
       }
@@ -106,7 +106,7 @@ module.exports = {
                })
             
         }catch(e){
-            console.log(e);
+            //console.log(e);
             return res.json(
                 { 
                   status: "failed", code: "99", message: e.message , data: null
@@ -139,7 +139,7 @@ module.exports = {
 
    
         if(!errors.isEmpty()){
-            console.log(errors.array())
+            //console.log(errors.array())
             return res.json(
                { 
                   status: "failed", code: "99", message: errors.array() , data: null
@@ -234,7 +234,7 @@ module.exports = {
                password: req.body.new_password
             }
 
-            console.log(User)
+            //console.log(User)
          
             // Calling the Service function with the new object from the Request Body
             var valid = await UserService.validateUser(User);

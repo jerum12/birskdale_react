@@ -42,7 +42,7 @@
 //         acc[key].push(obj);
         
         
-//         console.log("-----------------")
+//         //console.log("-----------------")
 //         return acc;
 //       }, {});
 //    }
@@ -53,7 +53,7 @@
 //       (result[currentValue.gender.description] = result[currentValue.gender.description] || []).push(
 //         currentValue
 //       );
-//       //console.log(result);
+//       ////console.log(result);
 //       return result;
 //     }, {});
 //   };
@@ -68,14 +68,14 @@
 //         }
 //       })
 //         .then(response => {
-//             //console.log(response.data.data)
-//             //console.log(this.groupBy(response.data.data, response.data.data.gender))
+//             ////console.log(response.data.data)
+//             ////console.log(this.groupBy(response.data.data, response.data.data.gender))
 //             var groupedData = this.groupBy2(response.data.data, 'gender');
 //             this.setState({ data: groupedData, loading : false })
             
 //         })
 //         .catch(err => {
-//             console.log(err);
+//             //console.log(err);
 //             this.setState({ loading : false })
 //             return null;
 //         });

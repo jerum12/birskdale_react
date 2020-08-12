@@ -29,7 +29,7 @@ function ModalModifyStocks(props){
    
 
      const errorClass = (error) => {
-        //console.log(error)
+        ////console.log(error)
         return(!error ? '' : 'has-error');
       }
 

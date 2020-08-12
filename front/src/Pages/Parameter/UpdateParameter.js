@@ -112,9 +112,9 @@ function UpdateParameter(props) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                     
-                //console.log('here-----promise')
+                ////console.log('here-----promise')
                 if (newData.code === "" || newData.description === "") {
-                    //console.log('here-----reject')
+                    ////console.log('here-----reject')
                     reject();
                     return;
                   }
@@ -135,7 +135,7 @@ function UpdateParameter(props) {
                           },
                         data: parameterObject
                     }).then(function (response) {
-                            //console.log(response)
+                            ////console.log(response)
                         if(response.status === 201 || response.status === 200){
                             if(response.data.code === '00'){
                                 setMessage(response.data.message)
@@ -170,9 +170,9 @@ function UpdateParameter(props) {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                     
-                //console.log('here-----promise')
+                ////console.log('here-----promise')
                 if (newData.code === "" || newData.description === "") {
-                    //console.log('here-----reject')
+                    ////console.log('here-----reject')
                     reject();
                     return;
                   }
@@ -193,7 +193,7 @@ function UpdateParameter(props) {
                           },
                         data: parameterObject
                     }).then(function (response) {
-                            //console.log(response)
+                            ////console.log(response)
                         if(response.status === 201 || response.status === 200){
                             if(response.data.code === '00'){
                                 setMessage(response.data.message)
@@ -237,7 +237,7 @@ function UpdateParameter(props) {
              handleResponse(response,props)
 
              if(response.data.code === '00'){
-              ////console.log( response.data.data)
+              //////console.log( response.data.data)
               setData( response.data.data)
               setLoading(true)
              }else{
@@ -247,7 +247,7 @@ function UpdateParameter(props) {
             
           })
           .catch(err => {
-              //console.log(err);
+              ////console.log(err);
               setLoading(false)
           });
           setReloadTable(false)

@@ -40,12 +40,12 @@ import config from "../../config";
 //     })
 //     .then(response => {
         
-//         console.log('data----------')
-//         console.log(response.data)
+//         //console.log('data----------')
+//         //console.log(response.data)
 
 //         if(response.data.code === '99'){
 //             //setshowTimeout(true)
-//             console.log('error')
+//             //console.log('error')
 //         }else{
 //             inputOptions(response)
 //         }
@@ -53,7 +53,7 @@ import config from "../../config";
      
 //     })
 //     .catch(err => {
-//         console.log(err);
+//         //console.log(err);
 //     });
 //  }
 
@@ -159,10 +159,10 @@ import config from "../../config";
          
           })
           .catch(err => {
-              console.log(err);
+              //console.log(err);
               return null;
           });
-          console.log('load')
+          //console.log('load')
           setReloadTable(false)
       }, [reloadTable])
 
@@ -179,12 +179,12 @@ import config from "../../config";
           })
           .then(response => {
               
-              console.log('data----------')
-              console.log(response.data)
+              //console.log('data----------')
+              //console.log(response.data)
       
               if(response.data.code === '99'){
                   //setshowTimeout(true)
-                  console.log('error')
+                  //console.log('error')
               }else{
 
                 let a = stockArray;
@@ -245,7 +245,7 @@ import config from "../../config";
            
           })
           .catch(err => {
-              console.log(err);
+              //console.log(err);
           });
       },[])
 
@@ -286,17 +286,17 @@ import config from "../../config";
                         editable={{
                           onRowUpdate: (newData, oldData) =>
                             new Promise((resolve, reject) => {
-                              //console.log(newData.color.code)
+                              ////console.log(newData.color.code)
 
 
                               setTimeout(() => {
                                 //  const dataUpdate = [...data];
                                 // const index = oldData.tableData.id;
-                                //   console.log(newData)
+                                //   //console.log(newData)
                                 //  dataUpdate[index] = newData;
                                 // setData([...dataUpdate]);
-                                //console.log(newData.color._id)
-                                console.log(newData._id)
+                                ////console.log(newData.color._id)
+                                //console.log(newData._id)
 
                                 axios({
                                   method: 'PUT',
@@ -308,7 +308,7 @@ import config from "../../config";
                                   data: newData
                                   })
                                   .then((res) => {
-                                    console.log(res.data)
+                                    //console.log(res.data)
 
                                       if(res.data.code === '00')
                                         setStatus(true)
@@ -317,7 +317,7 @@ import config from "../../config";
 
                                       setMessage(res.data.message)
                                   }).catch((error) => {
-                                    console.log(error)
+                                    //console.log(error)
                                     setStatus(false)
                                     setMessage(error.message)
                                   })

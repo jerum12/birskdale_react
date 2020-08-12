@@ -6,7 +6,7 @@ import SizeRunForm from './SizeRunForm'
 
 export const SizeRunModal = ({showModal, handleClose, props, data}) => {
 
-    //console.log(data)
+    ////console.log(data)
     return (
         <Modal show={showModal} onHide={handleClose}
             size="lg"            

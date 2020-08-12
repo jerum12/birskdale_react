@@ -12,8 +12,8 @@ import avatar3 from '../../assets/images/user/avatar-3.jpg';
 class Dashboard extends React.Component {
     
     render() {
-        //console.log(this.props.isAuthenticated)
-        //console.log("Store Login")
+        ////console.log(this.props.isAuthenticated)
+        ////console.log("Store Login")
         const tabContent = (
             <Aux>
                 <div className="media friendlist-box align-items-center justify-content-center m-b-20">

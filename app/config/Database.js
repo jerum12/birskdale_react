@@ -1,6 +1,6 @@
 
 //Set up mongoose connection
-console.log('in db config');
+//console.log('in db config');
 const config = require('./Config')
 const mongoose = require('mongoose');
 const dbUrl = config.DATABASE
@@ -11,9 +11,9 @@ const InitiateMongoServer = async () => {
       useUnifiedTopology: true , 
       useNewUrlParser: true
     });
-     console.log('Database connected:', dbUrl)
+     //console.log('Database connected:', dbUrl)
   } catch (e) {
-    console.log(e);
+    //console.log(e);
     console.error('connection error:', dbUrl)
     throw e;
   }
@@ -27,7 +27,7 @@ const InitiateMongoServer = async () => {
 // //DB CONNECTION
 // const dbConnection = mongoose.connection
 // dbConnection.once('open', _ => {
-//   console.log('Database connected:', dbUrl)
+//   //console.log('Database connected:', dbUrl)
 // })
 
 // dbConnection.on('error', err => {

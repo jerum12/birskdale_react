@@ -45,7 +45,7 @@ import TableReportHistory from './TableReportHistory'
 //         acc[key].push(obj);
         
         
-//         //console.log("-----------------")
+//         ////console.log("-----------------")
 //         return acc;
 //       }, {});
 //    }
@@ -56,7 +56,7 @@ import TableReportHistory from './TableReportHistory'
 //       (result[currentValue.stocks_id._id] = result[currentValue.stocks_id._id] || []).push(
 //         currentValue
 //       );
-//       //console.log(result);
+//       ////console.log(result);
 //       return result;
 //     }, {});
 //   };
@@ -71,14 +71,14 @@ import TableReportHistory from './TableReportHistory'
 //         }
 //       })
 //         .then(response => {
-//             //console.log(response.data.data)
-//             //console.log(this.groupBy(response.data.data, response.data.data.gender))
+//             ////console.log(response.data.data)
+//             ////console.log(this.groupBy(response.data.data, response.data.data.gender))
 //             var groupedData = this.groupBy2(response.data.data, 'stocks_id');
 //             this.setState({ data: groupedData, originalData: response.data.data, loading : false })
             
 //         })
 //         .catch(err => {
-//             console.log(err);
+//             //console.log(err);
 //             this.setState({ loading : false })
 //             return null;
 //         });
@@ -153,19 +153,19 @@ class ReportItemOLD extends React.Component {
         acc[key].push(obj);
         
         
-        //console.log("-----------------")
+        ////console.log("-----------------")
         return acc;
       }, {});
    }
 
    groupBy2 = (array, key) => {
-     console.log('here')
+     //console.log('here')
     return array.reduce((result, currentValue) => {
         
       (result[currentValue.stocks_id._id] = result[currentValue.stocks_id._id] || []).push(
         currentValue
       );
-      //console.log(result);
+      ////console.log(result);
       return result;
     }, {});
   };
@@ -180,29 +180,29 @@ class ReportItemOLD extends React.Component {
         }
       })
         .then(response => {
-            //console.log(response.data.data)
-            //console.log(this.groupBy(response.data.data, response.data.data.gender))
+            ////console.log(response.data.data)
+            ////console.log(this.groupBy(response.data.data, response.data.data.gender))
             if (this._isMounted) {
               var groupedData = this.groupBy2(response.data.data, 'stocks_id');
               this.setState({ data: groupedData, originalData: response.data.data, loading : false })
             }       
         })
         .catch(err => {
-            console.log(err);
+            //console.log(err);
             this.setState({ loading : false })
             return null;
         });
  };
 
     handleChange = (input) => (event,value) => {
-        console.log(input)
-        console.log(event.target.value)
+        //console.log(input)
+        //console.log(event.target.value)
     }
 
     handleSubmit = (event) => {
      
-        // console.log(event.target.date_from.value)        
-        // console.log(event.target.date_to.value)    
+        // //console.log(event.target.date_from.value)        
+        // //console.log(event.target.date_to.value)    
         
         let configParam = {
             headers: {
@@ -225,12 +225,12 @@ class ReportItemOLD extends React.Component {
                 (result[currentValue.stocks_id._id] = result[currentValue.stocks_id._id] || []).push(
                   currentValue
                 );
-                //console.log(result);
+                ////console.log(result);
                 return result;
               }, {});
-              //console.log(abc)
+              ////console.log(abc)
               this.setState({  loading : true })
-              console.log('-----------anyare')
+              //console.log('-----------anyare')
               
                 // if(response.status === 201 || response.status === 200){
                 //     if(response.data.code === '00'){
@@ -247,7 +247,7 @@ class ReportItemOLD extends React.Component {
             })
             .catch(function (error) {
                 // setAlertFailed(true);
-                // console.log( Object.assign({}, error).response)
+                // //console.log( Object.assign({}, error).response)
                 // setMessage(Object.assign({}, error).response)
             });
 
@@ -264,7 +264,7 @@ class ReportItemOLD extends React.Component {
       date_today = date_today.toISOString().substring(0,10)
     
       const {data,originalData,loading } = this.state;
-      console.log(data)
+      //console.log(data)
 
       if(loading)
         return  (

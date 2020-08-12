@@ -99,7 +99,7 @@ const handleSubmit = () => {
         size_run_14 : size_run_14,
     };
 
-    console.log(parameterObject);
+    //console.log(parameterObject);
 
     axios({
         method: 'POST',
@@ -127,7 +127,7 @@ const handleSubmit = () => {
         })
         .catch(function (error) {
             setAlertFailed(true);
-            console.log( Object.assign({}, error).response)
+            //console.log( Object.assign({}, error).response)
             setMessage(Object.assign({}, error).response)
         });
       

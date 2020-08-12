@@ -9,7 +9,7 @@ module.exports = {
         let sort_by = req.query.sort_by
         let sort_type = req.query.sort_type
         
-        console.log("get All Stocks ------------")
+        //console.log("get All Stocks ------------")
         let sortOptions = {
             [sort_by] : sort_type
         }
@@ -44,7 +44,7 @@ module.exports = {
             // Return the Users list with the appropriate HTTP password Code and Message.
             return res.status(200).json({status: "success", code : "00", data: Stocks, message: "Stocks successfully retrieved"});
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             //Return an Error Response Message with Code and the Error Message.
             return res.json({
                     status: "failed", code: "99", message: e.message , data: null
@@ -57,7 +57,7 @@ module.exports = {
     save : async function(req, res, next){
 
         try {
-            //console.log(req.body)
+            ////console.log(req.body)
 
     // let Stocks = {
     //             stock_no: req.body.stock_no,
@@ -85,13 +85,13 @@ module.exports = {
     //             size_run_14 : req.body.size_run_14,
     //             total_size_run : req.body.total_size_run
     //          }
-            console.log(req.body)
+            //console.log(req.body)
             var result = await StocksService.saveStocks(req.body)
              return res.status(200).json({code: "00" , message: "Stocks successfully saved"});
           
 
         } catch (e) {
-            console.log(e)
+            //console.log(e)
             //Return an Error Response Message with Code and the Error Message.
             // return res.status(400).json({
             //         status: "failed", code: "99", message: e.message , data: null
@@ -133,7 +133,7 @@ module.exports = {
         let sort_by = req.query.sort_by
         let sort_type = req.query.sort_type
         
-        console.log("get All Stocks Report ------------")
+        //console.log("get All Stocks ------------")
         let sortOptions = {
             [sort_by] : sort_type
         }
@@ -141,11 +141,12 @@ module.exports = {
         var page = req.query.page ? req.query.page : 1
         var limit = req.query.limit ? req.query.limit : 10;
         var sort = sortOptions
+        var query = req.query
 
         try {
-            var Stocks = await StocksService.getReports({}, page, parseInt(limit), sort)
+            var Stocks = await StocksService.getReports(query, page, parseInt(limit), sort)
             // Return the Users list with the appropriate HTTP password Code and Message.
-            return res.status(200).json({code: "00", status: "success", data: Stocks, message: "Stocks successfully recieved!"});
+            return res.status(200).json({code: "00", status: "success", data: Stocks, message: "Stocks successfully retrieved!"});
         } catch (e) {
             //Return an Error Response Message with Code and the Error Message.
             // return res.status(400).json({
@@ -157,7 +158,7 @@ module.exports = {
             )
             
         }
-    }
+    },
 
 
 }					
