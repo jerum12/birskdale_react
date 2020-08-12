@@ -8,3 +8,7 @@ mongorestore -d database_name directory_backup_where_mongodb_tobe_restored
 
 npm install react-scripts --save
 npm install node-sass --save
+
+npm install pm2@latest -g
+
+pm2 start web.js --name "birksdale_back_end"
