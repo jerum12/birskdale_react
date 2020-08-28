@@ -58,12 +58,56 @@ function StocksHistory(props) {
             minWidth : 5
         },
       },
+      { title: '2', field: 'size_run_2', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_2) === -1)
+                return  <span style={{color : 'red'}}>{rowData.size_run_2}</span>;
+            else if(Math.sign(rowData.size_run_2) === 1)
+                return  <span style={{color : 'blue'}}>{rowData.size_run_2}</span>;
+            else
+                return  rowData.size_run_2
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
+      { title: '2.5', field: 'size_run_2_5', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_2_5) === -1)
+                return  <span style={{color : 'red'}}>{rowData.size_run_2_5}</span>;
+            else if(Math.sign(rowData.size_run_2_5) === 1)
+                return  <span style={{color : 'blue'}}>{rowData.size_run_2_5}</span>;
+            else
+                return  rowData.size_run_2_5
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '3', field: 'size_run_3', type: 'numeric', 
         render: (rowData) => {
             if(Math.sign(rowData.size_run_3) === -1)
                 return  <span style={{color : 'red'}}>{rowData.size_run_3}</span>;
-            else
+            else if(Math.sign(rowData.size_run_3) === 1)
                 return  <span style={{color : 'blue'}}>{rowData.size_run_3}</span>;
+            else
+                return  rowData.size_run_3
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
+      { title: '3.5', field: 'size_run_3_5', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_3_5) === -1)
+                return  <span style={{color : 'red'}}>{rowData.size_run_3_5}</span>;
+            else if(Math.sign(rowData.size_run_3_5) === 1)
+                return  <span style={{color : 'blue'}}>{rowData.size_run_3_5}</span>;
+            else
+                return  rowData.size_run_3_5
         },
         cellStyle: {
             width: 5,
@@ -74,104 +118,234 @@ function StocksHistory(props) {
             render: (rowData) => {
                 if(Math.sign(rowData.size_run_4) === -1)
                     return  <span style={{color : 'red'}}>{rowData.size_run_4}</span>;
-                else
+                else if(Math.sign(rowData.size_run_4) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.size_run_4}</span>;
+                else
+                    return  rowData.size_run_4
             },
         cellStyle: {
             width: 10,
             minWidth : 10
+        },
+      },
+      { title: '4.5', field: 'size_run_4_5', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_4_5) === -1)
+                return  <span style={{color : 'red'}}>{rowData.size_run_4_5}</span>;
+            else if(Math.sign(rowData.size_run_4_5) === 1)
+                return  <span style={{color : 'blue'}}>{rowData.size_run_4_5}</span>;
+            else
+                return  rowData.size_run_4_5
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
         },
       },
       { title: '5', field: 'size_run_5', type: 'numeric',
             render: (rowData) => {
                 if(Math.sign(rowData.size_run_5) === -1)
                     return  <span style={{color : 'red'}}>{rowData.size_run_5}</span>;
-                else
+                else if(Math.sign(rowData.size_run_5) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.size_run_5}</span>;
+                else
+                    return  rowData.size_run_5
             },   
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
+      { title: '5.5', field: 'size_run_5_5', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_5_5) === -1)
+                return  <span style={{color : 'red'}}>{rowData.size_run_5_5}</span>;
+            else if(Math.sign(rowData.size_run_5_5) === 1)
+                return  <span style={{color : 'blue'}}>{rowData.size_run_5_5}</span>;
+            else
+                return  rowData.size_run_5_5
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '6', field: 'size_run_6', type: 'numeric',  
             render: (rowData) => {
                 if(Math.sign(rowData.size_run_6) === -1)
                     return  <span style={{color : 'red'}}>{rowData.size_run_6}</span>;
-                else
+                else if(Math.sign(rowData.size_run_6) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.size_run_6}</span>;
+                else
+                    return  rowData.size_run_6
             }, 
         cellStyle: {
             width: 10,
             minWidth : 10
+        },
+      },
+      { title: '6.5', field: 'size_run_6_5', type: 'numeric', 
+            render: (rowData) => {
+                if(Math.sign(rowData.size_run_6_5) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_6_5}</span>;
+                else if(Math.sign(rowData.size_run_6_5) === 1)
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_6_5}</span>;
+                else
+                    return  rowData.size_run_6_5
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
         },
       },
       { title: '7', field: 'size_run_7', type: 'numeric',   
             render: (rowData) => {
                 if(Math.sign(rowData.size_run_7) === -1)
                     return  <span style={{color : 'red'}}>{rowData.size_run_7}</span>;
-                else
+                else if(Math.sign(rowData.size_run_7) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.size_run_7}</span>;
+                else
+                    return  rowData.size_run_7
             },
         cellStyle: {
             width: 10,
             minWidth : 10
         },  
       },
+      { title: '7.5', field: 'size_run_7_5', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_7_5) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_7_5}</span>;
+                else if(Math.sign(rowData.size_run_7_5) === 1)
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_7_5}</span>;
+                else
+                    return  rowData.size_run_7_5
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '8', field: 'size_run_8', type: 'numeric',   
             render: (rowData) => {
                 if(Math.sign(rowData.size_run_8) === -1)
                     return  <span style={{color : 'red'}}>{rowData.size_run_8}</span>;
-                else
+                else if(Math.sign(rowData.size_run_8) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.size_run_8}</span>;
+                else
+                    return  rowData.size_run_8
             },
         cellStyle: {
             width: 10,
             minWidth : 10
+        },
+      },
+      { title: '8.5', field: 'size_run_8_5', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_8_5) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_8_5}</span>;
+                else if(Math.sign(rowData.size_run_8_5) === 1)
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_8_5}</span>;
+                else
+                    return  rowData.size_run_8_5
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
         },
       },
       { title: '9', field: 'size_run_9', type: 'numeric',   
             render: (rowData) => {
                 if(Math.sign(rowData.size_run_9) === -1)
                     return  <span style={{color : 'red'}}>{rowData.size_run_9}</span>;
-                else
+                else if(Math.sign(rowData.size_run_9) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.size_run_9}</span>;
+                else
+                    return  rowData.size_run_9
             },
         cellStyle: {
             width: 10,
             minWidth : 10
+        },
+      },
+      { title: '9.5', field: 'size_run_9_5', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_9_5) === -1)
+                    return  <span style={{color : 'red'}}>{rowData.size_run_9_5}</span>;
+                else if(Math.sign(rowData.size_run_9_5) === 1)
+                    return  <span style={{color : 'blue'}}>{rowData.size_run_9_5}</span>;
+                else
+                    return  rowData.size_run_9_5
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
         },
       },
       { title: '10', field: 'size_run_10', type: 'numeric',  
             render: (rowData) => {
                 if(Math.sign(rowData.size_run_10) === -1)
                     return  <span style={{color : 'red'}}>{rowData.size_run_10}</span>;
-                else
+                else if(Math.sign(rowData.size_run_10) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.size_run_10}</span>;
+                else
+                    return  rowData.size_run_10
             }, 
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
+      { title: '10.5', field: 'size_run_10_5', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_10_5) === -1)
+                return  <span style={{color : 'red'}}>{rowData.size_run_10_5}</span>;
+            else if(Math.sign(rowData.size_run_10_5) === 1)
+                return  <span style={{color : 'blue'}}>{rowData.size_run_10_5}</span>;
+            else
+                return  rowData.size_run_10_5
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '11', field: 'size_run_11', type: 'numeric',  
             render: (rowData) => {
                 if(Math.sign(rowData.size_run_11) === -1)
                     return  <span style={{color : 'red'}}>{rowData.size_run_11}</span>;
-                else
+                else if(Math.sign(rowData.size_run_11) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.size_run_11}</span>;
+                else
+                    return  rowData.size_run_11
             },
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
+      { title: '11.5', field: 'size_run_11_5', type: 'numeric', 
+        render: (rowData) => {
+            if(Math.sign(rowData.size_run_11_5) === -1)
+                return  <span style={{color : 'red'}}>{rowData.size_run_11_5}</span>;
+            else if(Math.sign(rowData.size_run_11_5) === 1)
+                return  <span style={{color : 'blue'}}>{rowData.size_run_11_5}</span>;
+            else
+                return  rowData.size_run_11_5
+        },
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '12', field: 'size_run_12', type: 'numeric',  
             render: (rowData) => {
                 if(Math.sign(rowData.size_run_12) === -1)
                     return  <span style={{color : 'red'}}>{rowData.size_run_12}</span>;
-                else
+                else if(Math.sign(rowData.size_run_12) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.size_run_12}</span>;
+                else
+                    return  rowData.size_run_12
             }, 
         cellStyle: {
             width: 10,
@@ -182,21 +356,11 @@ function StocksHistory(props) {
             render: (rowData) => {
                 if(Math.sign(rowData.size_run_13) === -1)
                     return  <span style={{color : 'red'}}>{rowData.size_run_13}</span>;
-                else
+                else if(Math.sign(rowData.size_run_13) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.size_run_13}</span>;
-            },
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '14', field: 'size_run_14', type: 'numeric',  
-            render: (rowData) => {
-                if(Math.sign(rowData.size_run_14) === -1)
-                    return  <span style={{color : 'red'}}>{rowData.size_run_14}</span>;
                 else
-                    return  <span style={{color : 'blue'}}>{rowData.size_run_14}</span>;
-            }, 
+                    return  rowData.size_run_13
+            },
         cellStyle: {
             width: 10,
             minWidth : 10
@@ -206,8 +370,10 @@ function StocksHistory(props) {
             render: (rowData) => {
                 if(Math.sign(rowData.total) === -1)
                     return  <span style={{color : 'red'}}>{rowData.total}</span>;
-                else
+                else if(Math.sign(rowData.total) === 1)
                     return  <span style={{color : 'blue'}}>{rowData.total}</span>;
+                else
+                    return  rowData.total
             },
         cellStyle: {
             width: 10,
@@ -216,6 +382,258 @@ function StocksHistory(props) {
       }
     ]);
   
+
+    // const [columnsFemale, setColumnsFemale] = useState([
+    //     {title: "id", field: "_id", hidden: true},
+    //     {title: "Transaction Date", field: "transaction_date", type: 'datetime'},
+    //     {title: "Transaction By", field: "transaction_by.full_name",
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '3', field: 'size_run_3', type: 'numeric', 
+    //       render: (rowData) => {
+    //           if(Math.sign(rowData.size_run_3) === -1)
+    //               return  <span style={{color : 'red'}}>{rowData.size_run_3}</span>;
+    //           else
+    //               return  <span style={{color : 'blue'}}>{rowData.size_run_3}</span>;
+    //       },
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '3.5', field: 'size_run_3_5', type: 'numeric', 
+    //       render: (rowData) => {
+    //           if(Math.sign(rowData.size_run_3_5) === -1)
+    //               return  <span style={{color : 'red'}}>{rowData.size_run_3_5}</span>;
+    //           else
+    //               return  <span style={{color : 'blue'}}>{rowData.size_run_3_5}</span>;
+    //       },
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '4', field: 'size_run_4', type: 'numeric',   
+    //           render: (rowData) => {
+    //               if(Math.sign(rowData.size_run_4) === -1)
+    //                   return  <span style={{color : 'red'}}>{rowData.size_run_4}</span>;
+    //               else
+    //                   return  <span style={{color : 'blue'}}>{rowData.size_run_4}</span>;
+    //           },
+    //       cellStyle: {
+    //           width: 10,
+    //           minWidth : 10
+    //       },
+    //     },
+    //     { title: '4.5', field: 'size_run_4_5', type: 'numeric', 
+    //       render: (rowData) => {
+    //           if(Math.sign(rowData.size_run_4_5) === -1)
+    //               return  <span style={{color : 'red'}}>{rowData.size_run_4_5}</span>;
+    //           else
+    //               return  <span style={{color : 'blue'}}>{rowData.size_run_4_5}</span>;
+    //       },
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '5', field: 'size_run_5', type: 'numeric',
+    //           render: (rowData) => {
+    //               if(Math.sign(rowData.size_run_5) === -1)
+    //                   return  <span style={{color : 'red'}}>{rowData.size_run_5}</span>;
+    //               else
+    //                   return  <span style={{color : 'blue'}}>{rowData.size_run_5}</span>;
+    //           },   
+    //       cellStyle: {
+    //           width: 10,
+    //           minWidth : 10
+    //       },
+    //     },
+    //     { title: '5.5', field: 'size_run_5_5', type: 'numeric', 
+    //       render: (rowData) => {
+    //           if(Math.sign(rowData.size_run_5_5) === -1)
+    //               return  <span style={{color : 'red'}}>{rowData.size_run_5_5}</span>;
+    //           else
+    //               return  <span style={{color : 'blue'}}>{rowData.size_run_5_5}</span>;
+    //       },
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '6', field: 'size_run_6', type: 'numeric',  
+    //           render: (rowData) => {
+    //               if(Math.sign(rowData.size_run_6) === -1)
+    //                   return  <span style={{color : 'red'}}>{rowData.size_run_6}</span>;
+    //               else
+    //                   return  <span style={{color : 'blue'}}>{rowData.size_run_6}</span>;
+    //           }, 
+    //       cellStyle: {
+    //           width: 10,
+    //           minWidth : 10
+    //       },
+    //     },
+    //     { title: '6.5', field: 'size_run_6_5', type: 'numeric', 
+    //       render: (rowData) => {
+    //           if(Math.sign(rowData.size_run_6_5) === -1)
+    //               return  <span style={{color : 'red'}}>{rowData.size_run_6_5}</span>;
+    //           else
+    //               return  <span style={{color : 'blue'}}>{rowData.size_run_6_5}</span>;
+    //       },
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '7', field: 'size_run_7', type: 'numeric',   
+    //           render: (rowData) => {
+    //               if(Math.sign(rowData.size_run_7) === -1)
+    //                   return  <span style={{color : 'red'}}>{rowData.size_run_7}</span>;
+    //               else
+    //                   return  <span style={{color : 'blue'}}>{rowData.size_run_7}</span>;
+    //           },
+    //       cellStyle: {
+    //           width: 10,
+    //           minWidth : 10
+    //       },  
+    //     },
+    //     { title: '7.5', field: 'size_run_7_5', type: 'numeric', 
+    //       render: (rowData) => {
+    //           if(Math.sign(rowData.size_run_7_5) === -1)
+    //               return  <span style={{color : 'red'}}>{rowData.size_run_7_5}</span>;
+    //           else
+    //               return  <span style={{color : 'blue'}}>{rowData.size_run_7_5}</span>;
+    //       },
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '8', field: 'size_run_8', type: 'numeric',   
+    //           render: (rowData) => {
+    //               if(Math.sign(rowData.size_run_8) === -1)
+    //                   return  <span style={{color : 'red'}}>{rowData.size_run_8}</span>;
+    //               else
+    //                   return  <span style={{color : 'blue'}}>{rowData.size_run_8}</span>;
+    //           },
+    //       cellStyle: {
+    //           width: 10,
+    //           minWidth : 10
+    //       },
+    //     },
+    //     { title: '8.5', field: 'size_run_8_5', type: 'numeric', 
+    //       render: (rowData) => {
+    //           if(Math.sign(rowData.size_run_8_5) === -1)
+    //               return  <span style={{color : 'red'}}>{rowData.size_run_8_5}</span>;
+    //           else
+    //               return  <span style={{color : 'blue'}}>{rowData.size_run_8_5}</span>;
+    //       },
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '9', field: 'size_run_9', type: 'numeric',   
+    //           render: (rowData) => {
+    //               if(Math.sign(rowData.size_run_9) === -1)
+    //                   return  <span style={{color : 'red'}}>{rowData.size_run_9}</span>;
+    //               else
+    //                   return  <span style={{color : 'blue'}}>{rowData.size_run_9}</span>;
+    //           },
+    //       cellStyle: {
+    //           width: 10,
+    //           minWidth : 10
+    //       },
+    //     },
+    //     { title: '9.5', field: 'size_run_9_5', type: 'numeric', 
+    //       render: (rowData) => {
+    //           if(Math.sign(rowData.size_run_9_5) === -1)
+    //               return  <span style={{color : 'red'}}>{rowData.size_run_9_5}</span>;
+    //           else
+    //               return  <span style={{color : 'blue'}}>{rowData.size_run_9_5}</span>;
+    //       },
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '10', field: 'size_run_10', type: 'numeric',  
+    //           render: (rowData) => {
+    //               if(Math.sign(rowData.size_run_10) === -1)
+    //                   return  <span style={{color : 'red'}}>{rowData.size_run_10}</span>;
+    //               else
+    //                   return  <span style={{color : 'blue'}}>{rowData.size_run_10}</span>;
+    //           }, 
+    //       cellStyle: {
+    //           width: 10,
+    //           minWidth : 10
+    //       },
+    //     },
+    //     { title: '10.5', field: 'size_run_10_5', type: 'numeric', 
+    //       render: (rowData) => {
+    //           if(Math.sign(rowData.size_run_10_5) === -1)
+    //               return  <span style={{color : 'red'}}>{rowData.size_run_10_5}</span>;
+    //           else
+    //               return  <span style={{color : 'blue'}}>{rowData.size_run_10_5}</span>;
+    //       },
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '11', field: 'size_run_11', type: 'numeric',  
+    //           render: (rowData) => {
+    //               if(Math.sign(rowData.size_run_11) === -1)
+    //                   return  <span style={{color : 'red'}}>{rowData.size_run_11}</span>;
+    //               else
+    //                   return  <span style={{color : 'blue'}}>{rowData.size_run_11}</span>;
+    //           },
+    //       cellStyle: {
+    //           width: 10,
+    //           minWidth : 10
+    //       },
+    //     },
+    //     { title: '11.5', field: 'size_run_11_5', type: 'numeric', 
+    //       render: (rowData) => {
+    //           if(Math.sign(rowData.size_run_11_5) === -1)
+    //               return  <span style={{color : 'red'}}>{rowData.size_run_11_5}</span>;
+    //           else
+    //               return  <span style={{color : 'blue'}}>{rowData.size_run_11_5}</span>;
+    //       },
+    //       cellStyle: {
+    //           width: 5,
+    //           minWidth : 5
+    //       },
+    //     },
+    //     { title: '12', field: 'size_run_12', type: 'numeric',  
+    //           render: (rowData) => {
+    //               if(Math.sign(rowData.size_run_12) === -1)
+    //                   return  <span style={{color : 'red'}}>{rowData.size_run_12}</span>;
+    //               else
+    //                   return  <span style={{color : 'blue'}}>{rowData.size_run_12}</span>;
+    //           }, 
+    //       cellStyle: {
+    //           width: 10,
+    //           minWidth : 10
+    //       },
+    //     },
+    //     { title: 'Total', field: 'total', type: 'numeric',   
+    //           render: (rowData) => {
+    //               if(Math.sign(rowData.total) === -1)
+    //                   return  <span style={{color : 'red'}}>{rowData.total}</span>;
+    //               else
+    //                   return  <span style={{color : 'blue'}}>{rowData.total}</span>;
+    //           },
+    //       cellStyle: {
+    //           width: 10,
+    //           minWidth : 10
+    //       },
+    //     }
+    //   ]);
+
     const [data, setData] = useState([]); //table data
 
 
@@ -395,113 +813,191 @@ function StocksHistory(props) {
                                 </div>
                                 </Grid>
                         
-                                <Grid item xs={12} md={3}>
-
-                                <div className={classes.demo}>
-                                    <List>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 3 Value"
-                                            secondary={details.size_run_3}
-                                        />
-                                        </ListItem>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 4 Value"
-                                            secondary={details.size_run_4}
-                                        />
-                                        </ListItem>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 5 Value"
-                                            secondary={details.size_run_5}
-                                        />
-                                        </ListItem>
-                                    </List>
-                                </div>
+                                <Grid item xs={12} md={2}>
+                                    <div className={classes.demo}>
+                                        <List>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 2"
+                                                secondary={details.size_run_2}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 5"
+                                                secondary={details.size_run_5_5}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 8"
+                                                secondary={details.size_run_8}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 11"
+                                                secondary={details.size_run_11}
+                                            />
+                                            </ListItem>
+                                            
+                                        </List>
+                                    </div>
                                 </Grid>
 
-                                <Grid item xs={12} md={3}>
-                                <div className={classes.demo}>
-                                    <List>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 6 Value"
-                                            secondary={details.size_run_6}
-                                        />
-                                        </ListItem>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 7 Value"
-                                            secondary={details.size_run_7}
-                                        />
-                                        </ListItem>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 8 Value"
-                                            secondary={details.size_run_8}
-                                        />
-                                        </ListItem>
+                                <Grid item xs={12} md={2}>
+                                    <div className={classes.demo}>
+                                        <List>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 2.5"
+                                                secondary={details.size_run_2_5}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 5.5"
+                                                secondary={details.size_run_5_5}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 8.5"
+                                                secondary={details.size_run_8_5}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 11.5"
+                                                secondary={details.size_run_11_5}
+                                            />
+                                            </ListItem>
+                                        </List>
+                                    </div>
+                                </Grid>
+
+
+                                <Grid item xs={12} md={2}>
+                                    <div className={classes.demo}>
+                                        <List>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 3"
+                                                secondary={details.size_run_3}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 6"
+                                                secondary={details.size_run_6}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 9"
+                                                secondary={details.size_run_9}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 12"
+                                                secondary={details.size_run_12}
+                                            />
+                                            </ListItem>
+                                        </List>
+                                    </div>
+                                </Grid>
+
+
                                 
-                                    </List>
-                                </div>
+
+                                <Grid item xs={12} md={2}>
+                                    <div className={classes.demo}>
+                                        <List>
+                                            <ListItem>
+                                                <ListItemText className={classes.primary}
+                                                primary="Size Run 3.5"
+                                                secondary={details.size_run_3_5}
+                                                />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 6.5"
+                                                secondary={details.size_run_6_5}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 9.5"
+                                                secondary={details.size_run_9_5}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 13"
+                                                secondary={details.size_run_13}
+                                            />
+                                            </ListItem>
+                                        </List>
+                                    </div>
                                 </Grid>
 
-                                <Grid item xs={12} md={3}>
-                                <div className={classes.demo}>
-                                    <List>
-                                    <ListItem>
-                                        <ListItemText className={classes.primary}
-                                        primary="Size Run 9 Value"
-                                        secondary={details.size_run_9}
-                                        />
-                                    </ListItem>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 10 Value"
-                                            secondary={details.size_run_10}
-                                        />
-                                        </ListItem>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 11 Value"
-                                            secondary={details.size_run_11}
-                                        />
-                                        </ListItem>
-                                
-                                    </List>
-                                </div>
-                                </Grid>
-
-                                <Grid item xs={12} md={3}>
+                                <Grid item xs={12} md={2}>
                                 {/* <Typography variant="h6" className={classes.title}>
                                         &nbsp;
                                 </Typography>
                                 <Divider/> */}
-                                <div className={classes.demo}>
-                                    <List>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 12 Value"
-                                            secondary={details.size_run_12}
-                                        />
-                                        </ListItem>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 13 Value"
-                                            secondary={details.size_run_13}
-                                        />
-                                        </ListItem>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
-                                            primary="Size Run 14 Value"
-                                            secondary={details.size_run_14}
-                                        />
-                                        </ListItem>
-                        
-                                
-                                    </List>
-                                </div>
+                                    <div className={classes.demo}>
+                                        <List>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 4"
+                                                secondary={details.size_run_4}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 7"
+                                                secondary={details.size_run_7}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 10"
+                                                secondary={details.size_run_10}
+                                            />
+                                            </ListItem>
+                                        </List>
+                                    </div>
+                                </Grid>
+
+                                <Grid item xs={12} md={2}>
+                                {/* <Typography variant="h6" className={classes.title}>
+                                        &nbsp;
+                                </Typography>
+                                <Divider/> */}
+                                    <div className={classes.demo}>
+                                        <List>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 4.5"
+                                                secondary={details.size_run_4_5}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 7.5"
+                                                secondary={details.size_run_7_5}
+                                            />
+                                            </ListItem>
+                                            <ListItem>
+                                            <ListItemText className={classes.primary}
+                                                primary="Size Run 10.5"
+                                                secondary={details.size_run_10_5}
+                                            />
+                                            </ListItem>
+                                        </List>
+                                    </div>
                                 </Grid>
 
                             </Grid>

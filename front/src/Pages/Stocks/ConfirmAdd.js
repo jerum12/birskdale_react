@@ -52,15 +52,26 @@ const ConfirmAdd = ({
     lining,
     stitch,
     special_instruction,
+    size_run_2,
+    size_run_2_5,
     size_run_3,
+    size_run_3_5,
     size_run_4,
+    size_run_4_5,
     size_run_5,
+    size_run_5_5,
     size_run_6,
+    size_run_6_5,
     size_run_7,
+    size_run_7_5,
     size_run_8,
+    size_run_8_5,
     size_run_9,
+    size_run_9_5,
     size_run_10,
+    size_run_10_5,
     size_run_11,
+    size_run_11_5,
     size_run_12,
     size_run_13,
     size_run_14 }
@@ -72,6 +83,8 @@ const [alertFailed, setAlertFailed] = useState(false)
 const [message, setMessage] = useState('')
 
 const handleSubmit = () => {
+
+    console.log(size_run_3_5)
 
     const parameterObject = {
         stock_no: stock_no._id,
@@ -85,15 +98,26 @@ const handleSubmit = () => {
         logo: logo._id,
         sub_logo: sub_logo._id,
         special_instruction: special_instruction,
+        size_run_2 : size_run_2,
+        size_run_2_5 : size_run_2_5,
         size_run_3 : size_run_3,
+        size_run_3_5 : size_run_3_5,
         size_run_4 : size_run_4,
+        size_run_4_5 : size_run_4_5,
         size_run_5 : size_run_5,
+        size_run_5_5 : size_run_5_5,
         size_run_6 : size_run_6,
+        size_run_6_5 : size_run_6_5,
         size_run_7 : size_run_7,
+        size_run_7_5 : size_run_7_5,
         size_run_8 : size_run_8,
+        size_run_8_5 : size_run_8_5,
         size_run_9 : size_run_9,
+        size_run_9_5 : size_run_9_5,
         size_run_10 : size_run_10,
+        size_run_10_5 : size_run_10_5,
         size_run_11 : size_run_11,
+        size_run_11_5 : size_run_11_5,
         size_run_12 : size_run_12,
         size_run_13 : size_run_13,
         size_run_14 : size_run_14,
@@ -214,7 +238,6 @@ const hideAlert = () => {
             </List>
           </div>
         </Grid>
-
         <Grid item xs={12} md={3}>
           <Typography variant="h6" className={classes.title}>
                 &nbsp;
@@ -244,7 +267,6 @@ const hideAlert = () => {
             </List>
           </div>
         </Grid>
-
         <Grid item xs={12} md={3}>
           <Typography variant="h6" className={classes.title}>
                 &nbsp;
@@ -269,11 +291,10 @@ const hideAlert = () => {
             </List>
           </div>
         </Grid>
-
-      </Grid>
+    </Grid>
 
       <Grid container spacing={2}>
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={2}>
           <Typography variant="h6" className={classes.title}>
             Size Run
           </Typography>
@@ -282,88 +303,105 @@ const hideAlert = () => {
 
           <div className={classes.demo}>
             <List>
+              <ListItem>
+              <ListItemText className={classes.primary}
+                  primary="Size Run 2"
+                  secondary={size_run_2}
+              />
+              </ListItem>
+              <ListItem>
+              <ListItemText className={classes.primary}
+                  primary="Size Run 5"
+                  secondary={size_run_5_5}
+              />
+              </ListItem>
+              <ListItem>
+              <ListItemText className={classes.primary}
+                  primary="Size Run 8"
+                  secondary={size_run_8}
+              />
+              </ListItem>
+              <ListItem>
+              <ListItemText className={classes.primary}
+                  primary="Size Run 11"
+                  secondary={size_run_11}
+              />
+              </ListItem>
+            
+          </List>
+          </div>
+        </Grid>
+        <Grid item xs={12} md={2}>
+          <Typography variant="h6" className={classes.title}>
+              &nbsp;
+          </Typography>
+          <Divider/>
+          <div className={classes.demo}>
+            <List>
                 <ListItem>
-                  <ListItemText className={classes.primary}
+                <ListItemText className={classes.primary}
+                    primary="Size Run 2.5"
+                    secondary={size_run_2_5}
+                />
+                </ListItem>
+                <ListItem>
+                <ListItemText className={classes.primary}
+                    primary="Size Run 5.5"
+                    secondary={size_run_5_5}
+                />
+                </ListItem>
+                <ListItem>
+                <ListItemText className={classes.primary}
+                    primary="Size Run 8.5"
+                    secondary={size_run_8_5}
+                />
+                </ListItem>
+                <ListItem>
+                <ListItemText className={classes.primary}
+                    primary="Size Run 11.5"
+                    secondary={size_run_11_5}
+                />
+                </ListItem>
+            </List>
+          </div>
+        </Grid>
+
+        <Grid item xs={12} md={2}>
+          <Typography variant="h6" className={classes.title}>
+              &nbsp;
+          </Typography>
+          <Divider/>
+          <div className={classes.demo}>
+            <List>
+                <ListItem>
+                <ListItemText className={classes.primary}
                     primary="Size Run 3"
                     secondary={size_run_3}
-                  />
+                />
                 </ListItem>
                 <ListItem>
-                  <ListItemText className={classes.primary}
-                    primary="Size Run 4"
-                    secondary={size_run_4}
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemText className={classes.primary}
-                    primary="Size Run 5"
-                    secondary={size_run_5}
-                  />
-                </ListItem>
-            </List>
-          </div>
-        </Grid>
-        <Grid item xs={12} md={3}>
-          <Typography variant="h6" className={classes.title}>
-              &nbsp;
-          </Typography>
-          <Divider/>
-          <div className={classes.demo}>
-            <List>
-                <ListItem>
-                  <ListItemText className={classes.primary}
+                <ListItemText className={classes.primary}
                     primary="Size Run 6"
                     secondary={size_run_6}
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemText className={classes.primary}
-                    primary="Size Run 7"
-                    secondary={size_run_7}
-                  />
-                </ListItem>
-                <ListItem>
-                  <ListItemText className={classes.primary}
-                    primary="Size Run 8"
-                    secondary={size_run_8}
-                  />
-                </ListItem>
-           
-            </List>
-          </div>
-        </Grid>
-
-        <Grid item xs={12} md={3}>
-          <Typography variant="h6" className={classes.title}>
-              &nbsp;
-          </Typography>
-          <Divider/>
-          <div className={classes.demo}>
-            <List>
-            <ListItem>
-                <ListItemText className={classes.primary}
-                primary="Size Run 9"
-                secondary={size_run_9}
                 />
-            </ListItem>
-                <ListItem>
-                  <ListItemText className={classes.primary}
-                    primary="Size Run 10"
-                    secondary={size_run_10}
-                  />
                 </ListItem>
                 <ListItem>
-                  <ListItemText className={classes.primary}
-                    primary="Size Run 11"
-                    secondary={size_run_11}
-                  />
+                <ListItemText className={classes.primary}
+                    primary="Size Run 9"
+                    secondary={size_run_9}
+                />
                 </ListItem>
-           
+                <ListItem>
+                <ListItemText className={classes.primary}
+                    primary="Size Run 12"
+                    secondary={size_run_12}
+                />
+                </ListItem>
             </List>
           </div>
         </Grid>
 
-        <Grid item xs={12} md={3}>
+        <Grid item xs={12} md={2}>
           <Typography variant="h6" className={classes.title}>
                 &nbsp;
           </Typography>
@@ -371,25 +409,87 @@ const hideAlert = () => {
           <div className={classes.demo}>
             <List>
                 <ListItem>
-                  <ListItemText className={classes.primary}
-                    primary="Size Run 12"
-                    secondary={size_run_12}
-                  />
+                    <ListItemText className={classes.primary}
+                    primary="Size Run 3.5"
+                    secondary={size_run_3_5}
+                    />
                 </ListItem>
                 <ListItem>
-                  <ListItemText className={classes.primary}
+                <ListItemText className={classes.primary}
+                    primary="Size Run 6.5"
+                    secondary={size_run_6_5}
+                />
+                </ListItem>
+                <ListItem>
+                <ListItemText className={classes.primary}
+                    primary="Size Run 9.5"
+                    secondary={size_run_9_5}
+                />
+                </ListItem>
+                <ListItem>
+                <ListItemText className={classes.primary}
                     primary="Size Run 13"
                     secondary={size_run_13}
-                  />
+                />
+                </ListItem>
+            </List>
+          </div>
+        </Grid>
+
+        <Grid item xs={12} md={2}>
+          <Typography variant="h6" className={classes.title}>
+                &nbsp;
+          </Typography>
+          <Divider/>
+          <div className={classes.demo}>
+            <List>
+                <ListItem>
+                <ListItemText className={classes.primary}
+                    primary="Size Run 4"
+                    secondary={size_run_4}
+                />
                 </ListItem>
                 <ListItem>
-                  <ListItemText className={classes.primary}
-                    primary="Size Run 14"
-                    secondary={size_run_14}
-                  />
+                <ListItemText className={classes.primary}
+                    primary="Size Run 7"
+                    secondary={size_run_7}
+                />
                 </ListItem>
- 
-           
+                <ListItem>
+                <ListItemText className={classes.primary}
+                    primary="Size Run 10"
+                    secondary={size_run_10}
+                />
+                </ListItem>
+            </List>
+          </div>
+        </Grid>
+
+        <Grid item xs={12} md={2}>
+          <Typography variant="h6" className={classes.title}>
+                &nbsp;
+          </Typography>
+          <Divider/>
+          <div className={classes.demo}>
+            <List>
+                <ListItem>
+                <ListItemText className={classes.primary}
+                    primary="Size Run 4.5"
+                    secondary={size_run_4_5}
+                />
+                </ListItem>
+                <ListItem>
+                <ListItemText className={classes.primary}
+                    primary="Size Run 7.5"
+                    secondary={size_run_7_5}
+                />
+                </ListItem>
+                <ListItem>
+                <ListItemText className={classes.primary}
+                    primary="Size Run 10.5"
+                    secondary={size_run_10_5}
+                />
+                </ListItem>
             </List>
           </div>
         </Grid>

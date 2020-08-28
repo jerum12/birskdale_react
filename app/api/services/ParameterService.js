@@ -56,8 +56,8 @@ module.exports = {
             switch (type) {
                 case "stock number":
                     doesParameterExisting = await model.StockModel.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.StockModel({
                         code: paramBody.code,
@@ -66,8 +66,8 @@ module.exports = {
                 break;
                 case "color":
                     doesParameterExisting = await model.ColorModel.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.ColorModel({
                         code: paramBody.code,
@@ -76,8 +76,8 @@ module.exports = {
                 break;
                 case "gender":
                     doesParameterExisting = await model.GenderModel.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.GenderModel({
                         code: paramBody.code,
@@ -86,8 +86,8 @@ module.exports = {
                 break;
                 case "leather type":
                     doesParameterExisting = await model.LeatherTypeModel.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.LeatherTypeModel({
                         code: paramBody.code,
@@ -96,8 +96,8 @@ module.exports = {
                 break;
                 case "classification 1":
                     doesParameterExisting = await model.Classification1Model.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.Classification1Model({
                         code: paramBody.code,
@@ -106,8 +106,8 @@ module.exports = {
                 break;
                 case "classification 2":
                     doesParameterExisting = await model.Classification2Model.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.Classification2Model({
                         code: paramBody.code,
@@ -116,8 +116,8 @@ module.exports = {
                 break;
                 case "logo":
                     doesParameterExisting = await model.LogoModel.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.LogoModel({
                         code: paramBody.code,
@@ -126,8 +126,8 @@ module.exports = {
                 break;
                 case "sub logo":
                     doesParameterExisting = await model.SubLogoModel.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.SubLogoModel({
                         code: paramBody.code,
@@ -136,8 +136,8 @@ module.exports = {
                 break;
                 case "lining":
                     doesParameterExisting = await model.LiningModel.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.LiningModel({
                         code: paramBody.code,
@@ -146,8 +146,8 @@ module.exports = {
                 break;
                 case "stitch":
                     doesParameterExisting = await model.StitchModel.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.StitchModel({
                         code: paramBody.code,

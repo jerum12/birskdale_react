@@ -103,12 +103,19 @@ module.exports = {
                 throw Error("Stocks already existing.")
             }
             let total_size_run = 
-            paramBody.size_run_3 + paramBody.size_run_4 + 
-            paramBody.size_run_5 + paramBody.size_run_6 + 
-            paramBody.size_run_7 + paramBody.size_run_8 +
-            paramBody.size_run_9 + paramBody.size_run_10 +
-            paramBody.size_run_11 + paramBody.size_run_12 +
-            paramBody.size_run_13 + paramBody.size_run_14;
+            paramBody.size_run_2 + paramBody.size_run_2_5 + 
+            paramBody.size_run_3 + paramBody.size_run_3_5 + 
+            paramBody.size_run_4 + paramBody.size_run_4_5 +
+            paramBody.size_run_5 + paramBody.size_run_5_5 +
+            paramBody.size_run_6 + paramBody.size_run_6_5 +
+            paramBody.size_run_7 + paramBody.size_run_7_5 +
+            paramBody.size_run_8 + paramBody.size_run_8_5 +
+            paramBody.size_run_9 + paramBody.size_run_9_5 +
+            paramBody.size_run_10 + paramBody.size_run_10_5 +
+            paramBody.size_run_11 + paramBody.size_run_11_5 +
+            paramBody.size_run_12 + paramBody.size_run_13
+
+            
 
             
             let newStocks =  new model.StocksModel({
@@ -123,22 +130,33 @@ module.exports = {
                 stitch : paramBody.stitch,
                 lining : paramBody.lining,
                 special_instruction : paramBody.special_instruction,
+                size_run_2 : paramBody.size_run_2,
+                size_run_2_5 : paramBody.size_run_2_5,
                 size_run_3 : paramBody.size_run_3,
+                size_run_3_5 : paramBody.size_run_3_5,
                 size_run_4 : paramBody.size_run_4,
+                size_run_4_5 : paramBody.size_run_4_5,
                 size_run_5 : paramBody.size_run_5,
+                size_run_5_5 : paramBody.size_run_5_5,
                 size_run_6 : paramBody.size_run_6,
+                size_run_6_5 : paramBody.size_run_6_5,
                 size_run_7 : paramBody.size_run_7,
+                size_run_7_5 : paramBody.size_run_7_5,
                 size_run_8 : paramBody.size_run_8,
+                size_run_8_5 : paramBody.size_run_8_5,
                 size_run_9 : paramBody.size_run_9,
+                size_run_9_5 : paramBody.size_run_9_5,
                 size_run_10 : paramBody.size_run_10,
+                size_run_10_5 : paramBody.size_run_10_5,
                 size_run_11 : paramBody.size_run_11,
+                size_run_11_5 : paramBody.size_run_11_5,
                 size_run_12 : paramBody.size_run_12,
                 size_run_13 : paramBody.size_run_13,
                 size_run_14 : paramBody.size_run_14,
                 total_size_run : total_size_run
             })
 
-
+            //console.log(newStocks)
             // Saving the User 
             var savedStocks = await newStocks.save();
            

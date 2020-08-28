@@ -19,15 +19,26 @@ const SecondStepAdd = ({
   handleBack,
   handleChange,
   values: { 
+            size_run_2,
+            size_run_2_5,
             size_run_3,
+            size_run_3_5,
             size_run_4,
+            size_run_4_5,
             size_run_5,
+            size_run_5_5,
             size_run_6,
+            size_run_6_5,
             size_run_7,
+            size_run_7_5,
             size_run_8,
+            size_run_8_5,
             size_run_9,
+            size_run_9_5,
             size_run_10,
+            size_run_10_5,
             size_run_11,
+            size_run_11_5,
             size_run_12,
             size_run_13,
             size_run_14
@@ -61,7 +72,49 @@ const SecondStepAdd = ({
   return (
     <Fragment>
       <Grid container spacing={2}>
-        <Grid item xs={12} sm={2}>
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 2</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_2} onChange={handleChange("size_run_2")}
+                min={ 0 } name="size_run_2"
+                placeholder = "Size Run 2"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_2 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_2 !== ""  && <p className="p-error">{filedError.size_run_2 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 2.5</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_2_5} onChange={handleChange("size_run_2_5")}
+                min={ 0 } name="size_run_2_5"
+                placeholder = "Size Run 2.5"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_2_5 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_2_5 !== ""  && <p className="p-error">{filedError.size_run_2_5 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
             <FormControl fullWidth required margin="normal">
               <FormLabel component="legend" className='size_run_label'>Size Run 3</FormLabel>
                <InputNumber 
@@ -79,6 +132,27 @@ const SecondStepAdd = ({
                 className={filedError.size_run_3 !== "" ? "has-error" : ""}
                 />
                 {filedError.size_run_3 !== ""  && <p className="p-error">{filedError.size_run_3 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 3.5</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_3_5} onChange={handleChange("size_run_3_5")}
+                min={ 0 } name="size_run_3_5"
+                placeholder = "Size Run 3.5"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_3_5 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_3_5 !== ""  && <p className="p-error">{filedError.size_run_3_5 }</p>}
               </FormControl>
           </Grid>
         
@@ -105,6 +179,27 @@ const SecondStepAdd = ({
 
           <Grid item xs={12} sm={2}>
             <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 4.5</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_4_5} onChange={handleChange("size_run_4_5")}
+                min={ 0 } name="size_run_4_5"
+                placeholder = "Size Run 4.5"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_4_5 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_4_5 !== ""  && <p className="p-error">{filedError.size_run_4_5 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
               <FormLabel component="legend" className='size_run_label'>Size Run 5</FormLabel>
                <InputNumber 
                 defaultValue={size_run_5} onChange={handleChange("size_run_5")}
@@ -121,6 +216,27 @@ const SecondStepAdd = ({
                 className={filedError.size_run_5 !== "" ? "has-error" : ""}
                 />
                 {filedError.size_run_5 !== ""  && <p className="p-error">{filedError.size_run_5 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 5.5</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_5_5} onChange={handleChange("size_run_5_5")}
+                min={ 0 } name="size_run_5_5"
+                placeholder = "Size Run 5.5"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_5_5 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_5_5 !== ""  && <p className="p-error">{filedError.size_run_5_5 }</p>}
               </FormControl>
           </Grid>
 
@@ -147,6 +263,27 @@ const SecondStepAdd = ({
 
           <Grid item xs={12} sm={2}>
             <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 6.5</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_6_5} onChange={handleChange("size_run_6_5")}
+                min={ 0 } name="size_run_6_5"
+                placeholder = "Size Run 6.5"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_6_5 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_6_5 !== ""  && <p className="p-error">{filedError.size_run_6_5 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
               <FormLabel component="legend" className='size_run_label'>Size Run 7</FormLabel>
                <InputNumber 
                 defaultValue={size_run_7} onChange={handleChange("size_run_7")}
@@ -168,6 +305,27 @@ const SecondStepAdd = ({
 
           <Grid item xs={12} sm={2}>
             <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 7.5</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_7_5} onChange={handleChange("size_run_7_5")}
+                min={ 0 } name="size_run_7_5"
+                placeholder = "Size Run 7.5"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_7_5 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_7_5 !== ""  && <p className="p-error">{filedError.size_run_7_5 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
               <FormLabel component="legend" className='size_run_label'>Size Run 8</FormLabel>
                <InputNumber 
                 defaultValue={size_run_8} onChange={handleChange("size_run_8")}
@@ -184,6 +342,27 @@ const SecondStepAdd = ({
                 className={filedError.size_run_8 !== "" ? "has-error" : ""}
                 />
                 {filedError.size_run_8 !== ""  && <p className="p-error">{filedError.size_run_8 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 8.5</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_8_5} onChange={handleChange("size_run_8_5")}
+                min={ 0 } name="size_run_8_5"
+                placeholder = "Size Run 8.5"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_8_5 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_8_5 !== ""  && <p className="p-error">{filedError.size_run_8_5 }</p>}
               </FormControl>
           </Grid>
 
@@ -210,6 +389,27 @@ const SecondStepAdd = ({
 
           <Grid item xs={12} sm={2}>
             <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 9.5</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_9_5} onChange={handleChange("size_run_9_5")}
+                min={ 0 } name="size_run_9_5"
+                placeholder = "Size Run 9.5"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_9_5 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_9_5 !== ""  && <p className="p-error">{filedError.size_run_9_5 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
               <FormLabel component="legend" className='size_run_label'>Size Run 10</FormLabel>
                <InputNumber 
                 defaultValue={size_run_10} onChange={handleChange("size_run_10")}
@@ -226,6 +426,27 @@ const SecondStepAdd = ({
                 className={filedError.size_run_10 !== "" ? "has-error" : ""}
                 />
                 {filedError.size_run_10 !== ""  && <p className="p-error">{filedError.size_run_10 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 10.5</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_10_5} onChange={handleChange("size_run_10_5")}
+                min={ 0 } name="size_run_10_5"
+                placeholder = "Size Run 10.5"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_10_5 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_10_5 !== ""  && <p className="p-error">{filedError.size_run_10_5 }</p>}
               </FormControl>
           </Grid>
 
@@ -247,6 +468,27 @@ const SecondStepAdd = ({
                 className={filedError.size_run_11 !== "" ? "has-error" : ""}
                 />
                 {filedError.size_run_11 !== ""  && <p className="p-error">{filedError.size_run_11 }</p>}
+              </FormControl>
+          </Grid>
+
+          <Grid item xs={12} sm={2}>
+            <FormControl fullWidth required margin="normal">
+              <FormLabel component="legend" className='size_run_label'>Size Run 11.5</FormLabel>
+               <InputNumber 
+                defaultValue={size_run_11_5} onChange={handleChange("size_run_11_5")}
+                min={ 0 } name="size_run_11_5"
+                placeholder = "Size Run 11.5"
+                max={ 999 } 
+                step={ 1 } 
+                precision={ 0 } 
+                size={ 5 } 
+                maxLength={ 3 }
+                style={{ width: 100, height : 40 , color: 'black'}}
+                upHandler={upHandler}
+                downHandler={downHandler}
+                className={filedError.size_run_11_5 !== "" ? "has-error" : ""}
+                />
+                {filedError.size_run_11_5 !== ""  && <p className="p-error">{filedError.size_run_11_5 }</p>}
               </FormControl>
           </Grid>
 
@@ -292,26 +534,6 @@ const SecondStepAdd = ({
               </FormControl>
           </Grid>
 
-          <Grid item xs={12} sm={2}>
-          <FormControl fullWidth required margin="normal">
-              <FormLabel component="legend" className='size_run_label'>Size Run 14</FormLabel>
-               <InputNumber 
-                defaultValue={size_run_14} onChange={handleChange("size_run_14")}
-                min={ 0 } name="size_run_14"
-                placeholder = "Size Run 14"
-                max={ 999 } 
-                step={ 1 } 
-                precision={ 0 } 
-                size={ 5 } 
-                maxLength={ 3 }
-                style={{ width: 100, height : 40 , color: 'black'}}
-                upHandler={upHandler}
-                downHandler={downHandler}
-                className={filedError.size_run_14 !== "" ? "has-error" : ""}
-                />
-                {filedError.size_run_14 !== ""  && <p className="p-error">{filedError.size_run_14 }</p>}
-              </FormControl>
-          </Grid>
       </Grid>
       <div
         style={{ display: "flex", marginTop: 50, justifyContent: "flex-end" }}

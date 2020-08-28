@@ -11,4 +11,5 @@ npm install node-sass --save
 
 npm install pm2@latest -g
 
-pm2 start web.js --name "birksdale_back_end"
+pm2 start server.js --name "birksdale_backend"
+pm2 serve build  8082 --spa

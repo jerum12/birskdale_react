@@ -881,3 +881,20 @@ p.text-muted {
     -webkit-font-smoothing: antialiased;
 }
 /* material icon for material datetime picker */
+.modalSizeRun > div{
+    max-width: 70% !important;
+}
+// .sizeRunLabel{
+//     float: left;
+//     padding-right: 30px;
+// }
+
+// .sizeRunLabel + div{
+//     float: left;
+// }
+
+.gridSizeForm{
+    padding: 0px 40px !important;
+    border-radius: 20px;
+    border-right: 1px solid gray;
+}

@@ -10,7 +10,7 @@ export const SizeRunModal = ({showModal, handleClose, props, data}) => {
     return (
         <Modal show={showModal} onHide={handleClose}
             size="lg"            
-      
+            className='modalSizeRun'
             //backdrop="static"
             //keyboard={false}
         >

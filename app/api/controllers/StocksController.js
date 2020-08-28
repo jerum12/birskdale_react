@@ -3,7 +3,7 @@ const StocksService = require('./../services/StocksService')
 
 module.exports = {
 
-	getAll:  async function(req, res, next) {
+	getStocks:  async function(req, res, next) {
 
         // Check the existence of the query parameters, If doesn't exists assign a default value
         let sort_by = req.query.sort_by

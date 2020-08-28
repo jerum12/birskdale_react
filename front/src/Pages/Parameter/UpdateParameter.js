@@ -119,12 +119,23 @@ function UpdateParameter(props) {
                     return;
                   }
 
-                  const parameterObject = {
+                  let parameterObject = '';
+                  if(type === 'color'){
+                    parameterObject = {
+                        code: newData.code.replace(/\s/g,''),
+                        description: newData.description.replace(/\s/g,''),
+                        type : type,
+                        transaction_date : new Date()
+                    };
+                  }else{
+                    parameterObject = {
                         code: newData.code,
                         description: newData.description,
                         type : type,
                         transaction_date : new Date()
                     };
+                  }
+                 
                 
                     axios({
                         method: 'POST',
@@ -177,12 +188,22 @@ function UpdateParameter(props) {
                     return;
                   }
 
-                  const parameterObject = {
+                  let parameterObject = '';
+                  if(type === 'color'){
+                    parameterObject = {
+                        _id : newData._id,
+                        code: newData.code.replace(/\s/g,''),
+                        description: newData.description.replace(/\s/g,''),
+                        type : type
+                    };
+                  }else{
+                    parameterObject = {
                         _id : newData._id,
                         code: newData.code,
                         description: newData.description,
-                        type : type,
+                        type : type
                     };
+                 }
                 
                     axios({
                         method: 'PUT',

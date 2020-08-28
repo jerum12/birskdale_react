@@ -36,18 +36,29 @@ const StepFormAdd = ({
     lining: "",
     stitch: "",
     special_instruction: "",
+    size_run_2 : "",
+    size_run_2_5 : "",
     size_run_3 : "",
+    size_run_3_5 : "",
     size_run_4 : "",
+    size_run_4_5 : "",
     size_run_5 : "",
+    size_run_5_5 : "",
     size_run_6 : "",
+    size_run_6_5 : "",
     size_run_7 : "",
+    size_run_7_5 : "",
     size_run_8 : "",
+    size_run_8_5 : "",
     size_run_9 : "",
+    size_run_9_5 : "",
     size_run_10 : "",
+    size_run_10_5 : "",
     size_run_11 : "",
+    size_run_11_5 : "",
     size_run_12 : "",
     size_run_13 : "",
-    size_run_14 : ""
+
   })
 
   const [fields, setFields] = useState({
@@ -62,18 +73,28 @@ const StepFormAdd = ({
     lining: "",
     stitch: "",
     special_instruction: "",
+    size_run_2 : 0,
+    size_run_2_5 : 0,
     size_run_3 : 0,
+    size_run_3_5 : 0,
     size_run_4 : 0,
+    size_run_4_5 : 0,
     size_run_5 : 0,
+    size_run_5_5 : 0,
     size_run_6 : 0,
+    size_run_6_5 : 0,
     size_run_7 : 0,
+    size_run_7_5 : 0,
     size_run_8 : 0,
+    size_run_8_5 : 0,
     size_run_9 : 0,
+    size_run_9_5 : 0,
     size_run_10 : 0,
+    size_run_10_5 : 0,
     size_run_11 : 0,
+    size_run_11_5 : 0,
     size_run_12 : 0,
-    size_run_13 : 0,
-    size_run_14 : 0
+    size_run_13 : 0
   })
   // Copy fields as they all have the same name
   const [filedError, setFieldError] = useState({
@@ -177,77 +198,116 @@ const StepFormAdd = ({
                 ? "Please enter a valid Special Instruction"
                 : ""
             break 
+        case "size_run_2":
+          formErrors.size_run_2 = mandatory2
+              ? "Mandatory"
+              : ""
+          break
+        case "size_run_2_5":
+          formErrors.size_run_2_5 = mandatory2
+              ? "Mandatory"
+              : ""
+          break
         case "size_run_3":
           formErrors.size_run_3 = mandatory2
               ? "Mandatory"
               : ""
           break
-          case "size_run_4":
-              formErrors.size_run_4 = mandatory2
-                  ? "Mandatory"
-                  : ""
-      
-              break
-          case "size_run_5":
-              formErrors.size_run_5 = mandatory2
-                  ? "Mandatory"
-                  : ""
-  
-              break
-          case "size_run_6":
-              formErrors.size_run_6 = mandatory2
-                  ? "Mandatory"
-                  : ""
-
-              break  
-          case "size_run_7":
-              formErrors.size_run_7 = mandatory2
-                  ? "Mandatory"
-                  : ""
-
-              break  
-          case "size_run_8":
-              formErrors.size_run_8 = mandatory2
-                  ? "Mandatory"
-                  : ""
-
-              break  
-          case "size_run_9":
-              formErrors.size_run_9 = mandatory2
-                  ? "Mandatory"
-                  : ""
-            
-              break   
-          case "size_run_10":
-              formErrors.size_run_10 = mandatory2
-                  ? "Mandatory"
-                  : ""
-
-              break       
-          case "size_run_11":
-              formErrors.size_run_11 = mandatory2
-                  ? "Mandatory"
-                  : ""
-        
-              break       
-          case "size_run_12":
-              formErrors.size_run_12 = mandatory2
-                  ? "Mandatory"
-                  : ""
-            
-              break       
-          case "size_run_13":
-              formErrors.size_run_13 = mandatory2
-                  ? "Mandatory"
-                  : ""
-        
-              break 
-          case "size_run_14":
-              formErrors.size_run_14 = mandatory2
-                  ? "Mandatory"
-                  : ""
-                
-              break 
+        case "size_run_3_5":
+          formErrors.size_run_3_5 = mandatory2
+              ? "Mandatory"
+              : ""
+          break
+        case "size_run_4":
+            formErrors.size_run_4 = mandatory2
+                ? "Mandatory"
+                : ""
+            break
+        case "size_run_4_5":
+          formErrors.size_run_4_5 = mandatory2
+              ? "Mandatory"
+              : ""
+          break
+        case "size_run_5":
+            formErrors.size_run_5 = mandatory2
+                ? "Mandatory"
+                : ""
+            break
+        case "size_run_5_5":
+          formErrors.size_run_5_5 = mandatory2
+              ? "Mandatory"
+              : ""
+          break
+        case "size_run_6":
+            formErrors.size_run_6 = mandatory2
+                ? "Mandatory"
+                : ""
+            break 
+        case "size_run_6_5":
+          formErrors.size_run_6_5 = mandatory2
+              ? "Mandatory"
+              : ""
+          break
+        case "size_run_7":
+            formErrors.size_run_7 = mandatory2
+                ? "Mandatory"
+                : ""
+            break  
+        case "size_run_7_5":
+          formErrors.size_run_7_5 = mandatory2
+              ? "Mandatory"
+              : ""
+          break
+        case "size_run_8":
+            formErrors.size_run_8 = mandatory2
+                ? "Mandatory"
+                : ""
+            break
+        case "size_run_8_5":
+          formErrors.size_run_8_5 = mandatory2
+              ? "Mandatory"
+              : ""
+          break
+        case "size_run_9":
+            formErrors.size_run_9 = mandatory2
+                ? "Mandatory"
+                : ""
+            break   
+        case "size_run_9_5":
+          formErrors.size_run_9_5 = mandatory2
+              ? "Mandatory"
+              : ""
+          break
+        case "size_run_10":
+            formErrors.size_run_10 = mandatory2
+                ? "Mandatory"
+                : ""
+            break
+        case "size_run_10_5":
+          formErrors.size_run_10_5 = mandatory2
+              ? "Mandatory"
+              : ""
+          break       
+        case "size_run_11":
+            formErrors.size_run_11 = mandatory2
+                ? "Mandatory"
+                : ""
+            break   
+        case "size_run_11_5":
+          formErrors.size_run_11_5 = mandatory2
+              ? "Mandatory"
+              : ""
+          break       
+        case "size_run_12":
+            formErrors.size_run_12 = mandatory2
+                ? "Mandatory"
+                : ""
+            break       
+        case "size_run_13":
+            formErrors.size_run_13 = mandatory2
+                ? "Mandatory"
+                : ""
+            break
       default:
         break
     }
