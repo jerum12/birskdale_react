@@ -163,19 +163,27 @@ module.exports = {
 
             if(doesParameterExisting){
                 //console.log('existing----------------')
-                throw Error(`${type.toUpperCase()} already existing!`)
+                throw Error(`${type.toUpperCase()} Parameter is already existing!`)
             }            
             
 
             // Saving the User 
-            var savedParameter = await newParameter.save();
+            // var savedParameter = await newParameter.save();
            
-            if(!savedParameter){
-                throw Error(`${type.toUpperCase()} Parameter failed to save!`)
-            }
+            // if(!savedParameter){
+            //     throw Error(`${type.toUpperCase()} Parameter failed to save!`)
+            // }
+
+            var savedParameter = await newParameter.save().then(function(savedData){
+                return true
+            }).catch(function(err){
+                console.log(err)
+                throw Error(`${type.toUpperCase()} Parameter is already existing!`)
+                //throw new Error(err.message);
+            });
 
         } catch (e) {
-            //console.log(e)
+         
             throw Error(e);
         }
     },
@@ -330,7 +338,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                     //console.log(a)
                 break;
@@ -340,7 +348,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "gender":
@@ -349,7 +357,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "leather type":
@@ -358,7 +366,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "classification 1":
@@ -367,7 +375,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "classification 2":
@@ -376,7 +384,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "logo":
@@ -385,7 +393,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "sub logo":
@@ -394,7 +402,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "lining":
@@ -403,7 +411,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "stitch":
@@ -412,7 +420,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
             

@@ -755,8 +755,7 @@ function StocksHistory(props) {
                                 
                                     </List>
                                 </div>
-                                </Grid>
-                        
+                                </Grid>                       
                                 <Grid item xs={12} md={3}>
                                 {/* <Typography variant="h6" className={classes.title}>
                                         &nbsp;
@@ -785,8 +784,7 @@ function StocksHistory(props) {
                                 
                                     </List>
                                 </div>
-                                </Grid>
-                        
+                                </Grid>                      
                                 <Grid item xs={12} md={3}>
                                 {/* <Typography variant="h6" className={classes.title}>
                                         &nbsp;
@@ -811,8 +809,7 @@ function StocksHistory(props) {
                                 
                                     </List>
                                 </div>
-                                </Grid>
-                        
+                                </Grid>                       
                                 <Grid item xs={12} md={2}>
                                     <div className={classes.demo}>
                                         <List>
@@ -844,7 +841,6 @@ function StocksHistory(props) {
                                         </List>
                                     </div>
                                 </Grid>
-
                                 <Grid item xs={12} md={2}>
                                     <div className={classes.demo}>
                                         <List>
@@ -875,8 +871,6 @@ function StocksHistory(props) {
                                         </List>
                                     </div>
                                 </Grid>
-
-
                                 <Grid item xs={12} md={2}>
                                     <div className={classes.demo}>
                                         <List>
@@ -907,10 +901,6 @@ function StocksHistory(props) {
                                         </List>
                                     </div>
                                 </Grid>
-
-
-                                
-
                                 <Grid item xs={12} md={2}>
                                     <div className={classes.demo}>
                                         <List>
@@ -941,7 +931,6 @@ function StocksHistory(props) {
                                         </List>
                                     </div>
                                 </Grid>
-
                                 <Grid item xs={12} md={2}>
                                 {/* <Typography variant="h6" className={classes.title}>
                                         &nbsp;
@@ -970,7 +959,6 @@ function StocksHistory(props) {
                                         </List>
                                     </div>
                                 </Grid>
-
                                 <Grid item xs={12} md={2}>
                                 {/* <Typography variant="h6" className={classes.title}>
                                         &nbsp;

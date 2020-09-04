@@ -40,13 +40,21 @@ module.exports = {
             })
 
             // Saving the User 
-            var savedUser = await newUser.save();
-            // var token = jwt.sign({id: savedUser._id}, config.SECRET_KEY, {
-            //     expiresIn: 86400 // expires in 24 hours
-            // });
-            if(!savedUser){
-                throw Error("Error while Creating User")
-            }
+            // var savedUser = await newUser.save();
+            // // var token = jwt.sign({id: savedUser._id}, config.SECRET_KEY, {
+            // //     expiresIn: 86400 // expires in 24 hours
+            // // });
+            // if(!savedUser){
+            //     throw Error("Error while Creating User")
+            // }
+
+            var savedUser = await newUser.save().then(function(savedData){
+                return true
+            }).catch(function(err){
+                console.log(err)
+                throw Error(`Username ${user.user_name} is already used.`)
+                //throw new Error(err.message);
+            });
 
             //return token;
         } catch (e) {
@@ -146,7 +154,7 @@ module.exports = {
     
                 if(doesUserExist){
                     //console.log('existing----------------')
-                    throw Error(`Username ${paramBody.user_name} is already used.`)
+                    throw Error(`Username ${paramBody.user_name} is already existing.`)
                 }
             }
 
@@ -155,7 +163,7 @@ module.exports = {
                                             return details
                                     }).catch(function(error){
                                         //console.log(error)
-                                        throw Error(`No User for ${paramID.id}`)
+                                        throw Error(`Username ${paramBody.user_name} is already existing.`)
                                     })
 
         } catch (e) {

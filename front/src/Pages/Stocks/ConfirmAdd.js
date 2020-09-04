@@ -84,8 +84,6 @@ const [message, setMessage] = useState('')
 
 const handleSubmit = () => {
 
-    console.log(size_run_3_5)
-
     const parameterObject = {
         stock_no: stock_no._id,
         gender: gender._id,

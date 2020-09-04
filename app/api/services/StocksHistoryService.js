@@ -271,11 +271,19 @@ module.exports = {
             
             ////console.log(newStocksHist)
             // Saving the history 
-            var savedStocks = await newStocksHist.save();
+            // var savedStocks = await newStocksHist.save();
            
-            if(!savedStocks){
-                throw Error("Failed to size run!")
-            }
+            // if(!savedStocks){
+            //     throw Error("Failed to size run!")
+            // }
+
+            var savedStocks = await newStocksHist.save().then(function(savedData){
+                return true
+            }).catch(function(err){
+                console.log(err)
+                throw Error(`Failed to save size run!`)
+                //throw new Error(err.message);
+            });
 
             let total_size_run = 
             paramBody.size_run_2_new + paramBody.size_run_2_5_new + 
