@@ -434,6 +434,7 @@ const FirstStepAdd = ({
                 helperText={
                     filedError.special_instruction !== "" ? `${filedError.special_instruction}` : ""
                 }
+                inputProps={{ maxLength: 30 }}
             />
             </FormControl>
         </Grid>

@@ -364,8 +364,8 @@ function Login(props){
                                                 textColor="primary"
                                                 aria-label="scrollable force tabs example"
                                             >
-                                                 <Tab label="Login"  style={{minWidth : '50%'}} icon={<LockOpenIcon />} {...a11yProps(0)} />
-                                                 <Tab label="Stocks" style={{minWidth : '50%'}} icon={<TrendingUpIcon />} {...a11yProps(1)} />
+                                                 <Tab label="Login"   style={{minWidth:"50%"}} icon={<LockOpenIcon />} {...a11yProps(0)} />
+                                                 <Tab label="Stocks"   style={{minWidth:"50%"}} icon={<TrendingUpIcon />} {...a11yProps(1)} />
                                             </Tabs>
                                         </AppBar>
                                         <TabPanel value={value} index={0}>

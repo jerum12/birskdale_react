@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 const stocksSchema = new Schema({
     stock_no : { type: Schema.Types.ObjectId, required: true, ref: 'StockModel' },
     transaction_date : {type: Date, default: Date.now},
-    stock_details : {type: String, default:''},
+    stock_details : {type: String},
     leather_type :  { type: Schema.Types.ObjectId, required: true, ref: 'LeatherTypeModel' },
     gender : { type: Schema.Types.ObjectId, required: true, ref: 'GenderModel' },
     color : { type: Schema.Types.ObjectId, required: true, ref: 'ColorModel' },
@@ -16,7 +16,7 @@ const stocksSchema = new Schema({
     sub_logo : { type: Schema.Types.ObjectId, required: true, ref: 'SubLogoModel' },
     stitch :{ type: Schema.Types.ObjectId, required: true, ref: 'StitchModel' },
     lining : { type: Schema.Types.ObjectId, required: true, ref: 'LiningModel' },
-    special_instruction : {type: String, trim:true, uppercase: true, default:''},
+    special_instruction : {type: String, trim:true, uppercase: true},
     size_run_2 : { type: Number, default: 0 },
     size_run_2_5 : { type: Number, default: 0 },
     size_run_3 : { type: Number, default: 0 },

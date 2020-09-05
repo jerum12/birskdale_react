@@ -324,7 +324,7 @@ module.exports = {
                 size_run_13 : paramBody.size_run_13_new,
                 total_size_run : total_size_run
             })
-            ////console.log(updateStocksSizeRun)
+            //console.log(updateStocksSizeRun)
 
             await model.StocksModel.findByIdAndUpdate(paramBody.stocks_id,updateStocksSizeRun)
             .then(function(details){

@@ -17,6 +17,11 @@ import jsPDF from 'jspdf';
 import autoTable  from 'jspdf-autotable'
 
 import TableReportHistory from './TableReportHistory'
+import TableRow from '@material-ui/core/TableRow';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import Table from '@material-ui/core/Table';
 
 import {
   MuiPickersUtilsProvider,
@@ -137,10 +142,14 @@ class ReportItemDataPDF extends React.Component {
                   
                                 pdf.text("Stocks Item Summary Report", 40, 50);
 
-
-                                for(var i=0 ; i < length; i++){
-                                    autoTable(pdf, {html: '#table_'+i,margin: {top: 70}})
+                                if(items.length > 0){
+                                  for(var i=0 ; i < length; i++){
+                                      autoTable(pdf, {html: '#table_'+i,margin: {top: 70}})
+                                  }
+                                }else{
+                                  autoTable(pdf, {html: '#table_0',margin: {top: 70}})
                                 }
+                                
 
                                 pdf.save('Stocks History Report_'+ Moment(new Date()).format('MMDDYYYYHHmmss') + '.pdf');   
 
@@ -151,10 +160,53 @@ class ReportItemDataPDF extends React.Component {
                   </div>
                   </Card.Header>
                   <Card.Body>
-                      {/* <GenerateData ref={el => (this.componentRef = el)} /> */}
-                      <TableContainer component={Paper}  ref={el => (this.componentRef = el)}>                    
-                          {items}     
-                    </TableContainer>
+                      
+                    {
+                        items.length > 0
+                        ?
+                          <TableContainer component={Paper}  ref={el => (this.componentRef = el)}>                    
+                                {items}     
+                          </TableContainer>
+                        :
+                          <TableContainer component={Paper}  ref={el => (this.componentRef = el)}>   
+                            <Table aria-label="spanning table"  id='table_0' >
+                              <TableHead>
+                                    <TableRow>
+                                      <TableCell style={{backgroundColor: '#203356', color: '#FFF'}}>Transaction Date</TableCell>
+                                      <TableCell style={{backgroundColor: '#203356', color: '#FFF'}}>Transaction By</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>2</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>2.5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>3</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>3.5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>4</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>4.5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>5.5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>6</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>6.5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>7</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>7.5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>8</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>8.5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>9</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>9.5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>10</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>10.5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>11</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>11.5</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>12</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>13</TableCell>
+                                      <TableCell align="right" style={{backgroundColor: '#203356', color: '#FFF'}}>Total</TableCell>
+                                    </TableRow>
+                                  </TableHead>
+                                  <TableBody>
+                                    <TableRow>
+                                        <TableCell style={{textAlign : 'center'}} colSpan={25}>No records to display</TableCell>
+                                    </TableRow>
+                                  </TableBody>
+                            </Table>
+                          </TableContainer>
+                      } 
                   </Card.Body>
               </Card>
           );

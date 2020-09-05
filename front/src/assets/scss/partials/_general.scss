@@ -898,3 +898,11 @@ p.text-muted {
     border-radius: 20px;
     border-right: 1px solid gray;
 }
+
+@media print{
+    @page {
+        margin: 1% 1% 1% 1%;
+        size: Legal landscape;
+    }
+
+  }

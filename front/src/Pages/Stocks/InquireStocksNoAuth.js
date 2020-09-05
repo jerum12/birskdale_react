@@ -58,8 +58,9 @@ function InquireStocksNoAuth(props) {
         render: (rowData) => {
             return  <Popup
                         trigger={<p style={{cursor: 'pointer', color:'blue'}}>Stock Details...</p>}
-                        content= {rowData.stock_details}
+                        content= { <div dangerouslySetInnerHTML={{ __html: rowData.stock_details.split(";").join("<br/>") }} /> }
                         inverted
+                        position='right center'
                     />
             }, 
         cellStyle: {

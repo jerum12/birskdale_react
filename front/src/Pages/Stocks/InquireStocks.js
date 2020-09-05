@@ -36,6 +36,7 @@ function InquireStocks(props) {
                         trigger={<p style={{cursor: 'pointer'}}>Stock Details...</p>}
                         inverted
                         content= { <div dangerouslySetInnerHTML={{ __html: rowData.stock_details.split(";").join("<br/>") }} /> }
+                        position='right center'
                     />
                     
             }, 
