@@ -81,7 +81,7 @@ function TableReport({category, value, index, length, originalData}){
                     <TableRow>
                         <TableCell align="left" colSpan={25}>
                           Gender : <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}}>{details(value)}</span>
-                          <br/>
+                          
                           <span style={{float : 'right'}}>Count : {value.length}</span>
                         </TableCell>
                     </TableRow>
@@ -117,7 +117,8 @@ function TableReport({category, value, index, length, originalData}){
                     {value.map((row) => (
                         <TableRow key={row._id}>
                         <TableCell>{Moment(row.transaction_date).format('MM-DD-YYYY HH:mm:ss')}</TableCell>
-                        <TableCell><div dangerouslySetInnerHTML={{ __html: row.stock_details.split(";").join("<br/>") }} /></TableCell>
+                        <TableCell><div dangerouslySetInnerHTML={{ __html: row.stock_details}} /></TableCell>
+                        {/* <TableCell>{row.stock_details}</TableCell> */}
                         <TableCell align="right">{row.size_run_2}</TableCell>
                         <TableCell align="right">{row.size_run_2_5}</TableCell>
                         <TableCell align="right">{row.size_run_3}</TableCell>

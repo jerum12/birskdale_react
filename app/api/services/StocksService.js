@@ -329,16 +329,16 @@ module.exports = {
                 //console.log(stocks)
 
                 stocks.forEach(function(stock) {
-                    stock.stock_details = 'LT: ' + stock.leather_type.description + '; ' +
-                                    'G: ' + stock.gender.description + '; ' +
-                                    'C: ' + stock.color.description + '; ' +
-                                    'C1: ' + stock.classification_1.description + '; ' +
-                                    'C2: ' + stock.classification_2.description + '; ' +
-                                    'Lo: ' + stock.logo.description + '; ' +
-                                    'SLo: ' + stock.sub_logo.description + '; ' +
-                                    'S: ' + stock.stitch.description + '; ' +
-                                    'Li: ' + stock.lining.description + '; ' +
-                                    'SI: ' + stock.special_instruction;
+                    stock.stock_details = '<span style="color:red;font-weight:bold">LT</span>: ' + stock.leather_type.description + '; ' +
+                                    '<span style="color:red;font-weight:bold">G</span>: ' + stock.gender.description + '; ' +
+                                    '<span style="color:red;font-weight:bold">C</span>: ' + stock.color.description + '; ' +
+                                    '<span style="color:red;font-weight:bold">C1</span>: ' + stock.classification_1.description + '; ' +
+                                    '<span style="color:red;font-weight:bold">C2</span>: ' + stock.classification_2.description + '; ' +
+                                    '<span style="color:red;font-weight:bold">Lo</span>: ' + stock.logo.description + '; ' +
+                                    '<span style="color:red;font-weight:bold">SLo</span>: ' + stock.sub_logo.description + '; ' +
+                                    '<span style="color:red;font-weight:bold">S</span>: ' + stock.stitch.description + '; ' +
+                                    '<span style="color:red;font-weight:bold">Li</span>: ' + stock.lining.description + '; ' +
+                                    '<span style="color:red;font-weight:bold">SI</span>: ' + stock.special_instruction;
                   });
 
               ////console.log(stocks)

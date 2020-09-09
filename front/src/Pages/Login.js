@@ -384,6 +384,7 @@ function Login(props){
                                                 </div>
                                                 <form onSubmit={handleSubmit(onSubmit)} className='form-group' autoComplete="off">
                                                     <h3 className="mb-4">BIRKSDALE</h3>
+                                                    <h5 className="mb-4"><b>I</b>nventory <b>M</b>anagement <b>S</b>ystem</h5>
 
                                                     { errorMessage.length > 0 ? 
                                                         <Message negative>

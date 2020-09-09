@@ -64,17 +64,17 @@ const details = (items) => {
     let data = ''
     items.map(({stocks_id}) => {
             data = ''
-           data =       'SN: ' + stocks_id.stock_no.description + '; ' +
-                        'LT: ' + stocks_id.leather_type.description + '; ' +
-                        'G: ' + stocks_id.gender.description + '; ' +
-                        'C: ' + stocks_id.color.description + '; ' +
-                        'C1: ' + stocks_id.classification_1.description + '; ' +
-                        'C2: ' + stocks_id.classification_2.description + '; ' +
-                        'Lo: ' + stocks_id.logo.description + '; ' +
-                        'SLo: ' + stocks_id.sub_logo.description + '; ' +
-                        'S: ' + stocks_id.stitch.description + '; ' +
-                        'Li: ' + stocks_id.lining.description + '; ' +
-                        'SI: ' + stocks_id.special_instruction;
+           data =       '<span style="color:red;font-weight:bold">SN</span>: ' + stocks_id.stock_no.description + '; ' +
+                        '<span style="color:red;font-weight:bold">LT</span>: ' + stocks_id.leather_type.description + '; ' +
+                        '<span style="color:red;font-weight:bold">G</span>: ' + stocks_id.gender.description + '; ' +
+                        '<span style="color:red;font-weight:bold">C</span>: ' + stocks_id.color.description + '; ' +
+                        '<span style="color:red;font-weight:bold">C1</span>: ' + stocks_id.classification_1.description + '; ' +
+                        '<span style="color:red;font-weight:bold">C2</span>: ' + stocks_id.classification_2.description + '; ' +
+                        '<span style="color:red;font-weight:bold">Lo</span>: ' + stocks_id.logo.description + '; ' +
+                        '<span style="color:red;font-weight:bold">Slo</span>: ' + stocks_id.sub_logo.description + '; ' +
+                        '<span style="color:red;font-weight:bold">S</span>: ' + stocks_id.stitch.description + '; ' +
+                        '<span style="color:red;font-weight:bold">Li</span>: ' + stocks_id.lining.description + '; ' +
+                        '<span style="color:red;font-weight:bold">SI</span>: ' + stocks_id.special_instruction;
     })
     return data
 }
@@ -91,9 +91,8 @@ function TableReportHistory({category, value, index, length, originalData}){
             <TableHead>
                   <TableRow>
                       <TableCell align="left" colSpan={25}>
-                        Stock Details : <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}}>
-                        <div dangerouslySetInnerHTML={{ __html: details(value).split(";").join("<br/>") }} />
-                            </span>
+                        Stock Details :  <span dangerouslySetInnerHTML={{ __html: details(value)}} />
+                       
                         &nbsp;
                         <span style={{float : 'right'}}>Count : {value.length}</span>
                       </TableCell>

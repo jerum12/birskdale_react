@@ -21,6 +21,9 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import Table from '@material-ui/core/Table';
 
+import jsPDF from 'jspdf';  
+import autoTable  from 'jspdf-autotable'
+import Moment from 'moment'
 
 import {
   MuiPickersUtilsProvider,
@@ -114,6 +117,27 @@ class ReportStocks2Data extends React.Component {
                           )}
                         </PrintContextConsumer>
                     </ReactToPrint>
+
+                    <button onClick={() =>{
+                                var pdf = new jsPDF('l', 'pt', "a4");
+                  
+                                pdf.text("Stocks Details Report", 40, 50);
+
+                                if(items.length > 0){
+                                  for(var i=0 ; i < length; i++){
+                                      autoTable(pdf, {html: '#table_'+i,margin: {top: 70}})
+                                  }
+                                }else{
+                                  autoTable(pdf, {html: '#table_0',margin: {top: 70}})
+                                }
+                                
+
+                                pdf.save('Stocks Details Report_'+ Moment(new Date()).format('MMDDYYYYHHmmss') + '.pdf');  
+
+                              }} 
+                              className="btn btn-primary shadow-2 mb-4">  
+                              Generate Pdf  
+                            </button>  
                   </div>
                   </Card.Header>
                   <Card.Body>     

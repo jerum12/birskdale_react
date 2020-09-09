@@ -1,6 +1,6 @@
 Exporting all collections using mongodump use the following command
 
-mongodump -d database_name -o directory_to_store_dumps
+mongodump -d app-base-db -o E:\JERUM\react\db\updated_09092020
 
 To restore use this command
 
