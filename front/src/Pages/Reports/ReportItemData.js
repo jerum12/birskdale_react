@@ -11,8 +11,9 @@ import ReactToPrint, { PrintContextConsumer } from 'react-to-print';
 
 import Grid from "@material-ui/core/Grid"
 import FormControl from "@material-ui/core/FormControl"
-import FormLabel from '@material-ui/core/FormLabel';
-import TextField from "@material-ui/core/TextField";
+import jsPDF from 'jspdf';  
+import autoTable  from 'jspdf-autotable'
+import Moment from 'moment'
 
 import TableReportHistory from './TableReportHistory'
 import TableRow from '@material-ui/core/TableRow';
@@ -142,6 +143,27 @@ class ReportItemData extends React.Component {
                           )}
                         </PrintContextConsumer>
                     </ReactToPrint>
+
+                      <button onClick={() =>{
+                                var pdf = new jsPDF('l', 'pt', "a4");
+                  
+                                pdf.text("Stocks Item Summary Report", 40, 50);
+
+                                if(items.length > 0){
+                                  for(var i=0 ; i < length; i++){
+                                      autoTable(pdf, {html: '#table_'+i,margin: {top: 70}})
+                                  }
+                                }else{
+                                  autoTable(pdf, {html: '#table_0',margin: {top: 70}})
+                                }
+                                
+
+                                pdf.save('Stocks History Report_'+ Moment(new Date()).format('MMDDYYYYHHmmss') + '.pdf');   
+
+                              }} 
+                              className="btn btn-primary shadow-2 mb-4">  
+                              Generate Pdf  
+                            </button> 
                   </div>
                   </Card.Header>
                   <Card.Body>
