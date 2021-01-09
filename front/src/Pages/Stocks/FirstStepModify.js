@@ -436,7 +436,7 @@ const FirstStepModify = ({
 
         <Grid item xs={12} sm={12}>
                 <FormControl fullWidth margin="normal">
-                <TextField
+                <TextField  
                 label="Special Instruction"
                 name="special_instruction"
                 defaultValue={special_instruction}
@@ -446,6 +446,7 @@ const FirstStepModify = ({
                 helperText={
                     filedError.special_instruction !== "" ? `${filedError.special_instruction}` : ""
                 }
+                inputProps={{ maxLength: 30 }}
             />
             </FormControl>
         </Grid>

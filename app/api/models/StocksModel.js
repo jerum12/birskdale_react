@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 const stocksSchema = new Schema({
     stock_no : { type: Schema.Types.ObjectId, required: true, ref: 'StockModel' },
     transaction_date : {type: Date, default: Date.now},
-    stock_details : {type: String, default:''},
+    stock_details : {type: String},
     leather_type :  { type: Schema.Types.ObjectId, required: true, ref: 'LeatherTypeModel' },
     gender : { type: Schema.Types.ObjectId, required: true, ref: 'GenderModel' },
     color : { type: Schema.Types.ObjectId, required: true, ref: 'ColorModel' },

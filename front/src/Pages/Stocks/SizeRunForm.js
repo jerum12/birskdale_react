@@ -46,7 +46,7 @@ const SizeRunForm = ({
     props
 }) => {
 
-const [s2_state, sets2_state] = useState(size_run_3)
+const [s2_state, sets2_state] = useState(size_run_2)
 const [s2_5_state, sets2_5_state] = useState(size_run_2_5)
 const [s3_state, sets3_state] = useState(size_run_3)
 const [s3_5_state, sets3_5_state] = useState(size_run_3_5)
@@ -422,6 +422,28 @@ const mandatory = value === null
   const upHandler = (<div className="increaseBtn"><AddIcon/></div>);
   const downHandler = (<div className="decreaseBtn"><RemoveIcon/></div>);
 
+  const noChange = size_run_2 !== null && size_run_2 === s2_state &&
+                   size_run_2_5 !== null && size_run_2_5 === s2_5_state &&
+                   size_run_3 !== null && size_run_3 === s3_state &&
+                   size_run_3_5 !== null && size_run_3_5 === s3_5_state &&
+                   size_run_4 !== null && size_run_4 === s4_state &&
+                   size_run_4_5 !== null && size_run_4_5 === s4_5_state &&
+                   size_run_5 !== null && size_run_5 === s5_state &&
+                   size_run_5_5 !== null && size_run_5_5 === s5_5_state &&
+                   size_run_6 !== null && size_run_6 === s6_state &&
+                   size_run_6_5 !== null && size_run_6_5 === s6_5_state &&
+                   size_run_7 !== null && size_run_7 === s7_state &&
+                   size_run_7_5 !== null && size_run_7_5 === s7_5_state &&
+                   size_run_8 !== null && size_run_8 === s8_state &&
+                   size_run_8_5 !== null && size_run_8_5 === s8_5_state &&
+                   size_run_9 !== null && size_run_9 === s9_state &&
+                   size_run_9_5 !== null && size_run_9_5 === s9_5_state &&
+                   size_run_10 !== null && size_run_10 === s10_state &&
+                   size_run_10_5 !== null && size_run_10_5 === s10_5_state &&
+                   size_run_11 !== null && size_run_11 === s11_state &&
+                   size_run_11_5 !== null && size_run_11_5 === s11_5_state &&
+                   size_run_12 !== null && size_run_12 === s12_state &&
+                   size_run_13 !== null && size_run_13 === s13_state
   return (
     <Fragment>
       <Grid container spacing={1}>
@@ -1080,7 +1102,7 @@ const mandatory = value === null
         <button className="btn btn-primary shadow-2 mb-4"
             onClick={handleSubmit}
             style={{ marginLeft: 20 }}
-            disabled={ isError}
+            disabled={ isError || noChange}
         >
             {/* <ArrowForwardOutlinedIcon/> */}
             Submit

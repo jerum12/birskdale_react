@@ -132,105 +132,7 @@ function Login(props){
 
       
 
-    const [columns, setColumns] = useState([
-      {title: "id", field: "_id", hidden: true},
-      {title: "Transaction Date", field: "transaction_date", 
-        render: (rowData) => {
-          return Moment(rowData.transaction_date).format('MM-DD-YYYY HH:mm:ss')
-        }},
-      { title: 'Stock Number', field: 'stock_no.description'},
-      { title: 'Stock Details', field: 'stock_details',
-        render: (rowData) => {
-            return  <Popup
-                        trigger={<p style={{cursor: 'pointer', color:'blue'}}>Stock Details...</p>}
-                        content= {rowData.stock_details}
-                        inverted
-                    />
-            }, 
-        cellStyle: {
-            width: 5,
-            minWidth : 5
-        }, 
-      },
-      { title: '3', field: 'size_run_3', type: 'numeric', 
-        cellStyle: {
-            width: 5,
-            minWidth : 5
-        },
-      },
-      { title: '4', field: 'size_run_4', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '5', field: 'size_run_5', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '6', field: 'size_run_6', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '7', field: 'size_run_7', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },  
-      },
-      { title: '8', field: 'size_run_8', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '9', field: 'size_run_9', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '10', field: 'size_run_10', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '11', field: 'size_run_11', type: 'numeric',  
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '12', field: 'size_run_12', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '13', field: 'size_run_13', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '14', field: 'size_run_14', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: 'Total Size Run', field: 'total_size_run', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      }
-    ]);
+  
   
     //const [data, setData] = useState([]); //table data
     //const [loading, setLoading] = useState(false)
@@ -383,6 +285,8 @@ function Login(props){
                                             >
                                                  <Tab label="Login" icon={<LockOpenIcon />} />
                                                  <Tab label="Stocks"  icon={<TrendingUpIcon />}  />
+                                                 {/* <Tab label="Login"   style={{minWidth:"50%"}} icon={<LockOpenIcon />} {...a11yProps(0)} />
+                                                 <Tab label="Stocks"   style={{minWidth:"50%"}} icon={<TrendingUpIcon />} {...a11yProps(1)} /> */}
                                             </Tabs>
                                         </AppBar>
                                         <TabPanel value={value} index={0}>
@@ -401,6 +305,7 @@ function Login(props){
                                                 </div>
                                                 <form onSubmit={handleSubmit(onSubmit)} className='form-group' autoComplete="off">
                                                     <h3 className="mb-4">BIRKSDALE</h3>
+                                                    <h5 className="mb-4"><b>I</b>nventory <b>M</b>anagement <b>S</b>ystem</h5>
 
                                                     { errorMessage.length > 0 ? 
                                                         <Message negative>
@@ -471,9 +376,7 @@ function Login(props){
                                                         >
                                                             <MenuItem value={'Stocks'}>Inquire Stocks</MenuItem>
                                                             <MenuItem value={'Report_Stock_Details'}>Stock Details Report</MenuItem>
-                                                            <MenuItem value={'Report_Stock_Details_PDF'}>Stock Details PDF Report</MenuItem>
                                                             <MenuItem value={'Report_Item'}>Stock History Report</MenuItem>
-                                                            <MenuItem value={'Report_Item_PDF'}>Stock History PDF Report</MenuItem>
                                                         </Select>
                                                 }
                                                 label="Select Type :"

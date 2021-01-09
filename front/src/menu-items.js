@@ -128,41 +128,42 @@ export default {
                     type: 'collapse',
                     icon: 'feather icon-printer',
                     children: [
-                        {
-                            id: 'report_stocks',
-                            title: 'Report Stocks',
-                            type: 'item',
-                            url: '/reports/stocks'  
-                        },
-                        {
-                            id: 'report_stocks_pdf',
-                            title: 'Report Stocks PDF',
-                            type: 'item',
-                            url: '/reports/stocksPdf'  
-                        },
+                        // {
+                        //     id: 'report_stocks',
+                        //     title: 'Report Stocks',
+                        //     type: 'item',
+                        //     url: '/reports/stocks'  
+                        // },
+                        // {
+                        //     id: 'report_stocks_pdf',
+                        //     title: 'Report Stocks PDF',
+                        //     type: 'item',
+                        //     url: '/reports/stocksPdf'  
+                        // },
                         {
                             id: 'report_stocks_2',
-                            title: 'Report Stocks 2',
+                            title: 'Report Stocks',
                             type: 'item',
                             url: '/reports/stocks2'  
-                        },{
-                            id: 'report_stocks_pdf2',
-                            title: 'Report Stocks PDF 2',
-                            type: 'item',
-                            url: '/reports/stocksPdf2'  
                         },
+                        // {
+                        //     id: 'report_stocks_pdf2',
+                        //     title: 'Report Stocks PDF',
+                        //     type: 'item',
+                        //     url: '/reports/stocksPdf2'  
+                        // },
                         {
                             id: 'report_item',
                             title: 'Report Item',
                             type: 'item',
                             url: '/reports/item'  
                         },
-                        {
-                            id: 'report_item_pdf',
-                            title: 'Report Item PDF',
-                            type: 'item',
-                            url: '/reports/itemPdf'  
-                        }
+                        // {
+                        //     id: 'report_item_pdf',
+                        //     title: 'Report Item PDF',
+                        //     type: 'item',
+                        //     url: '/reports/itemPdf'  
+                        // }
                     ]
                 }
             ]

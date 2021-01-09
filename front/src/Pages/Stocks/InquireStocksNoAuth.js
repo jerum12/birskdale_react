@@ -58,8 +58,9 @@ function InquireStocksNoAuth(props) {
         render: (rowData) => {
             return  <Popup
                         trigger={<p style={{cursor: 'pointer', color:'blue'}}>Stock Details...</p>}
-                        content= {rowData.stock_details}
+                        content= { <div dangerouslySetInnerHTML={{ __html: rowData.stock_details.split(";").join("<br/>") }} /> }
                         inverted
+                        position='right center'
                     />
             }, 
         cellStyle: {
@@ -67,7 +68,25 @@ function InquireStocksNoAuth(props) {
             minWidth : 5
         }, 
       },
+      { title: '2', field: 'size_run_2', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
+      { title: '2.5', field: 'size_run_2_5', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '3', field: 'size_run_3', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
+      { title: '3.5', field: 'size_run_3_5', type: 'numeric', 
         cellStyle: {
             width: 5,
             minWidth : 5
@@ -79,10 +98,22 @@ function InquireStocksNoAuth(props) {
             minWidth : 10
         },
       },
+      { title: '4.5', field: 'size_run_4_5', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '5', field: 'size_run_5', type: 'numeric',   
         cellStyle: {
             width: 10,
             minWidth : 10
+        },
+      },
+      { title: '5.5', field: 'size_run_5_5', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
         },
       },
       { title: '6', field: 'size_run_6', type: 'numeric',   
@@ -91,16 +122,34 @@ function InquireStocksNoAuth(props) {
             minWidth : 10
         },
       },
+      { title: '6.5', field: 'size_run_6_5', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '7', field: 'size_run_7', type: 'numeric',   
         cellStyle: {
             width: 10,
             minWidth : 10
         },  
       },
+      { title: '7.5', field: 'size_run_7_5', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '8', field: 'size_run_8', type: 'numeric',   
         cellStyle: {
             width: 10,
             minWidth : 10
+        },
+      },
+      { title: '8.5', field: 'size_run_8_5', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
         },
       },
       { title: '9', field: 'size_run_9', type: 'numeric',   
@@ -109,16 +158,34 @@ function InquireStocksNoAuth(props) {
             minWidth : 10
         },
       },
+      { title: '9.5', field: 'size_run_9_5', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '10', field: 'size_run_10', type: 'numeric',   
         cellStyle: {
             width: 10,
             minWidth : 10
         },
       },
+      { title: '10.5', field: 'size_run_10_5', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
+        },
+      },
       { title: '11', field: 'size_run_11', type: 'numeric',  
         cellStyle: {
             width: 10,
             minWidth : 10
+        },
+      },
+      { title: '11.5', field: 'size_run_11_5', type: 'numeric', 
+        cellStyle: {
+            width: 5,
+            minWidth : 5
         },
       },
       { title: '12', field: 'size_run_12', type: 'numeric',   
@@ -128,12 +195,6 @@ function InquireStocksNoAuth(props) {
         },
       },
       { title: '13', field: 'size_run_13', type: 'numeric',   
-        cellStyle: {
-            width: 10,
-            minWidth : 10
-        },
-      },
-      { title: '14', field: 'size_run_14', type: 'numeric',   
         cellStyle: {
             width: 10,
             minWidth : 10
