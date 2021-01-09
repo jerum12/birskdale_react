@@ -2,7 +2,7 @@
   "name": "birksdale",
   "version": "0.1.0",
   "private": true,
-  "homepage":  "",
+  "homepage": "",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -48,7 +48,7 @@
     "react-window-size": "^1.2.2",
     "redux": "^4.0.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2"
+    "semantic-ui-react": "^2.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -66,6 +66,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "react-to-print": "^2.9.0"
+    "react-to-print": "^2.12.2"
   }
 }

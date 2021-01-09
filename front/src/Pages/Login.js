@@ -11,7 +11,7 @@ import config from '../config';
 import './Stocks/Stocks.css'
 
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles,createMuiTheme,MuiThemeProvider } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -81,7 +81,25 @@ function TabPanel(props) {
         width: '100%'
     },
 
+
   }));
+
+  const theme = createMuiTheme({
+    overrides: {
+        MuiTabs: {
+            indicator: {
+              backgroundColor:  "#63a940",
+            }
+          },
+        MuiTab: {
+          root: {
+            "&$selected": {
+              color: "#63a940",
+            }
+          }
+        }
+      }
+  });
 
 function Login(props){
 
@@ -221,6 +239,7 @@ function Login(props){
     
     
     useEffect(() => {
+      
      sessionStorage.clear();
     }, []);
 
@@ -260,9 +279,9 @@ function Login(props){
     const handleChange = (event, newValue) => {
         setSelectData('Stocks')
         setValue(newValue);
+        window.dispatchEvent(new CustomEvent('resize'))
     }
     
-
       
     const onSubmit = data => {
 
@@ -352,7 +371,7 @@ function Login(props){
                             </div>
                             <div className="card">
                                 
-
+                                <MuiThemeProvider theme={theme}>
                                     <div className={classes.root}>
                                         <AppBar position="static" color="default">
                                             <Tabs
@@ -360,12 +379,10 @@ function Login(props){
                                                 onChange={handleChange}
                                                 variant="fullWidth"
                                                 scrollButtons="on"
-                                                indicatorColor="primary"
-                                                textColor="primary"
-                                                aria-label="scrollable force tabs example"
+                                                aria-label="simple tabs example"
                                             >
-                                                 <Tab label="Login"  style={{minWidth : '50%'}} icon={<LockOpenIcon />} {...a11yProps(0)} />
-                                                 <Tab label="Stocks" style={{minWidth : '50%'}} icon={<TrendingUpIcon />} {...a11yProps(1)} />
+                                                 <Tab label="Login" icon={<LockOpenIcon />} />
+                                                 <Tab label="Stocks"  icon={<TrendingUpIcon />}  />
                                             </Tabs>
                                         </AppBar>
                                         <TabPanel value={value} index={0}>
@@ -468,7 +485,7 @@ function Login(props){
                                         </TabPanel>
                                         
                                     </div>
-                                
+                                </MuiThemeProvider>
                             </div>
                         </div>
                     </div>

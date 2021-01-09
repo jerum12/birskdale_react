@@ -1,8 +1,8 @@
 export default {
-    apiUsers: 'http://localhost:5000/api/users/',
-    apiStocks: 'http://localhost:5000/api/stocks/',
-    apiParameter: 'http://localhost:5000/api/parameter/',
-    apiHistory: 'http://localhost:5000/api/stocks/history/',
+    apiUsers: 'http://192.168.0.17:5000/api/users/',
+    apiStocks: 'http://192.168.0.17:5000/api/stocks/',
+    apiParameter: 'http://192.168.0.17:5000/api/parameter/',
+    apiHistory: 'http://192.168.0.17:5000/api/stocks/history/',
     defaultPath: '/stocks/inquire',
     basename: '/birksdale/', // only at build time to set, like /datta-able
     layout: 'vertical', // vertical, horizontal (not available in lite version)

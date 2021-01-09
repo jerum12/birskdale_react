@@ -28,9 +28,13 @@ module.exports = {
             .populate(['sub_logo'])
             .populate(['lining'])
             .populate(['stitch'])
+            .populate(['lining_mesh'])
+            .populate(['sock_liner'])
+            .populate(['canvass'])
+            .populate(['midsole'])
+            .populate(['outsole'])
+            .populate(['cambrelle'])
             .exec()
-
-          
 
             //var stocks = await db.StocksModel.paginate(query, options).populate(['_creator'])
             stocks.forEach(function(stock) {
@@ -43,6 +47,12 @@ module.exports = {
                                 'SLo: ' + stock.sub_logo.description + '; ' +
                                 'S: ' + stock.stitch.description + '; ' +
                                 'Li: ' + stock.lining.description + '; ' +
+                                'LM: ' + stock.lining_mesh.description + '; ' +
+                                'SLi: ' + stock.sock_liner.description + '; ' +
+                                'Cv: ' + stock.canvass.description + '; ' +
+                                'Ms: ' + stock.midsole.description + '; ' +
+                                'Os: ' + stock.outsole.description + '; ' +
+                                'Cm: ' + stock.cambrelle.description + '; ' +
                                 'SI: ' + stock.special_instruction;
               });
 
@@ -93,6 +103,12 @@ module.exports = {
                 sub_logo: paramBody.sub_logo,
                 lining: paramBody.lining,
                 stitch: paramBody.stitch,
+                lining_mesh: paramBody.lining_mesh,
+                sock_liner: paramBody.sock_liner,
+                canvass: paramBody.canvass,
+                midsole: paramBody.midsole,
+                outsole: paramBody.outsole,
+                cambrelle: paramBody.cambrelle,
                 special_instruction: paramBody.special_instruction,
             });
 
@@ -129,6 +145,12 @@ module.exports = {
                 sub_logo : paramBody.sub_logo,
                 stitch : paramBody.stitch,
                 lining : paramBody.lining,
+                lining_mesh : paramBody.lining_mesh,
+                sock_liner : paramBody.sock_liner,
+                canvass : paramBody.canvass,
+                midsole : paramBody.midsole,
+                outsole : paramBody.outsole,
+                cambrelle : paramBody.cambrelle,
                 special_instruction : paramBody.special_instruction,
                 size_run_2 : paramBody.size_run_2,
                 size_run_2_5 : paramBody.size_run_2_5,
@@ -186,6 +208,12 @@ module.exports = {
                 sub_logo: paramBody.sub_logo,
                 lining: paramBody.lining,
                 stitch: paramBody.stitch,
+                lining_mesh: paramBody.lining_mesh,
+                sock_liner: paramBody.sock_liner,
+                canvass: paramBody.canvass,
+                midsole: paramBody.midsole,
+                outsole: paramBody.outsole,
+                cambrelle: paramBody.cambrelle,
                 special_instruction: paramBody.special_instruction,
             });
 
@@ -245,6 +273,12 @@ module.exports = {
             .populate(['sub_logo'])
             .populate(['lining'])
             .populate(['stitch'])
+            .populate(['lining_mesh'])
+            .populate(['sock_liner'])
+            .populate(['canvass'])
+            .populate(['midsole'])
+            .populate(['outsole'])
+            .populate(['cambrelle'])
             .exec()
 
             
@@ -338,6 +372,12 @@ module.exports = {
                                     'SLo: ' + stock.sub_logo.description + '; ' +
                                     'S: ' + stock.stitch.description + '; ' +
                                     'Li: ' + stock.lining.description + '; ' +
+                                    'LM: ' + stock.lining_mesh.description + '; ' +
+                                    'SLi: ' + stock.sock_liner.description + '; ' +
+                                    'Cv: ' + stock.canvass.description + '; ' +
+                                    'Ms: ' + stock.midsole.description + '; ' +
+                                    'Os: ' + stock.outsole.description + '; ' +
+                                    'Cm: ' + stock.cambrelle.description + '; ' +
                                     'SI: ' + stock.special_instruction;
                   });
 

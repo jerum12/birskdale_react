@@ -37,7 +37,11 @@ const UserSchema = new Schema({
 	user_name: {
 		type: String,
 		trim: true,
-    required: true
+    required: true,
+    index: {
+      unique: true,
+      collation: { locale: 'en', strength: 2 }
+    }
 	},
 	password: {
 		type: String,

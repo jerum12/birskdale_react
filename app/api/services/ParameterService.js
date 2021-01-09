@@ -24,7 +24,13 @@ module.exports = {
                                  "logo" : await  model.LogoModel.find().exec(),
                                  "stitch" : await  model.StitchModel.find().exec(),
                                  "stock" : await  model.StockModel.find().exec(),
-                                 "sublogo" : await  model.SubLogoModel.find().exec()}
+                                 "sublogo" : await  model.SubLogoModel.find().exec(),
+                                 "cambrelle" : await  model.CambrelleModel.find().exec(),
+                                 "canvass" : await  model.CanvassModel.find().exec(),
+                                 "mesh" : await  model.LiningMeshModel.find().exec(),
+                                 "midsole" : await  model.MidsoleModel.find().exec(),
+                                 "outsole" : await  model.OutsoleModel.find().exec(),
+                                 "sockliner" : await  model.SockLinerModel.find().exec()}
             
             // const jsonParam =   {"class1" : await  model.Classification1Model.find().sort({transaction_date: -1}).exec(),
             //                      "class2" : await  model.Classification2Model.find().sort({transaction_date: -1}).exec(),
@@ -154,7 +160,67 @@ module.exports = {
                         description: paramBody.description
                     })
                 break;
-            
+                case "cambrelle":
+                    doesParameterExisting = await model.CambrelleModel.exists({ 
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
+                    });
+                    newParameter =  new model.CambrelleModel({
+                        code: paramBody.code,
+                        description: paramBody.description
+                    })
+                break;
+                case "canvass":
+                    doesParameterExisting = await model.CanvassModel.exists({ 
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
+                    });
+                    newParameter =  new model.CanvassModel({
+                        code: paramBody.code,
+                        description: paramBody.description
+                    })
+                break;
+                case "lining mesh":
+                    doesParameterExisting = await model.LiningMeshModel.exists({ 
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
+                    });
+                    newParameter =  new model.LiningMeshModel({
+                        code: paramBody.code,
+                        description: paramBody.description
+                    })
+                break;
+                case "midsole":
+                    doesParameterExisting = await model.MidsoleModel.exists({ 
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
+                    });
+                    newParameter =  new model.MidsoleModel({
+                        code: paramBody.code,
+                        description: paramBody.description
+                    })
+                break;
+                case "outsole":
+                    doesParameterExisting = await model.OutsoleModel.exists({ 
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
+                    });
+                    newParameter =  new model.OutsoleModel({
+                        code: paramBody.code,
+                        description: paramBody.description
+                    })
+                break;
+                case "sock liner":
+                    doesParameterExisting = await model.SockLinerModel.exists({ 
+                        code: paramBody.code.toUpperCase(),
+                        description: paramBody.description.toUpperCase()
+                    });
+                    newParameter =  new model.SockLinerModel({
+                        code: paramBody.code,
+                        description: paramBody.description
+                    })
+                break;
+
                 default:
                     break;
             }
@@ -163,19 +229,27 @@ module.exports = {
 
             if(doesParameterExisting){
                 //console.log('existing----------------')
-                throw Error(`${type.toUpperCase()} already existing!`)
+                throw Error(`${type.toUpperCase()} Parameter is already existing!`)
             }            
             
 
             // Saving the User 
-            var savedParameter = await newParameter.save();
+            // var savedParameter = await newParameter.save();
            
-            if(!savedParameter){
-                throw Error(`${type.toUpperCase()} Parameter failed to save!`)
-            }
+            // if(!savedParameter){
+            //     throw Error(`${type.toUpperCase()} Parameter failed to save!`)
+            // }
+
+            var savedParameter = await newParameter.save().then(function(savedData){
+                return true
+            }).catch(function(err){
+                console.log(err)
+                throw Error(`${type.toUpperCase()} Parameter is already existing!`)
+                //throw new Error(err.message);
+            });
 
         } catch (e) {
-            //console.log(e)
+         
             throw Error(e);
         }
     },
@@ -310,7 +384,79 @@ module.exports = {
                         transaction_date : paramBody.transaction_date
                     })
                 break;
-            
+                case "cambrelle":
+                    doesParameterExisting = await model.CambrelleModel.exists({ 
+                        code: paramBody.code,
+                        description: paramBody.description
+                    });
+                    newParameter =  new model.CambrelleModel({
+                        _id : paramBody._id,
+                        code: paramBody.code,
+                        description: paramBody.description,
+                        transaction_date : paramBody.transaction_date
+                    })
+                break;
+                case "canvass":
+                    doesParameterExisting = await model.CanvassModel.exists({ 
+                        code: paramBody.code,
+                        description: paramBody.description
+                    });
+                    newParameter =  new model.CanvassModel({
+                        _id : paramBody._id,
+                        code: paramBody.code,
+                        description: paramBody.description,
+                        transaction_date : paramBody.transaction_date
+                    })
+                break;
+                case "lining mesh":
+                    doesParameterExisting = await model.LiningMeshModel.exists({ 
+                        code: paramBody.code,
+                        description: paramBody.description
+                    });
+                    newParameter =  new model.LiningMeshModel({
+                        _id : paramBody._id,
+                        code: paramBody.code,
+                        description: paramBody.description,
+                        transaction_date : paramBody.transaction_date
+                    })
+                break;
+                case "midsole":
+                    doesParameterExisting = await model.MidsoleModel.exists({ 
+                        code: paramBody.code,
+                        description: paramBody.description
+                    });
+                    newParameter =  new model.MidsoleModel({
+                        _id : paramBody._id,
+                        code: paramBody.code,
+                        description: paramBody.description,
+                        transaction_date : paramBody.transaction_date
+                    })
+                break;
+                case "outsole":
+                    doesParameterExisting = await model.OutsoleModel.exists({ 
+                        code: paramBody.code,
+                        description: paramBody.description
+                    });
+                    newParameter =  new model.OutsoleModel({
+                        _id : paramBody._id,
+                        code: paramBody.code,
+                        description: paramBody.description,
+                        transaction_date : paramBody.transaction_date
+                    })
+                break;
+                case "sock liner":
+                    doesParameterExisting = await model.SockLinerModel.exists({ 
+                        code: paramBody.code,
+                        description: paramBody.description
+                    });
+                    newParameter =  new model.SockLinerModel({
+                        _id : paramBody._id,
+                        code: paramBody.code,
+                        description: paramBody.description,
+                        transaction_date : paramBody.transaction_date
+                    })
+                break;
+
                 default:
                     break;
             }
@@ -330,7 +476,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                     //console.log(a)
                 break;
@@ -340,7 +486,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "gender":
@@ -349,7 +495,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "leather type":
@@ -358,7 +504,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "classification 1":
@@ -367,7 +513,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "classification 2":
@@ -376,7 +522,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "logo":
@@ -385,7 +531,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "sub logo":
@@ -394,7 +540,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "lining":
@@ -403,7 +549,7 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
                 case "stitch":
@@ -412,10 +558,64 @@ module.exports = {
                             return details
                     }).catch(function(error){
                         //console.log(error)
-                        throw Error(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
-            
+                case "cambrelle":
+                    await model.CambrelleModel.findByIdAndUpdate(paramID.id,newParameter)
+                    .then(function(details){
+                            return details
+                    }).catch(function(error){
+                        //console.log(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
+                    })
+                break;
+                case "canvass":
+                    await model.CanvassModel.findByIdAndUpdate(paramID.id,newParameter)
+                    .then(function(details){
+                            return details
+                    }).catch(function(error){
+                        //console.log(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
+                    })
+                break;
+                case "lining mesh":
+                    await model.LiningMeshModel.findByIdAndUpdate(paramID.id,newParameter)
+                    .then(function(details){
+                            return details
+                    }).catch(function(error){
+                        //console.log(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
+                    })
+                break;
+                case "midsole":
+                    await model.MidsoleModel.findByIdAndUpdate(paramID.id,newParameter)
+                    .then(function(details){
+                            return details
+                    }).catch(function(error){
+                        //console.log(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
+                    })
+                break;
+                case "outsole":
+                    await model.OutsoleModel.findByIdAndUpdate(paramID.id,newParameter)
+                    .then(function(details){
+                            return details
+                    }).catch(function(error){
+                        //console.log(error)
+                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
+                    })
+                break;
+                case "sock liner":
+                await model.SockLinerModel.findByIdAndUpdate(paramID.id,newParameter)
+                .then(function(details){
+                        return details
+                }).catch(function(error){
+                    //console.log(error)
+                    throw Error(`${type.toUpperCase()} Parameter already existing.`)
+                })
+            break;
+
                 default:
                     break;
             }

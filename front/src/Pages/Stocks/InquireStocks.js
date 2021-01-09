@@ -3,7 +3,7 @@ import MaterialTable from "material-table";
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import Aux from "../../hoc/_Aux";
-import {Popup } from 'semantic-ui-react'
+import { Header, Button, Popup, Grid } from 'semantic-ui-react'
 import {Card} from 'react-bootstrap';
 import Moment from 'moment'
 import config from "../../config";
@@ -32,12 +32,29 @@ function InquireStocks(props) {
             // for(var i=0 ; i<abc.length; i++){
             //   d +=  `<div>${abc[i]}</div>`
             // }
-            return  <Popup
-                        trigger={<p style={{cursor: 'pointer'}}>Stock Details...</p>}
-                        inverted
-                        content= { <div dangerouslySetInnerHTML={{ __html: rowData.stock_details.split(";").join("<br/>") }} /> }
-                    />
-                    
+            // return  <Popup
+            //             position='right'
+            //             trigger={<p style={{cursor: 'pointer'}}>Stock Details...</p>}
+            //             inverted
+            //             content= { <div dangerouslySetInnerHTML={{ __html: rowData.stock_details.split(";").join("<br/>") }} /> }
+            //         />
+            return <Popup   
+                      inverted 
+                      trigger={<p style={{cursor: 'pointer'}}>Stock Details...</p>} 
+                      offset={[0, 50]}
+                      position='right center'
+                      flowing 
+                      hoverable
+                      >
+                <Grid>
+                  <Grid.Column>
+                    <Header as='h4'>Stock Details</Header>
+                    <p>
+                    <div dangerouslySetInnerHTML={{ __html: rowData.stock_details.split(";").join("<br/>") }} /> 
+                    </p>
+                  </Grid.Column>
+                </Grid>
+              </Popup>
             }, 
         cellStyle: {
             width: 5,

@@ -14,7 +14,12 @@ module.exports = {
     StocksModel: require("./StocksModel"),
     SubLogoModel: require("./SubLogoModel"),
     StocksHistoryModel: require('./StocksHistoryModel'),
-
+    CambrelleModel: require('./CambrelleModel'),
+    CanvassModel: require('./CanvassModel'),
+    LiningMeshModel: require('./LiningMeshModel'),
+    MidsoleModel: require('./MidsoleModel'),
+    OutsoleModel: require('./OutsoleModel'),
+    SockLinerModel: require('./SockLinerModel'),
 
     Movies: require("./Movies"),
     UsersModel: require('./UsersModel')

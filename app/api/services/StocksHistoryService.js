@@ -94,6 +94,42 @@ module.exports = {
                                             path : 'stitch'
                                         },
                                       })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'lining_mesh'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'sock_liner'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'canvass'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'midsole'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'outsole'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'cambrelle'
+                                        },
+                                      })
                                       .exec()
 
           
@@ -198,6 +234,42 @@ module.exports = {
                                             path : 'stitch'
                                         },
                                       })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'lining_mesh'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'sock_liner'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'canvass'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'midsole'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'outsole'
+                                        },
+                                      })
+                                      .populate({
+                                        path : 'stocks_id',
+                                        populate : {
+                                            path : 'cambrelle'
+                                        },
+                                      })
                                       .exec()
 
             ////console.log(_details)
@@ -271,11 +343,19 @@ module.exports = {
             
             ////console.log(newStocksHist)
             // Saving the history 
-            var savedStocks = await newStocksHist.save();
+            // var savedStocks = await newStocksHist.save();
            
-            if(!savedStocks){
-                throw Error("Failed to size run!")
-            }
+            // if(!savedStocks){
+            //     throw Error("Failed to size run!")
+            // }
+
+            var savedStocks = await newStocksHist.save().then(function(savedData){
+                return true
+            }).catch(function(err){
+                console.log(err)
+                throw Error(`Failed to save size run!`)
+                //throw new Error(err.message);
+            });
 
             let total_size_run = 
             paramBody.size_run_2_new + paramBody.size_run_2_5_new + 
@@ -349,6 +429,12 @@ module.exports = {
                 sub_logo: paramBody.sub_logo,
                 lining: paramBody.lining,
                 stitch: paramBody.stitch,
+                lining_mesh: paramBody.lining_mesh,
+                sock_liner: paramBody.sock_liner,
+                canvass: paramBody.canvass,
+                midsole: paramBody.midsole,
+                outsole: paramBody.outsole,
+                cambrelle: paramBody.cambrelle,
                 special_instruction: paramBody.special_instruction,
             });
 

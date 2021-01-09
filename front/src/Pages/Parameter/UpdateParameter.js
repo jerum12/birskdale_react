@@ -106,6 +106,15 @@ function UpdateParameter(props) {
     const hideAlert = () => {
         setAlertSuccess(false)
         setAlertFailed(false);
+        //setReloadTable(true);
+    }
+
+    const onSuccess = () => {
+        setAlertSuccess(false);
+        setAlertFailed(false);      
+        //props.history.push('/stocks/add')
+        //window.location.reload(false);
+        //setReloadTable(true);
     }
 
     const handleAdd = async (type,newData) => {
@@ -151,7 +160,7 @@ function UpdateParameter(props) {
                             if(response.data.code === '00'){
                                 setMessage(response.data.message)
                                 setAlertSuccess(true)   
-                                setReloadTable(true)    
+                                //setReloadTable(true)    
                                 resolve();
                             }else{
                                 setMessage(response.data.message)
@@ -219,7 +228,7 @@ function UpdateParameter(props) {
                             if(response.data.code === '00'){
                                 setMessage(response.data.message)
                                 setAlertSuccess(true)   
-                                setReloadTable(true)    
+                                //setReloadTable(true)    
                                 resolve();
                             }else{
                                 setMessage(response.data.message)
@@ -256,13 +265,13 @@ function UpdateParameter(props) {
             })
           .then(response => {
              handleResponse(response,props)
-
+            
              if(response.data.code === '00'){
               //////console.log( response.data.data)
               setData( response.data.data)
               setLoading(true)
              }else{
-               alert('2')
+               //alert('2')
               setLoading(false)
              }
             
@@ -272,7 +281,7 @@ function UpdateParameter(props) {
               setLoading(false)
           });
           setReloadTable(false)
-      }, [reloadTable])
+      }, [])
 
     return (
         <Aux>
@@ -574,7 +583,7 @@ function UpdateParameter(props) {
                                 </Accordion>
                             </Grid>
 
-                            <Grid item xs={12} md={6}>
+                            {/* <Grid item xs={12} md={6}>
                                 <Accordion>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                     <Typography>Lining Parameter</Typography>
@@ -646,6 +655,230 @@ function UpdateParameter(props) {
                                     </AccordionDetails>
                                 </Accordion>
                             </Grid>
+
+
+
+                            <Grid item xs={12} md={6}>
+                                <Accordion>
+                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                    <Typography>Lining Mesh Parameter</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                       <div className={classes.root}>
+                                            <MaterialTable
+                                                title=""
+                                                columns={columns}
+                                                data={data.mesh}
+                                                icons={{Add: () => <QueueIcon/>}}
+                                                options={{
+                                                    actionsColumnIndex: -1,
+                                                    exportButton: true,
+                                                    headerStyle: {
+                                                        backgroundColor: '#203356',
+                                                        color: '#FFF'
+                                                    },
+                                                    rowStyle: {
+                                                        backgroundColor: '#EEE',
+                                                    }
+                                                }}
+                                                editable={{
+                                                    onRowAdd: newData =>
+                                                        handleAdd('lining mesh',newData),
+                                                      onRowUpdate: (newData, oldData) =>
+                                                        handleUpdate('lining mesh',newData),                                                
+                                                }}
+                                                
+                                                />
+                                        </div>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Grid>
+
+
+                            <Grid item xs={12} md={6}>
+                                <Accordion>
+                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                    <Typography>Sockliner Parameter</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                       <div className={classes.root}>
+                                            <MaterialTable
+                                                title=""
+                                                columns={columns}
+                                                data={data.sockliner}
+                                                icons={{Add: () => <QueueIcon/>}}
+                                                options={{
+                                                    actionsColumnIndex: -1,
+                                                    exportButton: true,
+                                                    headerStyle: {
+                                                        backgroundColor: '#203356',
+                                                        color: '#FFF'
+                                                    },
+                                                    rowStyle: {
+                                                        backgroundColor: '#EEE',
+                                                    }
+                                                }}
+                                                editable={{
+                                                    onRowAdd: newData =>
+                                                        handleAdd('sock liner',newData),
+                                                      onRowUpdate: (newData, oldData) =>
+                                                        handleUpdate('sock liner',newData),                                                
+                                                }}
+                                                
+                                                />
+                                        </div>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Grid>
+
+
+
+                            <Grid item xs={12} md={6}>
+                                <Accordion>
+                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                    <Typography>Canvass Parameter</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                       <div className={classes.root}>
+                                            <MaterialTable
+                                                title=""
+                                                columns={columns}
+                                                data={data.canvass}
+                                                icons={{Add: () => <QueueIcon/>}}
+                                                options={{
+                                                    actionsColumnIndex: -1,
+                                                    exportButton: true,
+                                                    headerStyle: {
+                                                        backgroundColor: '#203356',
+                                                        color: '#FFF'
+                                                    },
+                                                    rowStyle: {
+                                                        backgroundColor: '#EEE',
+                                                    }
+                                                }}
+                                                editable={{
+                                                    onRowAdd: newData =>
+                                                        handleAdd('canvass',newData),
+                                                      onRowUpdate: (newData, oldData) =>
+                                                        handleUpdate('canvass',newData),                                                
+                                                }}
+                                                
+                                                />
+                                        </div>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Grid>
+
+
+                            <Grid item xs={12} md={6}>
+                                <Accordion>
+                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                    <Typography>Midsole Parameter</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                       <div className={classes.root}>
+                                            <MaterialTable
+                                                title=""
+                                                columns={columns}
+                                                data={data.midsole}
+                                                icons={{Add: () => <QueueIcon/>}}
+                                                options={{
+                                                    actionsColumnIndex: -1,
+                                                    exportButton: true,
+                                                    headerStyle: {
+                                                        backgroundColor: '#203356',
+                                                        color: '#FFF'
+                                                    },
+                                                    rowStyle: {
+                                                        backgroundColor: '#EEE',
+                                                    }
+                                                }}
+                                                editable={{
+                                                    onRowAdd: newData =>
+                                                        handleAdd('midsole',newData),
+                                                      onRowUpdate: (newData, oldData) =>
+                                                        handleUpdate('midsole',newData),                                                
+                                                }}
+                                                
+                                                />
+                                        </div>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Grid>
+
+
+                            <Grid item xs={12} md={6}>
+                                <Accordion>
+                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                    <Typography>Outsole Parameter</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                       <div className={classes.root}>
+                                            <MaterialTable
+                                                title=""
+                                                columns={columns}
+                                                data={data.outsole}
+                                                icons={{Add: () => <QueueIcon/>}}
+                                                options={{
+                                                    actionsColumnIndex: -1,
+                                                    exportButton: true,
+                                                    headerStyle: {
+                                                        backgroundColor: '#203356',
+                                                        color: '#FFF'
+                                                    },
+                                                    rowStyle: {
+                                                        backgroundColor: '#EEE',
+                                                    }
+                                                }}
+                                                editable={{
+                                                    onRowAdd: newData =>
+                                                        handleAdd('outsole',newData),
+                                                      onRowUpdate: (newData, oldData) =>
+                                                        handleUpdate('outsole',newData),                                                
+                                                }}
+                                                
+                                                />
+                                        </div>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Grid> 
+
+
+                            <Grid item xs={12} md={6}>
+                                <Accordion>
+                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                    <Typography>Cambrelle Parameter</Typography>
+                                    </AccordionSummary>
+                                    <AccordionDetails>
+                                       <div className={classes.root}>
+                                            <MaterialTable
+                                                title=""
+                                                columns={columns}
+                                                data={data.cambrelle}
+                                                icons={{Add: () => <QueueIcon/>}}
+                                                options={{
+                                                    actionsColumnIndex: -1,
+                                                    exportButton: true,
+                                                    headerStyle: {
+                                                        backgroundColor: '#203356',
+                                                        color: '#FFF'
+                                                    },
+                                                    rowStyle: {
+                                                        backgroundColor: '#EEE',
+                                                    }
+                                                }}
+                                                editable={{
+                                                    onRowAdd: newData =>
+                                                        handleAdd('cambrelle',newData),
+                                                      onRowUpdate: (newData, oldData) =>
+                                                        handleUpdate('cambrelle',newData),                                                
+                                                }}
+                                                
+                                                />
+                                        </div>
+                                    </AccordionDetails>
+                                </Accordion>
+                            </Grid> */}
                          
                         </Grid>
                         
@@ -658,12 +891,11 @@ function UpdateParameter(props) {
                         ?
                         <SweetAlert
                         success
-                        confirmBtnText = "Okay"
+                        // confirmBtnText = "Okay"
                         title=''
                         confirmBtnBsStyle= "success"
-                        onCancel ={hideAlert}
-                        onConfirm ={hideAlert}
-                        timeout={2000}
+                        onConfirm={onSuccess}
+                        //timeout={800}
                         >
                         <p style={{color : 'black', fontSize : '20px', fontWeight : 'bold'}}>{message}</p>
                         </SweetAlert>
@@ -680,7 +912,7 @@ function UpdateParameter(props) {
                         confirmBtnBsStyle= "danger"
                         onCancel ={hideAlert}
                         onConfirm ={hideAlert}
-                        timeout={2000}
+                        //timeout={2000}
                         >
                         <p style={{color : 'black', fontSize : '20px', fontWeight : 'bold'}}>{message}</p>
                         </SweetAlert>
@@ -689,7 +921,7 @@ function UpdateParameter(props) {
                     }
                 </Fragment>
                 :
-                  ''
+                  'LOADING'
               }
             
 

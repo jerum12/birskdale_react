@@ -3,7 +3,7 @@ var mongoosePaginate = require('mongoose-paginate')
 
 var Schema = mongoose.Schema;
 
-const classification1ModelSchema = new Schema({
+const outsoleSchema = new Schema({
     transaction_date : {type: Date, default: Date.now},
     code : {type: String, required: true,  trim:true,
       index: {
@@ -17,9 +17,9 @@ const classification1ModelSchema = new Schema({
         collation: { locale: 'en', strength: 2 }
       }
     }
-  }, {collection : 'tbl_param_classification_1'});
+  }, {collection : 'tbl_param_outsole'});
   
 
-  classification1ModelSchema.plugin(mongoosePaginate)
+  outsoleSchema.plugin(mongoosePaginate)
 
-  module.exports = mongoose.model('Classification1Model', classification1ModelSchema);
+  module.exports = mongoose.model('OutsoleModel', outsoleSchema);
