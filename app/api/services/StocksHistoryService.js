@@ -97,12 +97,6 @@ module.exports = {
                                       .populate({
                                         path : 'stocks_id',
                                         populate : {
-                                            path : 'lining_mesh'
-                                        },
-                                      })
-                                      .populate({
-                                        path : 'stocks_id',
-                                        populate : {
                                             path : 'sock_liner'
                                         },
                                       })
@@ -122,12 +116,6 @@ module.exports = {
                                         path : 'stocks_id',
                                         populate : {
                                             path : 'outsole'
-                                        },
-                                      })
-                                      .populate({
-                                        path : 'stocks_id',
-                                        populate : {
-                                            path : 'cambrelle'
                                         },
                                       })
                                       .exec()
@@ -237,12 +225,6 @@ module.exports = {
                                       .populate({
                                         path : 'stocks_id',
                                         populate : {
-                                            path : 'lining_mesh'
-                                        },
-                                      })
-                                      .populate({
-                                        path : 'stocks_id',
-                                        populate : {
                                             path : 'sock_liner'
                                         },
                                       })
@@ -262,12 +244,6 @@ module.exports = {
                                         path : 'stocks_id',
                                         populate : {
                                             path : 'outsole'
-                                        },
-                                      })
-                                      .populate({
-                                        path : 'stocks_id',
-                                        populate : {
-                                            path : 'cambrelle'
                                         },
                                       })
                                       .exec()
@@ -429,12 +405,10 @@ module.exports = {
                 sub_logo: paramBody.sub_logo,
                 lining: paramBody.lining,
                 stitch: paramBody.stitch,
-                lining_mesh: paramBody.lining_mesh,
                 sock_liner: paramBody.sock_liner,
                 canvass: paramBody.canvass,
                 midsole: paramBody.midsole,
                 outsole: paramBody.outsole,
-                cambrelle: paramBody.cambrelle,
                 special_instruction: paramBody.special_instruction,
             });
 

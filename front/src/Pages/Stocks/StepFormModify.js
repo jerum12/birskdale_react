@@ -37,6 +37,10 @@ const StepFormModify = ({
     sub_logo: details.sub_logo,
     lining: details.lining,
     stitch: details.stitch,
+    canvass: details.canvass,
+    midsole: details.midsole,
+    outsole: details.outsole,
+    sock_liner: details.sock_liner,
     special_instruction: details.special_instruction
   })
 
@@ -51,6 +55,10 @@ const StepFormModify = ({
     sub_logo: "",
     lining: "",
     stitch: "",
+    canvass: "",
+    midsole: "",
+    outsole: "",
+    sock_liner: "",
     special_instruction: ""
   })
   // Copy fields as they all have the same name
@@ -80,6 +88,10 @@ const StepFormModify = ({
                         fields.sub_logo.description === details.sub_logo.description &&
                         fields.stitch.description === details.stitch.description &&
                         fields.lining.description === details.lining.description &&
+                        fields.canvass.description === details.canvass.description &&
+                        fields.midsole.description === details.midsole.description &&
+                        fields.outsole.description === details.outsole.description &&
+                        fields.sock_liner.description === details.sock_liner.description &&
                         fields.special_instruction === details.special_instruction
       //console.log(noChange + '------------------')
       if(noChange){
@@ -174,7 +186,27 @@ const StepFormModify = ({
             formErrors.stitch = mandatory
                 ? "Mandatory"
                 : ""
-            break       
+            break 
+        case "canvass":
+              formErrors.canvass = mandatory
+                  ? "Mandatory"
+                  : ""
+              break  
+        case "midsole":
+                formErrors.midsole = mandatory
+                    ? "Mandatory"
+                    : ""
+                break     
+        case "outsole":
+                  formErrors.outsole = mandatory
+                      ? "Mandatory"
+                      : ""
+                  break    
+        case "sock_liner":
+                    formErrors.sock_liner = mandatory
+                        ? "Mandatory"
+                        : ""
+                    break     
         case "special_instruction":
             formErrors.special_instruction = event.target.value.length > 0 && !siRegex.test(event.target.value)
                 ? "Please enter a valid Special Instruction"

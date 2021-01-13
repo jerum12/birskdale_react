@@ -28,32 +28,87 @@ module.exports = {
             .populate(['sub_logo'])
             .populate(['lining'])
             .populate(['stitch'])
-            .populate(['lining_mesh'])
             .populate(['sock_liner'])
             .populate(['canvass'])
             .populate(['midsole'])
             .populate(['outsole'])
-            .populate(['cambrelle'])
             .exec()
 
             //var stocks = await db.StocksModel.paginate(query, options).populate(['_creator'])
             stocks.forEach(function(stock) {
-                stock.stock_details = 'LT: ' + stock.leather_type.description + '; ' +
-                                'G: ' + stock.gender.description + '; ' +
-                                'C: ' + stock.color.description + '; ' +
-                                'C1: ' + stock.classification_1.description + '; ' +
-                                'C2: ' + stock.classification_2.description + '; ' +
-                                'Lo: ' + stock.logo.description + '; ' +
-                                'SLo: ' + stock.sub_logo.description + '; ' +
-                                'S: ' + stock.stitch.description + '; ' +
-                                'Li: ' + stock.lining.description + '; ' +
-                                'LM: ' + stock.lining_mesh.description + '; ' +
-                                'SLi: ' + stock.sock_liner.description + '; ' +
-                                'Cv: ' + stock.canvass.description + '; ' +
-                                'Ms: ' + stock.midsole.description + '; ' +
-                                'Os: ' + stock.outsole.description + '; ' +
-                                'Cm: ' + stock.cambrelle.description + '; ' +
-                                'SI: ' + stock.special_instruction;
+                var stock_details_value = "";
+
+                if(stock.gender.description != '' && stock.gender.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">G</span>: ' + stock.gender.description + '; '
+                }
+
+                if(stock.leather_type.description != '' && stock.leather_type.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">LT</span>: ' + stock.leather_type.description + '; '
+                }
+
+                if(stock.color.description != '' && stock.color.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">C</span>: ' + stock.color.description + '; '
+                }
+
+                if(stock.classification_1.description != '' && stock.classification_1.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">C1</span>: ' + stock.classification_1.description  + '; '
+                }
+
+                if(stock.classification_2.description != '' && stock.classification_2.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">C2</span>: ' + stock.classification_2.description + '; '
+                }
+
+                if(stock.logo.description != '' && stock.logo.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">Lo</span>: ' + stock.logo.description + '; '
+                }
+
+                if(stock.sub_logo.description != '' && stock.sub_logo.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">SLo</span>: ' + stock.sub_logo.description + '; '
+                }
+
+                if(stock.stitch.description != '' && stock.stitch.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">S</span>: ' + stock.stitch.description + '; '
+                }
+
+                if(stock.lining.description != '' && stock.lining.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">Li</span>: ' + stock.lining.description + '; '
+                }
+
+                if(stock.canvass.description != '' && stock.canvass.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">Cv</span>: ' + stock.canvass.description + '; '
+                }
+
+                if(stock.midsole.description != '' && stock.midsole.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">Ms</span>: ' + stock.midsole.description + '; '
+                }
+
+                if(stock.outsole.description != '' && stock.outsole.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">Os</span>: ' + stock.outsole.description + '; '
+                }
+
+                if(stock.sock_liner.description != '' && stock.sock_liner.description != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">SLi</span>: ' + stock.sock_liner.description + '; '
+                }
+
+                if(stock.special_instruction != '' && stock.special_instruction != 'NOT AVAILABLE'){
+                    stock_details_value +=  '<span style="color:red">SI</span>: ' + stock.special_instruction + '; '
+                }
+
+                stock.stock_details = stock_details_value;
+                // stock.stock_details = 'LT: ' + stock.leather_type.description + '; ' +
+                //                 'G: ' + stock.gender.description + '; ' +
+                //                 'C: ' + stock.color.description + '; ' +
+                //                 'C1: ' + stock.classification_1.description + '; ' +
+                //                 'C2: ' + stock.classification_2.description + '; ' +
+                //                 'Lo: ' + stock.logo.description + '; ' +
+                //                 'SLo: ' + stock.sub_logo.description + '; ' +
+                //                 'S: ' + stock.stitch.description + '; ' +
+                //                 'Li: ' + stock.lining.description + '; ' +
+                //                 'SLi: ' + stock.sock_liner.description + '; ' +
+                //                 'Cv: ' + stock.canvass.description + '; ' +
+                //                 'Ms: ' + stock.midsole.description + '; ' +
+                //                 'Os: ' + stock.outsole.description + '; ' +
+                //                 'SI: ' + stock.special_instruction;
               });
 
               ////console.log(stocks)
@@ -103,12 +158,10 @@ module.exports = {
                 sub_logo: paramBody.sub_logo,
                 lining: paramBody.lining,
                 stitch: paramBody.stitch,
-                lining_mesh: paramBody.lining_mesh,
                 sock_liner: paramBody.sock_liner,
                 canvass: paramBody.canvass,
                 midsole: paramBody.midsole,
                 outsole: paramBody.outsole,
-                cambrelle: paramBody.cambrelle,
                 special_instruction: paramBody.special_instruction,
             });
 
@@ -145,12 +198,10 @@ module.exports = {
                 sub_logo : paramBody.sub_logo,
                 stitch : paramBody.stitch,
                 lining : paramBody.lining,
-                lining_mesh : paramBody.lining_mesh,
                 sock_liner : paramBody.sock_liner,
                 canvass : paramBody.canvass,
                 midsole : paramBody.midsole,
                 outsole : paramBody.outsole,
-                cambrelle : paramBody.cambrelle,
                 special_instruction : paramBody.special_instruction,
                 size_run_2 : paramBody.size_run_2,
                 size_run_2_5 : paramBody.size_run_2_5,
@@ -208,12 +259,10 @@ module.exports = {
                 sub_logo: paramBody.sub_logo,
                 lining: paramBody.lining,
                 stitch: paramBody.stitch,
-                lining_mesh: paramBody.lining_mesh,
                 sock_liner: paramBody.sock_liner,
                 canvass: paramBody.canvass,
                 midsole: paramBody.midsole,
                 outsole: paramBody.outsole,
-                cambrelle: paramBody.cambrelle,
                 special_instruction: paramBody.special_instruction,
             });
 
@@ -273,12 +322,10 @@ module.exports = {
             .populate(['sub_logo'])
             .populate(['lining'])
             .populate(['stitch'])
-            .populate(['lining_mesh'])
             .populate(['sock_liner'])
             .populate(['canvass'])
             .populate(['midsole'])
             .populate(['outsole'])
-            .populate(['cambrelle'])
             .exec()
 
             
@@ -363,32 +410,67 @@ module.exports = {
                 //console.log(stocks)
 
                 stocks.forEach(function(stock) {
-                    // stock.stock_details = 'LT: ' + stock.leather_type.description + '; ' +
-                    //                 'G: ' + stock.gender.description + '; ' +
-                    //                 'C: ' + stock.color.description + '; ' +
-                    //                 'C1: ' + stock.classification_1.description + '; ' +
-                    //                 'C2: ' + stock.classification_2.description + '; ' +
-                    //                 'Lo: ' + stock.logo.description + '; ' +
-                    //                 'SLo: ' + stock.sub_logo.description + '; ' +
-                    //                 'S: ' + stock.stitch.description + '; ' +
-                    //                 'Li: ' + stock.lining.description + '; ' +
-                    //                 'LM: ' + stock.lining_mesh.description + '; ' +
-                    //                 'SLi: ' + stock.sock_liner.description + '; ' +
-                    //                 'Cv: ' + stock.canvass.description + '; ' +
-                    //                 'Ms: ' + stock.midsole.description + '; ' +
-                    //                 'Os: ' + stock.outsole.description + '; ' +
-                    //                 'Cm: ' + stock.cambrelle.description + '; ' +
-                    //                 'SI: ' + stock.special_instruction;
-                    stock.stock_details = '<span style="color:red;font-weight:bold">LT</span>: ' + stock.leather_type.description + '; ' +
-                                    '<span style="color:red;font-weight:bold">G</span>: ' + stock.gender.description + '; ' +
-                                    '<span style="color:red;font-weight:bold">C</span>: ' + stock.color.description + '; ' +
-                                    '<span style="color:red;font-weight:bold">C1</span>: ' + stock.classification_1.description + '; ' +
-                                    '<span style="color:red;font-weight:bold">C2</span>: ' + stock.classification_2.description + '; ' +
-                                    '<span style="color:red;font-weight:bold">Lo</span>: ' + stock.logo.description + '; ' +
-                                    '<span style="color:red;font-weight:bold">SLo</span>: ' + stock.sub_logo.description + '; ' +
-                                    '<span style="color:red;font-weight:bold">S</span>: ' + stock.stitch.description + '; ' +
-                                    '<span style="color:red;font-weight:bold">Li</span>: ' + stock.lining.description + '; ' +
-                                    '<span style="color:red;font-weight:bold">SI</span>: ' + stock.special_instruction;
+                        var stock_details_value = "";
+
+                    if(stock.gender.description != '' && stock.gender.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">G</span>: ' + stock.gender.description;
+                    }
+
+                    if(stock.leather_type.description != '' && stock.leather_type.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">LT</span>: ' + stock.leather_type.description
+                    }
+
+                    if(stock.color.description != '' && stock.color.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">C</span>: ' + stock.color.description
+                    }
+
+                    if(stock.classification_1.description != '' && stock.classification_1.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">C1</span>: ' + stock.classification_1.description
+                    }
+
+                    if(stock.classification_2.description != '' && stock.classification_2.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">C2</span>: ' + stock.classification_2.description
+                    }
+
+                    if(stock.logo.description != '' && stock.logo.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">Lo</span>: ' + stock.logo.description
+                    }
+
+                    if(stock.sub_logo.description != '' && stock.sub_logo.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">SLo</span>: ' + stock.sub_logo.description
+                    }
+
+                    if(stock.stitch.description != '' && stock.stitch.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">S</span>: ' + stock.stitch.description
+                    }
+
+                    if(stock.lining.description != '' && stock.lining.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">Li</span>: ' + stock.lining.description
+                    }
+
+                    if(stock.canvass.description != '' && stock.canvass.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">Cv</span>: ' + stock.canvass.description
+                    }
+
+                    if(stock.midsole.description != '' && stock.midsole.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">Ms</span>: ' + stock.midsole.description
+                    }
+
+                    if(stock.outsole.description != '' && stock.outsole.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">Os</span>: ' + stock.outsole.description
+                    }
+
+                    if(stock.sock_liner.description != '' && stock.sock_liner.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">SLi</span>: ' + stock.sock_liner.description
+                    }
+
+                    if(stock.special_instruction != '' && stock.special_instruction != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">SI</span>: ' + stock.special_instruction
+                    }
+            
+
+                    stock.stock_details = stock_details_value;
+
                   });
 
               ////console.log(stocks)

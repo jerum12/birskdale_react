@@ -113,7 +113,7 @@ function UpdateParameter(props) {
         setAlertSuccess(false);
         setAlertFailed(false);      
         //props.history.push('/stocks/add')
-        //window.location.reload(false);
+        window.location.reload(false);
         //setReloadTable(true);
     }
 
@@ -583,7 +583,7 @@ function UpdateParameter(props) {
                                 </Accordion>
                             </Grid>
 
-                            {/* <Grid item xs={12} md={6}>
+                            <Grid item xs={12} md={6}>
                                 <Accordion>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                     <Typography>Lining Parameter</Typography>
@@ -655,83 +655,6 @@ function UpdateParameter(props) {
                                     </AccordionDetails>
                                 </Accordion>
                             </Grid>
-
-
-
-                            <Grid item xs={12} md={6}>
-                                <Accordion>
-                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                    <Typography>Lining Mesh Parameter</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                       <div className={classes.root}>
-                                            <MaterialTable
-                                                title=""
-                                                columns={columns}
-                                                data={data.mesh}
-                                                icons={{Add: () => <QueueIcon/>}}
-                                                options={{
-                                                    actionsColumnIndex: -1,
-                                                    exportButton: true,
-                                                    headerStyle: {
-                                                        backgroundColor: '#203356',
-                                                        color: '#FFF'
-                                                    },
-                                                    rowStyle: {
-                                                        backgroundColor: '#EEE',
-                                                    }
-                                                }}
-                                                editable={{
-                                                    onRowAdd: newData =>
-                                                        handleAdd('lining mesh',newData),
-                                                      onRowUpdate: (newData, oldData) =>
-                                                        handleUpdate('lining mesh',newData),                                                
-                                                }}
-                                                
-                                                />
-                                        </div>
-                                    </AccordionDetails>
-                                </Accordion>
-                            </Grid>
-
-
-                            <Grid item xs={12} md={6}>
-                                <Accordion>
-                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                    <Typography>Sockliner Parameter</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                       <div className={classes.root}>
-                                            <MaterialTable
-                                                title=""
-                                                columns={columns}
-                                                data={data.sockliner}
-                                                icons={{Add: () => <QueueIcon/>}}
-                                                options={{
-                                                    actionsColumnIndex: -1,
-                                                    exportButton: true,
-                                                    headerStyle: {
-                                                        backgroundColor: '#203356',
-                                                        color: '#FFF'
-                                                    },
-                                                    rowStyle: {
-                                                        backgroundColor: '#EEE',
-                                                    }
-                                                }}
-                                                editable={{
-                                                    onRowAdd: newData =>
-                                                        handleAdd('sock liner',newData),
-                                                      onRowUpdate: (newData, oldData) =>
-                                                        handleUpdate('sock liner',newData),                                                
-                                                }}
-                                                
-                                                />
-                                        </div>
-                                    </AccordionDetails>
-                                </Accordion>
-                            </Grid>
-
-
 
                             <Grid item xs={12} md={6}>
                                 <Accordion>
@@ -842,19 +765,18 @@ function UpdateParameter(props) {
                                     </AccordionDetails>
                                 </Accordion>
                             </Grid> 
-
-
+                            
                             <Grid item xs={12} md={6}>
                                 <Accordion>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                    <Typography>Cambrelle Parameter</Typography>
+                                    <Typography>Sockliner Parameter</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                        <div className={classes.root}>
                                             <MaterialTable
                                                 title=""
                                                 columns={columns}
-                                                data={data.cambrelle}
+                                                data={data.sock_liner}
                                                 icons={{Add: () => <QueueIcon/>}}
                                                 options={{
                                                     actionsColumnIndex: -1,
@@ -869,17 +791,21 @@ function UpdateParameter(props) {
                                                 }}
                                                 editable={{
                                                     onRowAdd: newData =>
-                                                        handleAdd('cambrelle',newData),
+                                                        handleAdd('sock liner',newData),
                                                       onRowUpdate: (newData, oldData) =>
-                                                        handleUpdate('cambrelle',newData),                                                
+                                                        handleUpdate('sock liner',newData),                                                
                                                 }}
                                                 
                                                 />
                                         </div>
                                     </AccordionDetails>
                                 </Accordion>
-                            </Grid> */}
-                         
+                            </Grid>
+
+
+
+                            
+
                         </Grid>
                         
 

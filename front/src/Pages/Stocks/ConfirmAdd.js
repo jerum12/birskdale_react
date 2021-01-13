@@ -24,16 +24,16 @@ const useStyles = makeStyles((theme) => ({
       fontWeight : 'bold'
     },
     primary : {
-        color : '#63a940',
-        "& span": {
-            fontSize : '12px',
-            fontWeight : 'bold'
-          },
-        "& p": {
-        fontSize : '15px',
-        color : '#000'
-        }
-    }
+      color : '#000',
+      "& span": {
+          fontSize : '11px',
+          fontWeight : 'bold'
+        },
+      "& p": {
+      fontSize : '18px',
+      color : 'rgb(32, 51, 86)'
+      }
+  }
   }));
 
   
@@ -51,6 +51,10 @@ const ConfirmAdd = ({
     sub_logo,
     lining,
     stitch,
+    canvass,
+    midsole,
+    outsole,
+    sock_liner,
     special_instruction,
     size_run_2,
     size_run_2_5,
@@ -93,6 +97,10 @@ const handleSubmit = () => {
         classification_2: classification_2._id,
         lining: lining._id,
         stitch: stitch._id,
+        canvass: canvass._id,
+        midsole: midsole._id,
+        outsole: outsole._id,
+        sock_liner: sock_liner._id,
         logo: logo._id,
         sub_logo: sub_logo._id,
         special_instruction: special_instruction,
@@ -204,6 +212,12 @@ const hideAlert = () => {
                     secondary={color.description}
                   />
                 </ListItem>
+                <ListItem>
+                  <ListItemText className={classes.primary}
+                    primary="Leather Type"
+                    secondary={leather_type.description}
+                  />
+                </ListItem>
             </List>
           </div>
         </Grid>
@@ -214,12 +228,7 @@ const hideAlert = () => {
           <Divider/>
           <div className={classes.demo}>
             <List>
-                <ListItem>
-                  <ListItemText className={classes.primary}
-                    primary="Leather Type"
-                    secondary={leather_type.description}
-                  />
-                </ListItem>
+
                 <ListItem>
                   <ListItemText className={classes.primary}
                     primary="Classification 1"
@@ -232,17 +241,6 @@ const hideAlert = () => {
                     secondary={classification_2.description}
                   />
                 </ListItem>
-           
-            </List>
-          </div>
-        </Grid>
-        <Grid item xs={12} md={3}>
-          <Typography variant="h6" className={classes.title}>
-                &nbsp;
-          </Typography>
-          <Divider/>
-          <div className={classes.demo}>
-            <List>
                 <ListItem>
                   <ListItemText className={classes.primary}
                     primary="Logo"
@@ -255,13 +253,6 @@ const hideAlert = () => {
                     secondary={sub_logo.description}
                   />
                 </ListItem>
-                <ListItem>
-                  <ListItemText className={classes.primary}
-                    primary="Lining"
-                    secondary={lining.description}
-                  />
-                </ListItem>
-           
             </List>
           </div>
         </Grid>
@@ -274,8 +265,49 @@ const hideAlert = () => {
             <List>
                 <ListItem>
                   <ListItemText className={classes.primary}
+                    primary="Lining"
+                    secondary={lining.description}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText className={classes.primary}
                     primary="Stitch"
                     secondary={stitch.description}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText className={classes.primary}
+                    primary="Canvass"
+                    secondary={canvass.description}
+                  />
+                </ListItem>
+                <ListItem>
+                  <ListItemText className={classes.primary}
+                    primary="Midsole"
+                    secondary={midsole.description}
+                  />
+                </ListItem>
+               
+            </List>
+          </div>
+        </Grid>
+        <Grid item xs={12} md={3}>
+          <Typography variant="h6" className={classes.title}>
+                &nbsp;
+          </Typography>
+          <Divider/>
+          <div className={classes.demo}>
+            <List>
+                <ListItem>
+                  <ListItemText className={classes.primary}
+                    primary="Outsole"
+                    secondary={outsole.description}
+                  />
+                </ListItem>
+              <ListItem>
+                  <ListItemText className={classes.primary}
+                    primary="Sockliner"
+                    secondary={sock_liner.description}
                   />
                 </ListItem>
                 <ListItem>

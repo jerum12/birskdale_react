@@ -28,7 +28,7 @@ function AddStocks(props){
 
                 if(response.data.code === '99'){
                     //setshowTimeout(true)
-                    //console.log('error')
+                    console.log('error')
                
                 }else{
                     setParamArray(response.data.data)
@@ -36,7 +36,7 @@ function AddStocks(props){
                 }
             })
             .catch(err => {
-                //console.log(err);
+                console.log(err);
             });
 
     },[]);

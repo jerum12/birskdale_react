@@ -366,64 +366,6 @@ function InquireParameter(props) {
                                 </Accordion>
                             </Grid>
 
-
-                            <Grid item xs={12} md={6}>
-                                <Accordion>
-                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                    <Typography>Lining Mesh Parameter</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                       <div className={classes.root}>
-                                            <MaterialTable
-                                                title=""
-                                                columns={columns}
-                                                data={data.mesh}
-                                                options={{
-                                                    exportButton: true,
-                                                    headerStyle: {
-                                                        backgroundColor: '#203356',
-                                                        color: '#FFF'
-                                                    },
-                                                    rowStyle: {
-                                                        backgroundColor: '#EEE',
-                                                    }
-                                                }}
-                                                
-                                                />
-                                        </div>
-                                    </AccordionDetails>
-                                </Accordion>
-                            </Grid>
-
-                            <Grid item xs={12} md={6}>
-                                <Accordion>
-                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                    <Typography>Sockliner Parameter</Typography>
-                                    </AccordionSummary>
-                                    <AccordionDetails>
-                                       <div className={classes.root}>
-                                            <MaterialTable
-                                                title=""
-                                                columns={columns}
-                                                data={data.sockliner}
-                                                options={{
-                                                    exportButton: true,
-                                                    headerStyle: {
-                                                        backgroundColor: '#203356',
-                                                        color: '#FFF'
-                                                    },
-                                                    rowStyle: {
-                                                        backgroundColor: '#EEE',
-                                                    }
-                                                }}
-                                                
-                                                />
-                                        </div>
-                                    </AccordionDetails>
-                                </Accordion>
-                            </Grid>
-
-
                             <Grid item xs={12} md={6}>
                                 <Accordion>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -512,14 +454,14 @@ function InquireParameter(props) {
                             <Grid item xs={12} md={6}>
                                 <Accordion>
                                     <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                    <Typography>Cambrelle Parameter</Typography>
+                                    <Typography>Sockliner Parameter</Typography>
                                     </AccordionSummary>
                                     <AccordionDetails>
                                        <div className={classes.root}>
                                             <MaterialTable
                                                 title=""
                                                 columns={columns}
-                                                data={data.cambrelle}
+                                                data={data.sock_liner}
                                                 options={{
                                                     exportButton: true,
                                                     headerStyle: {
@@ -536,6 +478,11 @@ function InquireParameter(props) {
                                     </AccordionDetails>
                                 </Accordion>
                             </Grid>
+
+
+                           
+
+                       
                          
                         </Grid>
                         

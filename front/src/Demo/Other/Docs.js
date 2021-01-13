@@ -17,7 +17,7 @@ class Docs extends Component {
                             <p> - Install npm packages using command <code>'npm install'</code>,  this will install required node.js third-party plugins into the <code>node_modules/</code> folder.</p>
                             <p> - Compile/Run project using  command  <code>'npm start'</code>, this will compile app in development mode.</p>
                             <p> - Open <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer">http://localhost:3000</a> to view it on browser.</p>
-                            <p> - Now, You can use Datta Able React Admin Template for your application development. </p>
+                            <p> - </p>
                             <div className='theme-bg2 text-white p-3'>
                                 <p>The project was built assuming it is hosted at the server root folder of domain/platform i.e http://demo.com.</p>
 

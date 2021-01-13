@@ -20,6 +20,10 @@ const FirstStepModify = ({
             sub_logo,
             lining,
             stitch,
+            canvass,
+            midsole,
+            outsole,
+            sock_liner,
             special_instruction
         },
   filedError,
@@ -43,7 +47,11 @@ const FirstStepModify = ({
     logo !== null && logo !== '' &&
     sub_logo !== null && sub_logo !== '' &&
     lining !== null && lining !== '' &&
-    stitch !== null && stitch !== '' 
+    stitch !== null && stitch !== '' &&
+    canvass !== null && canvass !== '' &&
+    midsole !== null && midsole !== '' &&
+    outsole !== null && outsole !== '' &&
+    sock_liner !== null && sock_liner !== '' 
 
 
     const noChange = stock_no !== null && stock_no.description === details.stock_no.description &&
@@ -56,6 +64,10 @@ const FirstStepModify = ({
     sub_logo !== null && sub_logo.description === details.sub_logo.description &&
     stitch !== null && stitch.description === details.stitch.description &&
     lining !== null && lining.description === details.lining.description &&
+    canvass !== null && canvass.description === details.canvass.description &&
+    midsole !== null && midsole.description === details.midsole.description &&
+    outsole !== null && outsole.description === details.outsole.description &&
+    sock_liner !== null && sock_liner.description === details.sock_liner.description &&
     special_instruction !== null && special_instruction === details.special_instruction
 
     
@@ -428,6 +440,152 @@ const FirstStepModify = ({
                             }
                             required
                             name="stitch"
+                            />
+                        )}
+                    />
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} sm={3}>
+          <FormControl fullWidth required margin="normal">
+            <Autocomplete
+                        options={arrayParam.canvass}
+                        name="canvass"
+                        value={canvass}
+                        onChange={handleChange('canvass')}
+                        getOptionLabel={option => typeof option === 'string' ? option : option.description}
+                        getOptionSelected={ value => {
+                          if(canvass.description === value.description){
+                              ////console.log('equal-----------------')
+                              return canvass.description === value.description
+                          }
+                      }}
+                        renderInput={params => (
+                            <TextField
+                            {...params}
+                            label="Select Canvass"
+                            margin="normal"
+                            fullWidth
+                            inputProps={{
+                                ...params.inputProps,
+                                autoComplete: "off"
+                            }}
+                            error={filedError.canvass !== ""}
+                            helperText={
+                            filedError.canvass !== "" ? `${filedError.canvass}` : ""
+                            }
+                            required
+                            name="canvass"
+                            />
+                        )}
+                    />
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} sm={3}>
+          <FormControl fullWidth required margin="normal">
+            <Autocomplete
+                        options={arrayParam.midsole}
+                        name="midsole"
+                        value={midsole}
+                        onChange={handleChange('midsole')}
+                        getOptionLabel={option => typeof option === 'string' ? option : option.description}
+                        getOptionSelected={ value => {
+                          if(midsole.description === value.description){
+                              ////console.log('equal-----------------')
+                              return midsole.description === value.description
+                          }
+                      }}
+                        renderInput={params => (
+                            <TextField
+                            {...params}
+                            label="Select Midsole"
+                            margin="normal"
+                            fullWidth
+                            inputProps={{
+                                ...params.inputProps,
+                                autoComplete: "off"
+                            }}
+                            error={filedError.midsole !== ""}
+                            helperText={
+                            filedError.midsole !== "" ? `${filedError.midsole}` : ""
+                            }
+                            required
+                            name="midsole"
+                            />
+                        )}
+                    />
+          </FormControl>
+        </Grid>
+
+
+        <Grid item xs={12} sm={3}>
+          <FormControl fullWidth required margin="normal">
+            <Autocomplete
+                        options={arrayParam.outsole}
+                        name="outsole"
+                        value={outsole}
+                        onChange={handleChange('outsole')}
+                        getOptionLabel={option => typeof option === 'string' ? option : option.description}
+                        getOptionSelected={ value => {
+                          if(outsole.description === value.description){
+                              ////console.log('equal-----------------')
+                              return outsole.description === value.description
+                          }
+                      }}
+                        renderInput={params => (
+                            <TextField
+                            {...params}
+                            label="Select Outsole"
+                            margin="normal"
+                            fullWidth
+                            inputProps={{
+                                ...params.inputProps,
+                                autoComplete: "off"
+                            }}
+                            error={filedError.outsole !== ""}
+                            helperText={
+                            filedError.outsole !== "" ? `${filedError.outsole}` : ""
+                            }
+                            required
+                            name="outsole"
+                            />
+                        )}
+                    />
+          </FormControl>
+        </Grid>
+
+
+        <Grid item xs={12} sm={3}>
+          <FormControl fullWidth required margin="normal">
+            <Autocomplete
+                        options={arrayParam.sock_liner}
+                        name="sock_liner"
+                        value={sock_liner}
+                        onChange={handleChange('sock_liner')}
+                        getOptionLabel={option => typeof option === 'string' ? option : option.description}
+                        getOptionSelected={ value => {
+                          if(sock_liner.description === value.description){
+                              ////console.log('equal-----------------')
+                              return sock_liner.description === value.description
+                          }
+                      }}
+                        renderInput={params => (
+                            <TextField
+                            {...params}
+                            label="Select Sockliner"
+                            margin="normal"
+                            fullWidth
+                            inputProps={{
+                                ...params.inputProps,
+                                autoComplete: "off"
+                            }}
+                            error={filedError.sock_liner !== ""}
+                            helperText={
+                            filedError.sock_liner !== "" ? `${filedError.sock_liner}` : ""
+                            }
+                            required
+                            name="sock_liner"
                             />
                         )}
                     />

@@ -25,12 +25,10 @@ module.exports = {
                                  "stitch" : await  model.StitchModel.find().exec(),
                                  "stock" : await  model.StockModel.find().exec(),
                                  "sublogo" : await  model.SubLogoModel.find().exec(),
-                                 "cambrelle" : await  model.CambrelleModel.find().exec(),
                                  "canvass" : await  model.CanvassModel.find().exec(),
-                                 "mesh" : await  model.LiningMeshModel.find().exec(),
                                  "midsole" : await  model.MidsoleModel.find().exec(),
                                  "outsole" : await  model.OutsoleModel.find().exec(),
-                                 "sockliner" : await  model.SockLinerModel.find().exec()}
+                                 "sock_liner" : await  model.SockLinerModel.find().exec()}
             
             // const jsonParam =   {"class1" : await  model.Classification1Model.find().sort({transaction_date: -1}).exec(),
             //                      "class2" : await  model.Classification2Model.find().sort({transaction_date: -1}).exec(),
@@ -160,32 +158,12 @@ module.exports = {
                         description: paramBody.description
                     })
                 break;
-                case "cambrelle":
-                    doesParameterExisting = await model.CambrelleModel.exists({ 
-                        code: paramBody.code.toUpperCase(),
-                        description: paramBody.description.toUpperCase()
-                    });
-                    newParameter =  new model.CambrelleModel({
-                        code: paramBody.code,
-                        description: paramBody.description
-                    })
-                break;
                 case "canvass":
                     doesParameterExisting = await model.CanvassModel.exists({ 
                         code: paramBody.code.toUpperCase(),
                         description: paramBody.description.toUpperCase()
                     });
                     newParameter =  new model.CanvassModel({
-                        code: paramBody.code,
-                        description: paramBody.description
-                    })
-                break;
-                case "lining mesh":
-                    doesParameterExisting = await model.LiningMeshModel.exists({ 
-                        code: paramBody.code.toUpperCase(),
-                        description: paramBody.description.toUpperCase()
-                    });
-                    newParameter =  new model.LiningMeshModel({
                         code: paramBody.code,
                         description: paramBody.description
                     })
@@ -384,36 +362,12 @@ module.exports = {
                         transaction_date : paramBody.transaction_date
                     })
                 break;
-                case "cambrelle":
-                    doesParameterExisting = await model.CambrelleModel.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
-                    });
-                    newParameter =  new model.CambrelleModel({
-                        _id : paramBody._id,
-                        code: paramBody.code,
-                        description: paramBody.description,
-                        transaction_date : paramBody.transaction_date
-                    })
-                break;
                 case "canvass":
                     doesParameterExisting = await model.CanvassModel.exists({ 
                         code: paramBody.code,
                         description: paramBody.description
                     });
                     newParameter =  new model.CanvassModel({
-                        _id : paramBody._id,
-                        code: paramBody.code,
-                        description: paramBody.description,
-                        transaction_date : paramBody.transaction_date
-                    })
-                break;
-                case "lining mesh":
-                    doesParameterExisting = await model.LiningMeshModel.exists({ 
-                        code: paramBody.code,
-                        description: paramBody.description
-                    });
-                    newParameter =  new model.LiningMeshModel({
                         _id : paramBody._id,
                         code: paramBody.code,
                         description: paramBody.description,
@@ -561,26 +515,8 @@ module.exports = {
                         throw Error(`${type.toUpperCase()} Parameter already existing.`)
                     })
                 break;
-                case "cambrelle":
-                    await model.CambrelleModel.findByIdAndUpdate(paramID.id,newParameter)
-                    .then(function(details){
-                            return details
-                    }).catch(function(error){
-                        //console.log(error)
-                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
-                    })
-                break;
                 case "canvass":
                     await model.CanvassModel.findByIdAndUpdate(paramID.id,newParameter)
-                    .then(function(details){
-                            return details
-                    }).catch(function(error){
-                        //console.log(error)
-                        throw Error(`${type.toUpperCase()} Parameter already existing.`)
-                    })
-                break;
-                case "lining mesh":
-                    await model.LiningMeshModel.findByIdAndUpdate(paramID.id,newParameter)
                     .then(function(details){
                             return details
                     }).catch(function(error){

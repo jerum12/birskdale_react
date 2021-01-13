@@ -39,9 +39,9 @@ function InquireStocks(props) {
             //             content= { <div dangerouslySetInnerHTML={{ __html: rowData.stock_details.split(";").join("<br/>") }} /> }
             //         />
             return <Popup   
-                      inverted 
+                       
                       trigger={<p style={{cursor: 'pointer'}}>Stock Details...</p>} 
-                      offset={[0, 50]}
+                      offset={[0, 20]}
                       position='right center'
                       flowing 
                       hoverable

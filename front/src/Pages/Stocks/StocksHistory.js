@@ -26,14 +26,14 @@ const useStyles = makeStyles((theme) => ({
       fontWeight : 'bold'
     },
     primary : {
-        color : '#63a940',
+        color : '#000',
         "& span": {
-            fontSize : '12px',
+            fontSize : '11px',
             fontWeight : 'bold'
           },
         "& p": {
-        fontSize : '15px',
-        color : '#000'
+        fontSize : '18px',
+        color : 'rgb(32, 51, 86)'
         }
     }
   }));
@@ -724,6 +724,12 @@ function StocksHistory(props) {
                                             secondary={details.color.description}
                                         />
                                         </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Leather Type"
+                                            secondary={details.leather_type.description}
+                                        />
+                                        </ListItem>
                                     </List>
                                 </div>
                                 </Grid>
@@ -736,12 +742,6 @@ function StocksHistory(props) {
                                     <List>
                                         <ListItem>
                                         <ListItemText className={classes.primary}
-                                            primary="Leather Type"
-                                            secondary={details.leather_type.description}
-                                        />
-                                        </ListItem>
-                                        <ListItem>
-                                        <ListItemText className={classes.primary}
                                             primary="Classification 1"
                                             secondary={details.classification_1.description}
                                         />
@@ -752,17 +752,6 @@ function StocksHistory(props) {
                                             secondary={details.classification_2.description}
                                         />
                                         </ListItem>
-                                
-                                    </List>
-                                </div>
-                                </Grid>                       
-                                <Grid item xs={12} md={3}>
-                                {/* <Typography variant="h6" className={classes.title}>
-                                        &nbsp;
-                                </Typography>
-                                <Divider/> */}
-                                <div className={classes.demo}>
-                                    <List>
                                         <ListItem>
                                         <ListItemText className={classes.primary}
                                             primary="Logo"
@@ -775,13 +764,42 @@ function StocksHistory(props) {
                                             secondary={details.sub_logo.description}
                                         />
                                         </ListItem>
+                                    </List>
+                                </div>
+                                </Grid>                       
+                                <Grid item xs={12} md={3}>
+                                {/* <Typography variant="h6" className={classes.title}>
+                                        &nbsp;
+                                </Typography>
+                                <Divider/> */}
+                                <div className={classes.demo}>
+                                    <List>
+                                        
                                         <ListItem>
                                         <ListItemText className={classes.primary}
                                             primary="Lining"
                                             secondary={details.lining.description}
                                         />
                                         </ListItem>
-                                
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Stitch"
+                                            secondary={details.stitch.description}
+                                        />
+                                        </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Canvass"
+                                            //secondary={details.special_instruction.length > 0 ? details.special_instruction : "Not Provided"}
+                                            secondary={details.canvass.description}
+                                        />
+                                        </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Midsole"
+                                            secondary={details.midsole.description}
+                                        />
+                                        </ListItem>
                                     </List>
                                 </div>
                                 </Grid>                      
@@ -792,10 +810,18 @@ function StocksHistory(props) {
                                 <Divider/> */}
                                 <div className={classes.demo}>
                                     <List>
+                                        
+                                        
                                         <ListItem>
                                         <ListItemText className={classes.primary}
-                                            primary="Stitch"
-                                            secondary={details.stitch.description}
+                                            primary="Outsole"
+                                            secondary={details.outsole.description}
+                                        />
+                                        </ListItem>
+                                        <ListItem>
+                                        <ListItemText className={classes.primary}
+                                            primary="Sockliner"
+                                            secondary={details.sock_liner.description}
                                         />
                                         </ListItem>
                                         <ListItem>
@@ -805,11 +831,20 @@ function StocksHistory(props) {
                                             secondary={details.special_instruction}
                                         />
                                         </ListItem>
-                        
                                 
                                     </List>
                                 </div>
-                                </Grid>                       
+                                </Grid>  
+
+
+
+
+
+
+
+
+                                
+                                                     
                                 <Grid item xs={12} md={2}>
                                     <div className={classes.demo}>
                                         <List>

@@ -35,6 +35,10 @@ const StepFormAdd = ({
     sub_logo: "",
     lining: "",
     stitch: "",
+    canvass: "",
+    midsole: "",
+    outsole: "",
+    sock_liner: "",
     special_instruction: "",
     size_run_2 : "",
     size_run_2_5 : "",
@@ -72,6 +76,10 @@ const StepFormAdd = ({
     sub_logo: "",
     lining: "",
     stitch: "",
+    canvass: "",
+    midsole: "",
+    outsole: "",
+    sock_liner: "",
     special_instruction: "",
     size_run_2 : 0,
     size_run_2_5 : 0,
@@ -192,7 +200,27 @@ const StepFormAdd = ({
             formErrors.stitch = mandatory
                 ? "Mandatory"
                 : ""
-            break       
+            break  
+        case "canvass":
+              formErrors.canvass = mandatory
+                  ? "Mandatory"
+                  : ""
+              break 
+        case "midsole":
+                formErrors.midsole = mandatory
+                    ? "Mandatory"
+                    : ""
+                break
+        case "outsole":
+                  formErrors.outsole = mandatory
+                      ? "Mandatory"
+                      : ""
+                  break   
+        case "sock_liner":
+                    formErrors.sock_liner = mandatory
+                        ? "Mandatory"
+                        : ""
+                    break
         case "special_instruction":
             formErrors.special_instruction = event.target.value.length > 0 && !siRegex.test(event.target.value)
                 ? "Please enter a valid Special Instruction"

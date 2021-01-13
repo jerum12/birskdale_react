@@ -80,6 +80,30 @@ import config from '../../config';
             },  
             //lookup: stitchArray
         },
+        { title: 'Canvass', field: 'canvass._id',
+            render: (rowData) => {
+            return  <div>{rowData.canvass.description}</div>;
+            },  
+            //lookup: stitchArray
+        },
+        { title: 'Midsole', field: 'midsole._id',
+            render: (rowData) => {
+            return  <div>{rowData.midsole.description}</div>;
+            },  
+            //lookup: stitchArray
+        },
+        { title: 'Outsole', field: 'outsole._id',
+            render: (rowData) => {
+            return  <div>{rowData.outsole.description}</div>;
+            },  
+            //lookup: stitchArray
+        },
+        { title: 'Sockliner', field: 'sock_liner._id',
+          render: (rowData) => {
+          return  <div>{rowData.sock_liner.description}</div>;
+          },  
+          //lookup: stitchArray
+      },
         { title: 'Special Instruction', field: 'special_instruction'
         },
     

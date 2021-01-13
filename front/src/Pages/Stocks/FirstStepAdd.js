@@ -19,6 +19,10 @@ const FirstStepAdd = ({
             sub_logo,
             lining,
             stitch,
+            canvass,
+            midsole,
+            outsole,
+            sock_liner,
             special_instruction
         },
   filedError,
@@ -39,7 +43,11 @@ const FirstStepAdd = ({
     logo !== null && logo !== '' &&
     sub_logo !== null && sub_logo !== '' &&
     lining !== null && lining !== '' &&
-    stitch !== null && stitch !== '' 
+    stitch !== null && stitch !== '' &&
+    canvass !== null && canvass !== '' &&
+    midsole !== null && midsole !== '' &&
+    outsole !== null && outsole !== '' &&
+    sock_liner !== null && sock_liner !== '' 
 
 
     // //console.log(stock_no)
@@ -416,6 +424,128 @@ const FirstStepAdd = ({
                             }
                             required
                             name="stitch"
+                            />
+                        )}
+                    />
+          </FormControl>
+        </Grid>
+
+
+        <Grid item xs={12} sm={3}>
+          <FormControl fullWidth required margin="normal">
+            <Autocomplete
+                        options={arrayParam.canvass}
+                        name="canvass"
+                        value={canvass}
+                        onChange={handleChange('canvass')}
+                        getOptionLabel={option => typeof option === 'string' ? option : option.description}
+                        renderInput={params => (
+                            <TextField
+                            {...params}
+                            label="Select Canvass"
+                            margin="normal"
+                            fullWidth
+                            inputProps={{
+                                ...params.inputProps,
+                                autoComplete: "off"
+                            }}
+                            error={filedError.canvass !== ""}
+                            helperText={
+                            filedError.canvass !== "" ? `${filedError.canvass}` : ""
+                            }
+                            required
+                            name="canvass"
+                            />
+                        )}
+                    />
+          </FormControl>
+        </Grid>
+
+
+        <Grid item xs={12} sm={3}>
+          <FormControl fullWidth required margin="normal">
+            <Autocomplete
+                        options={arrayParam.midsole}
+                        name="midsole"
+                        value={midsole}
+                        onChange={handleChange('midsole')}
+                        getOptionLabel={option => typeof option === 'string' ? option : option.description}
+                        renderInput={params => (
+                            <TextField
+                            {...params}
+                            label="Select Midsole"
+                            margin="normal"
+                            fullWidth
+                            inputProps={{
+                                ...params.inputProps,
+                                autoComplete: "off"
+                            }}
+                            error={filedError.midsole !== ""}
+                            helperText={
+                            filedError.midsole !== "" ? `${filedError.midsole}` : ""
+                            }
+                            required
+                            name="midsole"
+                            />
+                        )}
+                    />
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} sm={3}>
+          <FormControl fullWidth required margin="normal">
+            <Autocomplete
+                        options={arrayParam.outsole}
+                        name="outsole"
+                        value={outsole}
+                        onChange={handleChange('outsole')}
+                        getOptionLabel={option => typeof option === 'string' ? option : option.description}
+                        renderInput={params => (
+                            <TextField
+                            {...params}
+                            label="Select Outsole"
+                            margin="normal"
+                            fullWidth
+                            inputProps={{
+                                ...params.inputProps,
+                                autoComplete: "off"
+                            }}
+                            error={filedError.outsole !== ""}
+                            helperText={
+                            filedError.outsole !== "" ? `${filedError.outsole}` : ""
+                            }
+                            required
+                            name="outsole"
+                            />
+                        )}
+                    />
+          </FormControl>
+        </Grid>
+
+        <Grid item xs={12} sm={3}>
+          <FormControl fullWidth required margin="normal">
+            <Autocomplete
+                        options={arrayParam.sock_liner}
+                        name="sock_liner"
+                        value={sock_liner}
+                        onChange={handleChange('sock_liner')}
+                        getOptionLabel={option => typeof option === 'string' ? option : option.description}
+                        renderInput={params => (
+                            <TextField
+                            {...params}
+                            label="Select Sockliner"
+                            margin="normal"
+                            fullWidth
+                            inputProps={{
+                                ...params.inputProps,
+                                autoComplete: "off"
+                            }}
+                            error={filedError.sock_liner !== ""}
+                            helperText={
+                            filedError.sock_liner !== "" ? `${filedError.sock_liner}` : ""
+                            }
+                            required
+                            name="sock_liner"
                             />
                         )}
                     />
