@@ -6,6 +6,7 @@ import Aux from "../../hoc/_Aux";
 import './Stocks.css';
 import StepFormModify from './StepFormModify'
 import config from '../../config';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 function ModifyStockDetails(props){ 
 
@@ -95,7 +96,10 @@ function ModifyStockDetails(props){
                         </Col>
                     </Row>
                     :
-                        ''
+                    <div style={{textAlign: 'center'}}>
+                        <div className="spinner">LOADING...</div>
+                        <ScaleLoader color="rgb(34, 144, 119)" loading={true} size={20} height={30} />
+                    </div>
                 }
                 
             </Aux>

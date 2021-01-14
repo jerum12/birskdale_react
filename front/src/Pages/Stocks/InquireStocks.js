@@ -7,6 +7,7 @@ import { Header, Button, Popup, Grid } from 'semantic-ui-react'
 import {Card} from 'react-bootstrap';
 import Moment from 'moment'
 import config from "../../config";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 function InquireStocks(props) {
 
@@ -261,7 +262,10 @@ function InquireStocks(props) {
                   </Card>
                  
                 :
-                  ''
+                <div style={{textAlign: 'center'}}>
+                  <div className="spinner">LOADING...</div>
+                  <ScaleLoader color="rgb(34, 144, 119)" loading={true} size={20} height={30} />
+               </div>
               }
             
 

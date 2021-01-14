@@ -6,6 +6,7 @@ import  Breadcrumb from "../../App/layout/AdminLayout/Breadcrumb";
 import './Stocks.css';
 import StepFormAdd from './StepFormAdd'
 import config from '../../config';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 function AddStocks(props){ 
 
@@ -60,7 +61,11 @@ function AddStocks(props){
                                         loading ?
                                         <StepFormAdd param={paramArray} props={props}/>
                                         :
-                                            ''
+                                            
+                                        <div style={{textAlign: 'center'}}>
+                                                                <div className="spinner">LOADING...</div>
+                                                            <ScaleLoader color="rgb(34, 144, 119)" loading={true} size={20} height={30} />
+                                                        </div>
                                     }
                                  
                             </Card.Body>

@@ -5,6 +5,7 @@ import Aux from "../../hoc/_Aux";
 import Grid from "@material-ui/core/Grid"
 import {Card} from 'react-bootstrap';
 import {handleResponse} from '../Stocks/GenericMethod'
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from "@material-ui/core/TextField";
@@ -365,7 +366,10 @@ function UpdateUsers(props) {
                     />
                 </Fragment>
                 :
-                  ''
+                <div style={{textAlign: 'center'}}>
+                    <div className="spinner">LOADING...</div>
+                    <ScaleLoader color="rgb(34, 144, 119)" loading={true} size={20} height={30} />
+                </div>
               }
             
 

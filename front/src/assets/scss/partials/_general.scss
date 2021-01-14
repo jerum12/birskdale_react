@@ -215,7 +215,7 @@ p.text-muted {
 
     .card-block,
     .card-body {
-        padding: 30px 25px;
+        padding: 0px 10px;
     }
 
     &.card-load {
@@ -900,9 +900,16 @@ p.text-muted {
 }
 
 @media print{
+   
+    .other_tables{page-break-after: always; }
     @page {
         margin: 1% 1% 1% 1%;
         size: Legal landscape;
     }
 
   }
+.spinner{
+    font-size: 30px;
+    font-weight: bold;
+    color: #000;
+}

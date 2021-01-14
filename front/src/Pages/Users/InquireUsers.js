@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid"
 import {Card} from 'react-bootstrap';
 import {handleResponse} from '../Stocks/GenericMethod'
 import { makeStyles } from '@material-ui/core/styles';
-
+import ScaleLoader from "react-spinners/ScaleLoader";
 import config from '../../config';
 
 
@@ -105,7 +105,10 @@ function InquireUsers(props) {
                   </Card>
                  
                 :
-                  ''
+                <div style={{textAlign: 'center'}}>
+                    <div className="spinner">LOADING...</div>
+                    <ScaleLoader color="rgb(34, 144, 119)" loading={true} size={20} height={30} />
+                </div>
               }
             
 

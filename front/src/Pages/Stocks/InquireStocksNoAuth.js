@@ -20,6 +20,7 @@ import Search from '@material-ui/icons/Search';
 import CachedIcon from '@material-ui/icons/Cached';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import Moment from 'moment'
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 import '../../assets/scss/style.scss'
 import config from "../../config";
@@ -271,7 +272,10 @@ function InquireStocksNoAuth(props) {
                 ]}
               />
                 :
-                  ''
+                <div style={{textAlign: 'center'}}>
+                    <div className="spinner">LOADING...</div>
+                    <ScaleLoader color="rgb(34, 144, 119)" loading={true} size={20} height={30} />
+                </div>
               } 
 
            

@@ -11,9 +11,10 @@ const theme = createMuiTheme({
   overrides: {
     MuiTableCell: {
       root: {
-        padding: 0,
+        padding: '5px',
         border: '1px solid black !important',
-        minWidth: '40px'
+        width: '100px',
+        fontSize: '12px'
       }
     }
   }
@@ -76,13 +77,14 @@ function TableReport({category, value, index, length, originalData}){
   
     return (
       <MuiThemeProvider theme={theme}>
-          <Table aria-label="spanning table"  id={`table_${index}`} >
+          <br/>
+          <Table aria-label="spanning table"  id={`table_${index}`} className={`${index > 0 ? 'other_tables' : ''}`} >
               <TableHead>
                     <TableRow>
                         <TableCell align="left" colSpan={25}>
                           Gender : <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}}>{details(value)}</span>
                           
-                          <span style={{float : 'right'}}>Count : {value.length}</span>
+                          <span style={{float : 'right'}}>Count : <b>{value.length}</b></span>
                         </TableCell>
                     </TableRow>
                     <TableRow>
@@ -117,7 +119,7 @@ function TableReport({category, value, index, length, originalData}){
                     {value.map((row) => (
                         <TableRow key={row._id}>
                         <TableCell>{Moment(row.transaction_date).format('MM-DD-YYYY HH:mm:ss')}</TableCell>
-                        <TableCell><div dangerouslySetInnerHTML={{ __html: row.stock_details}} /></TableCell>
+                        <TableCell><div dangerouslySetInnerHTML={{ __html: row.stock_details.split("|").join("<br/>") }} /></TableCell>
                         {/* <TableCell>{row.stock_details}</TableCell> */}
                         <TableCell align="right">{row.size_run_2}</TableCell>
                         <TableCell align="right">{row.size_run_2_5}</TableCell>
@@ -148,30 +150,30 @@ function TableReport({category, value, index, length, originalData}){
 
                     <TableRow>
                         <TableCell>&nbsp;</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>Subtotal</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_2}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_2_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_3}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_3_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_4}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_4_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_5_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_6}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_6_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_7}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_7_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_8}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_8_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_9}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_9_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_10}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_10_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_11}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_11_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_12}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_13}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.total_size_run}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>Subtotal</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_2}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_2_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_3}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_3_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_4}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_4_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_5_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_6}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_6_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_7}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_7_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_8}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_8_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_9}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_9_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_10}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_10_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_11}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_11_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_12}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_13}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.total_size_run}</TableCell>
                     </TableRow>
 
                     {
@@ -183,30 +185,30 @@ function TableReport({category, value, index, length, originalData}){
                         </TableRow>
                         <TableRow>
                           <TableCell style={{borderRight : 'none'}}>&nbsp;</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>Total</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_2}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_2_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_3}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_3_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_4}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_4_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_5_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_6}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_6_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_7}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_7_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_8}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_8_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_9}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_9_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_10}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_10_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_11}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_11_5}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_12}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_13}</TableCell>
-                          <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.total_size_run}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>Total</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_2}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_2_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_3}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_3_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_4}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_4_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_5_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_6}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_6_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_7}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_7_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_8}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_8_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_9}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_9_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_10}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_10_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_11}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_11_5}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_12}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_13}</TableCell>
+                          <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.total_size_run}</TableCell>
                         </TableRow>
                       </Fragment>
                     }

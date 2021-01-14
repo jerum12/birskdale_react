@@ -8,6 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import Aux from "../../hoc/_Aux";
 import {Card} from 'react-bootstrap';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 import {SizeRunModal} from './SizeRunModal'
 import config from "../../config";
@@ -1082,7 +1083,10 @@ function StocksHistory(props) {
                     />
                 </Fragment>
                 :
-                        ''
+                <div style={{textAlign: 'center'}}>
+                    <div className="spinner">LOADING...</div>
+                    <ScaleLoader color="rgb(34, 144, 119)" loading={true} size={20} height={30} />
+                </div>
             }
                         
 

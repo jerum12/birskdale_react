@@ -412,60 +412,63 @@ module.exports = {
                 stocks.forEach(function(stock) {
                         var stock_details_value = "";
 
-                    if(stock.gender.description != '' && stock.gender.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">G</span>: ' + stock.gender.description;
+                    if(stock.stock_no.description != '' && stock.stock_no.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">SN</span>: ' + stock.stock_no.description + '| '
                     }
-
+                    if(stock.gender.description != '' && stock.gender.description != 'NOT AVAILABLE'){
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">G</span>: ' + stock.gender.description + '| '
+                    }
+                    
                     if(stock.leather_type.description != '' && stock.leather_type.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">LT</span>: ' + stock.leather_type.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">LT</span>: ' + stock.leather_type.description+ '| '
                     }
 
                     if(stock.color.description != '' && stock.color.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">C</span>: ' + stock.color.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">C</span>: ' + stock.color.description+ '| '
                     }
 
                     if(stock.classification_1.description != '' && stock.classification_1.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">C1</span>: ' + stock.classification_1.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">C1</span>: ' + stock.classification_1.description+ '| '
                     }
 
                     if(stock.classification_2.description != '' && stock.classification_2.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">C2</span>: ' + stock.classification_2.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">C2</span>: ' + stock.classification_2.description+ '| '
                     }
 
                     if(stock.logo.description != '' && stock.logo.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">Lo</span>: ' + stock.logo.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">Lo</span>: ' + stock.logo.description+ '| '
                     }
 
                     if(stock.sub_logo.description != '' && stock.sub_logo.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">SLo</span>: ' + stock.sub_logo.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">SLo</span>: ' + stock.sub_logo.description+ '| '
                     }
 
                     if(stock.stitch.description != '' && stock.stitch.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">S</span>: ' + stock.stitch.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">S</span>: ' + stock.stitch.description+ '| '
                     }
 
                     if(stock.lining.description != '' && stock.lining.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">Li</span>: ' + stock.lining.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">Li</span>: ' + stock.lining.description+ '| '
                     }
 
                     if(stock.canvass.description != '' && stock.canvass.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">Cv</span>: ' + stock.canvass.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">Cv</span>: ' + stock.canvass.description+ '| '
                     }
 
                     if(stock.midsole.description != '' && stock.midsole.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">Ms</span>: ' + stock.midsole.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">Ms</span>: ' + stock.midsole.description+ '| '
                     }
 
                     if(stock.outsole.description != '' && stock.outsole.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">Os</span>: ' + stock.outsole.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">Os</span>: ' + stock.outsole.description+ '| '
                     }
 
                     if(stock.sock_liner.description != '' && stock.sock_liner.description != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">SLi</span>: ' + stock.sock_liner.description
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">SLi</span>: ' + stock.sock_liner.description+ '| '
                     }
 
                     if(stock.special_instruction != '' && stock.special_instruction != 'NOT AVAILABLE'){
-                        stock_details_value +=  '<span style="color:red;font-weight:bold">SI</span>: ' + stock.special_instruction
+                        stock_details_value +=  '<span style="color:red;font-weight:bold">SI</span>: ' + stock.special_instruction+ '| '
                     }
             
 
@@ -473,7 +476,6 @@ module.exports = {
 
                   });
 
-              ////console.log(stocks)
 
              return stocks;
         } catch (e) {

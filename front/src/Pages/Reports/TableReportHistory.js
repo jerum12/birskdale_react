@@ -11,9 +11,10 @@ const theme = createMuiTheme({
   overrides: {
     MuiTableCell: {
       root: {
-        padding: 0,
+        padding: '5px',
         border: '1px solid black !important',
-        minWidth: '40px'
+        width: '100px',
+        fontSize: '12px'
       }
     }
   }
@@ -60,21 +61,86 @@ const subtotal = (items) => {
   
   return array;
 }
+
+
 const details = (items) => {
     let data = ''
     items.map(({stocks_id}) => {
             data = ''
-           data =       '<span style="color:red;font-weight:bold">SN</span>: ' + stocks_id.stock_no.description + '; ' +
-                        '<span style="color:red;font-weight:bold">LT</span>: ' + stocks_id.leather_type.description + '; ' +
-                        '<span style="color:red;font-weight:bold">G</span>: ' + stocks_id.gender.description + '; ' +
-                        '<span style="color:red;font-weight:bold">C</span>: ' + stocks_id.color.description + '; ' +
-                        '<span style="color:red;font-weight:bold">C1</span>: ' + stocks_id.classification_1.description + '; ' +
-                        '<span style="color:red;font-weight:bold">C2</span>: ' + stocks_id.classification_2.description + '; ' +
-                        '<span style="color:red;font-weight:bold">Lo</span>: ' + stocks_id.logo.description + '; ' +
-                        '<span style="color:red;font-weight:bold">Slo</span>: ' + stocks_id.sub_logo.description + '; ' +
-                        '<span style="color:red;font-weight:bold">S</span>: ' + stocks_id.stitch.description + '; ' +
-                        '<span style="color:red;font-weight:bold">Li</span>: ' + stocks_id.lining.description + '; ' +
-                        '<span style="color:red;font-weight:bold">SI</span>: ' + stocks_id.special_instruction;
+
+          if(stocks_id.stock_no.description != '' && stocks_id.stock_no.description  != 'NOT AVAILABLE'){
+                data +=  '<span style="color:red;font-weight:bold">SN</span>: ' + stocks_id.stock_no.description + '; '
+          }
+
+          if(stocks_id.gender.description != '' && stocks_id.gender.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">G</span>: ' + stocks_id.gender.description + '; '
+          }
+          
+          if(stocks_id.leather_type.description != '' && stocks_id.leather_type.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">LT</span>: ' + stocks_id.leather_type.description+ '; '
+          }
+
+          if(stocks_id.color.description != '' && stocks_id.color.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">C</span>: ' + stocks_id.color.description+ '; '
+          }
+
+          if(stocks_id.classification_1.description != '' && stocks_id.classification_1.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">C1</span>: ' + stocks_id.classification_1.description+ '; '
+          }
+
+          if(stocks_id.classification_2.description != '' && stocks_id.classification_2.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">C2</span>: ' + stocks_id.classification_2.description+ '; '
+          }
+
+          if(stocks_id.logo.description != '' && stocks_id.logo.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">Lo</span>: ' + stocks_id.logo.description+ '|; '
+          }
+
+          if(stocks_id.sub_logo.description != '' && stocks_id.sub_logo.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">SLo</span>: ' + stocks_id.sub_logo.description+ '; '
+          }
+
+          if(stocks_id.stitch.description != '' && stocks_id.stitch.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">S</span>: ' + stocks_id.stitch.description+ '; '
+          }
+
+          if(stocks_id.lining.description != '' && stocks_id.lining.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">Li</span>: ' + stocks_id.lining.description+ '; '
+          }
+
+          if(stocks_id.canvass.description != '' && stocks_id.canvass.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">Cv</span>: ' + stocks_id.canvass.description+ '; '
+          }
+
+          if(stocks_id.midsole.description != '' && stocks_id.midsole.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">Ms</span>: ' + stocks_id.midsole.description+ '; '
+          }
+
+          if(stocks_id.outsole.description != '' && stocks_id.outsole.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">Os</span>: ' + stocks_id.outsole.description+ '; '
+          }
+
+          if(stocks_id.sock_liner.description != '' && stocks_id.sock_liner.description != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">SLi</span>: ' + stocks_id.sock_liner.description+ '; '
+          }
+
+          if(stocks_id.special_instruction != '' && stocks_id.special_instruction != 'NOT AVAILABLE'){
+            data +=  '<span style="color:red;font-weight:bold">SI</span>: ' + stocks_id.special_instruction+ '; '
+          }
+
+
+
+          //  data =       '<span style="color:red;font-weight:bold">SN</span>: ' + stocks_id.stock_no.description + '; ' +
+          //               '<span style="color:red;font-weight:bold">LT</span>: ' + stocks_id.leather_type.description + '; ' +
+          //               '<span style="color:red;font-weight:bold">G</span>: ' + stocks_id.gender.description + '; ' +
+          //               '<span style="color:red;font-weight:bold">C</span>: ' + stocks_id.color.description + '; ' +
+          //               '<span style="color:red;font-weight:bold">C1</span>: ' + stocks_id.classification_1.description + '; ' +
+          //               '<span style="color:red;font-weight:bold">C2</span>: ' + stocks_id.classification_2.description + '; ' +
+          //               '<span style="color:red;font-weight:bold">Lo</span>: ' + stocks_id.logo.description + '; ' +
+          //               '<span style="color:red;font-weight:bold">Slo</span>: ' + stocks_id.sub_logo.description + '; ' +
+          //               '<span style="color:red;font-weight:bold">S</span>: ' + stocks_id.stitch.description + '; ' +
+          //               '<span style="color:red;font-weight:bold">Li</span>: ' + stocks_id.lining.description + '; ' +
+          //               '<span style="color:red;font-weight:bold">SI</span>: ' + stocks_id.special_instruction;
     })
     return data
 }
@@ -87,14 +153,15 @@ function TableReportHistory({category, value, index, length, originalData}){
   const totalSizeRun = subtotal(originalData);
     return (
       <MuiThemeProvider theme={theme}>
+        <br/>
         <Table aria-label="spanning table"  id={`table_${index}`} >
             <TableHead>
                   <TableRow>
                       <TableCell align="left" colSpan={25}>
                         {/* Stock Details : <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}}>{details(value)}</span> */}
-                        Stock Details :  <span style={{color : 'red', fontSize : '15px', fontWeight : 'bold'}} dangerouslySetInnerHTML={{ __html: details(value)}} />
+                        Stock Details :  <span style={{fontSize : '12px', fontWeight : 'bold'}} dangerouslySetInnerHTML={{ __html: details(value)}} />
                         &nbsp;
-                        <span style={{float : 'right'}}>Count : {value.length}</span>
+                        <span style={{float : 'right'}}>Count : <b>{value.length}</b></span>
                       </TableCell>
                   </TableRow>
                   <TableRow>
@@ -159,30 +226,30 @@ function TableReportHistory({category, value, index, length, originalData}){
 
                   <TableRow>
                       <TableCell>&nbsp;</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>Subtotal</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_2}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_2_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_3}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_3_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_4}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_4_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_5_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_6}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_6_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_7}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_7_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_8}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_8_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_9}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_9_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_10}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_10_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_11}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_11_5}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_12}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.size_run_13}</TableCell>
-                      <TableCell align="right" style={{fontSize : '15px', color : 'red'}}>{subTotalSizeRun.total}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>Subtotal</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_2}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_2_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_3}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_3_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_4}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_4_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_5_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_6}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_6_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_7}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_7_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_8}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_8_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_9}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_9_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_10}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_10_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_11}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_11_5}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_12}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.size_run_13}</TableCell>
+                      <TableCell align="right" style={{fontSize : '12px', color : 'red'}}>{subTotalSizeRun.total}</TableCell>
                   </TableRow>
 
                   {
@@ -193,30 +260,30 @@ function TableReportHistory({category, value, index, length, originalData}){
                       </TableRow>
                       <TableRow>
                         <TableCell>&nbsp;</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>Total</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_2}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_2_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_3}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_3_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_4}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_4_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_5_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_6}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_6_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_7}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_7_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_8}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_8_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_9}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_9_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_10}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_10_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_11}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_11_5}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_12}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_13}</TableCell>
-                        <TableCell align="right" style={{fontSize : '15px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.total}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>Total</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_2}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_2_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_3}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_3_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_4}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_4_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_5_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_6}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_6_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_7}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_7_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_8}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_8_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_9}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_9_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_10}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_10_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_11}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_11_5}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_12}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.size_run_13}</TableCell>
+                        <TableCell align="right" style={{fontSize : '12px', color : 'red', fontWeight : 'bold'}}>{totalSizeRun.total}</TableCell>
                       </TableRow>
                     </Fragment>
                   }

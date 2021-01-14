@@ -5,6 +5,7 @@ import axios from 'axios';
 import Aux from "../../hoc/_Aux";
 import {Card} from 'react-bootstrap';
 import config from '../../config';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
  function ModifyStocks(props) {
 
@@ -217,7 +218,10 @@ import config from '../../config';
                   </Card.Body>
                 </Card>
               :
-                ''
+              <div style={{textAlign: 'center'}}>
+                  <div className="spinner">LOADING...</div>
+                  <ScaleLoader color="rgb(34, 144, 119)" loading={true} size={20} height={30} />
+              </div>
               }
                     
         </Aux>
