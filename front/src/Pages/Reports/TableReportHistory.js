@@ -93,7 +93,7 @@ const details = (items) => {
           }
 
           if(stocks_id.logo.description != '' && stocks_id.logo.description != 'NOT AVAILABLE'){
-            data +=  '<span style="color:red;font-weight:bold">Lo</span>: ' + stocks_id.logo.description+ '|; '
+            data +=  '<span style="color:red;font-weight:bold">Lo</span>: ' + stocks_id.logo.description+ '; '
           }
 
           if(stocks_id.sub_logo.description != '' && stocks_id.sub_logo.description != 'NOT AVAILABLE'){
